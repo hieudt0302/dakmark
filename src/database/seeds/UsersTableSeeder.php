@@ -16,8 +16,8 @@ class UsersTableSeeder extends Seeder
             $role = Role::where('name', 'admin')->firstOrFail();
             $user = User::create([
                 'username'  => 'admin',
-                'firstname' => 'Admin',
-                'lastname' => 'Is',
+                'firs_tname' => 'Admin',
+                'last_name' => 'Is',
                 'email'          => 'admin@admin.com',
                 'phone'         => '+84 123 456 789',
                 'password'       => bcrypt('admin'),
