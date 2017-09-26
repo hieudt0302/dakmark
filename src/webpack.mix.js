@@ -11,5 +11,10 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+// mix.js('resources/assets/js/app.js', 'public/js')
+//     .sass('resources/assets/sass/app.scss', 'public/css')
+
+mix.js('resources/assets/rhythm/js/all.js', 'public/js')
+    // mix.copyDirectory('resources/assets/rhythm/js', 'public/js');
+mix.copyDirectory('resources/assets/rhythm/css', 'public/css')
+mix.copyDirectory('resources/assets/rhythm/fonts', 'public/fonts');
