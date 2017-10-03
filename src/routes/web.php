@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('front.home.index');
+// });
+
+Route::get('/', 'Front\HomeController@index');
