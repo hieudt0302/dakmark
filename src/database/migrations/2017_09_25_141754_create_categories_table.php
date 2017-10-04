@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name',20);
             $table->string('description',255);
+            $table->text('url');
             $table->integer('order')->default(0)->unsigned();
             $table->boolean('enabled')->default(true);
             $table->boolean('is_visible')->default(true);
@@ -29,6 +30,7 @@ class CreateCategoriesTable extends Migration
                              ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

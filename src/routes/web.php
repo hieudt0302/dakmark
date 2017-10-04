@@ -16,3 +16,11 @@
 // });
 
 Route::get('/', 'Front\HomeController@index');
+
+
+//Multi-language
+Route::get('language/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return redirect()->back();
+});

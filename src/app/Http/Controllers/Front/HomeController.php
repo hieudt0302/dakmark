@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return View("front/home/index");
+        $new_products = DB::table('products')->where('created_at', '>=', Carbon::now()->subWeeks(1))->get();
+        return View("front/home/index",compact('new_products'));
     }
 
     /**
