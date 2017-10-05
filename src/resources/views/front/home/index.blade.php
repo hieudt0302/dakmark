@@ -107,10 +107,9 @@
                 </div>
 
                 <div class="post-prev-text align-center mb-0">
-                    <!-- @if($product->is_promote == 1)
-                    <del>{!! price_format($product->default_price,'VNĐ') !!}</del> &nbsp;
-                    <strong>{!! price_format($product->promote_price,'VNĐ') !!}</strong> @else
-                    <strong>{!! price_format($product->default_price,'VNĐ') !!}</strong> @endif -->
+                    
+                    <del>{{$product->old_price}}</del> &nbsp;
+                    <strong>{{$product->price}}</strong>
                 </div>
 
             </div>
