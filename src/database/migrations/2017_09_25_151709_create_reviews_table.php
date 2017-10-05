@@ -19,13 +19,18 @@ class CreateReviewsTable extends Migration
             $table->text('comment');
             $table->tinyInteger('rate')->default(0)->unsigned();
             $table->string('email');
-            $table->integer('reviewer_id')->unsigned();
+
+            $table->integer('parent_id')->nullable()->unsigned();
+            $table->foreign('parent_id')->references('id')->on('reviews');
+
+            $table->integer('reviewer_id')->nullable()->unsigned();
             $table->foreign('reviewer_id')->references('id')->on('users');
             // ->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             // ->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
