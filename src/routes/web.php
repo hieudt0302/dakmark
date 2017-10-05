@@ -11,12 +11,14 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('front.home.index');
-// });
+/* AUTH */
+Auth::routes();
 
+/* HOME */
 Route::get('/', 'Front\HomeController@index');
 
+/* SHOPPING CART */
+Route::get('/cart', 'Front\ShoppingCartController@cart');
 
 //Multi-language
 Route::get('language/{locale}', function ($locale) {
@@ -24,3 +26,4 @@ Route::get('language/{locale}', function ($locale) {
     App::setLocale($locale);
     return redirect()->back();
 });
+

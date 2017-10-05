@@ -84,7 +84,7 @@
             
           <!-- Item With Sub -->
             <li>
-                @if (Auth::guest())
+                @guest
                 <a href="#" class="mn-has-sub"><i class="fa fa-user"></i>@lang('header.account') <i class="fa fa-angle-down"></i></a>
                 <!-- Sub -->
                 <ul class="mn-sub">                                 
@@ -97,7 +97,7 @@
                 </ul>
                 <!-- End Sub -->
                 @else
-                <a href="#" class="mn-has-sub"><i class="fa fa-user"></i>{{ Auth::user()->first_name }}<i class="fa fa-angle-down"></i></a>
+                <a href="#" class="mn-has-sub"><i class="fa fa-user"></i> {{ Auth::user()->last_name }} {{ Auth::user()->firs_name }}<i class="fa fa-angle-down"></i></a>
                 <!-- Sub -->
                 <ul class="mn-sub">                                 
                     <li>
@@ -106,9 +106,21 @@
                     <li>
                         <a href="{{ url('/profile') }}">@lang('common.profile')</a> 
                     </li>
+                   
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
                 </ul>
                 <!-- End Sub -->
-                @endif
+                @endguest
 
             </li>
             <!-- End Item With Sub -->
