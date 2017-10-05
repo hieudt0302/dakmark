@@ -49,15 +49,15 @@
                 <div class="row">
                     
                     <div class="col-xs-3 post-prev-img">
-                        <a href="images/shop/shop-prev-2.jpg" class="lightbox-gallery-3 mfp-image"><img src="images/shop/shop-prev-2.jpg" alt="" /></a>
+                        <a href="{{asset('images/shop/shop-prev-2.jpg')}}" class="lightbox-gallery-3 mfp-image"><img src="{{asset('images/shop/shop-prev-2.jpg')}}" alt="" /></a>
                     </div>
                     
                     <div class="col-xs-3 post-prev-img">
-                        <a href="images/shop/shop-prev-3.jpg" class="lightbox-gallery-3 mfp-image"><img src="images/shop/shop-prev-3.jpg" alt="" /></a>
+                        <a href="{{asset('images/shop/shop-prev-3.jpg')}}" class="lightbox-gallery-3 mfp-image"><img src="{{asset('images/shop/shop-prev-3.jpg')}}" alt="" /></a>
                     </div>
                     
                     <div class="col-xs-3 post-prev-img">
-                        <a href="images/shop/shop-prev-4.jpg" class="lightbox-gallery-3 mfp-image"><img src="images/shop/shop-prev-4.jpg" alt="" /></a>
+                        <a href="{{asset('images/shop/shop-prev-4.jpg')}}" class="lightbox-gallery-3 mfp-image"><img src="{{asset('images/shop/shop-prev-4.jpg')}}" alt="" /></a>
                     </div>
                     
                 </div>
@@ -98,16 +98,19 @@
                 <hr class="mt-0 mb-30"/> 
                 
                 <div class="section-text mb-30">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et dui id dui suscipit pharetra vitae quis urna. Ut scelerisque quam quis erat tincidunt, vel vehicula turpis bibendum.
+                    {{$product->summary}}
                 </div>
                 
                 <hr class="mt-0 mb-30"/> 
                 
                 <div class="mb-30">
-                    <form method="post" action="#" class="form">
-                        <input type="number" class="input-lg round" min="1" max="100" value="1" />
-                        <a href="" class="btn btn-mod btn-large btn-round add-shoopingcart">Add to Cart</a> 
-                    </form>
+                    <!-- <form method="post" action class="form"> -->
+                    <div class="form">
+                        <input name="quantity" type="number" class="input-lg round" min="1" max="1000000" value="1" />
+                        <button  class="btn btn-mod btn-large btn-round add-shoopingcart">Add to Cart</button> 
+                    </div>
+                       
+                    <!-- </form> -->
                 </div>
                 
                 <hr class="mt-0 mb-30"/> 
@@ -175,7 +178,7 @@
                 <a href="#one" data-toggle="tab">Description</a>
             </li>
             <li>
-                <a href="#two" data-toggle="tab">Parameters</a>
+                <a href="#two" data-toggle="tab">Specs</a>
             </li>
             <li>
                 <a href="#three" data-toggle="tab">Reviews (3)</a>
@@ -186,59 +189,11 @@
         <!-- Tab panes -->
         <div class="tab-content tpl-tabs-cont">
             <div class="tab-pane fade in active" id="one">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo.
-                    Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.
-                </p>
-                <p>
-                    Nunc vulputate semper erat, non iaculis sapien congue sit amet. Duis non nulla volutpat, dignissim leo sit amet, porta nunc. Donec placerat fermentum metus ac scelerisque. In id sollicitudin nulla. Suspendisse potenti. Integer aliquam orci 
-                    aliquam eros posuere ornare. Fusce augue felis, maximus non lacus vitae, ullamcorper dignissim leo. Ut congue feugiat turpis at aliquam. Donec eros neque, accumsan sed venenatis volutpat, tempor at metus.
-                </p>
+                {{$product->description}}
             </div>
             <div class="tab-pane fade" id="two">
                 
-                <table class="table table-bordered table-striped">
-                    <tr>
-                        <th>
-                            Parameter
-                        </th>
-                        <th>
-                            Value
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            Size
-                        </td>
-                        <td>
-                            Small, Medium & Large
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Color
-                        </td>
-                        <td>
-                            Black & White
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Waist
-                        </td>
-                        <td>
-                            25cm
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Length
-                        </td>
-                        <td>
-                            50cm
-                        </td>
-                    </tr>
-                </table>
+                {{$product->specs}}
                 
             </div>
             <div class="tab-pane fade" id="three">
@@ -248,7 +203,7 @@
                             
                             <!-- Comment Item -->
                             <li class="media comment-item">
-                                <a class="pull-left" href="#"><img class="media-object comment-avatar" src="images/user-avatar.png" alt=""></a>
+                                <a class="pull-left" href="#"><img class="media-object comment-avatar" src="{{asset('images/user-avatar.png')}}" alt=""></a>
                                 <div class="media-body">
                                     <div class="comment-item-data">
                                         <div class="comment-author">
@@ -274,7 +229,7 @@
                             
                             <!-- Comment Item -->
                             <li class="media comment-item">
-                                <a class="pull-left" href="#"><img class="media-object comment-avatar" src="images/user-avatar.png" alt=""></a>
+                                <a class="pull-left" href="#"><img class="media-object comment-avatar" src="{{asset('images/user-avatar.png')}}" alt=""></a>
                                 <div class="media-body">
                                     <div class="comment-item-data">
                                         <div class="comment-author">
@@ -379,7 +334,7 @@
                         
                         <div class="post-prev-img">
                             
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-1.jpg" alt="" /></a>
+                            <a href="shop-single.html"><img src="{{asset('images/shop/shop-prev-1.jpg')}}" alt="" /></a>
                             
                             <div class="intro-label">
                                 <span class="label label-danger bg-red">Sale</span>
@@ -408,7 +363,7 @@
                     <div class="col-md-3 col-lg-3 mb-60 mb-xs-40">
                         
                         <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-2.jpg" alt="" /></a>
+                            <a href="shop-single.html"><img src="{{asset('images/shop/shop-prev-2.jpg')}}" alt="" /></a>
                         </div>
                         
                         <div class="post-prev-title font-alt align-center">
@@ -430,7 +385,7 @@
                     <div class="col-md-3 col-lg-3 mb-60 mb-xs-40">
                         
                         <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-3.jpg" alt="" /></a>
+                            <a href="shop-single.html"><img src="{{asset('images/shop/shop-prev-3.jpg')}}" alt="" /></a>
                         </div>
                         
                         <div class="post-prev-title font-alt align-center">
@@ -452,7 +407,7 @@
                     <div class="col-md-3 col-lg-3 mb-60 mb-xs-40">
                         
                         <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-4.jpg" alt="" /></a>
+                            <a href="shop-single.html"><img src="{{asset('images/shop/shop-prev-4.jpg')}}" alt="" /></a>
                         </div>
                         
                         <div class="post-prev-title font-alt align-center">
@@ -476,4 +431,34 @@
 </section>
 <!-- End Related Products -->
 
+@endsection
+
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/flytocart.js') }}"></script>
+
+<script>
+     $(document).ready(function(){
+      
+        $('.add-shoopingcart').click(function() {
+            var quantity = $("input[name='quantity']").val();
+            $.ajax({
+               type:'POST',
+               url:'{{ url("/add-to-cart") }}',
+              
+               data: {
+                    'id': '{{$product->id}}',
+                    'name': '{{$product->name}}',
+                    'price': {{$product->price}},
+                    'quantity': quantity,
+                },
+               success:function(response){
+                console.log(response['success']);
+               },
+               error:function(response){
+                  console.log(response['success']);
+               }
+            });
+        });
+    });
+</script>
 @endsection

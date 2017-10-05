@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dak Mark</title>
+        <title>@yield('title')</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta charset="utf-8">
-        <meta name="author" content="Roman Kirichik">
+        <meta name="author" content="DakMark">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         
@@ -85,6 +87,16 @@
         <script type="text/javascript" src="{{ asset('js/rev-slider.js') }}"></script>        
         <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
         
-        <script type="text/javascript" src="{{ asset('js/flytocart.js') }}"></script>    
+        <!-- <script type="text/javascript" src="{{ asset('js/app.js') }}"></script> -->
+        <script>
+                (function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                })();
+        </script>
+        @yield('scripts')
     </body>
 </html>

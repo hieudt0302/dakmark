@@ -31,3 +31,4 @@ Route::get('/cart', 'Front\ShoppingCartController@cart');
 /* PRODUCT */
 
 Route::get('/product/{id}', 'Front\ProductsController@show');
+Route::post('/add-to-cart', 'Front\ProductsController@addToCart');

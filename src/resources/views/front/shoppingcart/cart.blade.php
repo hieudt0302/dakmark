@@ -49,44 +49,27 @@
                             
                         </th>
                     </tr>
+                    @foreach(Cart::content() as $row)
                     <tr>
                         <td class="hidden-xs">
                             <a href=""><img src="images/shop/previews/shop-prev-5.jpg" alt=""/></a>
                         </td>
                         <td>
-                            <a href="#" title="">Polo Shirt With Argyle Print</a>
+                            <a href="#" title="">{{$row->name}}</a>
                         </td>
                         <td>
                             <form class="form">
-                               <input type="number" class="input-sm" style="width: 60px;" min="1" max="100" value="1" />
+                               <input type="number" class="input-sm" style="width: 60px;" min="1" max="100" value="{{$row->qty}}" />
                             </form>
                         </td>
                         <td>
-                            $25.99
+                            {{$row->price}}
                         </td>
                         <td>
                             <a href=""><i class="fa fa-times"></i> <span class="hidden-xs">Remove</span></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="hidden-xs">
-                            <a href=""><img src="images/shop/previews/shop-prev-3.jpg" alt=""/></a>
-                        </td>
-                        <td>
-                            <a href="#" title="">Shirt With Mesh Sleeves</a>
-                        </td>
-                        <td>
-                            <form class="form">
-                               <input type="number" class="input-sm" style="width: 60px;" min="1" max="100" value="1" />
-                            </form>
-                        </td>
-                        <td>
-                            $30.00
-                        </td>
-                        <td>
-                            <a href=""><i class="fa fa-times"></i> <span class="hidden-xs">Remove</span></a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </table>
                 
                 <hr />
@@ -140,15 +123,15 @@
                         
                         
                         <div>
-                            Cart subtotal: <strong>$45.95</strong>
+                            Cart subtotal: <strong>{{Cart::subtotal()}}</strong>
                         </div>
                         
                         <div class="mb-10">
-                            Shipping: <strong>$30.00</strong>
+                            Shipping: <strong>$0.00</strong>
                         </div>
                         
                         <div class="lead mt-0 mb-30">
-                            Order Total: <strong>$75.99</strong>
+                            Order Total: <strong>{{Cart::total()}}</strong>
                         </div>
                         
                         <div>
