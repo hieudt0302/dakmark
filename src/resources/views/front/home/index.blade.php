@@ -93,8 +93,8 @@
 
                 <div class="post-prev-img">
 
-                    <a href="shop-single.html"><img src="/" alt="" /></a> 
-                    @if($product->special_price_start_date  >= $product->special_price_end_date )
+                    <a href="products/{{$product->id}}"><img src="/images/caphe.jpg" alt="" /></a> 
+                    @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
                     <div class="intro-label">
                         <span class="label label-danger bg-red">@lang('product.sale')</span>
                     </div>
@@ -108,8 +108,15 @@
 
                 <div class="post-prev-text align-center mb-0">
                     
-                    <del>{{$product->old_price}}</del> &nbsp;
-                    <strong>{{$product->price}}</strong>
+                    @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
+                        <del>{{$product->price}}</del> &nbsp;
+                        <strong>{{$product->special_price}}</strong>
+                    @else
+                        @if($product->old_price > 0)
+                        <del>{{$product->old_price}}</del> &nbsp;
+                        @endif
+                        <strong>{{$product->price}}</strong>
+                    @endif
                 </div>
 
             </div>
