@@ -78,7 +78,7 @@
             
             <!-- Cart -->
             <li>
-                <a href="{{ url('/cart') }}" class="active"><i class="fa fa-shopping-cart"></i> @lang('header.cart') ( {{ Cart::instance('default')->count(false) }} )</a>
+                <a href="{{ url('/cart') }}" class="active"><i class="fa fa-shopping-cart shopping-cart-icon"></i> @lang('header.cart') ( {{ Cart::instance('default')->count(false) }} )</a>
             </li>
             <!-- End Cart -->
             

@@ -11,6 +11,13 @@
 |
 */
 
+//Multi-language
+Route::get('language/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return redirect()->back();
+});
+
 /* AUTH */
 Auth::routes();
 
@@ -20,10 +27,7 @@ Route::get('/', 'Front\HomeController@index');
 /* SHOPPING CART */
 Route::get('/cart', 'Front\ShoppingCartController@cart');
 
-//Multi-language
-Route::get('language/{locale}', function ($locale) {
-    Session::put('locale', $locale);
-    App::setLocale($locale);
-    return redirect()->back();
-});
 
+/* PRODUCT */
+
+Route::get('/product/{id}', 'Front\ProductsController@show');

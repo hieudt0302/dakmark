@@ -16,15 +16,16 @@
         <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
         
         <!-- CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/style-responsive.css">
-        <link rel="stylesheet" href="css/animate.min.css">
-        <link rel="stylesheet" href="css/vertical-rhythm.min.css">
-        <link rel="stylesheet" href="css/owl.carousel.css">
-        <link rel="stylesheet" href="css/magnific-popup.css">
-        <link rel="stylesheet" href="css/rev-slider.css">
-        <link rel="stylesheet" href="rs-plugin/css/settings.css" media="screen" />   
+        
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/vertical-rhythm.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/rev-slider.css') }}">
+        <link rel="stylesheet" href="{{ asset('rs-plugin/css/settings.css') }}" media="screen" />   
         
     </head>
     <body class="appear-animate">
@@ -53,36 +54,37 @@
         <!-- End Page Wrap -->
                 
         <!-- JS -->
-        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>        
-        <script type="text/javascript" src="js/SmoothScroll.js"></script>
-        <script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
-        <script type="text/javascript" src="js/jquery.localScroll.min.js"></script>
-        <script type="text/javascript" src="js/jquery.viewport.mini.js"></script>
-        <script type="text/javascript" src="js/jquery.countTo.js"></script>
-        <script type="text/javascript" src="js/jquery.appear.js"></script>
-        <script type="text/javascript" src="js/jquery.sticky.js"></script>
-        <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
-        <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-        <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
-        <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>        
+        <script type="text/javascript" src="{{ asset('js/SmoothScroll.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.localScroll.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.viewport.mini.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.countTo.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.appear.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.parallax-1.1.3.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.fitvids.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
         <!-- Replace test API Key "AIzaSyAZsDkJFLS0b59q7cmW0EprwfcfUA8d9dg" with your own one below 
         **** You can get API Key here - https://developers.google.com/maps/documentation/javascript/get-api-key -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZsDkJFLS0b59q7cmW0EprwfcfUA8d9dg"></script>
-        <script type="text/javascript" src="js/gmap3.min.js"></script>
-        <script type="text/javascript" src="js/wow.min.js"></script>
-        <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
-        <script type="text/javascript" src="js/jquery.simple-text-rotator.min.js"></script>
-        <script type="text/javascript" src="js/all.js"></script>
-        <script type="text/javascript" src="js/contact-form.js"></script>
-        <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script> 
-        <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-        <script type="text/javascript" src="js/rev-slider.js"></script>        
+        <script type="text/javascript" src="{{ asset('js/gmap3.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.simple-text-rotator.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/all.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/contact-form.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script> 
+        <script type="text/javascript" src="{{ asset('rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/rev-slider.js') }}"></script>        
         <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
         
+        <script type="text/javascript" src="{{ asset('js/flytocart.js') }}"></script>    
     </body>
 </html>
