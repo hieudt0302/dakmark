@@ -23,6 +23,7 @@ Auth::routes();
 
 /* HOME */
 Route::get('/', 'Front\HomeController@index');
+Route::get('/about', 'Front\HomeController@about');
 
 /* SHOPPING CART */
 Route::get('/cart', 'Front\ShoppingCartController@cart');
@@ -32,3 +33,6 @@ Route::get('/cart', 'Front\ShoppingCartController@cart');
 
 Route::get('/product/{id}', 'Front\ProductsController@show');
 Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
+
+/* REVIEW */
+Route::post('/product/{id}/review', 'Front\ReviewsController@store');

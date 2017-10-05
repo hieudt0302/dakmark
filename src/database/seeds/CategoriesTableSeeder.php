@@ -33,11 +33,28 @@ class CategoriesTableSeeder extends Seeder
 
             $category3 =Category::create([
                 'name' => 'Cà Phê Và Ẩm Thực',
-                'url' => 'shop',
+                'url' => 'ca-phe-va-am-thuc',
                 'description'          => 'Description',
                 'order'         => 0,
                 'image_icon'       => '',
                 'parent_id' =>2
+            ]);
+            $category4 =Category::create([
+                'name' => 'Cà Phê Và Sức Khỏe',
+                'url' => 'ca-phe-va-suc-khoe',
+                'description'          => 'Description',
+                'order'         => 1,
+                'image_icon'       => '',
+                'parent_id' =>2
+            ]);
+
+            $category5 = Category::create([
+                'name' => 'Thế Giới Cà Phê',
+                'url' => 'the-gioi-ca-phe',
+                'description'          => 'Description',
+                'order'         => 0,
+                'image_icon'       => '',
+                'parent_id' =>1
             ]);
         }
     }

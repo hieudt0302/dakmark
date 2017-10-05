@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
-use Carbon\Carbon;
+use App\Models\Review;
+use Validator;
 
-class HomeController extends Controller
+class ReviewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $new_products = DB::table('products')->where('created_at', '>=', Carbon::now()->subWeeks(1))->get();
-        return View("front/home/index",compact('new_products'));
-    }
-
-    public function about()
-    {
-        return View("front.home.about");
+        //
     }
 
     /**
@@ -43,7 +37,31 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'rate' => 'numeric',
+            'comment' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->with('message', 'ERROR-INPUT')
+            ->with('status', 'danger')
+            ->withInput();
+        }
+
+        $review = new Review();
+        $review->name = $request->name;
+        $review->email = $request->email;
+        $review->rate = $request->rate;
+        $review->comment = $request->comment;
+        $review->product_id = $request->product_id;
+        $review->save();
+
+        return redirect()->back()
+        ->with('message', 'Cám ơn bạn đã gửi đánh giá!')
+        ->with('status', 'success');
     }
 
     /**

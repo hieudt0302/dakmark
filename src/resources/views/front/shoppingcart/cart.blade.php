@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title','Cà Phê Đăk Hà - Giỏ Hàng')
 @section('content')
 <!-- Head Section -->

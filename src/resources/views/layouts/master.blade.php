@@ -42,14 +42,14 @@
         <div class="page" id="top">
             
             <!-- Navigation panel -->
-            @include('layout.nav')
+            @include('layouts.nav')
             <!-- End Navigation panel -->
 
             @yield('content')
 
 
             <!-- Foter -->
-            @include('layout.footer')
+            @include('layouts.footer')
             <!-- End Foter -->
             
         </div>

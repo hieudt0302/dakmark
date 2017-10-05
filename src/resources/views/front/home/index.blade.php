@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title','Cà phê Đak Hà - Trang chủ')
 @section('content')
 

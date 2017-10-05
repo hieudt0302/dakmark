@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title','Cà phê Đak Hà - Sản Phẩm')
 
 @section('content')
@@ -181,7 +181,7 @@
                 <a href="#two" data-toggle="tab">Specs</a>
             </li>
             <li>
-                <a href="#three" data-toggle="tab">Reviews (3)</a>
+                <a href="#three" data-toggle="tab">Reviews ({{count($reviews)}})</a>
             </li>
         </ul>
         <!-- End Nav tabs -->
@@ -200,57 +200,54 @@
                 
                     <div class="mb-60 mb-xs-30">
                         <ul class="media-list text comment-list clearlist">
-                            
+                            @foreach($reviews as $key => $review)
                             <!-- Comment Item -->
                             <li class="media comment-item">
                                 <a class="pull-left" href="#"><img class="media-object comment-avatar" src="{{asset('images/user-avatar.png')}}" alt=""></a>
                                 <div class="media-body">
                                     <div class="comment-item-data">
                                         <div class="comment-author">
-                                            <a href="#">Emma Johnson</a>
+                                            <a href="#">{{$review->name}}</a>
                                         </div>
-                                        Feb 9, 2014, at 10:37<span class="separator">&mdash;</span>
+                                        {{$review->created_at}}<span class="separator">&mdash;</span>
                                         
                                         <span>
+                                            @if($review->rate>=1)
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            @else
                                             <i class="fa fa-star-o"></i>
+                                            @endif
+                                            @if($review->rate>=2)
+                                            <i class="fa fa-star"></i>
+                                            @else
+                                            <i class="fa fa-star-o"></i>
+                                            @endif
+                                            @if($review->rate>=3)
+                                            <i class="fa fa-star"></i>
+                                            @else
+                                            <i class="fa fa-star-o"></i>
+                                            @endif
+                                            @if($review->rate>=4)
+                                            <i class="fa fa-star"></i>
+                                            @else
+                                            <i class="fa fa-star-o"></i>
+                                            @endif
+                                            @if($review->rate>=5)
+                                            <i class="fa fa-star"></i>
+                                            @else
+                                            <i class="fa fa-star-o"></i>
+                                            @endif
+                                            
                                         </span>
                                         
                                     </div>
                                     <p>
-                                       Donec fermentum turpis et finibus commodo. Sed dictum laoreet mi, vitae dignissim purus interdum at. Sed a est at purus cursus elementum ut sed lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
+                                    {{$review->comment}}
                                     </p>
                                 </div>
                             </li>
                             <!-- End Comment Item -->
-                            
-                            <!-- Comment Item -->
-                            <li class="media comment-item">
-                                <a class="pull-left" href="#"><img class="media-object comment-avatar" src="{{asset('images/user-avatar.png')}}" alt=""></a>
-                                <div class="media-body">
-                                    <div class="comment-item-data">
-                                        <div class="comment-author">
-                                            <a href="#">John Doe</a>
-                                        </div>
-                                        Feb 9, 2014, at 10:3<span class="separator">&mdash;</span>
-                                        <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </span>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- End Comment Item -->
-                            
+                            @endforeach
                         </ul>
                     </div>
                     
@@ -260,8 +257,9 @@
                         <h4 class="blog-page-title font-alt">Add Review</h4>
                         
                         <!-- Form -->
-                        <form method="post" action="#" id="form" role="form" class="form">
-                            
+                        <form method="post" action="{{url('/product')}}/{{$product->id}}/review" id="form" role="form" class="form">
+                            {{ csrf_field() }}
+                            <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
                             <div class="row mb-20 mb-md-10">
                                 
                                 <div class="col-md-6 mb-md-10">
@@ -278,8 +276,8 @@
                             
                             <div class="mb-20 mb-md-10">
                                 <!-- Rating -->
-                                <select class="input-md round form-control">
-                                    <option>-- Select one --</option>
+                                <select name="rate" class="input-md round form-control">
+                                    <option value="0">-- Select one --</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -290,7 +288,7 @@
                             
                             <!-- Comment -->
                             <div class="mb-30 mb-md-10">
-                                <textarea name="text" id="text" class="input-md form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
+                                <textarea name="comment" id="text" class="input-md form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
                             </div>
                             
                             <!-- Send Button -->
