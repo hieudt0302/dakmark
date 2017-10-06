@@ -59,223 +59,46 @@
                 <div class="row multi-columns-row">
             
                     <!-- Shop Item -->
+                    @foreach($products as $product)
                     <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
                         <div class="post-prev-img">
-                            
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-1.jpg" alt="" /></a>
-                            
+                            <a href="{{url('/')}}/product/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
                             <div class="intro-label">
                                 <span class="label label-danger bg-red">Sale</span>
                             </div>
-                            
                         </div>
-                        
                         <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">G-Star Polo Applique Jersey</a>
+                            <a href="{{url('/')}}/product/{{$product->id}}">{{$product->name}}</a>
                         </div>
 
                         <div class="post-prev-text align-center">
-                            <del>$150.00</del>
-                            &nbsp;
-                            <strong>$94.75</strong>
+                            @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
+                                <del class="section-text">{{$product->price}}</del> &nbsp;
+                                <strong>{{$product->special_price}}</strong>
+                            @else
+                                @if($product->old_price > 0)
+                                <del class="section-text">{{$product->old_price}}</del> &nbsp;
+                                @endif
+                                <strong>{{$product->price}}</strong>
+                            @endif
                         </div>
                         
                         <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                            <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
+                            <input type="hidden" id="product_name" name="product_name" value="{{$product->name}}">
+                            <input type="hidden" id="product_price" name="product_price" value="{{$product->price}}">
+                            <button class="btn btn-mod btn-gray btn-round add-shoopingcart"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                         </div>
                         
                     </div>
+                    @endforeach
                     <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-2.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Only & Sons Pique Polo Shirt</a>
-                        </div>
 
-                        <div class="post-prev-text align-center">
-                            <strong>$28.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-3.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Longline Long Sleeve</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <strong>$39.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-4.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Polo Shirt With Floral Sleeves</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <strong>$85.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-5.jpg" alt="" /></a>
-                            
-                            <div class="intro-label">
-                                <span class="label label-danger bg-red">Sale</span>
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">G-Star Polo Applique Jersey</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <del>$150.00</del>
-                            &nbsp;
-                            <strong>$94.75</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-6.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Only & Sons Pique Polo Shirt</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <strong>$28.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-7.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Longline Long Sleeve</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <strong>$39.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-8.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Polo Shirt With Floral Sleeves</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <strong>$85.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
-                    <!-- Shop Item -->
-                    <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                        
-                        <div class="post-prev-img">
-                            <a href="shop-single.html"><img src="images/shop/shop-prev-9.jpg" alt="" /></a>
-                        </div>
-                        
-                        <div class="post-prev-title font-alt align-center">
-                            <a href="shop-single.html">Only & Sons Pique Polo Shirt</a>
-                        </div>
-
-                        <div class="post-prev-text align-center">
-                            <strong>$28.99</strong>
-                        </div>
-                        
-                        <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop Item -->
-                    
                 </div>
                 
                 <!-- Pagination -->
-                <div class="pagination">
+                {{ $products->links() }}
+                <!-- <div class="pagination">
                     <a href=""><i class="fa fa-angle-left"></i></a>
                     <a href="" class="active">1</a>
                     <a href="">2</a>
@@ -283,7 +106,7 @@
                     <a class="no-active">...</a>
                     <a href="">9</a>
                     <a href=""><i class="fa fa-angle-right"></i></a>
-                </div>
+                </div> -->
                 <!-- End Pagination -->
                 
             </div>
@@ -544,4 +367,35 @@
     </div>
 </section>
 <!-- End Section -->
+
+@endsection
+@section('scripts')
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ asset('js/flytocart.js') }}"></script>
+<script>
+     $(document).ready(function(){      
+        $('.add-shoopingcart').click(function() {
+            var id = $("input[name='product_id']").val();
+            var name = $("input[name='product_name']").val();
+            var price = $("input[name='product_price']").val();
+            var quantity = 1;//$("input[name='quantity']").val();
+            $.ajax({
+               type:'POST',
+               url:'{{ url("/add-to-cart") }}',              
+               data: {
+                    'id': id, //just test
+                    'name': name,//just test
+                    'price': price,//just test
+                    'quantity': quantity,//just test
+                },
+               success:function(response){
+                console.log(response['message']);
+               },
+               error:function(response){
+                  console.log(response['message']);
+               }
+            });
+        });
+    });
+</script>
 @endsection

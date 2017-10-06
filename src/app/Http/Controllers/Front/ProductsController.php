@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Review;
+use App\Models\Category;
 use Validator;
 use \Cart as Cart;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -18,7 +19,21 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return View('front/products/index');
+        $products = DB::table('products')
+        ->where('published',1)
+        ->whereNull('deleted_at')
+        ->paginate(2);
+
+        return View('front/products/index',compact('products'));
+    }
+
+    public function menu($parent, $url)
+    {
+        $category = Category::where('url',$url)->firstOrFail();
+
+        $products = $category->products()->paginate(2);
+
+        return View('front/products/index',compact('products'));
     }
 
     /**

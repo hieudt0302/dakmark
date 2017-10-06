@@ -74,7 +74,6 @@
                 
                 <div class="row">
                     <div class="col-xs-6 lead mt-0 mb-20">
-                       
                         @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
                             <del class="section-text">{{$product->price}}</del> &nbsp;
                             <strong>{{$product->special_price}}</strong>
@@ -448,10 +447,10 @@
                type:'POST',
                url:'{{ url("/add-to-cart") }}',              
                data: {
-                    'id': '{{$product->id}}',
-                    'name': '{{$product->name}}',
-                    'price': {{$product->price}},
-                    'quantity': quantity,
+                    'id': '{{$product->id}}',//just test
+                    'name': '{{$product->name}}',//just test
+                    'price': {{$product->price}},//just test
+                    'quantity': quantity,//just test
                 },
                success:function(response){
                 console.log(response['message']);
