@@ -18,21 +18,24 @@ class CreateProductsTable extends Migration
             $table->string('sku');
             $table->string('name');
             $table->string('url');
-            $table->string('summary');
+            $table->string('summary')->nullable();
             $table->decimal('old_price')->default(0)->unsigned();
             $table->decimal('price')->default(0)->unsigned();
             $table->decimal('special_price')->default(0)->unsigned();
             $table->dateTime('special_price_start_date')->nullable();
             $table->dateTime('special_price_end_date')->nullable();
             $table->boolean('disable_buy_button')->default(false);
-            $table->boolean('disable_wishlist_buttonid')->default(false);
+            $table->boolean('disable_wishlist_button')->default(false);
             $table->boolean('call_for_price')->default(false);
             $table->boolean('sold_off')->default(false);
-            $table->integer('minimum_amount')->nullable(); //Mini can order
+            $table->integer('minimum_amount')->default(1); //Mini can order
             $table->integer('maximum_amount')->nullable(); //Max can order
-            $table->text('description');
-            $table->text('specs');
+            $table->text('description')->nullable();
+            $table->text('specs')->nullable();
             $table->boolean('published')->default(true);
+
+            $table->integer('category_id')->nullable()->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
 
             $table->integer('author_id')->unsigned();
             $table->foreign('author_id')->references('id')->on('users');

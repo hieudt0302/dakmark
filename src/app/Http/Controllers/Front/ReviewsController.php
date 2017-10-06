@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Review;
+use App\Models\Comment;
+use App\Models\Product;
+
 use Validator;
 
 class ReviewsController extends Controller
@@ -51,13 +53,18 @@ class ReviewsController extends Controller
             ->withInput();
         }
 
-        $review = new Review();
+        $review = new Comment();
         $review->name = $request->name;
         $review->email = $request->email;
         $review->rate = $request->rate;
         $review->comment = $request->comment;
-        $review->product_id = $request->product_id;
-        $review->save();
+
+        if(!empty($request->reviewer_id))
+            $review->author_id = $request->reviewer_id;
+
+        $product = Product::find($request->product_id);
+
+        $review = $product->comments()->save($review);
 
         return redirect()->back()
         ->with('message', 'Cám ơn bạn đã gửi đánh giá!')

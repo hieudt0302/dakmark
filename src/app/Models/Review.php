@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    //
+
+    /**
+     * Get the product that owns the review.
+     */
+    // public function product()
+    // {
+    //     return $this->belongsTo('App\Models\Product');
+    // }
 }

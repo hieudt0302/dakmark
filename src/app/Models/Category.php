@@ -24,4 +24,13 @@ class Category extends Model
         ->orderBy('order','asc')
         ->get();
     }
+
+
+     /**
+     * Get the products for the category.
+     */
+     public function products()
+     {
+         return $this->hasMany('App\Models\Product');
+     }
 }

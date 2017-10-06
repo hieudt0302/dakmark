@@ -4,13 +4,19 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Review;
-use Validator;
-use \Cart as Cart;
 
-class ProductsController extends Controller
+class OrdersController extends Controller
 {
+    /**
+     * Create a new controller instance. Require auth
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,8 +56,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return View('front.products.show', compact('product'));
+        //
     }
 
     /**
@@ -86,29 +91,5 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function addToCart(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|unique:products',
-            'name' => 'required',
-            'price' => 'required|numeric|min:0',
-            'quantity' => 'required|numeric|min:1',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => 'INPUT-ERROR: Parameter not pass validation.',
-                'status' => 'error'
-            ]);
-        }
-       
-        
-        Cart::add($request->id, $request->name, $request->quantity, $request->price);
-        return response()->json([
-            'message' => 'Đã thêm '. $request->quantity .' sản phẩm vào giỏ hàng!',
-            'status' => 'success'
-        ]);
     }
 }

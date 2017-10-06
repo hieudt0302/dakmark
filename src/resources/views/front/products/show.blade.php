@@ -117,7 +117,7 @@
                 
                 <div class="section-text small">
                     <div>SKU: {{$product->sku??'-----'}}</div>
-                    <div>Category: <a href=""> Polo shirts</a></div>
+                    <div>Category: <a href="{{$product->category->url??''}}"> {{$product->category->name??''}}</a></div>
                     <div>Tags: <a href="">polo shirt</a>, <a href="">men</a></div>
                 </div>
                 
@@ -181,7 +181,7 @@
                 <a href="#two" data-toggle="tab">Specs</a>
             </li>
             <li>
-                <a href="#three" data-toggle="tab">Reviews ({{count($reviews)}})</a>
+                <a href="#three" data-toggle="tab">Reviews ({{count($product->comments)}})</a>
             </li>
         </ul>
         <!-- End Nav tabs -->
@@ -197,10 +197,9 @@
                 
             </div>
             <div class="tab-pane fade" id="three">
-                
                     <div class="mb-60 mb-xs-30">
                         <ul class="media-list text comment-list clearlist">
-                            @foreach($reviews as $key => $review)
+                            @foreach($product->comments as  $review)
                             <!-- Comment Item -->
                             <li class="media comment-item">
                                 <a class="pull-left" href="#"><img class="media-object comment-avatar" src="{{asset('images/user-avatar.png')}}" alt=""></a>
@@ -260,20 +259,22 @@
                         <form method="post" action="{{url('/product')}}/{{$product->id}}/review" id="form" role="form" class="form">
                             {{ csrf_field() }}
                             <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
-                            <div class="row mb-20 mb-md-10">
-                                
+                            @guest
+                            <div class="row mb-20 mb-md-10">                                
                                 <div class="col-md-6 mb-md-10">
                                     <!-- Name -->
                                     <input type="text" name="name" id="name" class="input-md form-control" placeholder="Name *" maxlength="100" required>
                                 </div>
-                                
                                 <div class="col-md-6">
                                     <!-- Email -->
                                     <input type="email" name="email" id="email" class="input-md form-control" placeholder="Email *" maxlength="100" required>
-                                </div>
-                                
+                                </div>                                
                             </div>
-                            
+                            @else
+                            <input type="hidden" id="reviewer_id" name="reviewer_id" value="{{Auth::user()->id}}">
+                            <input type="hidden" id="name" name="name" value="{{Auth::user()->last_name}} {{Auth::user()->first_name}}">
+                            <input type="hidden" id="email" name="email" value="{{Auth::user()->email}}">
+                            @endguest
                             <div class="mb-20 mb-md-10">
                                 <!-- Rating -->
                                 <select name="rate" class="input-md round form-control">
