@@ -118,7 +118,11 @@
                 <div class="section-text small">
                     <div>SKU: {{$product->sku??'-----'}}</div>
                     <div>Category: <a href="{{$product->category->url??''}}"> {{$product->category->name??''}}</a></div>
-                    <div>Tags: <a href="">polo shirt</a>, <a href="">men</a></div>
+                    <div>Tags: 
+                        @foreach ($product->tags as $tag)
+                        <a href="">{{$tag->name}}</a>, 
+                        @endforeach
+                    </div>
                 </div>
                 
             </div>
