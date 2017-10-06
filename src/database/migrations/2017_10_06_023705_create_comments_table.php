@@ -21,7 +21,7 @@ class CreateCommentsTable extends Migration
             $table->string('email');
 
             $table->integer('parent_id')->nullable()->unsigned();
-            $table->foreign('parent_id')->references('id')->on('reviews');
+            $table->foreign('parent_id')->references('id')->on('comments');
 
             $table->integer('author_id')->nullable()->unsigned();
             $table->foreign('author_id')->references('id')->on('users');
