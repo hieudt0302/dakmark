@@ -13,17 +13,17 @@ class CreateProductTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_tag', function (Blueprint $table) {
-            $table->integer('product_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+        // Schema::create('product_tag', function (Blueprint $table) {
+        //     $table->integer('product_id')->unsigned();
+        //     $table->integer('tag_id')->unsigned();
 
-            $table->foreign('product_id')->references('id')->on('products')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('tags')
-                ->onUpdate('cascade')->onDelete('cascade');
+        //     $table->foreign('product_id')->references('id')->on('products')
+        //         ->onUpdate('cascade')->onDelete('cascade');
+        //     $table->foreign('tag_id')->references('id')->on('tags')
+        //         ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(['product_id', 'tag_id']);
-        });
+        //     $table->primary(['product_id', 'tag_id']);
+        // });
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateProductTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_tag');
+        //Schema::dropIfExists('product_tag');
     }
 }

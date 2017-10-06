@@ -13,26 +13,27 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('comment');
-            $table->tinyInteger('rate')->default(0)->unsigned();
-            $table->string('email');
+        // REMOVE BY TUAN
+        // Schema::create('reviews', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name');
+        //     $table->text('comment');
+        //     $table->tinyInteger('rate')->default(0)->unsigned();
+        //     $table->string('email');
 
-            $table->integer('parent_id')->nullable()->unsigned();
-            $table->foreign('parent_id')->references('id')->on('reviews');
+        //     $table->integer('parent_id')->nullable()->unsigned();
+        //     $table->foreign('parent_id')->references('id')->on('reviews');
 
-            $table->integer('reviewer_id')->nullable()->unsigned();
-            $table->foreign('reviewer_id')->references('id')->on('users');
-            // ->onUpdate('cascade')->onDelete('cascade');
+        //     $table->integer('reviewer_id')->nullable()->unsigned();
+        //     $table->foreign('reviewer_id')->references('id')->on('users');
+        //     // ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
-            // ->onUpdate('cascade')->onDelete('cascade');
+        //     $table->integer('product_id')->unsigned();
+        //     $table->foreign('product_id')->references('id')->on('products');
+        //     // ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -42,6 +43,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        //Schema::dropIfExists('reviews');
     }
 }
