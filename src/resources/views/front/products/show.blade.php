@@ -437,17 +437,16 @@
 @endsection
 
 @section('scripts')
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ asset('js/flytocart.js') }}"></script>
 
 <script>
-     $(document).ready(function(){
-      
+     $(document).ready(function(){      
         $('.add-shoopingcart').click(function() {
             var quantity = $("input[name='quantity']").val();
             $.ajax({
                type:'POST',
-               url:'{{ url("/add-to-cart") }}',
-              
+               url:'{{ url("/add-to-cart") }}',              
                data: {
                     'id': '{{$product->id}}',
                     'name': '{{$product->name}}',
@@ -455,10 +454,10 @@
                     'quantity': quantity,
                 },
                success:function(response){
-                console.log(response['success']);
+                console.log(response['message']);
                },
                error:function(response){
-                  console.log(response['success']);
+                  console.log(response['message']);
                }
             });
         });

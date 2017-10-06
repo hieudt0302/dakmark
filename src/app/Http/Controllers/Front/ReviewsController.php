@@ -48,7 +48,7 @@ class ReviewsController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-            ->with('message', 'ERROR-INPUT')
+            ->with('message', 'ERROR-INPUT: Code EI1004')
             ->with('status', 'danger')
             ->withInput();
         }

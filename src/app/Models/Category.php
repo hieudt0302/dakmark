@@ -17,9 +17,8 @@ class Category extends Model
      */
 
     public function GetMenuSubLevel1()
-    {
-        return  DB::table('categories')
-        ->where('parent_id', $this->id)
+    {       
+        return Category::where('parent_id', $this->id)
         ->where('is_menu_avaiable', 1)
         ->orderBy('order','asc')
         ->get();
@@ -32,5 +31,15 @@ class Category extends Model
      public function products()
      {
          return $this->hasMany('App\Models\Product');
+     }
+
+
+
+     /**
+     * Get the category that owns the product.
+     */
+     public function parent()
+     {
+         return $this->belongsTo('App\Models\Category');
      }
 }

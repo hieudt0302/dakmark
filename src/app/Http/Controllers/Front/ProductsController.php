@@ -91,7 +91,7 @@ class ProductsController extends Controller
     public function addToCart(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => 'required|unique:products',
+            'id' => 'required',
             'name' => 'required',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|numeric|min:1',
@@ -99,13 +99,14 @@ class ProductsController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'message' => 'INPUT-ERROR: Parameter not pass validation.',
+                'message' => 'ERROR-INPUT: Code EI1004',
                 'status' => 'error'
             ]);
         }
        
         
         Cart::add($request->id, $request->name, $request->quantity, $request->price);
+        
         return response()->json([
             'message' => 'Đã thêm '. $request->quantity .' sản phẩm vào giỏ hàng!',
             'status' => 'success'
