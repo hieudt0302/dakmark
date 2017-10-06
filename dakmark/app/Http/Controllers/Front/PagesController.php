@@ -46,7 +46,7 @@ class PagesController extends Controller
                 $product = Product::where('system_id',$seo->system_id)->first();
                 $product_url = $_SERVER['REQUEST_URI'];
                 $relate_products = $this->get_relate_products($product->id,4);
-                return view('front.products.product', compact('product','product_url','relate_products','seo_title','keyword','description'));
+                return view('front.products.single_product', compact('product','product_url','relate_products','seo_title','keyword','description'));
                 break;
 
             case 'BCAT' : // danh mục log
@@ -66,7 +66,16 @@ class PagesController extends Controller
         endswitch;
     }
 
-
+    // Lấy tất cả sp theo từng danh mục
+    public function all_product(){
+        $productCats = ProductCat::where('is_show',1)->orderBy('sort_order', 'asc')->get();
+        $productList = array();
+        foreach ($productCats as $pCat) {
+            $products = Product::where('is_show',1)->orderBy('last_update')->get();
+            $productList[] = array('cat_name' => $pCat->name, 'products' => $products);
+        }
+       return view('front.products.all_product', compact('productList'));
+    }
     // Tìm kiếm sản phẩm / blogs
     public function search(Request $request){
         $this->validate($request,['keyword' => 'required']);
@@ -169,9 +178,10 @@ class PagesController extends Controller
 
     // Lấy bài viết Giới thiệu, system_id = INFO1
     public function about_us(Request $request){
-        $system_id = 'INFO1';
-        $seo = Seo::where('system_id', $system_id)->first();
-        return $this->show($request, $seo->slug);
+        //$system_id = 'INFO1';
+        //$seo = Seo::where('system_id', $system_id)->first();
+        //return $this->show($request, $seo->slug);
+        return view('front/pages/about');        
     }
 
     // Lấy bài viết Hướng dẫn mua hàng, system_id = INFO2

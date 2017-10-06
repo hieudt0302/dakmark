@@ -183,6 +183,7 @@ Route::get('language/{locale}', function ($locale) {
 });
 
 // Pages 
+Route::get('/products',['as'=>'front.products','uses'=>'Front\PagesController@all_product']);
 Route::get('/{slug}.html',['as'=>'front.item.show','uses'=>'Front\PagesController@show']);
 Route::any('/search',['as'=>'front.item.search','uses'=>'Front\PagesController@search']);
 Route::get('/purchase-flow',['as'=>'front.purchase-flow','uses'=>'Front\PagesController@purchase_flow']);

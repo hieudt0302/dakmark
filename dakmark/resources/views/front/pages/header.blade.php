@@ -20,7 +20,7 @@
                             
                             <!-- Item With Sub -->
                             <li>
-                                <a href="{{ url('/') }}" class="mn-has-sub active">@lang('header.home')</a>
+                                <a href="{{ url('/') }}" class="mn-has-sub">@lang('header.home')</a>
                             </li>
                             <!-- End Item With Sub -->
                             
@@ -59,7 +59,7 @@
                             
                             <!-- Item With Sub -->
                             <li>
-                                <a href="#" class="mn-has-sub">@lang('header.shop')<i class="fa fa-angle-down"></i></a>
+                                <a href="{{ route('front.products') }}" class="mn-has-sub">@lang('header.shop')<i class="fa fa-angle-down"></i></a>
                                 <?php 
                                     $productCats = \DB::table('product_cat')->where('parent_id', 0)->orderBy('sort_order', 'asc')->get();
                                 ?>

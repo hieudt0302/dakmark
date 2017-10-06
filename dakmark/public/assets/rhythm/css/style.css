@@ -6444,7 +6444,7 @@ section:hover .small-item-carousel .owl-next{
   float: right;
   margin: 0;
 }
-.search .search-subject {
+.search .search-subject, .all-products .cat-name {
     border-bottom: #0B610B 2px solid;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F3F3F3), to(#DFDFDF));
     margin-top: 20px;

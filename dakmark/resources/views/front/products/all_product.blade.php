@@ -1,6 +1,6 @@
 
 @extends('layouts.master')
-@section('title',$seo_title)
+@section('title',__('header.shop'))
 @section('content')
 
 <!-- Head Section -->
@@ -18,7 +18,7 @@
                 
                 <div class="col-md-4 mt-30">
                     <div class="mod-breadcrumbs font-alt align-right">
-                        <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<a href="#">@lang('header.shop')</a>&nbsp;/&nbsp;<span>{{ $productCat->name }}</span>
+                        <a href="/">@lang('header.home')</a>&nbsp;/&nbsp;<a href="{{ route('front.products') }}">@lang('header.shop')</a>
                     </div>
                     
                 </div>
@@ -30,90 +30,63 @@
     
     
     <!-- Section -->
-    <section class="page-section">
+    <section class="page-section all-products">
         <div class="container relative">
-            
-            <div class="row">
-                
-                <!-- Content -->
+            <div class="row">  
                 <div class="col-sm-8">
-                    
-                    <!-- Shop options -->
-                    <div class="clearfix mb-40">
-                        
-                        <div class="left section-text mt-10">
-                            Showing 1–12 of 23 results
-                        </div>
-                        
-                        <div class="right">
-                            <form method="post" action="#" class="form">
-                                <select class="input-md round">
-                                    <option>Default sorting</option>
-                                    <option>Sort by price: low to high</option>
-                                    <option>Sort by price: high to low</option>
-                                </select>
-                            </form>
-                        </div>
-                        
-                    </div>
-                    <!-- End Shop options -->
-                    
-                    <div class="row multi-columns-row">
-                
-                        @foreach($products as $product)
-                        <?php $productSeo = \DB::table('seo')->where('system_id', $product->system_id)->first(); ?>
-                        <!-- Shop Item -->
-                        <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
-                            
-                            <div class="post-prev-img">
-                                
-                                <a href="{{ route('front.item.show',$productSeo->slug) }}"><img src="{{ asset('public/assets/img/product/' . $product->thumb) }}" alt="" /></a>
-                                
-                                @if($product->is_promote == 1)
-                                <div class="intro-label">
-                                    <span class="label label-danger bg-red">Sale</span>
+                    @foreach ($productList as $productArray)
+                        @if(!empty($productArray['products']))
+                    <div class="row">
+                        <div class="cat-name">{{ $productArray['cat_name'] }}</div>
+                        <div class="clearfix mb-40"> 
+                            <div class="left section-text mt-10">
+                                Showing 1–12 of 23 results
+                            </div>
+                            <div class="right">
+                                <form method="post" action="#" class="form">
+                                    <select class="input-md round">
+                                        <option>Default sorting</option>
+                                        <option>Sort by price: low to high</option>
+                                        <option>Sort by price: high to low</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>  
+                        <div class="row multi-columns-row">
+                            @foreach($productArray['products'] as $product)
+                            <?php $productSeo = \DB::table('seo')->where('system_id', $product->system_id)->first(); ?>
+                            <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
+                                <div class="post-prev-img">
+                                    <a href="{{ route('front.item.show',$productSeo->slug) }}">
+                                        <img src="{{ asset('public/assets/img/product/' . $product->thumb) }}" alt="" />
+                                    </a>
+                                    @if($product->is_promote == 1)
+                                    <div class="intro-label">
+                                        <span class="label label-danger bg-red">Sale</span>
+                                    </div>
+                                    @endif 
                                 </div>
-                                @endif 
-
+                                <div class="post-prev-title font-alt align-center">
+                                    <a href="{{ route('front.item.show',$productSeo->slug) }}">{{ $product->name }}</a>
+                                </div>
+                                <div class="post-prev-text align-center">
+                                    @if($product->is_promote == 1)
+                                    <del>{!! price_format($product->default_price,'VNĐ') !!}</del>
+                                    &nbsp;
+                                    <strong>{!! price_format($product->promote_price,'VNĐ') !!}</strong>
+                                    @else
+                                    <strong>{!! price_format($product->default_price,'VNĐ') !!}</strong>
+                                    @endif    
+                                </div>
+                                <div class="post-prev-more align-center">
+                                    <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> @lang('shoppings.add-cart')</a>
+                                </div>
                             </div>
-                            
-                            <div class="post-prev-title font-alt align-center">
-                                <a href="{{ route('front.item.show',$productSeo->slug) }}">{{ $product->name }}</a>
-                            </div>
-
-                            <div class="post-prev-text align-center">
-                                @if($product->is_promote == 1)
-                                <del>{!! price_format($product->default_price,'VNĐ') !!}</del>
-                                &nbsp;
-                                <strong>{!! price_format($product->promote_price,'VNĐ') !!}</strong>
-                                @else
-                                <strong>{!! price_format($product->default_price,'VNĐ') !!}</strong>
-                                @endif    
-                            </div>
-                            
-                            <div class="post-prev-more align-center">
-                                <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> @lang('shoppings.add-cart')</a>
-                            </div>
-                            
+                            @endforeach     
                         </div>
-                        <!-- End Shop Item -->
-                        @endforeach
-                        
-                        
                     </div>
-                    
-                    <!-- Pagination -->
-                    <div class="pagination">
-                        <a href=""><i class="fa fa-angle-left"></i></a>
-                        <a href="" class="active">1</a>
-                        <a href="">2</a>
-                        <a href="">3</a>
-                        <a class="no-active">...</a>
-                        <a href="">9</a>
-                        <a href=""><i class="fa fa-angle-right"></i></a>
-                    </div>
-                    <!-- End Pagination -->
-                    
+                        @endif
+                    @endforeach    
                 </div>
                 <!-- End Content -->
                 
