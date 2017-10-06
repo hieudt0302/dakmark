@@ -260,7 +260,7 @@
                         <h4 class="blog-page-title font-alt">Add Review</h4>
                         
                         <!-- Form -->
-                        <form method="post" action="{{url('/product')}}/{{$product->id}}/review" id="form" role="form" class="form">
+                        <form method="post" action="{{url('/products')}}/{{$product->id}}/review" id="form" role="form" class="form">
                             {{ csrf_field() }}
                             <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
                             @guest

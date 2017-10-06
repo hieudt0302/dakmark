@@ -30,9 +30,11 @@ Route::get('/cart', 'Front\ShoppingCartController@cart');
 
 
 /* PRODUCT */
-
-Route::get('/product/{id}', 'Front\ProductsController@show');
+Route::get('/products', 'Front\ProductsController@index');
+Route::get('/products/{id}', 'Front\ProductsController@show');
 Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
 
 /* REVIEW */
-Route::post('/product/{id}/review', 'Front\ReviewsController@store');
+Route::post('/products/{id}/review', 'Front\ReviewsController@store');
+
+/* MENU */

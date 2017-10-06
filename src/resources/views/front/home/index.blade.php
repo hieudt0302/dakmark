@@ -92,7 +92,7 @@
             <div class="col-md-3 col-lg-3 mb-40">
 
                 <div class="post-prev-img">
-                    <a href="product/{{$product->id}}"><img src="/images/caphe.jpg" alt="" /></a> 
+                    <a href="products/{{$product->id}}"><img src="/images/caphe.jpg" alt="" /></a> 
                     @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
                     <div class="intro-label">
                         <span class="label label-danger bg-red">@lang('product.sale')</span>
