@@ -12,7 +12,7 @@
      
     <meta name="description" content="@yield('description')">
 
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
+    <link href="{{ asset('/css/admin/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
     <link href="{{asset('/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('/css/bootstrap-datepicker.css')}}" rel="stylesheet">
     <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">  
