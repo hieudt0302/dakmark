@@ -42,11 +42,12 @@ Route::get('/menu/{parent}/{url}', 'Front\ProductsController@menu');
 
 
 
-
+/* ADMIN */
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
     //admin area
-    Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'PagesController@getDashboard']);
-    Route::get('/blank', ['as' => 'admin.blank', 'uses' => 'PagesController@getBlank']);
+    Route::get('/', ['as' => 'admin.pages.dashboard', 'uses' => 'PagesController@getDashboard']);
+    Route::get('/blank', ['as' => 'admin.pages.blank', 'uses' => 'PagesController@getBlank']);
+
     //role area
     Route::get('roles',['as'=>'admin.roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list']]);
     Route::get('roles/create',['as'=>'admin.roles.create','uses'=>'RolesController@create','middleware' => ['permission:role-create']]);

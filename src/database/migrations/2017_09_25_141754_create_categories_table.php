@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('order')->default(0)->unsigned();
             $table->boolean('enabled')->default(true);
             $table->boolean('is_visible')->default(true);
-            $table->boolean('is_menu_avaiable')->default(true);
+            $table->boolean('is_menu_avaiable')->default(false);
             $table->text('image_icon');
 
             

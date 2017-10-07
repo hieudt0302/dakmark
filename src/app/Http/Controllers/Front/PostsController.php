@@ -4,13 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
-use Validator;
-use \Cart as Cart;
-use DB;
 
-class ProductsController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,21 +14,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')
+        $products = DB::table('posts')
         ->where('published',1)
         ->whereNull('deleted_at')
         ->paginate(10);
 
-        return View('front/products/index',compact('products'));
-    }
-
-    public function menu($parent, $url)
-    {
-        $category = Category::where('url',$url)->firstOrFail();
-
-        $products = $category->products()->paginate(2);
-
-        return View('front/products/index',compact('products'));
+        return View('front/posts/index',compact('posts'));
     }
 
     /**
@@ -65,8 +51,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return View('front.products.show', compact('product'));
+        //
     }
 
     /**
@@ -101,30 +86,5 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function addToCart(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'name' => 'required',
-            'price' => 'required|numeric|min:0',
-            'quantity' => 'required|numeric|min:1',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => 'ERROR-INPUT: Code EI1004',
-                'status' => 'error'
-            ]);
-        }
-       
-        
-        Cart::add($request->id, $request->name, $request->quantity, $request->price);
-        
-        return response()->json([
-            'message' => 'Đã thêm '. $request->quantity .' sản phẩm vào giỏ hàng!',
-            'status' => 'success'
-        ]);
     }
 }

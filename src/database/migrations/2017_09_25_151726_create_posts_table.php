@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('excerpt')->nullable();
             $table->text('content')->nullable();
             $table->string('description')->nullable();
-
+            $table->boolean('published')->default(true);
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             // ->onUpdate('cascade')->onDelete('cascade');
