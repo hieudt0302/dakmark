@@ -25,14 +25,6 @@ class PostsController extends Controller
         return View('front/posts/index',compact('posts'));
     }
 
-    public function menu($parent, $slug)
-    {
-        $category = Category::where('slug',$slug)->firstOrFail();
-
-        $posts = $category->posts()->paginate(10);
-
-        return View('front/posts/index',compact('posts'));
-    }
 
     /**
      * Show the form for creating a new resource.

@@ -44,8 +44,7 @@ Route::post('/products/{id}/review', 'Front\ReviewsController@store');
 Route::post('/posts/{slug}/comment', 'Front\CommentsController@store');
 
 /* MENU */
-Route::get('/menu/{parent}/{slug}', 'Front\ProductsController@menu');
-
+ Route::get('/{parent}/{slug}', 'Front\MenuController@menu');
 
 
 /* ADMIN */

@@ -26,16 +26,7 @@ class ProductsController extends Controller
 
         return View('front/products/index',compact('products'));
     }
-
-    public function menu($parent, $slug)
-    {
-        $category = Category::where('slug',$slug)->firstOrFail();
-
-        $products = $category->products()->paginate(2);
-
-        return View('front/products/index',compact('products'));
-    }
-
+  
     /**
      * Show the form for creating a new resource.
      *
