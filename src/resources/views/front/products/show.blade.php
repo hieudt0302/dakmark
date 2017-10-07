@@ -118,12 +118,12 @@
                     <div>SKU: {{$product->sku??'-----'}}</div>
                     @if(!empty($product->category))
                     <div>Category:
-                        <a href="{{url('category')}}/{{$product->category->url}}"> {{$product->category->name}}</a>
+                        <a href="{{url('category')}}/{{$product->category->slug}}"> {{$product->category->name}}</a>
                     </div>
                     @endif
                     <div>Tags: 
                         @foreach ($product->tags as $tag)
-                        <a href="{{url('tag')}}/{{$tag->url}}">{{$tag->name}}</a>, 
+                        <a href="{{url('tag')}}/{{$tag->slug}}">{{$tag->name}}</a>, 
                         @endforeach
                     </div>
                 </div>

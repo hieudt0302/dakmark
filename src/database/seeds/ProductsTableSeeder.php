@@ -23,22 +23,24 @@ class ProductsTableSeeder extends Seeder
             $product10 = Product::create([
                 'sku'  => 'SKU010',
                 'name' => 'Cà phê Socola',
-                'url' => 'product-10',
+                'slug' => 'product-10',
                 'price'          => 1000,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 4,
                 'author_id' => $user->id
             ]);
             //9
             $product9 = Product::create([
                 'sku'  => 'SKU009',
                 'name' => 'Cà phê Sài Gòn',
-                'url' => 'product-9',
+                'slug' => 'product-9',
                 'price'          => 900,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 4,
                 'author_id' => $user->id
             ]);
 
@@ -46,11 +48,12 @@ class ProductsTableSeeder extends Seeder
             $product8 =Product::create([
                 'sku'  => 'SKU008',
                 'name' => 'Cà phê hòa tan 2',
-                'url' => 'product-8',
+                'slug' => 'product-8',
                 'price'          => 800,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 4,
                 'author_id' => $user->id
             ]);
 
@@ -58,11 +61,12 @@ class ProductsTableSeeder extends Seeder
             $product7 =Product::create([
                 'sku'  => 'SKU007',
                 'name' => 'Cà phê hòa tan 1',
-                'url' => 'product-7',
+                'slug' => 'product-7',
                 'price'          => 700,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 4,
                 'author_id' => $user->id
             ]);
 
@@ -70,11 +74,12 @@ class ProductsTableSeeder extends Seeder
             $product6 =Product::create([
                 'sku'  => 'SKU006',
                 'name' => 'Máy pha cà phê',
-                'url' => 'product-6',
+                'slug' => 'product-6',
                 'price'          => 600,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 4,
                 'author_id' => $user->id
             ]);
 
@@ -82,11 +87,12 @@ class ProductsTableSeeder extends Seeder
              $product5 =Product::create([
                 'sku'  => 'SKU005',
                 'name' => 'Muỗng cà phê',
-                'url' => 'product-5',
+                'slug' => 'product-5',
                 'price'          => 500,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 3,
                 'author_id' => $user->id
             ]);
 
@@ -95,11 +101,12 @@ class ProductsTableSeeder extends Seeder
              $product4 =Product::create([
                 'sku'  => 'SKU004',
                 'name' => 'Ly Cà phê',
-                'url' => 'product-4',
+                'slug' => 'product-4',
                 'price'          => 400,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 3,
                 'author_id' => $user->id
             ]);
 
@@ -107,11 +114,12 @@ class ProductsTableSeeder extends Seeder
             $product3 =Product::create([
                 'sku'  => 'SKU003',
                 'name' => 'Cà phê gói',
-                'url' => 'product-3',
+                'slug' => 'product-3',
                 'price'          => 300,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 3,
                 'author_id' => $user->id
             ]);
 
@@ -119,11 +127,12 @@ class ProductsTableSeeder extends Seeder
             $product2 =Product::create([
                 'sku'  => 'SKU002',
                 'name' => 'Cà phê phin 2',
-                'url' => 'product-2',
+                'slug' => 'product-2',
                 'price'          => 200,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 3,
                 'author_id' => $user->id
             ]);
 
@@ -131,11 +140,12 @@ class ProductsTableSeeder extends Seeder
             $product1 =Product::create([
                 'sku'  => 'SKU001',
                 'name' => 'Cà phê phin 1',
-                'url' => 'product-1',
+                'slug' => 'product-1',
                 'price'          => 100,
                 'summary'         => 'Summary',
                 'description'       => 'Description',
                 'specs' => 'Specs',
+                'category_id' => 3,
                 'author_id' => $user->id
             ]);
 

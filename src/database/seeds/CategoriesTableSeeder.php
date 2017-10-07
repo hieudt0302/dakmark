@@ -17,7 +17,7 @@ class CategoriesTableSeeder extends Seeder
             //1
             $category1 = Category::create([
                 'name' => 'Blog',
-                'url' => 'blog',
+                'slug' => 'blog',
                 'description'          => 'Description',
                 'order'         => 0,
                 'image_icon'       => ''
@@ -25,7 +25,7 @@ class CategoriesTableSeeder extends Seeder
 
             $category2 =Category::create([
                 'name' => 'Shop',
-                'url' => 'shop',
+                'slug' => 'shop',
                 'description'          => 'Description',
                 'order'         => 1,
                 'image_icon'       => ''
@@ -33,7 +33,7 @@ class CategoriesTableSeeder extends Seeder
 
             $category3 =Category::create([
                 'name' => 'Cà Phê Và Ẩm Thực',
-                'url' => 'ca-phe-va-am-thuc',
+                'slug' => 'ca-phe-va-am-thuc',
                 'description'          => 'Description',
                 'order'         => 0,
                 'image_icon'       => '',
@@ -41,7 +41,7 @@ class CategoriesTableSeeder extends Seeder
             ]);
             $category4 =Category::create([
                 'name' => 'Cà Phê Và Sức Khỏe',
-                'url' => 'ca-phe-va-suc-khoe',
+                'slug' => 'ca-phe-va-suc-khoe',
                 'description'          => 'Description',
                 'order'         => 1,
                 'image_icon'       => '',
@@ -50,7 +50,7 @@ class CategoriesTableSeeder extends Seeder
 
             $category5 = Category::create([
                 'name' => 'Thế Giới Cà Phê',
-                'url' => 'the-gioi-ca-phe',
+                'slug' => 'the-gioi-ca-phe',
                 'description'          => 'Description',
                 'order'         => 0,
                 'image_icon'       => '',

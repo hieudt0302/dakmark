@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('sku');
             $table->string('name');
-            $table->string('url');
+            $table->string('slug');
             $table->string('summary')->nullable();
             $table->decimal('old_price')->default(0)->unsigned();
             $table->decimal('price')->default(0)->unsigned();

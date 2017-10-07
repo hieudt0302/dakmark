@@ -38,7 +38,7 @@ Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
 
 /* MENU */
-Route::get('/menu/{parent}/{url}', 'Front\ProductsController@menu');
+Route::get('/menu/{parent}/{slug}', 'Front\ProductsController@menu');
 
 
 
