@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Post;
 use Validator;
-use \Cart as Cart;
-use DB;
 
-class ProductsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,21 +17,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')
-        ->where('published',1)
-        ->whereNull('deleted_at')
-        ->paginate(10);
-
-        return View('front/products/index',compact('products'));
-    }
-
-    public function menu($parent, $slug)
-    {
-        $category = Category::where('slug',$slug)->firstOrFail();
-
-        $products = $category->products()->paginate(2);
-
-        return View('front/products/index',compact('products'));
+        //
     }
 
     /**
@@ -54,7 +38,35 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'comment' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->with('message', 'ERROR-INPUT: Code EI1003')
+            ->with('status', 'danger')
+            ->withInput();
+        }
+
+        $comment = new Comment();
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->website = $request->website;
+        $comment->comment = $request->comment;
+
+        if(!empty($request->reader_id))
+            $comment->author_id = $request->reader_id;
+
+        $post = Post::where('slug', $request->post_slug)->firstOrFail();
+
+        $review = $post->comments()->save($comment);
+
+        return redirect()->back()
+        ->with('message', 'Bình luận của bạn đã được gửi!')
+        ->with('status', 'success');
     }
 
     /**
@@ -65,8 +77,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return View('front.products.show', compact('product'));
+        //
     }
 
     /**
@@ -101,30 +112,5 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function addToCart(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'name' => 'required',
-            'price' => 'required|numeric|min:0',
-            'quantity' => 'required|numeric|min:1',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => 'ERROR-INPUT: Code EI1004',
-                'status' => 'error'
-            ]);
-        }
-       
-        
-        Cart::add($request->id, $request->name, $request->quantity, $request->price);
-        
-        return response()->json([
-            'message' => 'Đã thêm '. $request->quantity .' sản phẩm vào giỏ hàng!',
-            'status' => 'success'
-        ]);
     }
 }

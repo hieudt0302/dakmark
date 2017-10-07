@@ -34,8 +34,14 @@ Route::get('/products', 'Front\ProductsController@index');
 Route::get('/products/{id}', 'Front\ProductsController@show');
 Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
 
-/* REVIEW */
+/* POST */
+Route::get('/posts', 'Front\PostsController@index');
+Route::get('/posts/{slug}', 'Front\PostsController@show');
+
+/* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
+/* COMMENT - PRODUCT */
+Route::post('/posts/{slug}/comment', 'Front\CommentsController@store');
 
 /* MENU */
 Route::get('/menu/{parent}/{slug}', 'Front\ProductsController@menu');

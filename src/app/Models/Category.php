@@ -33,6 +33,14 @@ class Category extends Model
          return $this->hasMany('App\Models\Product');
      }
 
+     /**
+     * Get the products for the category.
+     */
+     public function posts()
+     {
+         return $this->hasMany('App\Models\Posts');
+     }
+
 
 
      /**

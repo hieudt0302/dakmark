@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->text('comment');
             $table->tinyInteger('rate')->default(0)->unsigned();
             $table->string('email');
+            $table->string('website')->nullable();
 
             $table->integer('parent_id')->nullable()->unsigned();
             $table->foreign('parent_id')->references('id')->on('comments');

@@ -37,4 +37,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+     * Get the products for the category.
+     */
+     public function posts()
+     {
+         return $this->hasMany('App\Models\Posts');
+     }
 }

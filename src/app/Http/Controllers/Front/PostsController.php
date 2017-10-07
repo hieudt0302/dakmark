@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
+use Validator;
+use DB;
 
 class PostsController extends Controller
 {
@@ -14,10 +18,18 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $products = DB::table('posts')
-        ->where('published',1)
+        $posts = Post::where('published',1)
         ->whereNull('deleted_at')
         ->paginate(10);
+
+        return View('front/posts/index',compact('posts'));
+    }
+
+    public function menu($parent, $slug)
+    {
+        $category = Category::where('slug',$slug)->firstOrFail();
+
+        $products = $category->products()->paginate(2);
 
         return View('front/posts/index',compact('posts'));
     }
@@ -49,9 +61,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug',$slug)->firstOrFail();
+        return View('front/posts/show', compact('post'));
     }
 
     /**
