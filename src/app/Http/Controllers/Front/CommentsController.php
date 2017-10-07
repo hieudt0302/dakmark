@@ -45,18 +45,21 @@ class CommentsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()
-            ->with('message', 'ERROR-INPUT: Code EI1003')
-            ->with('status', 'danger')
-            ->withInput();
+            // return redirect()->back()
+            // ->with('message', 'ERROR-INPUT: Code EI1003')
+            // ->with('status', 'danger')
+            // ->withInput();
         }
 
         $comment = new Comment();
         $comment->name = $request->name;
         $comment->email = $request->email;
-        $comment->website = $request->website;
+        
         $comment->comment = $request->comment;
 
+        if(!empty($request->website))
+            $comment->website = $request->website;
+            
         if(!empty($request->reader_id))
             $comment->author_id = $request->reader_id;
 

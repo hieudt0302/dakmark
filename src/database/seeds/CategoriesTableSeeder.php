@@ -20,7 +20,8 @@ class CategoriesTableSeeder extends Seeder
                 'slug' => 'blog',
                 'description'          => 'Description',
                 'order'         => 0,
-                'image_icon'       => ''
+                'image_icon'       => '',
+                'is_menu_avaiable'=>true,
             ]);
 
             $category2 =Category::create([
@@ -28,6 +29,7 @@ class CategoriesTableSeeder extends Seeder
                 'slug' => 'shop',
                 'description'          => 'Description',
                 'order'         => 1,
+                'is_menu_avaiable'=>true,
                 'image_icon'       => ''
             ]);
 
@@ -37,6 +39,7 @@ class CategoriesTableSeeder extends Seeder
                 'description'          => 'Description',
                 'order'         => 0,
                 'image_icon'       => '',
+                'is_menu_avaiable'=>true,
                 'parent_id' =>2
             ]);
             $category4 =Category::create([
@@ -45,6 +48,7 @@ class CategoriesTableSeeder extends Seeder
                 'description'          => 'Description',
                 'order'         => 1,
                 'image_icon'       => '',
+                'is_menu_avaiable'=>true,
                 'parent_id' =>2
             ]);
 
@@ -54,6 +58,7 @@ class CategoriesTableSeeder extends Seeder
                 'description'          => 'Description',
                 'order'         => 0,
                 'image_icon'       => '',
+                'is_menu_avaiable'=>true,
                 'parent_id' =>1
             ]);
         }

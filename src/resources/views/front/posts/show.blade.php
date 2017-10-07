@@ -86,9 +86,9 @@
                             <div class="media-body">
                                 <div class="comment-item-data">
                                     <div class="comment-author">
-                                        <a href="#">{{$review->name}}</a>
+                                        <a href="#">{{$comment->name}}</a>
                                     </div>
-                                    {{$review->created_at}}<span class="separator">&mdash;</span>
+                                    {{$comment->created_at}}<span class="separator">&mdash;</span>
                                     <a href="#"><i class="fa fa-comment"></i>&nbsp;Reply</a>
                                 </div>
 
@@ -144,7 +144,7 @@
                         <div class="row mb-20 mb-md-10">
                             <div class="col-md-6 mb-md-10">
                                 <!-- Name -->
-                                <input type="text" name="name" id="name" class="input-md form-control" placeholder="Name *" maxlength="100" required>
+                                <input type="name" name="name" id="name" class="input-md form-control" placeholder="Name *" maxlength="100" required>
                             </div>
 
                             <div class="col-md-6">
@@ -160,12 +160,12 @@
                         @endguest
                         <div class="mb-20 mb-md-10">
                             <!-- Website -->
-                            <input type="text" name="website" id="website" class="input-md form-control" placeholder="Website" maxlength="100" >
+                            <input type="website" name="website" id="website" class="input-md form-control" placeholder="Website" maxlength="100" >
                         </div>
 
                         <!-- Comment -->
                         <div class="mb-30 mb-md-10">
-                            <textarea name="text" id="text" class="input-md form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
+                            <textarea name="comment" id="text" class="input-md form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
                         </div>
 
                         <!-- Send Button -->

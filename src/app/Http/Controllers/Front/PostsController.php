@@ -29,7 +29,7 @@ class PostsController extends Controller
     {
         $category = Category::where('slug',$slug)->firstOrFail();
 
-        $products = $category->products()->paginate(2);
+        $posts = $category->posts()->paginate(10);
 
         return View('front/posts/index',compact('posts'));
     }
