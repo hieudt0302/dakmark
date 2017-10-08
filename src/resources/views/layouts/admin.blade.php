@@ -405,8 +405,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('posts/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
-            <li><a href="{{url('posts/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+            <li><a href="{{url('admin/posts/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+            <li><a href="{{url('admin/posts/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
             <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Bình Luận</a></li>
             <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Thống Kê</a></li>
             <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
