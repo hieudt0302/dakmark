@@ -17,7 +17,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return View('admin.posts.index',compact('posts'));
     }
 
     /**
@@ -129,7 +130,7 @@ class PostsController extends Controller
             ->with('status', 'danger')
             ->withInput();
         }
-        
+
         $post = Post::find($id);
         
         $post->title = $request->title;
