@@ -1,4 +1,7 @@
-@extends('layouts.admin') @section('title','Blog - Admin') @section('content')
+@extends('layouts.admin') 
+@section('title','Blog - Admin') 
+@section('content')
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -27,6 +30,8 @@
                                 <th>Slug</th>
                                 <th>Xuất Bản(s)</th>
                                 <th>Ngày Tạo</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +43,16 @@
                                     @if($post->published==1) Đã xuất bản @else Chưa xuất bản @endif
                                 </td>
                                 <td>{{$post->created_at}}</td>
+                                <td>
+                                  <div class="tools">
+                                   <a href="{{url('/')}}/admin/posts/{{$post->id}}/edit"> <i class="fa fa-edit"></i></a>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="tools">
+                                    <a href=""><i class="fa fa-trash-o"></i></a>
+                                  </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -47,6 +62,8 @@
                                 <th>Slug</th>
                                 <th>Xuất Bản(s)</th>
                                 <th>Ngày Tạo</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -55,4 +72,6 @@
         </div>
     </div>
 </section>
-@endsection @section('scripts') @endsection
+@endsection 
+
+@section('scripts') @endsection

@@ -43,7 +43,7 @@
                   <span class="handle">
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
-                      </span>
+                  </span>
                   
                   <!-- todo text -->
                   <span class="text">{{$menu->name}}</span>
