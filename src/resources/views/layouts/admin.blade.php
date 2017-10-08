@@ -33,6 +33,8 @@
   <link rel="stylesheet" href="{{asset('adminlte/css/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset('adminlte/css/select2.min.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -403,8 +405,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+            <li><a href="{{url('posts/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+            <li><a href="{{url('posts/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
             <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Bình Luận</a></li>
             <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Thống Kê</a></li>
             <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
@@ -572,7 +574,9 @@
     <script src="{{asset('adminlte/js/fastclick.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>     
-   
+    <script src="{{asset('adminlte/plugins/ckeditor/ckeditor.js')}}"></script>
+    <!-- Select2 -->
+    <script src="{{asset('adminlte/js/select2.full.min.js')}}"></script>
     <script>
                 (function() {
                     $.ajaxSetup({
