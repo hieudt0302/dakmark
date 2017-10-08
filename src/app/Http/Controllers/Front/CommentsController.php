@@ -45,10 +45,10 @@ class CommentsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()
-            ->with('message', 'ERROR-INPUT: Code EI1003')
-            ->with('status', 'danger')
-            ->withInput();
+            // return redirect()->back()
+            // ->with('message', 'ERROR-INPUT: Code EI1003')
+            // ->with('status', 'danger')
+            // ->withInput();
         }
 
         $comment = new Comment();

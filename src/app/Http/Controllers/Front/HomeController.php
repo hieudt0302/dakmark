@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,18 @@ class HomeController extends Controller
     public function about()
     {
         return View("front.home.about");
+    }
+	
+	// Tìm kiếm sản phẩm / blogs
+    public function search(Request $request){
+        $this->validate($request,['keyword' => 'required']);
+        $keyword = $request->input('keyword'); 
+        
+        $products = Product::where("name", "LIKE", "%$keyword%")->paginate(12);   
+        $blogs = Post::where("title", "LIKE", "%$keyword%")->paginate(12);   
+
+        return view('front.home.search',compact('keyword','products','blogs'))
+                ->with('i', ($request->input('page', 1) - 1) * 12);
     }
 
     /**

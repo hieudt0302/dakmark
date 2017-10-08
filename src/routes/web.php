@@ -24,6 +24,7 @@ Auth::routes();
 /* HOME */
 Route::get('/', 'Front\HomeController@index');
 Route::get('/about', 'Front\HomeController@about');
+Route::any('/search',['as'=>'front.home.search','uses'=>'Front\HomeController@search']);
 
 /* SHOPPING CART */
 Route::get('/cart', 'Front\ShoppingCartController@cart');
@@ -113,22 +114,22 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     // Blogs
 	
-    // Route::get('blog-cat',['as'=>'admin.blog-cat','uses'=>'BlogController@blogCatList']);
-    // Route::get('blog-cat/add',['as'=>'admin.blog-cat.add','uses'=>'BlogController@addBlogCat']);
-    // Route::post('blog-cat/add',['as'=>'admin.blog-cat.insert','uses'=>'BlogController@insertBlogCat']);
-    // Route::get('blog-cat/edit/{id}',['as'  =>'admin.blog-cat.edit','uses' => 'BlogController@editBlogCat']);
-    // Route::post('blog-cat/edit/{id}',['as' =>'admin.blog-cat.update','uses' => 'BlogController@updateBlogCat']);
-    // Route::get('blog-cat/delete/{id}',['as'  =>'admin.blog-cat.delete','uses' => 'BlogController@deleteBlogCat']);
-    // Route::get('blog',['as'=>'admin.blog','uses'=>'BlogController@blogList']);
-    // Route::get('blog/add',['as'=>'admin.blog.add','uses'=>'BlogController@addBlog']);
-    // Route::post('blog/add',['as'=>'admin.blog.insert','uses'=>'BlogController@insertBlog']);
-    // Route::get('blog/edit/{id}',['as'  =>'admin.blog.edit','uses' => 'BlogController@editBlog']);
-    // Route::post('blog/edit/{id}',['as' =>'admin.blog.update','uses' => 'BlogController@updateBlog']);
-    // Route::get('blog/delete/{id}',['as'  =>'admin.blog.delete','uses' => 'BlogController@deleteBlog']);
-    // Route::post('blog',['as'=>'admin.blog.search','uses'=>'BlogController@searchBlog']);
+    Route::get('blog-cat',['as'=>'admin.blog-cat','uses'=>'BlogController@blogCatList']);
+    Route::get('blog-cat/add',['as'=>'admin.blog-cat.add','uses'=>'BlogController@addBlogCat']);
+    Route::post('blog-cat/add',['as'=>'admin.blog-cat.insert','uses'=>'BlogController@insertBlogCat']);
+    Route::get('blog-cat/edit/{id}',['as'  =>'admin.blog-cat.edit','uses' => 'BlogController@editBlogCat']);
+    Route::post('blog-cat/edit/{id}',['as' =>'admin.blog-cat.update','uses' => 'BlogController@updateBlogCat']);
+    Route::get('blog-cat/delete/{id}',['as'  =>'admin.blog-cat.delete','uses' => 'BlogController@deleteBlogCat']);
+    Route::get('blog',['as'=>'admin.blog','uses'=>'BlogController@blogList']);
+    Route::get('blog/add',['as'=>'admin.blog.add','uses'=>'BlogController@addBlog']);
+    Route::post('blog/add',['as'=>'admin.blog.insert','uses'=>'BlogController@insertBlog']);
+    Route::get('blog/edit/{id}',['as'  =>'admin.blog.edit','uses' => 'BlogController@editBlog']);
+    Route::post('blog/edit/{id}',['as' =>'admin.blog.update','uses' => 'BlogController@updateBlog']);
+    Route::get('blog/delete/{id}',['as'  =>'admin.blog.delete','uses' => 'BlogController@deleteBlog']);
+    Route::post('blog',['as'=>'admin.blog.search','uses'=>'BlogController@searchBlog']);
 
-    // Route::post('generate-slug',['as'=>'admin.generate-slug','uses'=>'ProductController@generate_slug']);
-    // Route::post('get-system-cat/{system_id}',['as'=>'admin.get-system-cat','uses'=>'NavigatorController@get_system_cat']);
+    Route::post('generate-slug',['as'=>'admin.generate-slug','uses'=>'ProductController@generate_slug']);
+    Route::post('get-system-cat/{system_id}',['as'=>'admin.get-system-cat','uses'=>'NavigatorController@get_system_cat']);
 
     //FAQs
     Route::get('faqs',['as'=>'admin.faqs.index','uses'=>'FaqController@index']);
@@ -141,11 +142,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //Menu
     Route::get('menu/{dev}',['as'=>'admin.menu.index','uses'=>'MenuController@index', 'middleware'=> ['role:admin|manager']]);
-
-    //Blog
-    Route::get('posts/dev',['as'=>'admin.posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
-    Route::get('posts/create',['as'=>'admin.posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
-    Route::post('posts/create',['as'=>'admin.posts.store','uses'=>'PostsController@store','middleware' => ['role:admin|manager']]);
-
 });
 

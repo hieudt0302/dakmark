@@ -41,7 +41,6 @@
     "/adminlte/css/jquery-jvectormap.css": "/adminlte/css/jquery-jvectormap.css",
     "/adminlte/css/bootstrap-datepicker.min.css": "/adminlte/css/bootstrap-datepicker.min.css",
     "/adminlte/css/daterangepicker.css": "/adminlte/css/daterangepicker.css",
-    "/adminlte/css/select2.min.css": "/adminlte/css/select2.min.css",
     "/adminlte/js/jquery.min.js": "/adminlte/js/jquery.min.js",
     "/adminlte/js/bootstrap.min.js": "/adminlte/js/bootstrap.min.js",
     "/adminlte/js/raphael.min.js": "/adminlte/js/raphael.min.js",
@@ -52,6 +51,5 @@
     "/adminlte/js/fastclick.js": "/adminlte/js/fastclick.js",
     "/adminlte/js/jquery.knob.min.js": "/adminlte/js/jquery.knob.min.js",
     "/adminlte/js/bootstrap-datepicker.min.js": "/adminlte/js/bootstrap-datepicker.min.js",
-    "/adminlte/js/slimscroll.js": "/adminlte/js/slimscroll.js",
-    "/adminlte/js/select2.full.min.js": "/adminlte/js/select2.full.min.js"
+    "/adminlte/js/slimscroll.js": "/adminlte/js/slimscroll.js"
 }

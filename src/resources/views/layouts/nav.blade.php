@@ -60,14 +60,14 @@
                 <ul class="mn-sub">                    
                     <li>
                         <div class="mn-wrap">
-                            <form method="post" class="form">
+                            {!! Form::open(array('route' => 'front.home.search')) !!}
                                 <div class="search-wrap">
                                     <button class="search-button animate" type="submit" title="Start Search">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                    <input type="text" class="form-control search-field" placeholder="Search...">
+                                    <input type="text" class="form-control search-field" name="keyword" placeholder="Search...">
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
                         </div>
                     </li>
                     
