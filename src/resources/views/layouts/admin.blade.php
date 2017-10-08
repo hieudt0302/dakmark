@@ -350,7 +350,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -394,11 +394,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Danh Mục</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Thống Kê</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Đánh Giá</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
+            <li><a href="{{url('admin/products/dev')}}"><i class="fa fa-circle-o"></i> Danh Mục</a></li>
+            <li><a href="{{url('admin/products/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Thống Kê</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Đánh Giá</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
           </ul>
         </li>
         <li class="treeview">
