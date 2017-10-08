@@ -34,5 +34,22 @@
     "/rs-plugin/js/jquery.themepunch.plugins.min.js": "/rs-plugin/js/jquery.themepunch.plugins.min.js",
     "/rs-plugin/js/jquery.themepunch.revolution.js": "/rs-plugin/js/jquery.themepunch.revolution.js",
     "/rs-plugin/js/jquery.themepunch.revolution.min.js": "/rs-plugin/js/jquery.themepunch.revolution.min.js",
-    "/rs-plugin/js/jquery.themepunch.tools.min.js": "/rs-plugin/js/jquery.themepunch.tools.min.js"
+    "/rs-plugin/js/jquery.themepunch.tools.min.js": "/rs-plugin/js/jquery.themepunch.tools.min.js",
+    "/adminlte/css/bootstrap.min.css": "/adminlte/css/bootstrap.min.css",
+    "/adminlte/css/ionicons.min.css": "/adminlte/css/ionicons.min.css",
+    "/adminlte/css/morris.css": "/adminlte/css/morris.css",
+    "/adminlte/css/jquery-jvectormap.css": "/adminlte/css/jquery-jvectormap.css",
+    "/adminlte/css/bootstrap-datepicker.min.css": "/adminlte/css/bootstrap-datepicker.min.css",
+    "/adminlte/css/daterangepicker.css": "/adminlte/css/daterangepicker.css",
+    "/adminlte/js/jquery.min.js": "/adminlte/js/jquery.min.js",
+    "/adminlte/js/bootstrap.min.js": "/adminlte/js/bootstrap.min.js",
+    "/adminlte/js/raphael.min.js": "/adminlte/js/raphael.min.js",
+    "/adminlte/js/morris.min.js": "/adminlte/js/morris.min.js",
+    "/adminlte/js/jquery.sparkline.min.js": "/adminlte/js/jquery.sparkline.min.js",
+    "/adminlte/js/moment.min.js": "/adminlte/js/moment.min.js",
+    "/adminlte/js/daterangepicker.js": "/adminlte/js/daterangepicker.js",
+    "/adminlte/js/fastclick.js": "/adminlte/js/fastclick.js",
+    "/adminlte/js/jquery.knob.min.js": "/adminlte/js/jquery.knob.min.js",
+    "/adminlte/js/bootstrap-datepicker.min.js": "/adminlte/js/bootstrap-datepicker.min.js",
+    "/adminlte/js/slimscroll.js": "/adminlte/js/slimscroll.js"
 }

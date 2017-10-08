@@ -67,4 +67,33 @@ mix.copy('resources/assets/front/rs-plugin/js/jquery.themepunch.tools.min.js', '
 /* END: MIX ALL THEME JS */
 mix.copyDirectory('resources/assets/front/images', 'public/images')
 mix.copyDirectory('resources/assets/front/css', 'public/css')
-mix.copyDirectory('resources/assets/front/fonts', 'public/fonts');
+mix.copyDirectory('resources/assets/front/fonts', 'public/fonts')
+
+/* ADMINLTE*/
+//DIST
+mix.copyDirectory('resources/assets/adminlte/dist','public/adminlte/dist')
+//PLUGINS
+mix.copyDirectory('resources/assets/adminlte/plugins','public/adminlte/plugins')
+//CSS
+mix.copy('node_modules/bootstrap/dist/css/bootstrap.min.css','public/adminlte/css')
+mix.copy('node_modules/ionicons/dist/css/ionicons.min.css','public/adminlte/css')
+mix.copy('node_modules/morris.js/morris.css','public/adminlte/css')
+mix.copy('node_modules/jvectormap/jquery-jvectormap.css','public/adminlte/css')
+mix.copy('node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css','public/adminlte/css')
+mix.copy('node_modules/bootstrap-daterangepicker/daterangepicker.css','public/adminlte/css')
+//JS
+mix.copy('node_modules/jquery/dist/jquery.min.js','public/adminlte/js')
+mix.copy('node_modules/bootstrap/dist/js/bootstrap.min.js','public/adminlte/js')
+
+mix.copy('node_modules/raphael/raphael.min.js','public/adminlte/js')
+mix.copy('node_modules/morris.js/morris.min.js','public/adminlte/js')
+mix.copy('node_modules/jquery-sparkline/jquery.sparkline.min.js','public/adminlte/js')
+mix.copy('node_modules/jquery-sparkline/jquery.sparkline.min.js','public/adminlte/js')
+mix.copy('node_modules/moment/min/moment.min.js','public/adminlte/js')
+mix.copy('node_modules/bootstrap-daterangepicker/daterangepicker.js','public/adminlte/js')
+mix.copy('node_modules/fastclick/lib/fastclick.js','public/adminlte/js')
+mix.copy('node_modules/jquery-knob/dist/jquery.knob.min.js','public/adminlte/js')
+mix.copy('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js','public/adminlte/js')
+mix.copy('node_modules/slimscroll/lib/slimscroll.js','public/adminlte/js')
+//FONTS
+mix.copyDirectory('node_modules/ionicons/dist/fonts','public/adminlte/fonts');

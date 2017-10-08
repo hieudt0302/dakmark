@@ -49,9 +49,9 @@ Route::post('/posts/{slug}/comment', 'Front\CommentsController@store');
 
 /* ADMIN */
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
-    //admin area
-    Route::get('/', ['as' => 'admin.pages.dashboard', 'uses' => 'PagesController@getDashboard']);
-    Route::get('/blank', ['as' => 'admin.pages.blank', 'uses' => 'PagesController@getBlank']);
+
+    //Dashboard
+    Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
 
     //role area
     Route::get('roles',['as'=>'admin.roles.index','uses'=>'RolesController@index','middleware' => ['permission:role-list']]);
@@ -137,4 +137,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('faqs/{id}/edit',['as'  =>'admin.faqs.edit','uses' => 'FaqController@edit']);
     Route::patch('faqs/{id}',['as'  =>'admin.faqs.update','uses' => 'FaqController@update']);    
     Route::delete('faqs/{id}',['as'  =>'admin.faqs.destroy','uses' => 'FaqController@destroy']); 
+
+    //Menu
+    Route::get('menu', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
 });
