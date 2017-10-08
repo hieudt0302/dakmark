@@ -144,13 +144,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('orders/{id}/edit',['as'=>'admin.orders.edit','uses'=>'OrdersController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('orders/{id}',['as'=>'admin.orders.update','uses'=>'OrdersController@update','middleware' => ['role:admin|manager']]);
     Route::delete('orders/{id}',['as'=>'admin.orders.destroy','uses'=>'OrdersController@destroy','middleware' => ['role:admin|manager']]);
-
-    // InfoPages
-    Route::get('info-pages',['as'=>'admin.info-pages.index','uses'=>'InfoPagesController@index']);
-    Route::get('info-pages/create',['as'=>'admin.info-pages.create','uses'=>'InfoPagesController@create']);
-    Route::post('info-pages/create',['as'=>'admin.info-pages.store','uses'=>'InfoPagesController@store']);
-    Route::get('info-pages/{id}',['as'  =>'admin.info-pages.show','uses' => 'InfoPagesController@show']);
-    Route::get('info-pages/{id}/edit',['as'  =>'admin.info-pages.edit','uses' => 'InfoPagesController@edit']);
-    Route::patch('info-pages/{id}',['as'  =>'admin.info-pages.update','uses' => 'InfoPagesController@update']);    
-    Route::delete('info-pages/{id}',['as'  =>'admin.info-pages.destroy','uses' => 'InfoPagesController@destroy']); 
 });
