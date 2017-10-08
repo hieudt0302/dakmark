@@ -18,6 +18,9 @@ class CreateOrdersTable extends Migration
             $table->string('order_no');
             $table->dateTime('order_start_date');
             $table->dateTime('order_end_date');
+
+            $table->decimal('order_tax',12,2);
+            $table->decimal('order_shipping_price',12,2);
             $table->decimal('order_total',12,2);
 
             $table->integer('customer_id')->unsigned();
@@ -31,6 +34,9 @@ class CreateOrdersTable extends Migration
             $table->integer('shipping_address_id')->nullable()->unsigned();
             $table->foreign('shipping_address_id')->references('id')->on('book_addresses');
             // ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->tinyInteger('payment_method')->default(0);
+            $table->tinyInteger('shipping_method')->default(0);
 
             $table->tinyInteger('order_status')->default(0);
             $table->tinyInteger('payment_status')->default(0);
