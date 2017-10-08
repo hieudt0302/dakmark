@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('title','Menu - Admin')
 @section('content')
 <!-- Content Header (Page header) -->
@@ -22,105 +22,47 @@
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">To Do List</h3>
-
+              <h3 class="box-title">Menu Chính</h3>
               <div class="box-tools pull-right">
-                <ul class="pagination pagination-sm inline">
+                <!-- <ul class="pagination pagination-sm inline">
                   <li><a href="#">&laquo;</a></li>
                   <li><a href="#">1</a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">&raquo;</a></li>
-                </ul>
+                </ul> -->
               </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
               <ul class="todo-list">
+                @foreach($menus as $menu)
                 <li>
                   <!-- drag handle -->
                   <span class="handle">
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                       </span>
-                  <!-- checkbox -->
-                  <input type="checkbox" value="">
+                  
                   <!-- todo text -->
-                  <span class="text">Design a nice theme</span>
+                  <span class="text">{{$menu->name}}</span>
+                  <!-- checkbox -->
+                  <input type="checkbox" value="">Enabled
+                  <!-- checkbox -->
+                  <input type="checkbox" value="">Visible
+                  <!-- checkbox -->
+                  <input type="checkbox" value="">Set Menu
                   <!-- Emphasis label -->
-                  <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                  <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
                   <!-- General tools such as edit or delete-->
                   <div class="tools">
                     <i class="fa fa-edit"></i>
                     <i class="fa fa-trash-o"></i>
                   </div>
                 </li>
-                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Make the theme responsive</span>
-                  <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Let theme shine like a star</span>
-                  <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Let theme shine like a star</span>
-                  <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Check your messages and notifications</span>
-                  <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Let theme shine like a star</span>
-                  <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
+                @endforeach
+                
               </ul>
             </div>
             <!-- /.box-body -->
@@ -135,11 +77,19 @@
 @endsection
 @section('scripts')
 <script>
-    $(function () {
+    $(function() {
         'use strict';
-
+        // jQuery UI sortable for the todo list
+        $('.todo-list').sortable({
+          placeholder         : 'sort-highlight',
+          handle              : '.handle',
+          forcePlaceholderSize: true,
+          zIndex              : 999999
+        });
+        /* jQueryKnob */
+        $('.knob').knob();
         /* The todo list plugin */
-        $('.menu-list').todoList({
+        $('.todo-list').todoList({
                 onCheck  : function () {
                 window.console.log($(this), 'The element has been checked');
             },
@@ -149,3 +99,4 @@
         });
     });
 </script>
+@endsection

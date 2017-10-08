@@ -15,11 +15,11 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Category::where('is_available_menu',1)
+        $menus = Category::where('is_menu_avaiable',1)
             ->whereNull('parent_id')
             ->get();
 
-        return View('admin.dashboard.index');
+        return View('admin.menu.index');
     }
 
     /**
@@ -51,7 +51,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**

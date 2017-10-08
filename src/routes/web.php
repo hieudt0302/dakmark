@@ -48,7 +48,6 @@ Route::post('/posts/{slug}/comment', 'Front\CommentsController@store');
 /* MENU */
  Route::get('/{parent}/{slug}', 'Front\MenuController@menu');
 
-
 /* ADMIN */
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 
@@ -141,5 +140,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('faqs/{id}',['as'  =>'admin.faqs.destroy','uses' => 'FaqController@destroy']); 
 
     //Menu
-    Route::get('menu', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
+    Route::get('menu/{dev}',['as'=>'admin.menu.index','uses'=>'MenuController@index', 'middleware'=> ['role:admin|manager']]);
 });
+
