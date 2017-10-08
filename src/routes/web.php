@@ -28,6 +28,8 @@ Route::get('/about', 'Front\HomeController@about');
 /* SHOPPING CART */
 Route::get('/cart', 'Front\ShoppingCartController@cart');
 
+/* FAQ */
+Route::get('/faqs', 'Front\FaqController@index');
 
 /* PRODUCT */
 Route::get('/products', 'Front\ProductsController@index');
