@@ -1,0 +1,46 @@
+<section id="demo">
+    <ol class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
+        <li class="mjs-nestedSortable-leaf" id="menuItem_1">
+            <div class="menuDiv">
+                <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+			   <span></span>
+                </span>
+                <span title="Click to show/hide item editor" data-id="1" class="expandEditor ui-icon ui-icon-triangle-1-n">
+			   <span></span>
+                </span>
+                <span>
+			   <span data-id="1" class="itemTitle">{{$menu->name}}</span>
+                <span title="Click to delete item." data-id="1" class="deleteMenu ui-icon ui-icon-closethick">
+			   <span></span>
+                </span>
+                </span>
+                <div id="menuEdit{{$menu->id}}" class="menuEdit hidden">
+                    <p>
+                        {{$menu->description}}
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="mjs-nestedSortable-leaf" id="menuItem_2">
+            <div class="menuDiv">
+                <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+			   <span></span>
+                </span>
+                <span title="Click to show/hide item editor" data-id="2" class="expandEditor ui-icon ui-icon-triangle-1-n">
+			   <span></span>
+                </span>
+                <span>
+			   <span data-id="3" class="itemTitle">b</span>
+                <span title="Click to delete item." data-id="2" class="deleteMenu ui-icon ui-icon-closethick">
+			   <span></span>
+                </span>
+                </span>
+                <div id="menuEdit3" class="menuEdit hidden">
+                    <p>
+                        Content or form, or nothing here. Whatever you want.
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ol>
+</section>

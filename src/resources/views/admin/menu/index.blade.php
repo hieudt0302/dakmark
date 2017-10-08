@@ -35,35 +35,74 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-              <ul class="todo-list">
+              <!-- <ol class="todo-list sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
                 @foreach($menus as $menu)
-                <li>
-                  <!-- drag handle -->
+                <li class="mjs-nestedSortable-leaf" id="menuItem_{{$menu->id}}">
                   <span class="handle">
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                   </span>
-                  
-                  <!-- todo text -->
                   <span class="text">{{$menu->name}}</span>
-                  <!-- checkbox -->
                   <input type="checkbox" value="">Enabled
-                  <!-- checkbox -->
                   <input type="checkbox" value="">Visible
-                  <!-- checkbox -->
                   <input type="checkbox" value="">Set Menu
-                  <!-- Emphasis label -->
-                  <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
-                  <!-- General tools such as edit or delete-->
                   <div class="tools">
                     <i class="fa fa-edit"></i>
                     <i class="fa fa-trash-o"></i>
                   </div>
                 </li>
-                @endforeach
-                
-              </ul>
+                @endforeach                
+              </ol> -->
+              <ol class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
+              @foreach($menus as $menu)
+                <li class="mjs-nestedSortable-leaf" id="menuItem_{{$menu->id}}">
+                    <div class="menuDiv">
+                        <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+                        <span></span>
+                                </span>
+                                <span title="Click to show/hide item editor" data-id="{{$menu->id}}" class="expandEditor ui-icon ui-icon-triangle-1-n">
+                        <span></span>
+                                </span>
+                                <span>
+                        <span data-id="{{$menu->id}}" class="itemTitle">{{$menu->name}}</span>
+                                <span title="Click to delete item." data-id="{{$menu->id}}" class="deleteMenu ui-icon ui-icon-closethick">
+                        <span></span>
+                        </span>
+                        </span>
+                        <div id="menuEdit{{$menu->id}}" class="menuEdit hidden">
+                            <p>
+                            {{$menu->description}}
+                            </p>
+                        </div>
+                    </div>
+                    <ol>
+                      @foreach($menu->GetMenuSubLevel1() as $sub)
+                      <li style="display: list-item;" class="mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_{{$sub->id}}" data-foo="baz">
+                        <div class="menuDiv">
+                          <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+                          <span></span>
+                          </span>
+                          <span title="Click to show/hide item editor" data-id="{{$sub->id}}" class="expandEditor ui-icon ui-icon-triangle-1-n">
+                          <span></span>
+                          </span>
+                          <span>
+                          <span data-id="{{$sub->id}}" class="itemTitle">{{$sub->name}}</span>
+                          <span title="Click to delete item." data-id="{{$sub->id}}" class="deleteMenu ui-icon ui-icon-closethick">
+                          <span></span>
+                          </span>
+                          </span>
+                          <div id="menuEdit{{$sub->id}}" class="menuEdit hidden">
+                            <p>
+                            {{$sub->description}}
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      @endforeach
+                    </ol>
+                </li>
+                @endforeach     
+               </ol>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix no-border">
@@ -76,27 +115,53 @@
 </section>
 @endsection
 @section('scripts')
+<script src="{{asset('adminlte/dist/js/jquery.mjs.nestedSortable.js')}}"></script>
 <script>
     $(function() {
         'use strict';
         // jQuery UI sortable for the todo list
-        $('.todo-list').sortable({
-          placeholder         : 'sort-highlight',
-          handle              : '.handle',
-          forcePlaceholderSize: true,
-          zIndex              : 999999
-        });
+        // $('.todo-list').sortable({
+        //   placeholder         : 'sort-highlight',
+        //   handle              : '.handle',
+        //   forcePlaceholderSize: true,
+        //   zIndex              : 999999
+        // });
         /* jQueryKnob */
-        $('.knob').knob();
+        // $('.knob').knob();
         /* The todo list plugin */
-        $('.todo-list').todoList({
-                onCheck  : function () {
-                window.console.log($(this), 'The element has been checked');
-            },
-                onUnCheck: function () {
-                window.console.log($(this), 'The element has been unchecked');
-            }
+        // $('.todo-list').todoList({
+        //         onCheck  : function () {
+        //         window.console.log($(this), 'The element has been checked');
+        //     },
+        //         onUnCheck: function () {
+        //         window.console.log($(this), 'The element has been unchecked');
+        //     }
+        // });
+
+        $('.sortable').nestedSortable({
+          handle: 'div',
+          items: 'li',
+          toleranceElement: '> div'
         });
+        $('.expandEditor').attr('title','Click to show/hide item editor');
+			$('.disclose').attr('title','Click to show/hide children');
+			$('.deleteMenu').attr('title', 'Click to delete item.');
+		
+			$('.disclose').on('click', function() {
+				$(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
+				$(this).toggleClass('ui-icon-plusthick').toggleClass('ui-icon-minusthick');
+			});
+			
+			$('.expandEditor, .itemTitle').click(function(){
+				var id = $(this).attr('data-id');
+				$('#menuEdit'+id).toggle();
+				$(this).toggleClass('ui-icon-triangle-1-n').toggleClass('ui-icon-triangle-1-s');
+			});
+			
+			$('.deleteMenu').click(function(){
+				var id = $(this).attr('data-id');
+				$('#menuItem_'+id).remove();
+			});
     });
 </script>
 @endsection
