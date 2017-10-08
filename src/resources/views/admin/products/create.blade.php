@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Tên</label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="title" >
+                                <input type="text" name="name" class="form-control" id="name" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,6 +85,43 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="minimum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Thiểu</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="minimum_amount" class="form-control" id="minimum_amount" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="maximum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Đa</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="maximum_amount" class="form-control" id="maximum_amount" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('disable_buy_button', 1 , false, array('class' => 'disable_buy_button')) }}Ẩn Nút Mua</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('disable_wishlist_button', 1 ,false, array('class' => 'disable_wishlist_button')) }}Ẩn Nút Mong Ước</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('call_for_price', 1 ,false, array('class' => 'call_for_price')) }}Gọi Điện Báo Giá</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('sold_off', 1 , false, array('class' => 'sold_off')) }}Hết Hàng</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('published', 1 , true, array('class' => 'published')) }}Xuất Bản</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="description" class="col-sm-2 control-label">Giới Thiệu</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="description" rows="3"  placeholder="description"></textarea>
@@ -96,14 +133,7 @@
                                 <textarea class="form-control" name="specs" rows="3"  placeholder="specs"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Xuất Bản</label>
-                            <div class="col-sm-10">
-                                <!-- <input name="published" type="checkbox" checked> -->
-                                {{ Form::checkbox('published', 1 ,true , array('class' => 'published')) }}
-                            </div>
-                        </div>
-                        
+                      
                         <div class="form-group">
                             <label for="slug" class="col-sm-2 control-label">Thể Loại</label>
                             <div class="col-sm-10">
@@ -131,14 +161,14 @@
 <script>
   $(function () {
     //Date range picker with time picker
-    $('#reservation-start').datepicker({ autoclose: true, format: 'dd/mm/yyyy' })
-    $('#reservation-end').datepicker({ autoclose: true,  format: 'dd/mm/yyyy' })
+    $('#reservation-start').datepicker({ autoclose: true, format: 'yyyy-mm-dd' })
+    $('#reservation-end').datepicker({ autoclose: true,  format: 'yyyy-mm-dd' })
 
     $('.select2').select2();
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('excerpt-editor');
-    CKEDITOR.replace('content-editor');
+    // CKEDITOR.replace('excerpt-editor');
+    // CKEDITOR.replace('content-editor');
     //bootstrap WYSIHTML5 - text editor
     // $('.textarea').wysihtml5()
   })

@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Tên</label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" value="{{$product->name}}" class="form-control" id="title" >
+                                <input type="text" name="name" value="{{$product->name}}" class="form-control" id="name" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -44,9 +44,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="description" class="col-sm-2 control-label">Mô Tả</label>
+                            <label for="summay" class="col-sm-2 control-label">Mô Tả</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="summary" rows="3"  placeholder="SEO">{{$post->description}}</textarea>
+                                <textarea class="form-control" name="summary" rows="3"  placeholder="SEO">{{$product->summay}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-group">
                             <label for="special_price_start_date" class="col-sm-2 control-label">Ngày Khuyến Mãi:</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-10 input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group">
                             <label for="special_price_end_date" class="col-sm-2 control-label">Ngày Khuyến Mãi:</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-10 input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
@@ -86,19 +86,60 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Xuất Bản</label>
-                            <div class="col-sm-10">
-                                <!-- <input name="published" type="checkbox" checked> -->
-                                {{ Form::checkbox('published', 1 ,$post->published ? true : false, array('class' => 'published')) }}
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('disable_buy_button', 1 ,$product->disable_buy_button ? true : false, array('class' => 'disable_buy_button')) }}Ẩn Nút Mua</label>
                             </div>
                         </div>
-                        
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('disable_wishlist_button', 1 ,$product->disable_wishlist_button ? true : false, array('class' => 'disable_wishlist_button')) }}Ẩn Nút Mong Ước</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('call_for_price', 1 ,$product->call_for_price ? true : false, array('class' => 'call_for_price')) }}Gọi Điện Báo Giá</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('sold_off', 1 ,$product->sold_off ? true : false, array('class' => 'sold_off')) }}Hết Hàng</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                <label>{{ Form::checkbox('published', 1 ,$product->published ? true : false, array('class' => 'published')) }}Xuất Bản</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="minimum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Thiểu</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="minimum_amount" value="{{$product->minimum_amount}}" class="form-control" id="minimum_amount" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="maximum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Đa</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="maximum_amount" value="{{$product->maximum_amount}}" class="form-control" id="maximum_amount" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-2 control-label">Giới thiệu</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="description" rows="3"  placeholder="SEO">{{$product->description}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="specs" class="col-sm-2 control-label">Đặc Tả</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="specs" rows="3"  placeholder="SEO">{{$product->specs}}</textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="slug" class="col-sm-2 control-label">Thể Loại</label>
                             <div class="col-sm-10">
                                 <select name="category_id" class="form-control select2" style="width: 100%;">
                                     @foreach($categories as $category)
-                                      @if(!empty($post->category_id) && $post->category_id == $category->id)
+                                      @if(!empty($product->category_id) && $product->category_id == $category->id)
                                         <option value="{{$category->id}}" selected>{{$category->name}}</option>
                                       @else
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -124,14 +165,26 @@
 <script>
   $(function () {
     //Date range picker with time picker
-    $('#reservation-start').datepicker({ autoclose: true, timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A' })
-    $('#reservation-end').datepicker({ autoclose: true, timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A' })
+    $('#reservation-start').datepicker({ autoclose: true, format: 'yyyy-mm-dd' })
+    $('#reservation-end').datepicker({ autoclose: true,  format: 'yyyy-mm-dd' })
+
+    // $('#reservation-start').datepicker();
+    // $('#reservation-end').datepicker({
+    //     useCurrent: false //Important! See issue #1075
+    // });
+
+    $("#reservation-start").on("dp.change", function (e) {
+        $('#reservation-end').data("DateTimePicker").minDate(e.date);
+    });
+    $("#reservation-end").on("dp.change", function (e) {
+        $('#reservation-start').data("DateTimePicker").maxDate(e.date);
+    });
 
     $('.select2').select2();
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('excerpt-editor');
-    CKEDITOR.replace('content-editor');
+    // CKEDITOR.replace('excerpt-editor');
+    // CKEDITOR.replace('content-editor');
     //bootstrap WYSIHTML5 - text editor
     // $('.textarea').wysihtml5()
   })
