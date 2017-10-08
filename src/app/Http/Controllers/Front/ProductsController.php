@@ -118,4 +118,9 @@ class ProductsController extends Controller
             'status' => 'success'
         ]);
     }
+	
+	// Search
+	public function search(){
+        //
+    }
 }
