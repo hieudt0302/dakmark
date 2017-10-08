@@ -25,7 +25,11 @@
 {!! Form::open(array('method' => 'PATCH','route' => ['admin.faqs.update', $faq->id])) !!}
     <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">
         @foreach ($language_list as $language)
+        @if ($language->id == 1) 
+        <li class="active">
+        @else
         <li>
+        @endif
             <a href="#{{$language->id}}-content" data-toggle="tab">Nội dung - {{$language->name}}</a>
         </li>
         @endforeach
@@ -49,8 +53,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Trả lời</td>
-                    <span class="text-danger">*</span>                    
+                    <td>Trả lời
+                    <span class="text-danger">*</span>
+                    </td>                    
                     <td>
                         <textarea class="form-control" name="{{$faqtran->language_id}}-answer">{{ $faqtran->answer }}</textarea>
                     </td>
