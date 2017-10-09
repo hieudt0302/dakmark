@@ -57,7 +57,8 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return View('front.products.show', compact('product'));
+        $starAvg = $product->comments->avg('rate');
+        return View('front.products.show', compact('product','starAvg'));
     }
 
     /**

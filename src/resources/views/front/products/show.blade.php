@@ -85,12 +85,33 @@
                         @endif
                     </div>
                     <div class="col-xs-6 align-right section-text">
+
+                        @if($starAvg>=1)
                         <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                        @else
                         <i class="fa fa-star-o"></i>
-                        &nbsp;(3 reviews)
+                        @endif
+                        @if($starAvg>=2)
+                        <i class="fa fa-star"></i>
+                        @else
+                        <i class="fa fa-star-o"></i>
+                        @endif
+                        @if($starAvg>=3)
+                        <i class="fa fa-star"></i>
+                        @else
+                        <i class="fa fa-star-o"></i>
+                        @endif
+                        @if($starAvg>=4)
+                        <i class="fa fa-star"></i>
+                        @else
+                        <i class="fa fa-star-o"></i>
+                        @endif
+                        @if($starAvg>=5)
+                        <i class="fa fa-star"></i>
+                        @else
+                        <i class="fa fa-star-o"></i>
+                        @endif
+                        &nbsp;({{count($product->comments)}} reviews)
                     </div>
                 </div>
                 
