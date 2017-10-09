@@ -19,9 +19,9 @@ class CreateOrdersTable extends Migration
             $table->dateTime('order_start_date');
             $table->dateTime('order_end_date')->nullable();
 
-            $table->decimal('order_tax',12,2);
-            $table->decimal('order_shipping_price',12,2);
-            $table->decimal('order_total',12,2);
+            $table->decimal('order_tax',12,2)->default(0);
+            $table->decimal('order_shipping_price',12,2)->default(0);;
+            $table->decimal('order_total',12,2)->default(0);;
 
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('users');

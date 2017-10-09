@@ -203,14 +203,17 @@ class CheckoutController extends Controller
         try{
             // Make order
             $order_id = DB::table('orders')->insertGetId([
-                'order_no'=>  $rate,
+                'order_no'=> 'O2018-123',
                 'order_start_date' => Carbon::now(),
+                'order_end_date' =>Carbon::now(),
+                'order_tax'=>0,
+                'order_shipping_price'=>0,
                 'order_total' =>Cart::total(2, '.', ''),
                 'note' => $note,
                 'customer_id' => Auth::user()->id,
                 'billing_address_id' => $billingAddressId ,
                 'shipping_address_id' =>  $shippingAddressId,
-                'shipping_method' =>  $shippingMethod,
+                'shipping_method' =>  $shippingMethodId,
                 'payment_method' =>  $paymentMethodId,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -219,8 +222,9 @@ class CheckoutController extends Controller
 
              // Make orderdetails from session cart
              foreach (Cart::content() as $item) {
-                DB::table('orderdetails')->insert([
+                DB::table('order_details')->insert([
                     'product_id' => $item->id,
+                    'discount'=>0,
                     'order_id'=> $order_id,
                     'price'=>$item->price,
                     'quantity'=>$item->qty,
@@ -230,17 +234,19 @@ class CheckoutController extends Controller
                 ]);
              }
             DB::commit();
+
         }catch(\Exception $e){
             DB::rollBack();
-            // return redirect()->back()
-            //     ->with('message', 'ERROR-CREATE: Code EC1002')
-            //     ->with('status', 'danger')
-            //     ->withInput();
+            var_dump($e->getMessage()); die;
+            return redirect()->back()
+                ->with('message', 'ERROR-CREATE: Code EC1002')
+                ->with('status', 'danger')
+                ->withInput();
         }
 
-        // Cart::destroy();
-        // session()->flush();
-        // return redirect()->action('Front\CheckoutController@Complete');
+        Cart::destroy();
+         session()->flush();
+         return redirect()->action('Front\CheckoutController@Complete');
     }
 
     public function Complete()
