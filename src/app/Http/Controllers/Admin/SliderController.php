@@ -6,82 +6,115 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Slider;
+use App\Models\SliderTranslation;
+use App\Models\Language;
 use DB;
 
 class SliderController extends Controller
 {
-   	public function sliderList(){
-        $sliders = Slider::orderBy('sort_order', 'asc')->get();
-        return view('admin.slider.slider_list')->with(["sliders" => $sliders]);
+   	public function index(Request $request){
+        $sliders = Slider::orderBy('order', 'asc')->paginate(10);
+        return view('admin.sliders.index',compact('sliders'))
+        ->with('i', ($request->input('page', 1) - 1) * 10);  
     }
-    public function addSlider(){
-        $sliders =  Slider::all();  
-        return view('admin.slider.add_slider')->with(["sliders" => $sliders]);
-    } 
-    public function insertSlider(Request $request){
-        // Thiếu validation
+
+    public function create(){
+        $language_list = Language::all();        
+        return view('admin.sliders.create',compact('language_list'));
+    }
+
+    public function store(Request $request){
+        $this->validate($request,['title' => 'required',
+                                  'url' => 'required',
+                                  'sort_order' => 'required'                                  
+                                ]);        
 
         $image = '';
         $img_file = $request->file('image');
         if($img_file != NULL){
-            $path = './public/assets/img/slider/';
+            $path = './public/assets/img/slider';
             if(!is_dir($path)){
                 mkdir($path, 0777, true);
             }
-            $image = $this->upload_file($request->title, $img_file, $path);
+            $img = Image::make($img_file->getRealPath());
+            $img->fit(1920, 1080)->save($path.'/'.$img_file->getClientOriginalName());               
+            $image = $img_file->getClientOriginalName();
         }   
 
         $slider = new Slider;
         $slider->title = $request->title;
-        $slider->en_title = $request->en_title;
-        $slider->description = $request->description;
-        $slider->en_description = $request->en_description;
         $slider->url = $request->url;
-        $slider->sort_order = $request->sort_order;
+        $slider->order = $request->sort_order;
         $slider->is_show = $request->is_show;
         $slider->image = $image;
         $slider->save();
 
-        session()->flash('success_message', "Thêm slider thành công !");
-        return redirect()->route('admin.slider');
-    }  
-    public function editSlider($slider_id)
-    {
-        $sliderDetail = Slider::find($slider_id);
-        return view('admin.slider.edit_slider')->with(["sliderDetail" => $sliderDetail]); 
-    }
-    public function updateSlider($slider_id, Request $request)
-    {
-        $slider = Slider::find($slider_id);
+        $language_list = Language::all();
+        foreach ($language_list as $language){ 
+            $slider_translation = new SliderTranslation;
+            $slider_translation->slider_id = $slider->id;
+            $slider_translation->language_id = $language->id;
+            $slider_translation->description = $request->input($language->id.'-description');
+            $slider_translation->save();
+        }        
 
-        // Thiếu validation
+        session()->flash('success_message', "Thêm slider thành công !");
+        return redirect()->route('admin.sliders.index');
+    }
+
+    public function edit($id)
+    {
+        $slider = Slider::find($id);
+        $language_list = Language::all();
+        $slider_translations = SliderTranslation::where('slider_id',$id)->orderBy('language_id','asc')->get();
+        return view('admin.sliders.edit',compact('slider','language_list','slider_translations'));   
+    }
+
+    public function update($id, Request $request)
+    {
+        $slider = Slider::find($id);
+
+        $this->validate($request,['title' => 'required',
+                                  'url' => 'required',
+                                  'sort_order' => 'required'                                  
+                                ]);   
 
         $image = '';
         $img_file = $request->file('image');
         if($img_file != NULL){
-            $path = './public/assets/img/slider/';
+            $path = './public/assets/img/slider';
             if(!is_dir($path)){
                 mkdir($path, 0777, true);
             }
-            $image = $this->upload_file($request->title, $img_file, $path);
+            $img = Image::make($img_file->getRealPath());
+            $img->fit(1920, 1080)->save($path.'/'.$img_file->getClientOriginalName());               
+            $image = $img_file->getClientOriginalName();
         }   
 
         $slider->title = $request->title;
-        $slider->en_title = $request->en_title;
-        $slider->description = $request->description;
-        $slider->en_description = $request->en_description;
         $slider->url = $request->url;
-        $slider->sort_order = $request->sort_order;
+        $slider->order = $request->sort_order;
         $slider->is_show = $request->is_show;
-        $slider->image = $image != '' ? $image : $slider->image;
+        $slider->image = $image;
         $slider->save();
+
+        $language_list = Language::all();
+        foreach ($language_list as $language){
+            $slider_tran_id=$request->input($language->id.'-id');
+            $slider_translation = SliderTranslation::find($slider_tran_id);
+            if ($slider_translation == null) {
+                $slider_translation = new SliderTranslation;
+            }
+            $slider_translation->description = $request->input($language->id.'-description');
+            $slider_translation->save();
+        }        
 
 
         session()->flash('success_message', "Cập nhật thành công !");
-        return redirect()->route('admin.slider'); 
+        return redirect()->route('admin.sliders.index'); 
     }
-    public function deleteSlider($slider_id){
-        $slider = Slider::find($slider_id);
+    public function destroy($id){
+        $slider = Slider::find($id);
         if($slider->image != ''){
             $img_file = './public/assets/img/slider/'.$slider->image;
             if(file_exists($img_file))
@@ -90,29 +123,6 @@ class SliderController extends Controller
         $slider->delete();
 
         session()->flash('success_message', "Xóa slider thành công !");
-        return redirect()->route('admin.slider'); 
-    }
-
-    // Upload 1 file
-    function upload_file($object_name, $file, $path){
-        if($object_name != ''){
-            $ext = $file->getClientOriginalExtension();
-            $org_name = url_format($object_name);   // Định dạng lại phần tên gốc (remove utf8)
-            $file_name = $org_name.".".$ext;
-            $i=0;
-            $check_file = file_exists($path.$file_name); // Kiểm tra file đã tồn tại trong thư mục hay chưa
-            while ($check_file){  // Nếu đã tồn tại thì thêm số đếm vào sau tên file
-                $i++;
-                $tmp_org_name = $org_name.'-'.$i;
-                $file_name = $tmp_org_name.".".$ext;
-                $check_file = file_exists($path.$file_name);
-            }
-            if($file->move($path,$file_name))
-                return $file_name;
-            else
-                return '';
-        }
-        else
-            return $file->getClientOriginalName();
+        return redirect()->route('admin.sliders.index'); 
     }
 }

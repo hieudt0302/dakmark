@@ -104,12 +104,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('navigator/delete/{id}',['as'  =>'admin.navigator.delete','uses' => 'NavigatorController@deleteNavigator']);
     
      // Sliders
-    Route::get('slider',['as'=>'admin.slider','uses'=>'SliderController@sliderList']);
-    Route::get('slider/add',['as'=>'admin.slider.add','uses'=>'SliderController@addSlider']);
-    Route::post('slider/add',['as'=>'admin.slider.insert','uses'=>'SliderController@insertSlider']);
-    Route::get('slider/edit/{id}',['as'  =>'admin.slider.edit','uses' => 'SliderController@editSlider']);
-    Route::post('slider/edit/{id}',['as' =>'admin.slider.update','uses' => 'SliderController@updateSlider']);
-    Route::get('slider/delete/{id}',['as'  =>'admin.slider.delete','uses' => 'SliderController@deleteSlider']);
+    // Route::get('slider/dev',['as'=>'admin.slider','uses'=>'SliderController@sliderList']);
+    // Route::get('slider/add',['as'=>'admin.slider.add','uses'=>'SliderController@addSlider']);
+    // Route::post('slider/add',['as'=>'admin.slider.insert','uses'=>'SliderController@insertSlider']);
+    // Route::get('slider/edit/{id}',['as'  =>'admin.slider.edit','uses' => 'SliderController@editSlider']);
+    // Route::post('slider/edit/{id}',['as' =>'admin.slider.update','uses' => 'SliderController@updateSlider']);
+    // Route::get('slider/delete/{id}',['as'  =>'admin.slider.delete','uses' => 'SliderController@deleteSlider']);
 
     // Blogs
 	
@@ -173,6 +173,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('info-pages/{id}',['as'  =>'admin.info-pages.show','uses' => 'InfoPagesController@show']);
     Route::get('info-pages/{id}/edit',['as'  =>'admin.info-pages.edit','uses' => 'InfoPagesController@edit']);
     Route::patch('info-pages/{id}',['as'  =>'admin.info-pages.update','uses' => 'InfoPagesController@update']);    
-    Route::delete('info-pages/{id}',['as'  =>'admin.info-pages.destroy','uses' => 'InfoPagesController@destroy']);     
+    Route::delete('info-pages/{id}',['as'  =>'admin.info-pages.destroy','uses' => 'InfoPagesController@destroy']);   
+
+    //Slider
+    Route::get('sliders/dev',['as'=>'admin.sliders.index','uses'=>'SliderController@index']);
+    Route::get('sliders/create',['as'=>'admin.sliders.create','uses'=>'SliderController@create']);
+    Route::post('sliders/create',['as'=>'admin.sliders.store','uses'=>'SliderController@store']);
+    Route::get('sliders/{id}',['as'  =>'admin.sliders.show','uses' => 'SliderController@show']);
+    Route::get('sliders/{id}/edit',['as'  =>'admin.sliders.edit','uses' => 'SliderController@edit']);
+    Route::patch('sliders/{id}',['as'  =>'admin.sliders.update','uses' => 'SliderController@update']);    
+    Route::delete('sliders/{id}',['as'  =>'admin.sliders.destroy','uses' => 'SliderController@destroy']);      
 });
 

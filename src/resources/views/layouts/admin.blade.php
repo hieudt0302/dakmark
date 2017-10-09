@@ -512,7 +512,21 @@ ol {
             <li><a href="{{url('/admin/info-pages/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
             <li><a href="{{url('/admin/info-pages/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
           </ul>
-        </li>              
+        </li>    
+
+        <!-- Slider-->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-picture-o"></i> <span>Slider</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/admin/sliders/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+            <li><a href="{{url('/admin/sliders/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+          </ul>
+        </li>                     
       
         <li class="header">QUICK VIEW</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Đơn Hàng</span></a></li>
