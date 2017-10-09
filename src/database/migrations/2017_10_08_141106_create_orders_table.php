@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('order_no');
             $table->dateTime('order_start_date');
-            $table->dateTime('order_end_date');
+            $table->dateTime('order_end_date')->nullable();
 
             $table->decimal('order_tax',12,2);
             $table->decimal('order_shipping_price',12,2);

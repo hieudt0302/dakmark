@@ -80,6 +80,95 @@
                     <h3 class="alt-features-title font-alt">Phương Thức Thanh Toán</h3>
                 </div>
             </div>
+            <hr>
+        </div>
+        <div class="row">
+            <h5 class="uppercase mb-30">Sản Phẩm</h5>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped shopping-cart-table">
+                    <tr>
+                        <th class="hidden-xs">
+                            Photo
+                        </th>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Q-ty
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                    @foreach(Cart::content() as $row)
+                    <tr>
+                        <td class="hidden-xs">
+                            <a href=""><img src="images/shop/previews/shop-prev-5.jpg" alt=""/></a>
+                        </td>
+                        <td>
+                            <a href="#" title="">{{$row->name}}</a>
+                        </td>
+                        <td>
+                            <form class="form">
+                               <input type="number" class="input-sm" style="width: 60px;" min="1" max="100" value="{{$row->qty}}" />
+                            </form>
+                        </td>
+                        <td>
+                            {{$row->price}}
+                        </td>
+                        <td>
+                            <a href=""><i class="fa fa-times"></i> <span class="hidden-xs">Remove</span></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-8 text align-right">
+                        <div>
+                            <a href="" class="btn btn-mod btn-gray btn-round btn-small">Update Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-60" />
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-6 text align-right pt-10">
+                        <div>
+                            Cart subtotal: <strong>{{Cart::subtotal()}}</strong>
+                        </div>
+                        <div class="mb-10">
+                            Shipping: <strong>$0.00</strong>
+                        </div>
+                        <div class="lead mt-0 mb-30">
+                            Order Total: <strong>{{Cart::total()}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 mb-80">
+                <form method="post" action="{{url('/Checkout/Confirm/Next')}}" id="form-3" role="form" class="form">
+                    {{ csrf_field() }}
+                    <div class="mb-20 mb-md-10">
+                        <!-- Note -->
+                        <input type="text" name="note" id="note" class="form-control input-sm" placeholder="Note" maxlength="100">
+                    </div>
+                    <div class="mb-20 mb-md-10">
+                        <!-- NEXT -->
+                        <button type="submit" class="btn btn-mod btn-large btn-round">CONFIRM</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </section>

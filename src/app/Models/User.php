@@ -40,11 +40,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
     /**
-     * Get the products for the category.
+     * Get the products for the user.
      */
      public function posts()
      {
-         return $this->hasMany('App\Models\Posts');
+         return $this->hasMany('App\Models\Post');
      }
 
       /**
@@ -54,4 +54,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      {
          return $this->hasMany('App\Models\BookAddress');
      }
+
+     /**
+     * Get the orders for the user.
+     */
+     public function orders()
+     {
+         return $this->hasMany('App\Models\Order');
+     }
+
 }

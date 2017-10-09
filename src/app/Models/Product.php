@@ -42,6 +42,14 @@ class Product extends Model
          return $this->morphMany('App\Models\Comment', 'commentable');
      }
 
+    /**
+     * Get the orderdetails for the product.
+     */
+     public function orderdetails()
+     {
+         return $this->hasMany('App\Models\OrderDetail');
+     }
+
      /**
      * Get the category that owns the product.
      */

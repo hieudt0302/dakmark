@@ -27,10 +27,8 @@
 <!-- Section -->
 <section class="page-section">
     <div class="container">
-        
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                
                 <table class="table table-striped shopping-cart-table">
                     <tr>
                         <th class="hidden-xs">
@@ -71,9 +69,7 @@
                     </tr>
                     @endforeach
                 </table>
-                
                 <hr />
-                
                 <div class="row">
                     <div class="col-sm-8">
                         <form action="#" class="form">
@@ -82,23 +78,16 @@
                         </form>
                     </div>
                     <div class="col-sm-4 text align-right">
-                        
                         <div>
                             <a href="" class="btn btn-mod btn-gray btn-round btn-small">Update Cart</a>
                         </div>
-                        
                     </div>
                 </div>
-                
                 <hr class="mb-60" />
-                
                 <div class="row">
                     <div class="col-sm-6">
-                        
                         <h3 class="small-title font-alt">Calculate Shipping</h3>
-                        
                         <form action="#" class="form">
-                            
                             <div class="mb-10">
                                 <select class="input-md form-control">
                                     <option>Select Country</option>
@@ -107,45 +96,31 @@
                                     <option>Laos</option>
                                 </select>
                             </div>
-                            
                             <div class="mb-10">
                                 <input placeholder="State" class="input-md form-control" type="text" pattern=".{3,100}" />
                             </div>
-                            
                             <div class="mb-10">
                                 <input placeholder="Postcode / Zip" class="input-md form-control" type="text" pattern=".{3,100}" />
                             </div>
-                            
                         </form>
-                        
                     </div>
                     <div class="col-sm-6 text align-right pt-10">
-                        
-                        
                         <div>
                             Cart subtotal: <strong>{{Cart::subtotal()}}</strong>
                         </div>
-                        
                         <div class="mb-10">
                             Shipping: <strong>$0.00</strong>
                         </div>
-                        
                         <div class="lead mt-0 mb-30">
                             Order Total: <strong>{{Cart::total()}}</strong>
                         </div>
-                        
                         <div>
                             <a href="{{url('/Checkout/BillingAddress/dev')}}" class="btn btn-mod btn-round btn-large">Proceed to Checkout</a>
                         </div>
-                        
                     </div>
                 </div>
-                
-                
-                
             </div>
         </div>
-    
     </div>
 </section>
 <!-- End Section -->
