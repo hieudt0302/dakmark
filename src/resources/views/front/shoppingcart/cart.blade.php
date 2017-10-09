@@ -102,9 +102,9 @@
                             <div class="mb-10">
                                 <select class="input-md form-control">
                                     <option>Select Country</option>
-                                    <option>France</option>
-                                    <option>Ukraine</option>
-                                    <option>USA</option>
+                                    <option>Vietnam</option>
+                                    <option>China</option>
+                                    <option>Laos</option>
                                 </select>
                             </div>
                             
@@ -135,7 +135,7 @@
                         </div>
                         
                         <div>
-                            <a href="" class="btn btn-mod btn-round btn-large">Proceed to Checkout</a>
+                            <a href="{{url('/Checkout/BillingAddress/dev')}}" class="btn btn-mod btn-round btn-large">Proceed to Checkout</a>
                         </div>
                         
                     </div>

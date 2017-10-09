@@ -25,9 +25,6 @@ Auth::routes();
 Route::get('/', 'Front\HomeController@index');
 Route::get('/about', 'Front\HomeController@about');
 
-/* SHOPPING CART */
-Route::get('/cart', 'Front\ShoppingCartController@cart');
-
 /* FAQ */
 Route::get('/faqs', 'Front\FaqController@index');
 
@@ -42,11 +39,35 @@ Route::get('/posts/{slug}', 'Front\PostsController@show');
 
 /* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
+
 /* COMMENT - PRODUCT */
 Route::post('/posts/{slug}/comment', 'Front\CommentsController@store');
 
 /* MENU */
  Route::get('/{parent}/{slug}', 'Front\MenuController@menu');
+
+/* SHOPPING CART */
+Route::get('/cart', 'Front\ShoppingCartController@cart');
+
+/* CHECKOUT*/
+//Step 1
+Route::get('/Checkout/BillingAddress/dev', 'Front\CheckoutController@BillingAddress');
+Route::post('/Checkout/BillingAddress/Next', 'Front\CheckoutController@BillingAddressNext');
+//Step 2
+Route::get('/Checkout/ShippingAddress/dev', 'Front\CheckoutController@ShippingAddress');
+Route::post('/Checkout/ShippingAddress/Next', 'Front\CheckoutController@ShippingAddressNext');
+//Step 3
+Route::get('/Checkout/ShippingMethod/dev', 'Front\CheckoutController@ShippingMethod');
+Route::post('/Checkout/ShippingMethod/Next', 'Front\CheckoutController@ShippingMethodNext');
+//Step 4
+Route::get('/Checkout/PaymentMethod/dev', 'Front\CheckoutController@PaymentMethod');
+Route::post('/Checkout/PaymentMethod/Next', 'Front\CheckoutController@PaymentMethodNext');
+//Step 5
+Route::get('/Checkout/Confirm/dev', 'Front\CheckoutController@Confirm');
+Route::post('/Checkout/Confirm/Next', 'Front\CheckoutController@ConfirmNext');
+//Step 6
+Route::get('/Checkout/Complete/dev', 'Front\CheckoutController@Complete');
+Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
 /* ADMIN */
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {

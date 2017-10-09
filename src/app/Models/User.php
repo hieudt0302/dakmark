@@ -46,4 +46,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      {
          return $this->hasMany('App\Models\Posts');
      }
+
+      /**
+     * Get the bookaddresses for the user.
+     */
+     public function bookaddresses()
+     {
+         return $this->hasMany('App\Models\BookAddress');
+     }
 }

@@ -17,13 +17,13 @@ class CreateBookAddressesTable extends Migration
             $table->increments('id');
             $table->string('contact');
             $table->string('address');
-            $table->string('district',50);
-            $table->string('city',50);
-            $table->string('country',50);
-            $table->string('zipcode');
+            $table->string('district',50)->nullable();
+            $table->string('city',50)->nullable();
+            $table->string('country',50)->nullable();
+            $table->string('zipcode')->nullable();
             $table->string('phone',20);
-            $table->string('fax',20);
-            $table->string('email');
+            $table->string('fax',20)->nullable();
+            $table->string('email')->nullable();
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
