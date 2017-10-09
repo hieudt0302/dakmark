@@ -1,6 +1,6 @@
 @extends('layouts.admin')
  
-@section('content')
+@section('content') 
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -69,8 +69,7 @@
                     <td>
                         <textarea class="form-control" name="{{$language->id}}-content" id="{{$language->name}}-con" placeholder="Nhập nội dung"></textarea>
                         <script type="text/javascript">
-                          CKEDITOR.replace( '{{$language->id}}-content' );
-                          CKEDITOR.add            
+                          CKEDITOR.replace( '{{$language->id}}-content' );        
                         </script>                           
                     </td>
                 </tr> 
@@ -83,7 +82,7 @@
     </div>
 </form>
 
-<script src="{{asset('/ckeditor/ckeditor.js')}}"></script>       
+<script src="{{asset('/ckeditor/ckeditor.js')}}"></script>     
 <script type="text/javascript">
     $(document).ready(function(){
         $.ajaxSetup({

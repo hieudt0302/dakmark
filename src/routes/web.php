@@ -131,7 +131,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     // Route::post('get-system-cat/{system_id}',['as'=>'admin.get-system-cat','uses'=>'NavigatorController@get_system_cat']);
 
     //FAQs
-    Route::get('faqs',['as'=>'admin.faqs.index','uses'=>'FaqController@index']);
+    Route::get('faqs/dev',['as'=>'admin.faqs.index','uses'=>'FaqController@index']);
     Route::get('faqs/create',['as'=>'admin.faqs.create','uses'=>'FaqController@create']);
     Route::post('faqs/create',['as'=>'admin.faqs.store','uses'=>'FaqController@store']);
     Route::get('faqs/{id}',['as'  =>'admin.faqs.show','uses' => 'FaqController@show']);
@@ -167,7 +167,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('orders/{id}',['as'=>'admin.orders.destroy','uses'=>'OrdersController@destroy','middleware' => ['role:admin|manager']]);
 
     // InfoPages
-    Route::get('info-pages',['as'=>'admin.info-pages.index','uses'=>'InfoPagesController@index']);
+    Route::get('info-pages/dev',['as'=>'admin.info-pages.index','uses'=>'InfoPagesController@index']);
     Route::get('info-pages/create',['as'=>'admin.info-pages.create','uses'=>'InfoPagesController@create']);
     Route::post('info-pages/create',['as'=>'admin.info-pages.store','uses'=>'InfoPagesController@store']);
     Route::get('info-pages/{id}',['as'  =>'admin.info-pages.show','uses' => 'InfoPagesController@show']);
