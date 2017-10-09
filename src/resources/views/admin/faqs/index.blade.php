@@ -6,9 +6,6 @@
 	        <div class="pull-left">
 	            <h2>Quản Lý FAQ</h2>
 	        </div>
-	        <div class="pull-right">
-	            <a class="btn btn-success" href="{{ route('admin.faqs.create') }}"> Tạo Mới</a>
-	        </div>
 	    </div>
 	</div>
 	@if ($message = Session::get('success'))

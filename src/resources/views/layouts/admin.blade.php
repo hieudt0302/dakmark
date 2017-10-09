@@ -486,6 +486,33 @@ ol {
             <li><a href="{{url('/admin/menu/config/dev')}}"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
           </ul>
         </li>
+        <!-- FAQ -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-question"></i> <span>FAQ</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/admin/faqs/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+            <li><a href="{{url('/admin/faqs/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+          </ul>
+        </li>     
+
+        <!-- InfoPage -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-newspaper-o"></i> <span>Trang thông tin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/admin/info-pages/dev')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
+            <li><a href="{{url('/admin/info-pages/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+          </ul>
+        </li>              
       
         <li class="header">QUICK VIEW</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Đơn Hàng</span></a></li>
