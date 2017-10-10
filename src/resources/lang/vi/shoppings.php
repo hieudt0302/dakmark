@@ -14,8 +14,8 @@ return [
 	'order-stat-unclear' => 'Không xác định',	
 	'items' => 'Sản phẩm',
 	'add-cart' => 'Thêm vào giở hàng',
-	 'filter' => 'Lọc',
-	 'filter-price' => 'Lọc theo giá',	
-	 'related-products' => 'Sản phẩm liên quan',
-	 'product-details' => 'Chi tiết sản phẩm',	  	 					    
+	'filter' => 'Lọc',
+	'filter-price' => 'Lọc theo giá',	
+	'related-products' => 'Sản phẩm liên quan',
+	'product-details' => 'Chi tiết sản phẩm',	  	 					    
 ];

@@ -37,5 +37,11 @@ return [
     'placeholder_confirmpassword' => 'Xác nhận lại mật khẩu',
     'recaptcha' =>'?hl=vi',
     'backhome' => 'Trở Về Trang Chủ',
-     'alert_required_input' => 'Trường yêu cầu nhập thông tin',       
+    'alert_required_input' => 'Trường yêu cầu nhập thông tin',
+    'client-feedback-warning' => 'Xin lỗi, có một vài vấn đề!',
+    'client-feedback-warning-detailed' => 'Bạn cần hoàn thành các yêu cầu dưới đây.',
+    'input-email-message' => 'Vui lòng cung cấp địa chỉ email của bạn',  
+    'reset-password-request' => 'Yêu cầu đổi mật khẩu',
+    'username-remind' => 'Nhắc tên tài khoản',      
+    'username-remind-request' => 'Yêu cầu nhắc tên tài khoản',                         
 ];

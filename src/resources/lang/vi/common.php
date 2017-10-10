@@ -3,6 +3,7 @@
 return [
      'common' => 'Chung',
      'navigate' => 'Điều hướng',
+	 'view' => 'Xem',        
 	 'add' => 'Thêm',
 	 'edit' => 'Sửa',
 	 'delete' => 'Xóa',
@@ -10,6 +11,7 @@ return [
 	 'cancel' => 'Hủy',	 
 	 'or' => 'Hoặc',
 	 'search-message' => 'Kết quả tìm kiếm cho từ khóa: ',
+	 'no-result' => 'Không tìm thấy dữ liệu',	 
 	 'created-at' => 'Ngày tạo',
 	 'action' => 'Thao tác',	 
 	 'from-date' => 'Từ ngày',
@@ -19,5 +21,8 @@ return [
 	 'more-details' => 'Xem chi tiết',
      'search' => 'Tìm kiếm',
      'profile' => 'Thông tin cá nhân',
-     'see-more' => 'Xem thêm',            	 	 	 	      
+     'see-more' => 'Xem thêm',
+     'categories' => 'Danh mục',
+     'search' => 'Tìm kiếm...',
+	 'home' => 'Trang chủ',                           	 	 	 	      
 ];

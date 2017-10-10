@@ -12,16 +12,15 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-
-    '' => '',
-    'home' => 'HOME',
-    'about-us' => 'ABOUT',
-    'cert' => 'CERTIFICATES',
-    'shop' => 'SHOP',
-    'blog' => 'BLOG',
-    'contact' => 'CONTACT',
-    'search' => 'SEARCH',
-    'cart' => 'CART',
-    'account' => 'ACCOUNT',           
+	
+    'contact' => 'Contact',     
+	'headquarter' => 'Headquarter',
+    'address' => 'Address',
+    'phone' => 'Phone',
+    'email' => 'Email',
+	'message' => 'Message',
+	'name' => 'Name',
+	'submit' => 'Summit message',
+    'required-message' => ' All the fields are required',    
 
 ];

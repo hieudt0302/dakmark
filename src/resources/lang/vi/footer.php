@@ -11,5 +11,6 @@ return [
     'sign-in' => 'Đăng nhập',
     'view-cart' => 'Giỏ hàng',
     'my-wishlist' => 'Danh sách muốn mua',
-    'order-history' => 'Lịch sử mua hàng',    
+    'order-history' => 'Lịch sử mua hàng',
+    'faqs' => 'Câu hỏi thường gặp',        
 ];

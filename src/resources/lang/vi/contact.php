@@ -13,15 +13,13 @@ return [
     |
     */
 
-    '' => '',
-    'home' => 'HOME',
-    'about-us' => 'ABOUT',
-    'cert' => 'CERTIFICATES',
-    'shop' => 'SHOP',
-    'blog' => 'BLOG',
-    'contact' => 'CONTACT',
-    'search' => 'SEARCH',
-    'cart' => 'CART',
-    'account' => 'ACCOUNT',           
-
+    'contact' => 'Liên hệ',	
+	'headquarter' => 'Trụ sở chính',
+    'address' => 'Địa chỉ',
+    'phone' => 'Điện thoại',
+    'email' => 'Email',
+	'message' => 'Nội dung tin nhắn',
+	'name' => 'Tên',
+	'submit' => 'Gửi',
+    'required-message' => ' Cần điền tất cả nội dung trên',        
 ];
