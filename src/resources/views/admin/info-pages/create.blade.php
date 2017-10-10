@@ -42,7 +42,7 @@
                         <span class="text-danger">*</span>
                     </td>
                     <td>
-                        <input type="text" id="title" class="form-control" name="title" placeholder="Nhập nội dung" />
+                        <input type="text" id="title" class="form-control" name="title" placeholder="Nhập tiêu đề" />
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
                         <span class="text-danger">*</span>
                     </td>
                     <td>
-                        <input type="text" id="slug" class="form-control" name="slug" placeholder="Nhập nội dung"/>
+                        <input type="text" id="slug" class="form-control" name="slug" placeholder="Nhập slug"/>
                         <span class="text-danger">{{ $errors->first('slug') }}</span>
                     </td>
                     <td style="padding-left:10px">
@@ -65,11 +65,21 @@
         <div class="tab-pane fade" id="{{$language->id}}-content">
             <table class="table table-responsive">
                 <tr>
+                    <td>
+                        Tiêu đề hiển thị
+                        <span class="text-danger">*</span>
+                    </td>
+                    <td>
+                        <input type="text" id="title" class="form-control" name="{{$language->id}}-title" placeholder="Nhập tiêu đề" />
+                    </td>
+                </tr>                
+                <tr>
                     <td>Nội dung</td>                  
                     <td>
-                        <textarea class="form-control" name="{{$language->id}}-content" id="{{$language->name}}-con" placeholder="Nhập nội dung"></textarea>
+                        <textarea class="form-control ckeditor" name="{{$language->id}}-content" placeholder="Nhập nội dung"></textarea>
                         <script type="text/javascript">
-                          CKEDITOR.replace( '{{$language->id}}-content' );        
+                          CKEDITOR.replace( '{{$language->id}}-content' );
+                          CKEDITOR.add                                    
                         </script>                           
                     </td>
                 </tr> 

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Carbon\Carbon;
+use App\Models\InfoPage;
+use App\Models\InfoPageTranslation;
+use App\Models\Language;
 
 class HomeController extends Controller
 {
@@ -21,9 +24,30 @@ class HomeController extends Controller
     }
 
     public function about()
-    {
-        return View("front.home.about");
+    { 
+        $info_page_translation = $this->getInfoPageTranslation('about');
+        return View("front.home.infopage",compact('info_page_translation'));
     }
+
+    public function returns()
+    {
+        $info_page_translation = $this->getInfoPageTranslation('returns');
+        return View("front.home.infopage",compact('info_page_translation'));
+    }
+
+    public function purchase_flow()
+    {
+        $info_page_translation = $this->getInfoPageTranslation('purchase-flow');
+        return View("front.home.infopage",compact('info_page_translation'));
+    }    
+
+    public function showrooms()
+    {
+        $info_page_translation = $this->getInfoPageTranslation('showrooms');
+        return View("front.home.infopage",compact('info_page_translation'));
+    }   
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -89,5 +113,18 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function getInfoPageTranslation($slug){
+        $language_id = 1; //make vietnamese as default alternative
+        $locale = \App::getLocale(); 
+        $language = Language::where('name',$locale)->first();
+        if ($language != null){
+            $language_id = $language->id; //make english as default alternative
+        }
+        $info_page = InfoPage::where('slug',$slug)->first(); 
+        $info_page_translation = InfoPageTranslation::where('info_page_id',$info_page->id)->where('language_id',$language_id)->first();  
+        return $info_page_translation;      
+
     }
 }
