@@ -17,9 +17,8 @@
         <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
         
-        <!-- CSS -->
-        
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <!-- CSS -->        
+        <!-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style-responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">

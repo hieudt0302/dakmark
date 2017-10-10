@@ -1,111 +1,303 @@
 @extends('layouts.master')
-@section('title','Địa Chỉ Nhận Hàng - Cà Phê Đăk Hà')
+@section('title','Cà Phê Đăk Hà - Giỏ Hàng')
+@section('header')
+@parent
+    <!-- OVERRIDER MASTER CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontastic.css') }}" />   
+@endsection
 @section('content')
-<!-- Head Section -->
-<section class="small-section bg-gray-lighter">
-    <div class="relative container align-left">
-        <div class="row">
-            
-            <div class="col-md-6">
-                <h1 class="hs-line-11 font-alt mb-0">Checkout</h1>
-            </div>
-            
-            <div class="col-md-6 mt-30">
-                <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">Cart</a>&nbsp;/&nbsp;<a href="#">Address</a>&nbsp;/&nbsp;<span>Shipping</span>&nbsp;/&nbsp;<span>Payment</span>&nbsp;/&nbsp;<span>Confirm</span>&nbsp;/&nbsp;<span>Complete</span>
-                </div>
-                
-            </div>
-        </div>
+<div id="content-wrapper">
+            <section id="content" class="container mt-3">
+
+	
+
+
+
+
+
+<div class="costeps row no-gutters">
+		<div class="col-2 costep visited" data-step="cart">
+			<a class="costep-link" href="/frontend/en/cart">
+				<i class="costep-icon"></i>
+				<span class="costep-label">Cart</span>
+			</a>
+		</div>
+		<div class="col-2 costep active" data-step="address">
+			<a class="costep-link" href="/frontend/en/Checkout/BillingAddress">
+				<i class="costep-icon"></i>
+				<span class="costep-label">Address</span>
+			</a>
+		</div>
+		<div class="col-2 costep inactive" data-step="shipping">
+			<a class="costep-link" href="javascript:void(0)">
+				<i class="costep-icon"></i>
+				<span class="costep-label">Shipping</span>
+			</a>
+		</div>
+		<div class="col-2 costep inactive" data-step="payment">
+			<a class="costep-link" href="javascript:void(0)">
+				<i class="costep-icon"></i>
+				<span class="costep-label">Payment</span>
+			</a>
+		</div>
+		<div class="col-2 costep inactive" data-step="confirm">
+			<a class="costep-link" href="javascript:void(0)">
+				<i class="costep-icon"></i>
+				<span class="costep-label">Confirm</span>
+			</a>
+		</div>
+		<div class="col-2 costep inactive" data-step="complete">
+			<a class="costep-link" href="javascript:void(0)">
+				<i class="costep-icon"></i>
+				<span class="costep-label">Complete</span>
+			</a>
+		</div>
+</div>
+
+
+
+
+
+                <div id="content-body" class="row mt-4">
+
+
+					<div id="content-center" class="col-lg-12">
+
+
+
+
+
+
+<div class="page shipping-address-page">
+    <div class="page-title">
+        <h1 class="h3">Shipping address</h1>
+    </div>
+    <div class="page-body checkout-data">
         
-    </div>
-</section>
-<!-- End Head Section -->
 
 
-<!-- Section -->
-<section class="page-section">
-    <div class="container relative">
-        <div class="row">
-            <h2 class="section-title font-alt mb-70 mb-sm-40">Địa Chỉ Nhận Hàng</h2>
-            <h5 class="uppercase mb-30">Chọn Địa Chỉ</h5>
-            <hr>
-        </div>
-        <div class="row multi-columns-row">
-            @foreach($book_addresses as $bookaddress)
-            <div class="col-sm-6 col-md-4 col-lg-4" style="border-radius:.25rem; border: 1px solid rgba(0,0,0,0.125);">
-                <div class=" align-center">
-                    <div class="alt-features-icon">
-                        <form method="POST" action="{{url('/Checkout/ShippingAddress/Next')}}">
-                            {{ csrf_field() }}
-                            <input type="hidden" id="bookaddress_id" name="bookaddress_id" value="{{$bookaddress->id}}">
-                            <button type="submit" class="btn btn-mod btn-large btn-round">Ship to this address</button>
-                        </form>
-                    </div>
-                    <h3 class="alt-features-title font-alt">{{$bookaddress->contact}}</h3>
-                    <div class="alt-features-descr align-left">
-                        <p>Phone: {{$bookaddress->phone}}</p>
-                        <p>Address: {{$bookaddress->address}}</p>
-                    </div>
+            <fieldset class="content-group mb-3">
+                <legend><span>Select shipping address</span></legend>
+
+                <div class="card-deck card-cols-sm-1 card-cols-md-2 card-cols-lg-3 address-list">
+                        <div class="card card-block address-list-item">
+                            <div class="address-item">
+                                <button class="btn btn-warning btn-block select-shipping-address-button" onclick="setLocation('/frontend/en/Checkout/SelectShippingAddress?addressId=12896')">
+                                    <span>Ship to this address</span>
+                                    <i class="fa fa-angle-right"></i>
+                                </button>
+                                
+                                <div class="address-data mt-3">
+                                    <div class="name pb-2">
+                                        <strong>dasd asdasd</strong>
+                                    </div>
+                                    <div class="email">Email: sadad@dadasd.com</div>
+                                        <div class="phone">
+                                            Phone number:
+                                            123456789
+                                        </div>
+                                                                                                                <div class="company">
+                                            jj
+                                        </div>
+                                                                            <div class="address1">
+                                            asdasd
+                                        </div>
+                                                                            <div class="address2">
+                                            asdasd
+                                        </div>
+                                                                            <div class="city-state-zip">
+dasd                                                                                            ,
+                                            Baden-Württemberg                                            31232132                                        </div>
+                                                                            <div class="country">
+                                            Deutschland
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="row">
-            <h5 class="uppercase mb-30">Hoặc Thêm Địa Chỉ Khác</h5>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 mb-80">
-                <form method="post" action="{{url('/Checkout/ShippingAddress/Next')}}" id="form-3" role="form" class="form">
-                    {{ csrf_field() }}
-                    <!-- SET NULL -->
-                    <input type="hidden" id="bookaddress_id" name="bookaddress_id">
 
-                    <div class="mb-20 mb-md-10">
-                        <!-- Contact -->
-                        <input type="text" name="contact" id="contact" class="form-control input-sm" placeholder="Contact (*)" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- Phone -->
-                        <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone (*)" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- Address -->
-                        <input type="text" name="address" id="address" class="form-control input-sm" placeholder="Address (*)" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- District -->
-                        <input type="text" name="district" id="district" class="form-control input-sm" placeholder="District" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- City -->
-                        <input type="text" name="city" id="city" class="form-control input-sm" placeholder="City" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- Country -->
-                        <input type="text" name="country" id="country" class="form-control input-sm" placeholder="Country" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- ZipCode -->
-                        <input type="text" name="zipcode" id="zipcode" class="form-control input-sm" placeholder="ZipCode" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- Fax -->
-                        <input type="text" name="fax" id="fax" class="form-control input-sm" placeholder="Fax" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- Email -->
-                        <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email" maxlength="100">
-                    </div>
-                    <div class="mb-20 mb-md-10">
-                        <!-- NEXT -->
-                        <button type="submit" class="btn btn-mod btn-large btn-round">NEXT</button>
-                    </div>
-                </form>
+            </fieldset>
+
+
+
+        <fieldset class="content-group">
+            <legend><span>Or enter new address</span></legend>
+
+            <div class="enter-address">
+<form action="/frontend/en/Checkout/ShippingAddress" method="post" novalidate="novalidate">                    <div class="enter-address-body">
+
+
+
+	<script type="text/javascript">
+			$(function () {
+				$("#NewAddress_CountryId").change(function () {
+					var selectedItem = $(this).val();
+					var ddlStates = $("#NewAddress_StateProvinceId");
+					$.ajax({
+						cache: false,
+						type: "GET",
+						url: "/frontend/en/Country/GetStatesByCountryId",
+						data: { "countryId": selectedItem, "addEmptyStateIfRequired": "true" },
+						success: function (data) {
+							ddlStates.html('');
+							$.each(data, function (id, option) {
+								ddlStates.append($('<option></option>').val(option.id).html(option.name));
+							});
+							ddlStates.trigger("change");
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							alert('Failed to retrieve states.');
+						}  
+					});
+				});
+			});
+	</script>
+<input data-val="true" data-val-number="The field 'ID' must be a number." data-val-required="'Id' must not be empty." id="NewAddress_Id" name="NewAddress.Id" type="hidden" value="0">
+
+<div class="form-horizontal">  
+    
+<div class="form-group row"><label class="col-sm-3 col-form-label" for="NewAddress_Company">Company</label>
+<div class="col-sm-9">
+<input class="form-control" id="NewAddress_Company" name="NewAddress.Company" placeholder="Optional" type="text" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.Company" data-valmsg-replace="true"></span>
+</div>
+</div>
+    
+    <div><hr></div>
+
+
+    <div class="form-group row"><label class="col-sm-3 col-form-label required" for="NewAddress_FirstName" aria-required="true">First name</label>
+<div class="col-sm-9">
+<input class="form-control" data-val="true" data-val-required="First name is required." id="NewAddress_FirstName" name="NewAddress.FirstName" type="text" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.FirstName" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+
+
+    <div class="form-group row"><label class="col-sm-3 col-form-label required" for="NewAddress_LastName" aria-required="true">Last name</label>
+<div class="col-sm-9">
+<input class="form-control" data-val="true" data-val-required="Last name is required." id="NewAddress_LastName" name="NewAddress.LastName" type="text" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.LastName" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+
+<div class="form-group row"><label class="col-sm-3 col-form-label required" for="NewAddress_Address1" aria-required="true">Address 1</label>
+<div class="col-sm-9">
+<input class="form-control" data-val="true" data-val-required="Street address is required" id="NewAddress_Address1" name="NewAddress.Address1" type="text" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.Address1" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+<div class="form-group row"><label class="col-sm-3 col-form-label" for="NewAddress_Address2">Address 2</label>
+<div class="col-sm-9">
+<input class="form-control" id="NewAddress_Address2" name="NewAddress.Address2" placeholder="Optional" type="text" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.Address2" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label required" for="NewAddress_City" aria-required="true">City</label>
+			<div class="col-sm-9">
+				<div class="row sm-gutters d-flex">
+					<div class="col">
+						<input class="form-control" data-val="true" data-val-required="City is required" id="NewAddress_City" name="NewAddress.City" placeholder="" type="text" value="">
+					</div>
+						<div class="col col-auto">
+							<label class="text-right col-form-label required" for="NewAddress_ZipPostalCode" aria-required="true">Zip / postal code</label>
+						</div>
+						<div class="col col-auto">
+							<input class="form-control" data-val="true" data-val-required="Zip / postal code is required" id="NewAddress_ZipPostalCode" name="NewAddress.ZipPostalCode" placeholder="" style="width: 6rem" type="text" value="">
+						</div>
+				</div>
+				<span class="field-validation-valid" data-valmsg-for="NewAddress.City" data-valmsg-replace="true"></span>
+				<span class="field-validation-valid" data-valmsg-for="NewAddress.ZipPostalCode" data-valmsg-replace="true"></span>
+			</div>
+		</div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label required" for="NewAddress_CountryId" aria-required="true">Country</label>
+            <div class="col-sm-9">
+                <select class="form-control select2-hidden-accessible" data-val="true" data-val-number="The field 'Country' must be a number." data-val-required="Country is required." id="NewAddress_CountryId" name="NewAddress.CountryId" tabindex="-1" aria-hidden="true"><option value="0">Select country</option>
+<option value="1">Deutschland</option>
+</select><span class="select2 select2-container select2-container--bootstrap" dir="ltr"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-NewAddress_CountryId-container"><span class="select2-selection__rendered" id="select2-NewAddress_CountryId-container" title="Select country">Select country</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                <span class="field-validation-valid" data-valmsg-for="NewAddress.CountryId" data-valmsg-replace="true"></span>
             </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="NewAddress_StateProvinceId">State / province</label>
+            <div class="col-sm-9">
+                <select class="form-control select2-hidden-accessible" data-val="true" data-val-number="The field 'State / province' must be a number." id="NewAddress_StateProvinceId" name="NewAddress.StateProvinceId" tabindex="-1" aria-hidden="true"><option value="0">Other (Non US)</option>
+</select><span class="select2 select2-container select2-container--bootstrap" dir="ltr"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-NewAddress_StateProvinceId-container"><span class="select2-selection__rendered" id="select2-NewAddress_StateProvinceId-container" title="Other (Non US)">Other (Non US)</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                <span class="field-validation-valid" data-valmsg-for="NewAddress.StateProvinceId" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+    <div><hr></div>
+
+	<div class="form-group row"><label class="col-sm-3 col-form-label required" for="NewAddress_Email" aria-required="true">Email</label>
+<div class="col-sm-9">
+<input class="form-control" data-val="true" data-val-email="Wrong email" data-val-required="Email is required." id="NewAddress_Email" name="NewAddress.Email" type="email" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.Email" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+    
+    
+<div class="form-group row"><label class="col-sm-3 col-form-label required" for="NewAddress_PhoneNumber" aria-required="true">Phone number</label>
+<div class="col-sm-9">
+<input class="form-control" data-val="true" data-val-required="Phone is required" id="NewAddress_PhoneNumber" name="NewAddress.PhoneNumber" type="tel" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.PhoneNumber" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+<div class="form-group row"><label class="col-sm-3 col-form-label" for="NewAddress_FaxNumber">Fax number</label>
+<div class="col-sm-9">
+<input class="form-control" id="NewAddress_FaxNumber" name="NewAddress.FaxNumber" placeholder="Optional" type="tel" value="">
+<span class="field-validation-valid" data-valmsg-for="NewAddress.FaxNumber" data-valmsg-replace="true"></span>
+</div>
+</div>
+
+    <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9 text-muted address-required-hint">
+            * Input elements with asterisk are required and have to be filled out.
         </div>
     </div>
-</section>
-<!-- End Section -->
+
+</div>
+
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-secondary btn-lg" href="/frontend/en/Checkout/BillingAddress">
+                            <i class="fa fa-angle-left"></i>
+                            <span>Back</span>
+                        </a>
+                        <input type="submit" id="nextstep" name="nextstep" class="d-none">
+
+                        <button class="btn btn-warning btn-lg new-address-next-step-button" onclick="$('#nextstep').trigger('click');return false;">
+                            <span>Next</span>
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+                    </div>
+</form>            </div>
+        </fieldset>
+
+
+    </div>
+</div>
+
+
+
+					</div>
+
+
+
+                </div>
+            </section>
+        </div>
 @endsection

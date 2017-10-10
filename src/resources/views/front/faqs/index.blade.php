@@ -2,6 +2,9 @@
 
 @extends('layouts.master')
 @section('title','Cà phê Đak Hà - Trang chủ')
+@section('header')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+@endsection
 @section('content')
 <!-- Head Section -->
             <section class="page-section bg-dark-alfa-30 parallax-3" data-background="images/full-width-images/section-bg-6.jpg">
