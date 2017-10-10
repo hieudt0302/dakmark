@@ -19,7 +19,7 @@
         <ul class="clearlist">
             <!-- Item With Sub -->
             <li>
-                <a href="{{ url('/') }}" class="mn-has-sub active">@lang('header.home')</a>
+                <a href="{{ url('/') }}" class="mn-has-sub">@lang('header.home')</a>
             </li>
             <!-- End Item With Sub -->
             
@@ -78,7 +78,7 @@
             
             <!-- Cart -->
             <li>
-                <a href="{{ url('/cart') }}" class="active"><i class="fa fa-shopping-cart shopping-cart-icon"></i> @lang('header.cart') ( {{ Cart::instance('default')->count(false) }} )</a>
+                <a href="{{ url('/cart') }}" ><i class="fa fa-shopping-cart shopping-cart-icon"></i> @lang('header.cart') ( {{ Cart::instance('default')->count(false) }} )</a>
             </li>
             <!-- End Cart -->
             
