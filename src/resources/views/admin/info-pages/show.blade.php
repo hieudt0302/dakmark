@@ -37,6 +37,9 @@
             </div>         
             @foreach ($info_page_translations as $info_page_tran)
             <div class="tab-pane fade" id="{{$info_page_tran->language_id}}-content">
+                <b>Tiêu đề hiển thị</b><br>
+                {{ $info_page_tran->title }}
+                <br><br>                 
                 <b>Nội dung</b><br>
                 {{ $info_page_tran->content }}
             </div>

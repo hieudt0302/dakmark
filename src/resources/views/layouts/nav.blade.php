@@ -25,7 +25,7 @@
             
             <!-- Item With Sub -->
             <li>
-                <a href="{{ url('/about-us') }}" class="mn-has-sub">@lang('header.about-us')</a>
+                <a href="{{ url('/about') }}" class="mn-has-sub">@lang('header.about-us')</a>
             </li>
             <!-- End Item With Sub -->
             
