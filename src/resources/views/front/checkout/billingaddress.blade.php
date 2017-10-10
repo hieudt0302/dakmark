@@ -76,11 +76,8 @@
         <h1 class="h3">Billing address</h1>
     </div>
     <div class="page-body checkout-data">
-
-
 			<fieldset class="content-group mb-3">
 				<legend><span>Select billing address</span></legend>
-
 				<div class="card-deck card-cols-sm-1 card-cols-md-2 card-cols-lg-3 address-list">
 						<div class="card card-block address-list-item">
 							<div class="address-item">
