@@ -24,6 +24,7 @@ class CreateInfoPageTranslationTable extends Migration
             $table->foreign('info_page_id')->references('id')->on('info_pages')
                 ->onUpdate('cascade')->onDelete('cascade');
 
+            $table->text('title')->nullable();
             $table->text('content')->nullable();
 
             $table->timestamps();

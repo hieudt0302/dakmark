@@ -66,6 +66,15 @@
             <input type="hidden" id="info_page-translation-id" name="{{$info_page_tran->language_id}}-id" value="{{ $info_page_tran->id }}" />
             <table class="table table-responsive">
                 <tr>
+                    <td>
+                        Tiêu đề hiển thị
+                        <span class="text-danger">*</span>
+                    </td>
+                    <td>
+                        <input type="text" id="title" class="form-control" name="{{$info_page_tran->language_id}}-title" value="{{ $info_page_tran->title }}" />
+                    </td>
+                </tr>                
+                <tr>
                     <td>Nội dung</td>
                     <span class="text-danger">*</span>                    
                     <td>
