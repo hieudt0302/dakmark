@@ -20,8 +20,8 @@ class CreateSliderTranslationsTable extends Migration
             $table->foreign('language_id')->references('id')->on('languages')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->integer('info_page_id')->unsigned();        
-            $table->foreign('info_page_id')->references('id')->on('sliders')
+            $table->integer('slider_id')->unsigned();        
+            $table->foreign('slider_id')->references('id')->on('sliders')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->text('description')->nullable();
