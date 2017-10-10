@@ -27,8 +27,9 @@
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
         <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
         <link rel="stylesheet" href="{{ asset('css/rev-slider.css') }}">
-        <link rel="stylesheet" href="{{ asset('rs-plugin/css/settings.css') }}" media="screen" />   
-        
+        <link rel="stylesheet" href="{{ asset('rs-plugin/css/settings.css') }}" media="screen" />  
+         
+        @yield('header')
     </head>
     <body class="appear-animate">
         

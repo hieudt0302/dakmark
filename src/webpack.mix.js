@@ -10,13 +10,18 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+/* BEGIN: MIX ALL THEME JS */
 
+/* ORDERS */
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
 
+mix.copy('resources/assets/css/fontastic.css', 'public/css')
+
+mix.copyDirectory('resources/assets/css/fonts', 'public/css/fonts')
 
 
-/* BEGIN: MIX ALL THEME JS */
+/* FRONT END*/
 mix.copy('resources/assets/front/js/all.js', 'public/js')
 mix.copy('resources/assets/front/js/bootstrap.min.js', 'public/js')
 mix.copy('resources/assets/front/js/contact-form.js', 'public/js')
@@ -69,7 +74,8 @@ mix.copyDirectory('resources/assets/front/images', 'public/images')
 mix.copyDirectory('resources/assets/front/css', 'public/css')
 mix.copyDirectory('resources/assets/front/fonts', 'public/fonts')
 
-/* ADMINLTE*/
+
+/* BACKEND */
 //DIST
 mix.copyDirectory('resources/assets/adminlte/dist', 'public/adminlte/dist')
     //PLUGINS
