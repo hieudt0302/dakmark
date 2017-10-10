@@ -9,7 +9,7 @@
         <div class="row">
             
             <div class="col-md-8">
-                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Product</h1>
+                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">@lang('shoppings.product-details')</h1>
                 <div class="hs-line-4 font-alt black">
                     Choose the best products in our shop
                 </div>
@@ -17,7 +17,7 @@
             
             <div class="col-md-4 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Product</a>&nbsp;/&nbsp;<span>Item</span>
+                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<a href="#">@lang('header.shop')</a>
                 </div>
                 
             </div>
@@ -350,7 +350,7 @@
     <div class="container relative">
         
         <h2 class="section-title font-alt mb-70 mb-sm-40">
-            Related Products
+            @lang('shoppings.related-products')
         </h2>
         
         <!-- Products Grid -->
@@ -424,7 +424,7 @@
                         </div>
                         
                         <div class="post-prev-more align-center">
-                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                            <a href="#" class="btn btn-mod btn-gray btn-round"><i class="fa fa-shopping-cart"></i> @lang('shoppings.add-cart')</a>
                         </div>
                         
                     </div>

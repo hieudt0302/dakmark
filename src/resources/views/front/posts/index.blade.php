@@ -9,7 +9,7 @@
         <div class="row">
 
             <div class="col-md-8">
-                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Blog</h1>
+                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">@lang('header.blog')</h1>
                 <div class="hs-line-4 font-alt black">
                     We share our best ideas in our blog
                 </div>
@@ -17,7 +17,7 @@
 
             <div class="col-md-4 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Blog</a>&nbsp;/&nbsp;<span>Classic</span>
+                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<a href="#">@lang('header.blog')</a>&nbsp;
                 </div>
 
             </div>
@@ -150,7 +150,7 @@
                             <button class="search-button animate" type="submit" title="Start Search">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" class="form-control search-field" placeholder="Search...">
+                            <input type="text" class="form-control search-field" placeholder="{{ __('common.search') }}">
                         </div>
                     </form>
                 </div>
@@ -159,7 +159,7 @@
                 <!-- Widget -->
                 <div class="widget">
 
-                    <h5 class="widget-title font-alt">Categories</h5>
+                    <h5 class="widget-title font-alt">@lang('common.categories')</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
@@ -223,7 +223,7 @@
                 <!-- Widget -->
                 <div class="widget">
 
-                    <h5 class="widget-title font-alt">Last posts</h5>
+                    <h5 class="widget-title font-alt">@lang('blog.last-posts')</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">

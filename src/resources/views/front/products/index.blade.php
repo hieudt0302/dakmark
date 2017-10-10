@@ -16,7 +16,7 @@
             
             <div class="col-md-4 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Shop</a>&nbsp;/&nbsp;<span>Columns</span>
+                     <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<a href="#">@lang('header.shop')</a>&nbsp;
                 </div>
                 
             </div>
@@ -118,7 +118,7 @@
                 <!-- Widget -->
                 <div class="widget">
                     
-                    <h5 class="widget-title font-alt">Cart</h5>
+                    <h5 class="widget-title font-alt">@lang('shoppings.cart')</h5>
                     
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">
@@ -179,7 +179,7 @@
                 <!-- Widget -->
                 <div class="widget">
                     
-                    <h5 class="widget-title font-alt">Filter by price</h5>
+                    <h5 class="widget-title font-alt">@lang('shoppings.filter-price')</h5>
                     
                     <div class="widget-body">
                         <form method="post" action="#" class="form">
@@ -194,7 +194,7 @@
                                 </div>
                             </div>
                             
-                            <button class="btn btn-mod btn-medium btn-full btn-round">Filter</button>
+                            <button class="btn btn-mod btn-medium btn-full btn-round">@lang('shoppings.filter')</button>
                             
                         </form>
                     </div>
@@ -248,7 +248,7 @@
                 <!-- Widget -->
                 <div class="widget">
                     
-                    <h5 class="widget-title font-alt">Bestsellers</h5>
+                    <h5 class="widget-title font-alt">@lang('home.best-sellers')</h5>
                     
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">

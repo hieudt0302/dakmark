@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col-md-8">
-                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Blog single</h1>
+                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">@lang('header.blog')</h1>
                 <div class="hs-line-4 font-alt black">
                     We share our best ideas in our blog
                 </div>
@@ -16,7 +16,7 @@
 
             <div class="col-md-4 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">Home</a>&nbsp;/&nbsp;<a href="#">Blog</a>&nbsp;/&nbsp;<span>Single</span>
+                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<a href="#">@lang('header.blog')</a>
                 </div>
 
             </div>
@@ -76,7 +76,7 @@
 
                 <!-- Comments -->
                 <div class="mb-80 mb-xs-40">
-                    <h4 class="blog-page-title font-alt">Comments<small class="number">({{count($post->comments)}})</small></h4>
+                    <h4 class="blog-page-title font-alt">{{ __('blog.comment') }}<small class="number">({{count($post->comments)}})</small></h4>
 
                     <ul class="media-list text comment-list clearlist">
                         <!-- Comment Item -->
@@ -134,7 +134,7 @@
                 <!-- Add Comment -->
                 <div class="mb-80 mb-xs-40">
 
-                    <h4 class="blog-page-title font-alt">Leave a comment</h4>
+                    <h4 class="blog-page-title font-alt">{{ __('blog.leave-a-comment') }}</h4>
 
                     <!-- Form -->
                     <form method="post" action="{{url('/posts')}}/{{$post->slug}}/comment" id="form" role="form" class="form">
@@ -144,12 +144,12 @@
                         <div class="row mb-20 mb-md-10">
                             <div class="col-md-6 mb-md-10">
                                 <!-- Name -->
-                                <input type="name" name="name" id="name" class="input-md form-control" placeholder="Name *" maxlength="100" required>
+                                <input type="name" name="name" id="name" class="input-md form-control" placeholder="{{ __('blog.name') }} *" maxlength="100" required>
                             </div>
 
                             <div class="col-md-6">
                                 <!-- Email -->
-                                <input type="email" name="email" id="email" class="input-md form-control" placeholder="Email *" maxlength="100" required>
+                                <input type="email" name="email" id="email" class="input-md form-control" placeholder="{{ __('blog.email') }} *" maxlength="100" required>
                             </div>
 
                         </div>
@@ -165,12 +165,12 @@
 
                         <!-- Comment -->
                         <div class="mb-30 mb-md-10">
-                            <textarea name="comment" id="text" class="input-md form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
+                            <textarea name="comment" id="text" class="input-md form-control" rows="6" placeholder="{{ __('blog.comment') }}" maxlength="400"></textarea>
                         </div>
 
                         <!-- Send Button -->
                         <button type="submit" class="btn btn-mod btn-medium btn-round btn-round">
-                            Send comment
+                            {{ __('blog.send_comment') }}
                         </button>
 
                     </form>
@@ -199,7 +199,7 @@
                             <button class="search-button animate" type="submit" title="Start Search">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" class="form-control search-field" placeholder="Search...">
+                            <input type="text" class="form-control search-field" placeholder="{{ __('common.search') }}">
                         </div>
                     </form>
                 </div>
@@ -208,7 +208,7 @@
                 <!-- Widget -->
                 <div class="widget">
 
-                    <h5 class="widget-title font-alt">Categories</h5>
+                    <h5 class="widget-title font-alt">@lang('common.categories')</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
@@ -272,7 +272,7 @@
                 <!-- Widget -->
                 <div class="widget">
 
-                    <h5 class="widget-title font-alt">Last posts</h5>
+                    <h5 class="widget-title font-alt">>@lang('blog.last-posts')</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">
