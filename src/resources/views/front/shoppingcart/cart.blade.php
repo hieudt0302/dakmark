@@ -115,7 +115,7 @@
                             Order Total: <strong>{{Cart::total()}}</strong>
                         </div>
                         <div>
-                            <a href="{{url('/Checkout/BillingAddress/dev')}}" class="btn btn-mod btn-round btn-large">Proceed to Checkout</a>
+                            <a href="{{url('/Checkout/BillingAddress')}}" class="btn btn-mod btn-round btn-large">Proceed to Checkout</a>
                         </div>
                     </div>
                 </div>

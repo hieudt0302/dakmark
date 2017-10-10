@@ -37,6 +37,8 @@ Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
 Route::get('/posts', 'Front\PostsController@index');
 Route::get('/posts/{slug}', 'Front\PostsController@show');
 
+
+
 /* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
 
@@ -44,33 +46,33 @@ Route::post('/products/{id}/review', 'Front\ReviewsController@store');
 Route::post('/posts/{slug}/comment', 'Front\CommentsController@store');
 
 /* MENU */
- Route::get('/{parent}/{slug}', 'Front\MenuController@menu');
+Route::get('/menu/{parent}/{slug}', 'Front\MenuController@menu');
 
 /* SHOPPING CART */
 Route::get('/cart', 'Front\ShoppingCartController@cart');
 
 /* CHECKOUT*/
 //Step 1
-Route::get('/Checkout/BillingAddress/dev', 'Front\CheckoutController@BillingAddress');
+Route::get('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
 Route::post('/Checkout/BillingAddress/Next', 'Front\CheckoutController@BillingAddressNext');
 //Step 2
-Route::get('/Checkout/ShippingAddress/dev', 'Front\CheckoutController@ShippingAddress');
+Route::get('/Checkout/ShippingAddress', 'Front\CheckoutController@ShippingAddress');
 Route::post('/Checkout/ShippingAddress/Next', 'Front\CheckoutController@ShippingAddressNext');
 //Step 3
-Route::get('/Checkout/ShippingMethod/dev', 'Front\CheckoutController@ShippingMethod');
+Route::get('/Checkout/ShippingMethod', 'Front\CheckoutController@ShippingMethod');
 Route::post('/Checkout/ShippingMethod/Next', 'Front\CheckoutController@ShippingMethodNext');
 //Step 4
-Route::get('/Checkout/PaymentMethod/dev', 'Front\CheckoutController@PaymentMethod');
+Route::get('/Checkout/PaymentMethod', 'Front\CheckoutController@PaymentMethod');
 Route::post('/Checkout/PaymentMethod/Next', 'Front\CheckoutController@PaymentMethodNext');
 //Step 5
-Route::get('/Checkout/Confirm/dev', 'Front\CheckoutController@Confirm');
+Route::get('/Checkout/Confirm', 'Front\CheckoutController@Confirm');
 Route::post('/Checkout/Confirm/Next', 'Front\CheckoutController@ConfirmNext');
 //Step 6
-Route::get('/Checkout/Complete/dev', 'Front\CheckoutController@Complete');
+Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
 /* ADMIN */
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
 
     //Dashboard
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
@@ -152,7 +154,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     // Route::post('get-system-cat/{system_id}',['as'=>'admin.get-system-cat','uses'=>'NavigatorController@get_system_cat']);
 
     //FAQs
-    Route::get('faqs/dev',['as'=>'admin.faqs.index','uses'=>'FaqController@index']);
+    Route::get('faqs',['as'=>'admin.faqs.index','uses'=>'FaqController@index']);
     Route::get('faqs/create',['as'=>'admin.faqs.create','uses'=>'FaqController@create']);
     Route::post('faqs/create',['as'=>'admin.faqs.store','uses'=>'FaqController@store']);
     Route::get('faqs/{id}',['as'  =>'admin.faqs.show','uses' => 'FaqController@show']);
@@ -161,18 +163,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('faqs/{id}',['as'  =>'admin.faqs.destroy','uses' => 'FaqController@destroy']); 
 
     //Menu
-    Route::get('menu/{dev}',['as'=>'admin.menu.index','uses'=>'MenuController@index', 'middleware'=> ['role:admin|manager']]);
+    Route::get('menu',['as'=>'admin.menu.index','uses'=>'MenuController@index', 'middleware'=> ['role:admin|manager']]);
 
     //Blog
-    Route::get('posts/dev',['as'=>'admin.posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
-    Route::get('posts/create',['as'=>'admin.posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
+    Route::get('posts',['as'=>'posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
+    Route::get('posts/create',['as'=>'posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
     Route::post('posts/create',['as'=>'admin.posts.store','uses'=>'PostsController@store','middleware' => ['role:admin|manager']]);
     Route::get('posts/{id}/edit',['as'=>'admin.posts.edit','uses'=>'PostsController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('posts/{id}',['as'=>'admin.posts.update','uses'=>'PostsController@update','middleware' => ['role:admin|manager']]);
     Route::delete('posts/{id}',['as'=>'admin.posts.destroy','uses'=>'PostsController@destroy','middleware' => ['role:admin|manager']]);
 
     //Product
-    Route::get('products/dev',['as'=>'admin.products.index','uses'=>'ProductsController@index','middleware' => ['role:admin|manager']]);
+    Route::get('products',['as'=>'admin.products.index','uses'=>'ProductsController@index','middleware' => ['role:admin|manager']]);
     Route::get('products/create',['as'=>'admin.products.create','uses'=>'ProductsController@create','middleware' => ['role:admin|manager']]);
     Route::post('products/create',['as'=>'admin.products.store','uses'=>'ProductsController@store','middleware' => ['role:admin|manager']]);
     Route::get('products/{id}/edit',['as'=>'admin.products.edit','uses'=>'ProductsController@edit','middleware' => ['role:admin|manager']]);
@@ -180,7 +182,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('products/{id}',['as'=>'admin.products.destroy','uses'=>'ProductsController@destroy','middleware' => ['role:admin|manager']]);
 
     //Order
-    Route::get('orders/dev',['as'=>'admin.orders.index','uses'=>'OrdersController@index','middleware' => ['role:admin|manager']]);
+    Route::get('orders',['as'=>'admin.orders.index','uses'=>'OrdersController@index','middleware' => ['role:admin|manager']]);
     Route::get('orders/create',['as'=>'admin.orders.create','uses'=>'OrdersController@create','middleware' => ['role:admin|manager']]);
     Route::post('orders/create',['as'=>'admin.orders.store','uses'=>'OrdersController@store','middleware' => ['role:admin|manager']]);
     Route::get('orders/{id}/edit',['as'=>'admin.orders.edit','uses'=>'OrdersController@edit','middleware' => ['role:admin|manager']]);
@@ -188,7 +190,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('orders/{id}',['as'=>'admin.orders.destroy','uses'=>'OrdersController@destroy','middleware' => ['role:admin|manager']]);
 
     // InfoPages
-    Route::get('info-pages/dev',['as'=>'admin.info-pages.index','uses'=>'InfoPagesController@index']);
+    Route::get('info-pages',['as'=>'admin.info-pages.index','uses'=>'InfoPagesController@index']);
     Route::get('info-pages/create',['as'=>'admin.info-pages.create','uses'=>'InfoPagesController@create']);
     Route::post('info-pages/create',['as'=>'admin.info-pages.store','uses'=>'InfoPagesController@store']);
     Route::get('info-pages/{id}',['as'  =>'admin.info-pages.show','uses' => 'InfoPagesController@show']);
@@ -197,7 +199,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('info-pages/{id}',['as'  =>'admin.info-pages.destroy','uses' => 'InfoPagesController@destroy']);   
 
     //Slider
-    Route::get('sliders/dev',['as'=>'admin.sliders.index','uses'=>'SliderController@index']);
+    Route::get('sliders',['as'=>'admin.sliders.index','uses'=>'SliderController@index']);
     Route::get('sliders/create',['as'=>'admin.sliders.create','uses'=>'SliderController@create']);
     Route::post('sliders/create',['as'=>'admin.sliders.store','uses'=>'SliderController@store']);
     Route::get('sliders/{id}',['as'  =>'admin.sliders.show','uses' => 'SliderController@show']);
