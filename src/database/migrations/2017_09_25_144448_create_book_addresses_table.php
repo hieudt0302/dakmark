@@ -15,11 +15,15 @@ class CreateBookAddressesTable extends Migration
     {
         Schema::create('book_addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('contact');
-            $table->string('address');
+            $table->string('company')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('address1');
+            $table->string('address2')->nullable();
             $table->string('district',50)->nullable();
-            $table->string('city',50)->nullable();
-            $table->string('country',50)->nullable();
+            $table->string('city',50);
+            $table->string('country',50);
+            $table->string('state_province')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('phone',20);
             $table->string('fax',20)->nullable();

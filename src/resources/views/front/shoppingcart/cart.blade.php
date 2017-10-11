@@ -57,7 +57,7 @@
                     <div class="page-body">
                         <div class="order-summary-content">
                             @if(Cart::count()>0)
-                            <form action="{{url('/Checkout/BillingAddress')}}" enctype="multipart/form-data" method="GET" novalidate="novalidate">
+                            <form action="{{url('/Checkout/BillingAddress')}}" enctype="multipart/form-data" method="POST" novalidate="novalidate">
                             {{ csrf_field() }}
                                 <div class="card">
                                     <div id="cart-items" class="cart mb-0 cart-editable">
@@ -123,7 +123,7 @@
                                                                 </button>
                                                             </span>
                                                             <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span> -->
-                                                            <input name="itemquantity{{$row->id}}" class="form-control" data-href="/Cart/UpdateCartItem?sciItemId={{$row->rowId}}&isCartPage=True" data-max="10000" data-min="1"
+                                                            <input  class="form-control" data-href="/Cart/UpdateCartItem?sciItemId={{$row->rowId}}&isCartPage=True" data-max="10000" data-min="1"
                                                                 data-postfix="" data-sci-item="{{$row->rowId}}" data-step="1" data-val="true" data-val-number="The field 'EnteredQuantity' must be a number." id="itemquantity{{$row->id}}" type="text" value="{{$row->qty}}" style="display: block;">
                                                             <!-- <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
                                                             <span class="input-group-btn">
@@ -268,6 +268,8 @@
 <script type="text/javascript" src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/offcanvas.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/offcanvas-cart.js') }}"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.animate.js"></script> 
+
 <script type="text/javascript">
 $(document).ready(function(){   
    

@@ -27,11 +27,17 @@ class CheckoutController extends Controller
          $this->middleware('auth');
      }
 
-    public function BillingAddress()
+    public function BillingAddress(Request $request)
     {
         $book_addresses = BookAddress::where('user_id', Auth::user()->id)->get();
 
         return View('front.checkout.billingaddress',compact('book_addresses'));
+    }
+
+    public function SelectBillingAddress()
+    {
+        $book_addresses = BookAddress::where('user_id', Auth::user()->id)->get();
+        return View('front.checkout.shippingaddress',compact('book_addresses'));
     }
 
     public function BillingAddressNext(Request $request)
@@ -74,7 +80,7 @@ class CheckoutController extends Controller
         return redirect()->action('Front\CheckoutController@ShippingAddress');
     }
 
-    public function ShippingAddress()
+    public function ShippingAddress(Request $request)
     {
         $book_addresses = BookAddress::where('user_id', Auth::user()->id)->get();
 
@@ -121,7 +127,7 @@ class CheckoutController extends Controller
         return redirect()->action('Front\CheckoutController@ShippingMethod');
     }
 
-    public function ShippingMethod()
+    public function ShippingMethod(Request $request)
     {
         return View('front.checkout.shippingmethod');
     }
@@ -143,7 +149,7 @@ class CheckoutController extends Controller
         return redirect()->action('Front\CheckoutController@PaymentMethod');
     }
 
-    public function PaymentMethod()
+    public function PaymentMethod(Request $request)
     {
         return View('front.checkout.paymentmethod');
     }
@@ -165,7 +171,7 @@ class CheckoutController extends Controller
         return redirect()->action('Front\CheckoutController@Confirm');
     }
 
-    public function Confirm()
+    public function Confirm(Request $request)
     {
         $billingAddressId = $value = session('BillingAddressId');
         $billingaddress = BookAddress::find($billingAddressId);
@@ -249,7 +255,7 @@ class CheckoutController extends Controller
          return redirect()->action('Front\CheckoutController@Complete');
     }
 
-    public function Complete()
+    public function Complete(Request $request)
     {
         return View('front.checkout.complete');
     }

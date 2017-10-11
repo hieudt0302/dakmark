@@ -57,22 +57,24 @@ Route::post('/Cart/MoveItemBetweenCartAndWishlist', 'Front\CartController@MoveIt
 
 /* CHECKOUT*/
 //Step 1
-Route::get('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
+Route::post('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
 Route::post('/Checkout/BillingAddress/Next', 'Front\CheckoutController@BillingAddressNext');
+Route::get('/Checkout/SelectBillingAddress', 'Front\CheckoutController@SelectBillingAddress');
+
 //Step 2
-Route::get('/Checkout/ShippingAddress', 'Front\CheckoutController@ShippingAddress');
+Route::post('/Checkout/ShippingAddress', 'Front\CheckoutController@ShippingAddress');
 Route::post('/Checkout/ShippingAddress/Next', 'Front\CheckoutController@ShippingAddressNext');
 //Step 3
-Route::get('/Checkout/ShippingMethod', 'Front\CheckoutController@ShippingMethod');
+Route::post('/Checkout/ShippingMethod', 'Front\CheckoutController@ShippingMethod');
 Route::post('/Checkout/ShippingMethod/Next', 'Front\CheckoutController@ShippingMethodNext');
 //Step 4
-Route::get('/Checkout/PaymentMethod', 'Front\CheckoutController@PaymentMethod');
+Route::post('/Checkout/PaymentMethod', 'Front\CheckoutController@PaymentMethod');
 Route::post('/Checkout/PaymentMethod/Next', 'Front\CheckoutController@PaymentMethodNext');
 //Step 5
-Route::get('/Checkout/Confirm', 'Front\CheckoutController@Confirm');
+Route::post('/Checkout/Confirm', 'Front\CheckoutController@Confirm');
 Route::post('/Checkout/Confirm/Next', 'Front\CheckoutController@ConfirmNext');
 //Step 6
-Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
+Route::post('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
 /* ADMIN */
