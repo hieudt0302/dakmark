@@ -56,7 +56,9 @@
                     </div>
                     <div class="page-body">
                         <div class="order-summary-content">
+                            @if(Cart::count()>0)
                             <form action="{{url('/Checkout/BillingAddress')}}" enctype="multipart/form-data" method="GET" novalidate="novalidate">
+                            {{ csrf_field() }}
                                 <div class="card">
                                     <div id="cart-items" class="cart mb-0 cart-editable">
                                         <div class="cart-head">
@@ -77,7 +79,7 @@
                                         </div>
                                         <div class="cart-body">
                                             @foreach(Cart::content() as $row)
-                                            <div class="cart-row">
+                                            <div id="{{$row->rowId}}" class="cart-row">
                                                 <div class="cart-col cart-col-main">
                                                     <div class="row sm-gutters">
                                                         <div class="col cart-item-img">
@@ -98,10 +100,10 @@
                                                         </div>
                                                         <div class="col col-auto">
                                                             <div class="cart-row-actions btn-group-vertical card-shadow">
-                                                                <a class="btn btn-gray btn-to-danger btn-sm btn-icon ajax-action-link" title="Remove" href="#" rel="nofollow" data-href="/frontend/en/ShoppingCart/DeleteCartItem?cartItemId=43368" data-name="Herren T-Shirt" data-type="cart" data-action="remove">
+                                                                <a class="btn btn-gray btn-to-danger btn-sm btn-icon ajax-action-link" title="Remove" href="#" rel="nofollow" data-href="/Cart/DeleteCartItem?sciItemId={{$row->rowId}}" data-sci-item="{{$row->rowId}}" data-name="{{$row->name}}" data-type="cart" data-action="remove">
                                                                     <i class="fa fa-2x">×</i>
                                                                 </a>
-                                                                <a class="btn btn-secondary btn-sm btn-icon ajax-action-link" title="Move to wishlist" href="#" rel="nofollow" data-href="/frontend/en/ShoppingCart/MoveItemBetweenCartAndWishlist?cartItemId=43368&amp;cartType=ShoppingCart&amp;isCartPage=True" data-name="Herren T-Shirt"
+                                                                <a class="btn btn-secondary btn-sm btn-icon ajax-action-link" title="Move to wishlist" href="#" rel="nofollow" data-href="/Cart/MoveItemBetweenCartAndWishlist?sciItemId={{$row->rowId}}&amp;cartType=ShoppingCart&amp;isCartPage=True" data-sci-item="{{$row->rowId}}" data-name="{{$row->name}}"
                                                                     data-type="wishlist" data-action="addfromcart">
                                                                     <i class="fa fa-heart-o"></i>
                                                                 </a>
@@ -121,8 +123,8 @@
                                                                 </button>
                                                             </span>
                                                             <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span> -->
-                                                            <input name="itemquantity12354" class="form-control" data-href="/ShoppingCart/UpdateCartItem?sciItemId=12354&isCartPage=True" data-max="10000" data-min="1"
-                                                                data-postfix="" data-sci-item="12354" data-step="1" data-val="true" data-val-number="The field 'EnteredQuantity' must be a number." id="itemquantity12354" type="text" value="{{$row->qty}}" style="display: block;">
+                                                            <input name="itemquantity{{$row->id}}" class="form-control" data-href="/Cart/UpdateCartItem?sciItemId={{$row->rowId}}&isCartPage=True" data-max="10000" data-min="1"
+                                                                data-postfix="" data-sci-item="{{$row->rowId}}" data-step="1" data-val="true" data-val-number="The field 'EnteredQuantity' must be a number." id="itemquantity{{$row->id}}" type="text" value="{{$row->qty}}" style="display: block;">
                                                             <!-- <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
                                                             <span class="input-group-btn">
                                                                 <button class="btn btn-secondary bootstrap-touchspin-up" type="button">
@@ -236,6 +238,11 @@
                                     </div>
                                 </div>
                             </form>
+                            @else
+                            <div class="alert alert-warning fade show">
+                                Your Shopping Cart is empty!
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -263,14 +270,16 @@
 <script type="text/javascript" src="{{ asset('js/offcanvas-cart.js') }}"></script> 
 <script type="text/javascript">
 $(document).ready(function(){   
-    // $("input[name='itemquantity12354']").TouchSpin();
+   
     var orderSummary = $(".order-summary-content");
 
     // remove cart item & move to wishlist
     orderSummary.on("click", ".ajax-action-link", function (e) {
         e.preventDefault();
         var link = $(this);
-        updateShoppingCartItems(link, link.data);
+        updateShoppingCartItems(link, {
+            "sciItemId": link.data("sci-item"),
+        });
         return false;
     });
 
@@ -279,7 +288,7 @@ $(document).ready(function(){
         e.preventDefault();
         var link = $(this);
         updateShoppingCartItems(link, {
-            "sciItemId": link.data("sci-id"),
+            "sciItemId": link.data("sci-item"),
             "newQuantity": link.val()
         });
         return false;
@@ -296,7 +305,7 @@ $(document).ready(function(){
             type: 'POST',
             success: function (response) {
 
-                if (response.cartItemCount == 0) {
+                if (response['newCartItemCount'] == 0) {
                     orderSummary.html(
                         '<div class="alert alert-warning fade show">Your Shopping Cart is empty!</div>'
                     );
@@ -305,27 +314,29 @@ $(document).ready(function(){
                 var cartBody = $(".cart-body");
                 var totals = $("#order-totals");
 
-                $("#start-checkout-buttons").toggleClass("d-none", !response.showCheckoutButtons);
+                $("#start-checkout-buttons").toggleClass("d-none", !response['showCheckoutButtons']);
 
-                if (response.success) {
+                if (response['type'] === 'delete') {
                     // replace html
-                    cartBody.html(response.cartHtml);
-                    totals.html(response.totalsHtml);
+                    // cartBody.html(response.cartHtml);
+                    // totals.html(response.totalsHtml);
+                    var rowItem =document.getElementById(response['rowId']);
+                    rowItem.parentNode.removeChild(rowItem);
                 }
 
-                displayNotification(response.message, response.success ? "success" : "error");
+                displayNotification(response['message'], response['status']);
 
                 // reinit qty ctls
-                applyCommonPlugins(cartBody);
+                //applyCommonPlugins(cartBody);
 
-                // update shopbar
-                ShopBar.loadSummary("cart", true);
+              
+                // if (link.data("type") == "wishlist") {
+                //     Cart.loadSummary("wishlist", true);
+                // }
 
-                if (link.data("type") == "wishlist") {
-                    ShopBar.loadSummary("wishlist", true);
-                }
-
+                $('.cartItemCount').html($('.cartItemCount').html().replace (/\((.*?)\)/g,"(" + response['newCartItemCount'] + ")"));
                 hideThrobber();
+
             }
         });
     }

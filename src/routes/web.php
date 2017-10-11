@@ -50,6 +50,10 @@ Route::get('/menu/{parent}/{slug}', 'Front\MenuController@menu');
 
 /* SHOPPING CART */
 Route::get('/cart', 'Front\ShoppingCartController@cart');
+Route::post('/Cart/UpdateCartItem', 'Front\CartController@UpdateCartItem');
+Route::post('/Cart/DeleteCartItem', 'Front\CartController@DeleteCartItem');
+Route::post('/Cart/MoveItemBetweenCartAndWishlist', 'Front\CartController@MoveItemBetweenCartAndWishlist');
+
 
 /* CHECKOUT*/
 //Step 1
