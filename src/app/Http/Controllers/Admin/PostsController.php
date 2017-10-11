@@ -30,8 +30,9 @@ class PostsController extends Controller
     {
         $blogCategory = Category::where('name','blog')->firstOrFail();
         $categories = Category::where('parent_id',$blogCategory->id)->get();
+        $language_list = Language::all();    
 
-        return View('admin.posts.create',compact('categories'));
+        return View('admin.posts.create',compact('categories','language_list'));
     }
 
     /**

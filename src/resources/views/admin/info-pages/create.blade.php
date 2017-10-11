@@ -6,9 +6,6 @@
             <div class="pull-left">
                 <h2>Thêm mới trang thông tin</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('admin.info-pages.index') }}"> Quay lại danh sách trang thông tin</a>
-            </div>
         </div>
     </div>
     @if (count($errors) > 0)
@@ -62,7 +59,7 @@
         </div>
 
         @foreach ($language_list as $language)
-        <div class="tab-pane fade" id="{{$language->id}}-content">
+        <div class="tab-pane" id="{{$language->id}}-content">
             <table class="table table-responsive">
                 <tr>
                     <td>

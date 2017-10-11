@@ -15,13 +15,6 @@ class FaqsTableSeeder extends Seeder
         Faq::create([
             'id'=>1
         ]);
-        Faq::create([
-            'id'=>2
-        ]);
-        Faq::create([
-            'id'=>3
-        ]);                
-
         /* php artisan db:seed --class=FaqTableSeeder */  
     }
 }

@@ -54,7 +54,51 @@ class InfoPageTranslationsTableSeeder extends Seeder
             'language_id'=>3,
             'title'=>'Cach mua hang', 
             'content'=>'Chin thien hao ron a.',
-        ]);                     
+        ]); 
+
+        InfoPageTranslation::create([
+            'id'=>7,
+            'info_page_id'=>3,
+            'language_id'=>1,
+            'title'=>'Dakmark Foods', 
+            'content'=>'Chung toi da co kinh nghiem.',
+        ]);
+        InfoPageTranslation::create([
+            'id'=>8,
+            'info_page_id'=>3,
+            'language_id'=>2,
+            'title'=>'About us', 
+            'content'=>'We shared our best foods.',
+        ]);
+        InfoPageTranslation::create([
+            'id'=>9,
+            'info_page_id'=>3,
+            'language_id'=>3,
+            'title'=>'Ngo ai ni', 
+            'content'=>'Tada.',
+        ]);   
+
+        InfoPageTranslation::create([
+            'id'=>10,
+            'info_page_id'=>4,
+            'language_id'=>1,
+            'title'=>'Chuoi cua hang trung bay', 
+            'content'=>'Chung toi da co kinh nghiem.',
+        ]);
+        InfoPageTranslation::create([
+            'id'=>11,
+            'info_page_id'=>4,
+            'language_id'=>2,
+            'title'=>'Showrooms', 
+            'content'=>'We shared our best foods.',
+        ]);
+        InfoPageTranslation::create([
+            'id'=>12,
+            'info_page_id'=>4,
+            'language_id'=>3,
+            'title'=>'Xiao ni', 
+            'content'=>'Tada.',
+        ]);                                    
 
         /* php artisan db:seed --class=InfoPageTranslationsTableSeeder */         
     }

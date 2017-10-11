@@ -24,6 +24,14 @@ Auth::routes();
 /* HOME */
 Route::get('/', 'Front\HomeController@index');
 Route::get('/about', 'Front\HomeController@about');
+Route::get('/returns', 'Front\HomeController@returns');
+Route::get('/showrooms', 'Front\HomeController@showrooms');
+Route::get('/purchase-flow', 'Front\HomeController@purchase_flow');
+
+/* ACCOUNT */
+Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
+Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
+Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
 
 /* FAQ */
 Route::get('/faqs', 'Front\FaqController@index');
@@ -72,7 +80,7 @@ Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
 /* ADMIN */
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     //Dashboard
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
