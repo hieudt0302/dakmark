@@ -107,7 +107,8 @@ class ProductsController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'message' => 'ERROR-INPUT: Code EI1004',
-                'status' => 'error'
+                'status' => 'error',
+                'newCartItemCount' => Cart::count()
             ]);
         }
        
@@ -116,7 +117,8 @@ class ProductsController extends Controller
         
         return response()->json([
             'message' => 'Đã thêm '. $request->quantity .' sản phẩm vào giỏ hàng!',
-            'status' => 'success'
+            'status' => 'success',
+            'newCartItemCount' => Cart::count()
         ]);
     }
 }

@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('title','Cà phê Đak Hà - Sản Phẩm')
-
+@section('header')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+@endsection
 @section('content')
 
 <!-- Head Section -->
@@ -478,10 +480,12 @@
                     'quantity': quantity,//just test
                 },
                success:function(response){
-                console.log(response['message']);
+                    console.log(response['newCartItemCount']); //debug
+                    /* @bravohex: refresh cart items */
+                    $('.cartItemCount').html($('.cartItemCount').html().replace (/\((.*?)\)/g,"(" + response['newCartItemCount'] + ")"));
                },
                error:function(response){
-                  console.log(response['message']);
+                    console.log(response['newCartItemCount']); //debug
                }
             });
         });
