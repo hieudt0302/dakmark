@@ -104,6 +104,8 @@ class SliderController extends Controller
             $slider_translation = SliderTranslation::find($slider_tran_id);
             if ($slider_translation == null) {
                 $slider_translation = new SliderTranslation;
+                $slider_translation->slider_id = $slider->id;
+                $slider_translation->language_id = $language->id;                
             }
             $slider_translation->description = $request->input($language->id.'-description');
             $slider_translation->save();
