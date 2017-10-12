@@ -18,6 +18,8 @@ class UsersTableSeeder extends Seeder
                 'username'  => 'admin',
                 'first_name' => 'Admin',
                 'last_name' => 'Is',
+                'gender' => true,
+                'date_of_birth' => '2017,10,10',
                 'email'          => 'admin@admin.com',
                 'phone'         => '+84 123 456 789',
                 'password'       => bcrypt('admin'),

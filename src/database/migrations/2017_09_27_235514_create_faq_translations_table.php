@@ -37,6 +37,6 @@ class CreateFaqTranslationsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('faq_translations');
     }
 }
