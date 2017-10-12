@@ -1,40 +1,67 @@
 @extends('layouts.admin')
-@section('title','Menu - InfoPage') 
+@section('title','Trang thông tin - Admin') 
 @section('content')
-	<div class="row">
-	    <div class="col-lg-12 margin-tb">
-	        <div class="pull-left">
-	            <h2>Danh sách trang thông tin</h2>
-	        </div>
-	    </div>
-	</div>
-	@if ($message = Session::get('success'))
-		<div class="alert alert-success">
-			<p>{{ $message }}</p>
-		</div>
-	@endif
-	<table class="table table-bordered">
-		<tr>
-			<th>#</th>
-			<th>Id</th>
-			<th>Tiêu đề</th>
-			<th width="280px">Thao Tác</th>
-		</tr>
-	@foreach ($info_pages as $info_page)
-	<tr>
-		<td>{{ ++$i }}</td>
-		<td>{{ $info_page->id }}</td>
-		<td>{{ $info_page->title }}</td>
-		<td>
-			<a class="btn btn-info" href="{{ route('admin.info-pages.show',$info_page->id) }}">Xem</a>
-			<a class="btn btn-primary" href="{{ route('admin.info-pages.edit',$info_page->id) }}">Sửa</a>
-			{!! Form::open(['method' => 'DELETE','route' => ['admin.info-pages.destroy', $info_page->id],'style'=>'display:inline']) !!}
-			{!! Form::submit('Xóa', ['class' => 'btn btn-danger']) !!}
-    		{!! Form::close() !!}
-		</td>
-
-	</tr>
-	@endforeach
-	</table>
-	{!! $info_pages->render() !!}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Menu
+        <small>Danh Sách</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#">Menu</a></li>
+        <li class="active">Danh Sách</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh Sách Trang Thông Tin</h3>
+                </div>
+				@if ($message = Session::get('success'))
+					<div class="alert alert-success">
+						<p>{{ $message }}</p>
+					</div>
+				@endif 
+                <div class="box-body">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Tiêu đề</th>
+                                <th></th>
+                                <th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($info_pages as $info_page)
+							<tr>
+								<td>{{ $info_page->title }}</td>
+								<td>
+									<a class="btn btn-primary btn-sm" href="{{ route('admin.info-pages.edit',$info_page->id) }}"><i class="fa fa-edit"></i></a> 
+								</td>
+								<td>
+	                             	{!! Form::open(['method' => 'DELETE','route' => ['admin.info-pages.destroy', $info_page->id],'style'=>'display:inline']) !!}
+                                    {{ Form::button('<i class="fa fa-trash-o"></i>', ['type' => 'submit','class' => 'btn btn-warning btn-sm'] )  }}
+                                    {!! Form::close() !!}   
+								</td>	
+							</tr>
+							@endforeach
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>Tiêu đề</th>
+                                <th></th>
+                                <th></th>
+							</tr>							
+						</tfoot>	
+					</table>
+					{!! $info_pages->render() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

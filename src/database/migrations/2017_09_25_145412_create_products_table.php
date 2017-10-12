@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('sku')->nullable();
             $table->string('name');
             $table->string('slug');
-            $table->string('summary')->nullable();
             $table->decimal('old_price')->default(0)->unsigned();
             $table->decimal('price')->default(0)->unsigned();
             $table->decimal('special_price')->default(0)->unsigned();
@@ -30,8 +29,6 @@ class CreateProductsTable extends Migration
             $table->boolean('sold_off')->default(false);
             $table->integer('minimum_amount')->default(1); //Mini can order
             $table->integer('maximum_amount')->nullable(); //Max can order
-            $table->text('description')->nullable();
-            $table->text('specs')->nullable();
             $table->boolean('published')->default(true);
 
             $table->integer('category_id')->nullable()->unsigned();

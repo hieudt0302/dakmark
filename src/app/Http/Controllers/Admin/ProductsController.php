@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductTranslation;
+use App\Models\Language;
 use Validator;
 
 class ProductsController extends Controller
@@ -31,8 +33,9 @@ class ProductsController extends Controller
     {
         $shopCategory = Category::where('name', 'shop')->firstOrFail();
         $categories = Category::where('parent_id', $shopCategory->id)->get();
+        $language_list = Language::all();         
 
-        return View('admin.products.create', compact('categories'));
+        return View('admin.products.create', compact('categories','language_list'));
     }
 
     /**
@@ -50,8 +53,7 @@ class ProductsController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-            ->with('message', 'ERROR-INPUT: Code EI1002')
-            ->with('status', 'danger')
+            ->with('danger_message', 'ERROR-INPUT: Code EI1002')
             ->withInput();
         }
 
@@ -59,23 +61,15 @@ class ProductsController extends Controller
 
         $product->name = $request->name;
         $product->slug = $request->slug;
-    
+        $product->author_id = Auth::user()->id;
+        $product->disable_buy_button = $request->disable_buy_button??0;
+        $product->disable_wishlist_button = $request->disable_wishlist_button??0;
+        $product->call_for_price = $request->call_for_price??0;
+        $product->sold_off = $request->sold_off??0;
+        $product->published = $request->published??0;
         if (!empty($request->sku)) {
             $product->sku = $request->sku;
         }
-    
-        if (!empty($request->summary)) {
-            $product->summary = $request->summary;
-        }
-    
-        if (!empty($request->description)) {
-            $product->description = $request->description;
-        }
-    
-        if (!empty($request->specs)) {
-            $product->specs = $request->specs;
-        }
-    
         if (!empty($request->old_price)) {
             $product->old_price = $request->old_price;
         }
@@ -104,27 +98,33 @@ class ProductsController extends Controller
             $product->maximum_amount = $request->maximum_amount;
         }
                 
-    
         if (!empty($request->category_id)) {
             $product->category_id = $request->category_id;
-        }
+        }        
+        $product->save();        
     
-        $product->author_id = Auth::user()->id;
-
-        $product->disable_buy_button = $request->disable_buy_button??0;
-        $product->disable_wishlist_button = $request->disable_wishlist_button??0;
-        $product->call_for_price = $request->call_for_price??0;
-        $product->sold_off = $request->sold_off??0;
-
-        $product->published = $request->published??0;
-
-        $product->save();
-    
-       
+        $language_list = Language::all();
+        foreach ($language_list as $language){ 
+            $product_translation = new ProductTranslation;
+            $product_translation->product_id = $product->id;
+            $product_translation->language_id = $language->id;
+            if (!empty( $request->input($language->id.'-name'))) {
+                $product_translation->name = $request->input($language->id.'-name');  
+            }
+            if (!empty( $request->input($language->id.'-summary'))) {
+                $product_translation->summary = $request->input($language->id.'-summary');  
+            } 
+            if (!empty( $request->input($language->id.'-specs'))) {
+                $product_translation->specs = $request->input($language->id.'-specs');  
+            } 
+            if (!empty( $request->input($language->id.'-description'))) {
+                $product_translation->description = $request->input($language->id.'-description');  
+            }                                                                                
+            $product_translation->save();
+        }         
         
         return redirect()->back()
-        ->with('message', 'Sản phẩm mới đã được tạo')
-        ->with('status', 'success');
+        ->with('success_message', 'Sản phẩm mới đã được tạo');
     }
 
     /**
@@ -149,7 +149,9 @@ class ProductsController extends Controller
         $shopCategory = Category::where('name', 'shop')->firstOrFail();
         $categories = Category::where('parent_id', $shopCategory->id)->get();
         $product = Product::where('id', $id)->firstOrFail();
-        return View('admin.products.edit', compact('product', 'categories'));
+        $language_list = Language::all();
+        $product_translations = ProductTranslation::where('product_id',$id)->orderBy('language_id','asc')->get();         
+        return View('admin.products.edit', compact('product','product_translations','language_list', 'categories'));
     }
 
     /**
@@ -182,19 +184,6 @@ class ProductsController extends Controller
         if (!empty($request->sku)) {
             $product->sku = $request->sku;
         }
-
-        if (!empty($request->summary)) {
-            $product->summary = $request->summary;
-        }
-
-        if (!empty($request->description)) {
-            $product->description = $request->description;
-        }
-
-        if (!empty($request->specs)) {
-            $product->specs = $request->specs;
-        }
-
         if (!empty($request->old_price)) {
             $product->old_price = $request->old_price;
         }
@@ -240,10 +229,36 @@ class ProductsController extends Controller
         $product->published = $request->published??0;
 
         $product->save();
+
+
+        $language_list = Language::all();
+        foreach ($language_list as $language){
+            $product_tran_id=$request->input($language->id.'-id');
+            $product_translation = ProductTranslation::find($product_tran_id);
+            if ($product_translation == null) {
+                $product_translation = new ProductTranslation;
+                $product_translation->product_id = $product->id;                
+                $product_translation->language_id = $language->id;                
+            }
+            if (!empty( $request->input($language->id.'-name'))) {
+                $product_translation->name = $request->input($language->id.'-name');  
+            }
+            if (!empty( $request->input($language->id.'-summary'))) {
+                $product_translation->summary = $request->input($language->id.'-summary');  
+            } 
+            if (!empty( $request->input($language->id.'-specs'))) {
+                $product_translation->specs = $request->input($language->id.'-specs');  
+            } 
+            if (!empty( $request->input($language->id.'-description'))) {
+                $product_translation->description = $request->input($language->id.'-description');  
+            }                                                                                
+            $product_translation->save();
+        }
+
+
         
         return redirect()->back()
-        ->with('message', 'Sản phẩm đã được cập nhật.')
-        ->with('status', 'success');
+        ->with('success_message', 'Sản phẩm đã được cập nhật.');
     }
 
     /**
@@ -254,6 +269,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        session()->flash('success_message', "Xóa thành công!");        
+        return redirect()->route('admin.products.index'); 
     }
 }
