@@ -37,8 +37,6 @@ Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
 Route::get('/posts', 'Front\PostsController@index');
 Route::get('/posts/{slug}', 'Front\PostsController@show');
 
-
-
 /* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
 
@@ -54,32 +52,30 @@ Route::post('/Cart/UpdateCartItem', 'Front\CartController@UpdateCartItem');
 Route::post('/Cart/DeleteCartItem', 'Front\CartController@DeleteCartItem');
 Route::post('/Cart/MoveItemBetweenCartAndWishlist', 'Front\CartController@MoveItemBetweenCartAndWishlist');
 
-
 /* CHECKOUT*/
 //Step 1
 Route::get('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
-Route::post('/Checkout/BillingAddress/Next', 'Front\CheckoutController@BillingAddressNext');
+Route::post('/Checkout/BillingAddress/CreateNew', 'Front\CheckoutController@BillingAddressCreateNew');
 Route::get('/Checkout/SelectBillingAddress', 'Front\CheckoutController@SelectBillingAddress');
-
 //Step 2
 Route::get('/Checkout/ShippingAddress', 'Front\CheckoutController@ShippingAddress');
-Route::post('/Checkout/ShippingAddress/Next', 'Front\CheckoutController@ShippingAddressNext');
+Route::post('/Checkout/ShippingAddress/CreateNew', 'Front\CheckoutController@ShippingAddressCreateNew');
+Route::get('/Checkout/SelectShippingAddress', 'Front\CheckoutController@SelectShippingAddress');
 //Step 3
-Route::post('/Checkout/ShippingMethod', 'Front\CheckoutController@ShippingMethod');
+Route::get('/Checkout/ShippingMethod', 'Front\CheckoutController@ShippingMethod');
 Route::post('/Checkout/ShippingMethod/Next', 'Front\CheckoutController@ShippingMethodNext');
 //Step 4
-Route::post('/Checkout/PaymentMethod', 'Front\CheckoutController@PaymentMethod');
+Route::get('/Checkout/PaymentMethod', 'Front\CheckoutController@PaymentMethod');
 Route::post('/Checkout/PaymentMethod/Next', 'Front\CheckoutController@PaymentMethodNext');
 //Step 5
-Route::post('/Checkout/Confirm', 'Front\CheckoutController@Confirm');
+Route::get('/Checkout/Confirm', 'Front\CheckoutController@Confirm');
 Route::post('/Checkout/Confirm/Next', 'Front\CheckoutController@ConfirmNext');
 //Step 6
-Route::post('/Checkout/Complete', 'Front\CheckoutController@Complete');
+Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
 /* ADMIN */
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
-
     //Dashboard
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
 
