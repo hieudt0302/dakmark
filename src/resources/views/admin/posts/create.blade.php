@@ -85,25 +85,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="slug" class="col-sm-12">Đoạn Trích</label>
-                                    <div class="col-sm-12">
-                                        <textarea name="{{$language->id}}-excerpt" rows="10" cols="80" placeholder="Nhập đoạn trích">
-                                                    
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="slug" class="col-sm-12">Nội Dung</label>
-                                    <div class="col-sm-12">
-                                        <textarea id="content-editor" name="{{$language->id}}-content" rows="10" cols="80">
-                                                    This is my textarea to be replaced with CKEditor.
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label for="description" class="col-sm-2 control-label">Giới Thiệu</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="description" rows="3"  placeholder="SEO"></textarea>
+                                        <textarea class="form-control" name="{{$language->id}}-description" rows="3"  placeholder="SEO"></textarea>
+                                    </div>
+                                </div>                                
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Đoạn Trích</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="{{$language->id}}-excerpt" rows="5" placeholder="Nhập đoạn trích">    
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Nội Dung</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control ckeditor" id="content-editor" name="{{$language->id}}-content" rows="10" cols="12   0">
+                                                    This is my textarea to be replaced with CKEditor.
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -111,26 +110,11 @@
                         @endforeach                          
                     </div>                        
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Tạo Mới</button>
+                        <button type="submit" class="btn btn-primary pull-right">Tạo Mới</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>        
-@endsection
-
-
-@section('scripts')
-<script>
-  $(function () {
-    $('.select2').select2();
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace('excerpt-editor');
-    CKEDITOR.replace('content-editor');
-    //bootstrap WYSIHTML5 - text editor
-    // $('.textarea').wysihtml5()
-  })
-</script>
 @endsection

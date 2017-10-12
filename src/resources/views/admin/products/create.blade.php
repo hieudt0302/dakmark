@@ -21,6 +21,27 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Tạo Mới Sản Phẩm</h3>
                 </div>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>Lỗi!</strong> Kiểm tra lại thông tin đã nhập.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if ($message = Session::get('success_message'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('danger_message'))
+                    <div class="alert alert-danger">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif   
+
                 <form class="form-horizontal" method="POST" action="{{url('/admin/products/create')}}" id="form" role="form">
                   {{csrf_field()}}
 
@@ -145,8 +166,6 @@
                                 </div>
                                
                             </div>
-
-
                         </div>
 
                         <!-- each language tab -->
@@ -187,7 +206,7 @@
 
                     
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Tạo Mới</button>
+                        <button type="submit" class="btn btn-primary pull-right">Tạo Mới</button>
                     </div>
                 </form>
             </div>

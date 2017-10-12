@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostTranslation;
+use App\Models\Language;
 use Validator;
+
 class PostsController extends Controller
 {
     /**
@@ -60,12 +63,8 @@ class PostsController extends Controller
             $post->slug = $request->slug;
             if(!empty($request->category_id))
                 $post->category_id = $request->category_id;
-    
             $post->author_id = Auth::user()->id;
-    
-
             $post->published = $request->published??0;
-    
             $post->save();            
 
             $language_list = Language::all();
@@ -81,8 +80,7 @@ class PostsController extends Controller
             }    
         
         return redirect()->back()
-        ->with('message', 'Bài viết mới đã được tạo')
-        ->with('status', 'success');
+        ->with('success_message', 'Bài viết mới đã được tạo');
         
     }
 
@@ -158,17 +156,15 @@ class PostsController extends Controller
                 $post_translation->post_id = $post->id;                
                 $post_translation->language_id = $language->id;                
             }
-                $post_translation->title = $request->input($language->id.'-title');            
-                $post_translation->content = $request->input($language->id.'-content');
-                $post_translation->excerpt = $request->input($language->id.'-excerpt');
-                $post_translation->description = $request->input($language->id.'-description');                                   
-                $post_translation->save();
+            $post_translation->title = $request->input($language->id.'-title');            
+            $post_translation->content = $request->input($language->id.'-content');
+            $post_translation->excerpt = $request->input($language->id.'-excerpt');
+            $post_translation->description = $request->input($language->id.'-description');                                   
             $post_translation->save();
         }
 
         return redirect()->back()
-        ->with('message', 'Bài viết mới đã được tạo')
-        ->with('status', 'success');
+        ->with('success_message', 'Bài viết đã được cập nhật');
     }
 
     /**
@@ -179,6 +175,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        session()->flash('success_message', "Xóa thành công!");        
+        return redirect()->route('admin.posts.index'); 
     }
 }

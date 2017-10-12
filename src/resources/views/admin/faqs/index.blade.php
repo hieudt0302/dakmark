@@ -1,40 +1,69 @@
 @extends('layouts.admin')
- 
+@section('title','FAQ - Admin') 
 @section('content')
-	<div class="row">
-	    <div class="col-lg-12 margin-tb">
-	        <div class="pull-left">
-	            <h2>Quản Lý FAQ</h2>
-	        </div>
-	    </div>
-	</div>
-	@if ($message = Session::get('success'))
-		<div class="alert alert-success">
-			<p>{{ $message }}</p>
-		</div>
-	@endif
-	<table class="table table-bordered">
-		<tr>
-			<th>#</th>
-			<th>Id</th>
-			<th>Câu hỏi</th>
-			<th width="280px">Thao Tác</th>
-		</tr>
-	@foreach ($faqs as $faq)
-	<tr>
-		<td>{{ ++$i }}</td>
-		<td>{{ $faq->faq_id }}</td>
-		<td>{{ $faq->question }}</td>
-		<td>
-			<a class="btn btn-info" href="{{ route('admin.faqs.show',$faq->faq_id) }}">Xem</a>
-			<a class="btn btn-primary" href="{{ route('admin.faqs.edit',$faq->faq_id) }}">Sửa</a>
-			{!! Form::open(['method' => 'DELETE','route' => ['admin.faqs.destroy', $faq->faq_id],'style'=>'display:inline']) !!}
-			{!! Form::submit('Xóa', ['class' => 'btn btn-danger']) !!}
-    		{!! Form::close() !!}
-		</td>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Menu
+        <small>Danh Sách</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#">Menu</a></li>
+        <li class="active">Danh Sách</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh Sách FAQ</h3>
+                </div>
+				@if ($message = Session::get('success'))
+					<div class="alert alert-success">
+						<p>{{ $message }}</p>
+					</div>
+				@endif 
 
-	</tr>
-	@endforeach
-	</table>
-	{!! $faqs->render() !!}
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>						
+							<tr>
+								<th>Câu hỏi</th>
+                                <th></th>
+                                <th></th>
+							</tr>
+						</thead>
+                        <tbody>						
+							@foreach ($faqs as $faq)
+							<tr>
+								<td>{{ $faq->question }}</td>
+								<td>
+									<a class="btn btn-primary btn-sm" href="{{ route('admin.faqs.edit',$faq->faq_id) }}"><i class="fa fa-edit"></i></a> 
+								</td>
+								<td>
+	                             	{!! Form::open(['method' => 'DELETE','route' => ['admin.faqs.destroy', $faq->id],'style'=>'display:inline']) !!}
+                                    {{ Form::button('<i class="fa fa-trash-o"></i>', ['type' => 'submit','class' => 'btn btn-warning btn-sm'] )  }}
+                                    {!! Form::close() !!}   
+								</td>								
+
+							</tr>
+							@endforeach
+						</tbody>
+                        <tfoot>
+							<tr>
+								<th>Câu hỏi</th>
+                                <th></th>
+                                <th></th>
+							</tr>                        	
+                        </tfoot>						
+					</table>
+					{!! $faqs->render() !!}					
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

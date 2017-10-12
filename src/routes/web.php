@@ -174,8 +174,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('menu',['as'=>'admin.menu.index','uses'=>'MenuController@index', 'middleware'=> ['role:admin|manager']]);
 
     //Blog
-    Route::get('posts',['as'=>'posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
-    Route::get('posts/create',['as'=>'posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
+    Route::get('posts',['as'=>'admin.posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
+    Route::get('posts/create',['as'=>'admin.posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
     Route::post('posts/create',['as'=>'admin.posts.store','uses'=>'PostsController@store','middleware' => ['role:admin|manager']]);
     Route::get('posts/{id}/edit',['as'=>'admin.posts.edit','uses'=>'PostsController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('posts/{id}',['as'=>'admin.posts.update','uses'=>'PostsController@update','middleware' => ['role:admin|manager']]);

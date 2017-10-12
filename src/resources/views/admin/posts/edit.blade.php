@@ -19,8 +19,31 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Tạo Mới Bài Viết</h3>
+                    <h3 class="box-title">Chỉnh Sửa Bài Viết</h3>
                 </div>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>Lỗi!</strong> Kiểm tra lại thông tin đã nhập.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if ($message = Session::get('success_message'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('danger_message'))
+                    <div class="alert alert-danger">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif                
+                                
+
+
                 <form class="form-horizontal" method="POST" action="{{url('/admin/posts')}}/{{$post->id}}" id="form" role="form">
                   {{csrf_field()}}
                    <input name="_method" type="hidden" value="PATCH">
@@ -82,31 +105,31 @@
 
                         <!-- each language tab -->
                         @foreach ($post_translations as $post_translation)
-                        <div class="tab-pane fade" id="{{$post_tran->language_id}}-content">
+                        <div class="tab-pane fade" id="{{$post_translation->language_id}}-content">
                             <div class="box-body">
+                                <input type="hidden" id="post-translation-id" name="{{$post_translation->language_id}}-id" value="{{ $post_translation->id }}" />
                                 <div class="form-group">
                                     <label for="title" class="col-sm-2 control-label">Tiêu Đề</label>
                                     <div class="col-sm-10">
-                                        <input type="title" name="{{$post_tran->language_id}}-title"  class="form-control" id="title" value="{{$post_translation->title}}">
-                                    </div>
-                                </div>
-                               
-                                <div class="form-group">
-                                    <label for="slug" class="col-sm-12">Đoạn Trích</label>
-                                    <div class="col-sm-12">
-                                        <textarea id="excerpt-editor" name="{{$post_tran->language_id}}-excerpt" rows="10" cols="80">{!!$post_translation->excerpt!!}</textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="slug" class="col-sm-12">Nội Dung</label>
-                                    <div class="col-sm-12">
-                                        <textarea id="content-editor" name="{{$post_tran->language_id}}-content" rows="10" cols="80">{!!$post_translation->content!!}</textarea>
+                                        <input type="title" name="{{$post_translation->language_id}}-title"  class="form-control" id="title" value="{{$post_translation->title}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description" class="col-sm-2 control-label">Giới Thiệu</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="{{$post_tran->language_id}}-description" rows="3"  placeholder="SEO">{{$post_translation->description}}</textarea>
+                                        <textarea class="form-control" name="{{$post_translation->language_id}}-description" rows="3"  placeholder="SEO">{{$post_translation->description}}</textarea>
+                                    </div>
+                                </div>                               
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Đoạn Trích</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="{{$post_translation->language_id}}-excerpt" rows="5">{!!$post_translation->excerpt!!}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Nội Dung</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control ckeditor" id="{{$post_translation->language_id}}-content-editor" name="{{$post_translation->language_id}}-content" rows="10" cols="120">{!!$post_translation->content!!}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -115,26 +138,11 @@
                         @endforeach                                                     
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                        <button type="submit" class="btn btn-primary pull-right">Cập Nhật</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>        
-@endsection
-
-
-@section('scripts')
-<script>
-  $(function () {
-    $('.select2').select2();
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    //CKEDITOR.replace('excerpt-editor');
-    //CKEDITOR.replace('content-editor');
-    //bootstrap WYSIHTML5 - text editor
-    // $('.textarea').wysihtml5()
-  })
-</script>
 @endsection
