@@ -78,6 +78,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Hình đại diện</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="img"/>
+                                        <span class="text-danger">{{ $errors->first('img') }}</span>                                        
+                                    </div>
+                                </div>                                  
+                                <div class="form-group">
                                     <label for="slug" class="col-sm-2 control-label">Xuất Bản</label>
                                     <div class="col-sm-10">
                                         <!-- <input name="published" type="checkbox" checked> -->
