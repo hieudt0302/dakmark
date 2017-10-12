@@ -22,15 +22,15 @@ class Order extends Model
      */
      public function billingaddress()
      {
-         return $this->belongsTo('App\Models\BookAddress');
+         return $this->belongsTo('App\Models\BookAddress','billing_address_id');
      }
 
      /**
      * Get the shipingaddress that owns the order.
      */
-     public function shipingaddress()
+     public function shippingaddress()
      {
-         return $this->belongsTo('App\Models\BookAddress');
+         return $this->belongsTo('App\Models\BookAddress','shipping_address_id');
      }
 
       /**
@@ -38,6 +38,6 @@ class Order extends Model
      */
      public function user()
      {
-         return $this->belongsTo('App\Models\User');
+         return $this->belongsTo('App\Models\User','customer_id');
      }
 }

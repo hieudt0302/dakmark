@@ -11,7 +11,7 @@ class BookAddress extends Model
      *
      * @var string
      */
-     //protected $table = 'book_addresses';
+     protected $table = 'book_addresses';
 
      /**
      * Get the user that owns the BookAddress.
@@ -21,5 +21,12 @@ class BookAddress extends Model
          return $this->belongsTo('App\Models\user');
      }
 
+      /**
+     * Get the products for the category.
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
      
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class OrdersController extends Controller
 {
@@ -56,7 +57,8 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $order  = Order::find($id);
+        return View('front.orders.show', compact('order'));
     }
 
     /**

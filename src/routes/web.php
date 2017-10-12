@@ -60,6 +60,8 @@ Route::post('/Cart/UpdateCartItem', 'Front\CartController@UpdateCartItem');
 Route::post('/Cart/DeleteCartItem', 'Front\CartController@DeleteCartItem');
 Route::post('/Cart/MoveItemBetweenCartAndWishlist', 'Front\CartController@MoveItemBetweenCartAndWishlist');
 
+
+
 /* CHECKOUT*/
 //Step 1
 Route::get('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
@@ -82,10 +84,15 @@ Route::post('/Checkout/Confirm/Next', 'Front\CheckoutController@ConfirmNext');
 Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
+/* ACCOUNTS */
+// 1. Order
+Route::get('/orders', 'Front\ProductsController@index');
+Route::get('/Order/Details/{id}', 'Front\OrdersController@show');
+
+
+
 /* ADMIN */
-
 //Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
-
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     //Dashboard
