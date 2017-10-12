@@ -100,13 +100,16 @@
                 <a href="#" class="mn-has-sub"><i class="fa fa-user"></i> {{ Auth::user()->last_name }} {{ Auth::user()->firs_name }}<i class="fa fa-angle-down"></i></a>
                 <!-- Sub -->
                 <ul class="mn-sub">                                 
+                                                   
                     <li>
-                        <a href="{{ url('/order') }}">@lang('shoppings.order-history')</a> 
-                    </li>                                    
-                    <li>
-                        <a href="{{ url('/profile') }}">@lang('common.profile')</a> 
+                        <a href="{{ url('/Account/Info') }}">My Account</a> 
                     </li>
-                   
+                    <li>
+                        <a href="{{ url('/wishlish') }}">Wishlist</a> 
+                    </li>
+                    <li>
+                        <a href="{{ url('/cart') }}">Shopping Cart</a> 
+                    </li>    
                     <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();

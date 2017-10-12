@@ -17,7 +17,7 @@
                             <h1 class="h2 mb-0">
                                 Order details
                                 <small class="text-muted">
-                                    <small>{{$order->order_no}}</small>
+                                    <small>#{{$order->order_no}}</small>
                                 </small>
                             </h1>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="row mb-3">
                             <div class="col-6 col-sm-auto pb-3">
                                 <h5 class="text-muted">Order Date</h5>
-                                <div>{{$order->order_start_date}}</div>
+                                <div>{{date("Y-m-d", strtotime($order->order_start_date))}}</div>
                             </div>
                             <div class="col-6 col-sm-auto pb-3">
                                 <h5 class="text-muted">Order #</h5>

@@ -60,7 +60,8 @@ Route::post('/Cart/UpdateCartItem', 'Front\CartController@UpdateCartItem');
 Route::post('/Cart/DeleteCartItem', 'Front\CartController@DeleteCartItem');
 Route::post('/Cart/MoveItemBetweenCartAndWishlist', 'Front\CartController@MoveItemBetweenCartAndWishlist');
 
-
+/* WISHLIST */
+Route::get('/wishlist', 'Front\ShoppingCartController@wishlist');
 
 /* CHECKOUT*/
 //Step 1
@@ -84,10 +85,27 @@ Route::post('/Checkout/Confirm/Next', 'Front\CheckoutController@ConfirmNext');
 Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
-/* ACCOUNTS */
-// 1. Order
-Route::get('/orders', 'Front\ProductsController@index');
+/* MY ACCOUNTS */
+// 1. Change Info
+Route::get('/Account/Info', 'Auth\AccountController@Info');
+Route::post('/Account/Info/Update', 'Auth\AccountController@InfoUpdate');
+
+// 2. Order
+Route::get('/Account/Orders', 'Auth\AccountController@Orders');
+
+// 3. Book Address
+Route::get('/Account/Addresses', 'Auth\AccountController@Addresses');
+Route::get('/Account/Addresses/Create', 'Auth\AccountController@AddressCreate');
+Route::post('/Account/Addresses/Store', 'Auth\AccountController@AddressStore');
+Route::get('/Account/Addresses/Edit/{id}', 'Auth\AccountController@AddressEdit');
+Route::post('/Account/Addresses/Update', 'Auth\AccountController@AddressUpdate');
+
+// 4. Change Password
+Route::get('/Account/ChangePassword', 'Auth\AccountController@ChangePassword');
+
+/* ORDER */
 Route::get('/Order/Details/{id}', 'Front\OrdersController@show');
+
 
 
 
