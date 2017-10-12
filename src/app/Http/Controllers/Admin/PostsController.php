@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostTranslation;
+use App\Models\Language;
 use Validator;
+
 class PostsController extends Controller
 {
     /**
@@ -30,8 +33,9 @@ class PostsController extends Controller
     {
         $blogCategory = Category::where('name','blog')->firstOrFail();
         $categories = Category::where('parent_id',$blogCategory->id)->get();
+        $language_list = Language::all();    
 
-        return View('admin.posts.create',compact('categories'));
+        return View('admin.posts.create',compact('categories','language_list'));
     }
 
     /**
@@ -57,31 +61,26 @@ class PostsController extends Controller
             $post = new Post();
             $post->title = $request->title;
             $post->slug = $request->slug;
-    
-            if(!empty($request->excerpt))
-                $post->excerpt = $request->excerpt;
-    
-            if(!empty($request->content))
-                $post->content = $request->content;
-    
-            if(!empty($request->description))
-                $post->description = $request->description;
-    
             if(!empty($request->category_id))
                 $post->category_id = $request->category_id;
-    
             $post->author_id = Auth::user()->id;
-    
-
             $post->published = $request->published??0;
-    
-            $post->save();
-    
-       
+            $post->save();            
+
+            $language_list = Language::all();
+            foreach ($language_list as $language){ 
+                $post_translation = new PostTranslation;
+                $post_translation->post_id = $post->id;
+                $post_translation->language_id = $language->id;
+                $post_translation->title = $request->input($language->id.'-title');            
+                $post_translation->content = $request->input($language->id.'-content');
+                $post_translation->excerpt = $request->input($language->id.'-excerpt');
+                $post_translation->description = $request->input($language->id.'-description');                                   
+                $post_translation->save();
+            }    
         
         return redirect()->back()
-        ->with('message', 'Bài viết mới đã được tạo')
-        ->with('status', 'success');
+        ->with('success_message', 'Bài viết mới đã được tạo');
         
     }
 
@@ -107,7 +106,9 @@ class PostsController extends Controller
         $blogCategory = Category::where('name','blog')->firstOrFail();
         $categories = Category::where('parent_id',$blogCategory->id)->get();
         $post = Post::where('id',$id)->firstOrFail();
-        return View('admin.posts.edit',compact('post','categories'));
+        $language_list = Language::all();
+        $post_translations = PostTranslation::where('post_id',$id)->orderBy('language_id','asc')->get();        
+        return View('admin.posts.edit',compact('post','post_translations','language_list','categories'));
     }
 
     /**
@@ -135,16 +136,6 @@ class PostsController extends Controller
         
         $post->title = $request->title;
         $post->slug = $request->slug;
-
-        if(!empty($request->excerpt))
-            $post->excerpt = $request->excerpt;
-
-        if(!empty($request->content))
-            $post->content = $request->content;
-
-        if(!empty($request->description))
-            $post->description = $request->description;
-
         if(!empty($request->category_id))
             $post->category_id = $request->category_id;
 
@@ -154,10 +145,26 @@ class PostsController extends Controller
         $post->published = $request->published??0;
 
         $post->save();
-        
+
+
+        $language_list = Language::all();
+        foreach ($language_list as $language){
+            $post_tran_id=$request->input($language->id.'-id');
+            $post_translation = PostTranslation::find($post_tran_id);
+            if ($post_translation == null) {
+                $post_translation = new PostTranslation;
+                $post_translation->post_id = $post->id;                
+                $post_translation->language_id = $language->id;                
+            }
+            $post_translation->title = $request->input($language->id.'-title');            
+            $post_translation->content = $request->input($language->id.'-content');
+            $post_translation->excerpt = $request->input($language->id.'-excerpt');
+            $post_translation->description = $request->input($language->id.'-description');                                   
+            $post_translation->save();
+        }
+
         return redirect()->back()
-        ->with('message', 'Bài viết mới đã được tạo')
-        ->with('status', 'success');
+        ->with('success_message', 'Bài viết đã được cập nhật');
     }
 
     /**
@@ -168,6 +175,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        session()->flash('success_message', "Xóa thành công!");        
+        return redirect()->route('admin.posts.index'); 
     }
 }

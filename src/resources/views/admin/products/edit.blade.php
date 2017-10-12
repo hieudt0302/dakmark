@@ -21,137 +21,196 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Cập Nhật Sản Phẩm</h3>
                 </div>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>Lỗi!</strong> Kiểm tra lại thông tin đã nhập.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if ($message = Session::get('success_message'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('danger_message'))
+                    <div class="alert alert-danger">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif  
+
                 <form class="form-horizontal" method="POST" action="{{url('/admin/products')}}/{{$product->id}}" id="form" role="form">
                   {{csrf_field()}}
-                   <input name="_method" type="hidden" value="PATCH">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="sku" class="col-sm-2 control-label">SKU</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="sku" value="{{$product->sku}}" class="form-control" id="sku">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Tên</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="name" value="{{$product->name}}" class="form-control" id="name" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Slug</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="slug" value="{{$product->slug}}" class="form-control" id="slug">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="summay" class="col-sm-2 control-label">Mô Tả</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" name="summary" rows="3"  placeholder="SEO">{{$product->summay}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="old_price" class="col-sm-2 control-label">Giá Cũ</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="old_price" value="{{$product->old_price}}" class="form-control" id="old_price" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="price" class="col-sm-2 control-label">Giá Hiện Tại</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="price" value="{{$product->price}}" class="form-control" id="price" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="special_price" class="col-sm-2 control-label">Giá Khuyến Mãi</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="special_price" value="{{$product->special_price}}" class="form-control" id="special_price" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="special_price_start_date" class="col-sm-2 control-label">Ngày Khuyến Mãi:</label>
-                            <div class="col-sm-10 input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
+                    <input name="_method" type="hidden" value="PATCH">
+                    <!-- nagigation tab -->
+                    <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">
+                        <li class="active">
+                            <a href="#general" data-toggle="tab">Thông tin chung</a>
+                        </li>        
+                        @foreach ($language_list as $language)
+                        <li>
+                            <a href="#{{$language->id}}-content" data-toggle="tab">Nội dung - {{$language->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>  
+
+                    <!-- tab details -->
+                    <!-- general tab -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="general">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="sku" class="col-sm-2 control-label">SKU</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="sku" value="{{$product->sku}}" class="form-control" id="sku">
+                                    </div>
                                 </div>
-                                <input type="text" name="special_price_start_date" class="form-control" id="reservation-start">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="special_price_end_date" class="col-sm-2 control-label">Ngày Khuyến Mãi:</label>
-                            <div class="col-sm-10 input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Tên</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="name" value="{{$product->name}}" class="form-control" id="name" >
+                                    </div>
                                 </div>
-                                <input type="text" name="special_price_end_date" class="form-control" id="reservation-end">
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Slug</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="slug" value="{{$product->slug}}" class="form-control" id="slug">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="old_price" class="col-sm-2 control-label">Giá Cũ</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="old_price" value="{{$product->old_price}}" class="form-control" id="old_price" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price" class="col-sm-2 control-label">Giá Hiện Tại</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="price" value="{{$product->price}}" class="form-control" id="price" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="special_price" class="col-sm-2 control-label">Giá Khuyến Mãi</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="special_price" value="{{$product->special_price}}" class="form-control" id="special_price" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="special_price_start_date" class="col-sm-2 control-label">Ngày Khuyến Mãi:</label>
+                                    <div class="col-sm-10 input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" name="special_price_start_date" class="form-control" id="reservation-start">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="special_price_end_date" class="col-sm-2 control-label">Ngày Khuyến Mãi:</label>
+                                    <div class="col-sm-10 input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" name="special_price_end_date" class="form-control" id="reservation-end">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                        <label>{{ Form::checkbox('disable_buy_button', 1 ,$product->disable_buy_button ? true : false, array('class' => 'disable_buy_button')) }}Ẩn Nút Mua</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                        <label>{{ Form::checkbox('disable_wishlist_button', 1 ,$product->disable_wishlist_button ? true : false, array('class' => 'disable_wishlist_button')) }}Ẩn Nút Mong Ước</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                        <label>{{ Form::checkbox('call_for_price', 1 ,$product->call_for_price ? true : false, array('class' => 'call_for_price')) }}Gọi Điện Báo Giá</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                        <label>{{ Form::checkbox('sold_off', 1 ,$product->sold_off ? true : false, array('class' => 'sold_off')) }}Hết Hàng</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2 checkbox">
+                                        <label>{{ Form::checkbox('published', 1 ,$product->published ? true : false, array('class' => 'published')) }}Xuất Bản</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="minimum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Thiểu</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="minimum_amount" value="{{$product->minimum_amount}}" class="form-control" id="minimum_amount" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maximum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Đa</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="maximum_amount" value="{{$product->maximum_amount}}" class="form-control" id="maximum_amount" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Thể Loại</label>
+                                    <div class="col-sm-10">
+                                        <select name="category_id" class="form-control select2" style="width: 100%;">
+                                            @foreach($categories as $category)
+                                              @if(!empty($product->category_id) && $product->category_id == $category->id)
+                                                <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                              @else
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                              @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                               
                             </div>
+
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2 checkbox">
-                                <label>{{ Form::checkbox('disable_buy_button', 1 ,$product->disable_buy_button ? true : false, array('class' => 'disable_buy_button')) }}Ẩn Nút Mua</label>
+
+                        <!-- each language tab -->
+                        @foreach ($product_translations as $product_translation)
+                        <div class="tab-pane fade" id="{{$product_translation->language_id}}-content">  
+                            <input type="hidden" id="product-translation-id" name="{{$product_translation->language_id}}-id" value="{{ $product_translation->id }}" />
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Tên</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="{{$product_translation->language_id}}-name" value="{{$product_translation->name}}" class="form-control" id="name" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="summay" class="col-sm-2 control-label">Mô Tả</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="{{$product_translation->language_id}}-summary" rows="3"  placeholder="SEO">{{$product_translation->summary}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="col-sm-2 control-label">Giới thiệu</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="{{$product_translation->language_id}}-description" rows="3"  placeholder="SEO">{{$product_translation->description}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="specs" class="col-sm-2 control-label">Đặc Tả</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="{{$product_translation->language_id}}-specs" rows="3"  placeholder="SEO">{{$product_translation->specs}} </textarea>
+                                    </div>
+                                </div>
+                               
                             </div>
+
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2 checkbox">
-                                <label>{{ Form::checkbox('disable_wishlist_button', 1 ,$product->disable_wishlist_button ? true : false, array('class' => 'disable_wishlist_button')) }}Ẩn Nút Mong Ước</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2 checkbox">
-                                <label>{{ Form::checkbox('call_for_price', 1 ,$product->call_for_price ? true : false, array('class' => 'call_for_price')) }}Gọi Điện Báo Giá</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2 checkbox">
-                                <label>{{ Form::checkbox('sold_off', 1 ,$product->sold_off ? true : false, array('class' => 'sold_off')) }}Hết Hàng</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2 checkbox">
-                                <label>{{ Form::checkbox('published', 1 ,$product->published ? true : false, array('class' => 'published')) }}Xuất Bản</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="minimum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Thiểu</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="minimum_amount" value="{{$product->minimum_amount}}" class="form-control" id="minimum_amount" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="maximum_amount" class="col-sm-2 control-label">Đặt Hàng Tối Đa</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="maximum_amount" value="{{$product->maximum_amount}}" class="form-control" id="maximum_amount" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="col-sm-2 control-label">Giới thiệu</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" name="description" rows="3"  placeholder="SEO">{{$product->description}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="specs" class="col-sm-2 control-label">Đặc Tả</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" name="specs" rows="3"  placeholder="SEO">{{$product->specs}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Thể Loại</label>
-                            <div class="col-sm-10">
-                                <select name="category_id" class="form-control select2" style="width: 100%;">
-                                    @foreach($categories as $category)
-                                      @if(!empty($product->category_id) && $product->category_id == $category->id)
-                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
-                                      @else
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                      @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                       
-                    </div>
+                        @endforeach                            
+                    </div>        
+
+
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                        <button type="submit" class="btn btn-primary pull-right">Cập Nhật</button>
                     </div>
                 </form>
             </div>

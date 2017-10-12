@@ -24,6 +24,14 @@ Auth::routes();
 /* HOME */
 Route::get('/', 'Front\HomeController@index');
 Route::get('/about', 'Front\HomeController@about');
+Route::get('/returns', 'Front\HomeController@returns');
+Route::get('/showrooms', 'Front\HomeController@showrooms');
+Route::get('/purchase-flow', 'Front\HomeController@purchase_flow');
+
+/* ACCOUNT */
+Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
+Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
+Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
 
 /* FAQ */
 Route::get('/faqs', 'Front\FaqController@index');
@@ -75,7 +83,11 @@ Route::get('/Checkout/Complete', 'Front\CheckoutController@Complete');
 Route::post('/Checkout/Complete/Next', 'Front\CheckoutController@CompleteNext');
 
 /* ADMIN */
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
+
+//Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
+
     //Dashboard
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index']);
 
@@ -168,8 +180,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('menu',['as'=>'admin.menu.index','uses'=>'MenuController@index', 'middleware'=> ['role:admin|manager']]);
 
     //Blog
-    Route::get('posts',['as'=>'posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
-    Route::get('posts/create',['as'=>'posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
+    Route::get('posts',['as'=>'admin.posts.index','uses'=>'PostsController@index','middleware' => ['role:admin|manager']]);
+    Route::get('posts/create',['as'=>'admin.posts.create','uses'=>'PostsController@create','middleware' => ['role:admin|manager']]);
     Route::post('posts/create',['as'=>'admin.posts.store','uses'=>'PostsController@store','middleware' => ['role:admin|manager']]);
     Route::get('posts/{id}/edit',['as'=>'admin.posts.edit','uses'=>'PostsController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('posts/{id}',['as'=>'admin.posts.update','uses'=>'PostsController@update','middleware' => ['role:admin|manager']]);

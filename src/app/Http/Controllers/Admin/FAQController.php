@@ -113,6 +113,8 @@ class FaqController extends Controller
             $faq_translation = FaqTranslation::find($faq_tran_id);
             if ($faq_translation == null) {
                 $faq_translation = new FaqTranslation;
+                $faq_translation->faq_id = $faq->id;
+                $faq_translation->language_id = $language->id;                
             }
             $faq_translation->question = $request->input($language->id.'-question');
             $faq_translation->answer = $request->input($language->id.'-answer');

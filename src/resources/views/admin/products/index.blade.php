@@ -45,12 +45,14 @@
                                 <td>{{$product->created_at}}</td>
                                 <td>
                                   <div class="tools">
-                                   <a href="{{url('/')}}/admin/products/{{$product->id}}/edit"> <i class="fa fa-edit"></i></a>
+                                   <a class="btn btn-primary btn-sm" href="{{url('/')}}/admin/products/{{$product->id}}/edit"> <i class="fa fa-edit"></i></a>
                                   </div>
                                 </td>
                                 <td>
                                   <div class="tools">
-                                    <a href=""><i class="fa fa-trash-o"></i></a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['admin.products.destroy', $product->id],'style'=>'display:inline']) !!}
+                                    {{ Form::button('<i class="fa fa-trash-o"></i>', ['type' => 'submit','class' => 'btn btn-warning btn-sm'] )  }}
+                                    {!! Form::close() !!}  
                                   </div>
                                 </td>
                             </tr>
