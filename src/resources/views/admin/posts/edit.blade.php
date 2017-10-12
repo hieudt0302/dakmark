@@ -81,32 +81,32 @@
                         </div>
 
                         <!-- each language tab -->
-                        @foreach ($language_list as $language)
-                        <div class="tab-pane fade" id="{{$language->id}}-content">
+                        @foreach ($post_translations as $post_translation)
+                        <div class="tab-pane fade" id="{{$post_tran->language_id}}-content">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="title" class="col-sm-2 control-label">Tiêu Đề</label>
                                     <div class="col-sm-10">
-                                        <input type="title" name="{{$language->id}}-title" value="{{$post->title}}" class="form-control" id="title" placeholder="Tiêu đề bài viết">
+                                        <input type="title" name="{{$post_tran->language_id}}-title"  class="form-control" id="title" value="{{$post_translation->title}}">
                                     </div>
                                 </div>
                                
                                 <div class="form-group">
                                     <label for="slug" class="col-sm-12">Đoạn Trích</label>
                                     <div class="col-sm-12">
-                                        <textarea id="excerpt-editor" name="{{$language->id}}-excerpt" rows="10" cols="80">{!!$post->excerpt!!}</textarea>
+                                        <textarea id="excerpt-editor" name="{{$post_tran->language_id}}-excerpt" rows="10" cols="80">{!!$post_translation->excerpt!!}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="slug" class="col-sm-12">Nội Dung</label>
                                     <div class="col-sm-12">
-                                        <textarea id="content-editor" name="{{$language->id}}-content" rows="10" cols="80">{!!$post->content!!}</textarea>
+                                        <textarea id="content-editor" name="{{$post_tran->language_id}}-content" rows="10" cols="80">{!!$post_translation->content!!}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description" class="col-sm-2 control-label">Giới Thiệu</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="{{$language->id}}-description" rows="3"  placeholder="SEO">{{$post->description}}</textarea>
+                                        <textarea class="form-control" name="{{$post_tran->language_id}}-description" rows="3"  placeholder="SEO">{{$post_translation->description}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -131,8 +131,8 @@
     $('.select2').select2();
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('excerpt-editor');
-    CKEDITOR.replace('content-editor');
+    //CKEDITOR.replace('excerpt-editor');
+    //CKEDITOR.replace('content-editor');
     //bootstrap WYSIHTML5 - text editor
     // $('.textarea').wysihtml5()
   })
