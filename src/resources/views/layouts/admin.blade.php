@@ -430,7 +430,7 @@ ol {
             <li><a href="{{url('/admin/orders')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
             <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Thống Kê</a></li> -->
-            <li><a href="#"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
+            <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Thiết Lập</a></li> -->
           </ul>
         </li>
         <!-- <li>
@@ -454,7 +454,7 @@ ol {
             <li><a href="{{url('admin/products/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
             <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Thống Kê</a></li> -->
             <li><a href="#"><i class="fa fa-circle-o"></i> Đánh Giá</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
+            <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Thiết Lập</a></li> -->
           </ul>
         </li>
         <li class="treeview">
@@ -470,7 +470,7 @@ ol {
             <li><a href="{{url('admin/posts')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
             <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Bình Luận</a></li>
             <!-- <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Thống Kê</a></li> -->
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
+            <!-- <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Thiết Lập</a></li> -->
           </ul>
         </li>
         <li class="treeview">
@@ -483,7 +483,7 @@ ol {
           <ul class="treeview-menu">
             <li><a href="{{url('/admin/menu')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
             <li><a href="{{url('/admin/menu/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
-            <li><a href="{{url('/admin/menu/config')}}"><i class="fa fa-circle-o"></i> Thiết Lập</a></li>
+            <!-- <li><a href="{{url('/admin/menu/config')}}"><i class="fa fa-circle-o"></i> Thiết Lập</a></li> -->
           </ul>
         </li>
         <!-- FAQ -->
