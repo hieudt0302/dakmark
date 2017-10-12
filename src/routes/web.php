@@ -57,12 +57,12 @@ Route::post('/Cart/MoveItemBetweenCartAndWishlist', 'Front\CartController@MoveIt
 
 /* CHECKOUT*/
 //Step 1
-Route::post('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
+Route::get('/Checkout/BillingAddress', 'Front\CheckoutController@BillingAddress');
 Route::post('/Checkout/BillingAddress/Next', 'Front\CheckoutController@BillingAddressNext');
 Route::get('/Checkout/SelectBillingAddress', 'Front\CheckoutController@SelectBillingAddress');
 
 //Step 2
-Route::post('/Checkout/ShippingAddress', 'Front\CheckoutController@ShippingAddress');
+Route::get('/Checkout/ShippingAddress', 'Front\CheckoutController@ShippingAddress');
 Route::post('/Checkout/ShippingAddress/Next', 'Front\CheckoutController@ShippingAddressNext');
 //Step 3
 Route::post('/Checkout/ShippingMethod', 'Front\CheckoutController@ShippingMethod');

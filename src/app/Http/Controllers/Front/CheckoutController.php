@@ -27,7 +27,7 @@ class CheckoutController extends Controller
          $this->middleware('auth');
      }
 
-    public function BillingAddress(Request $request)
+    public function BillingAddress()
     {
         $book_addresses = BookAddress::where('user_id', Auth::user()->id)->get();
 
@@ -36,8 +36,7 @@ class CheckoutController extends Controller
 
     public function SelectBillingAddress()
     {
-        $book_addresses = BookAddress::where('user_id', Auth::user()->id)->get();
-        return View('front.checkout.shippingaddress',compact('book_addresses'));
+        return redirect()->action('Front\CheckoutController@ShippingAddress');
     }
 
     public function BillingAddressNext(Request $request)

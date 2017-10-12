@@ -57,8 +57,8 @@
                     <div class="page-body">
                         <div class="order-summary-content">
                             @if(Cart::count()>0)
-                            <form action="{{url('/Checkout/BillingAddress')}}" enctype="multipart/form-data" method="POST" novalidate="novalidate">
-                            {{ csrf_field() }}
+                            <form action="{{url('/Checkout/BillingAddress')}}" enctype="multipart/form-data" method="GET" novalidate="novalidate">
+                            <!-- {{ csrf_field() }} -->
                                 <div class="card">
                                     <div id="cart-items" class="cart mb-0 cart-editable">
                                         <div class="cart-head">

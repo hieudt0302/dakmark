@@ -54,10 +54,10 @@
                         <fieldset class="content-group mb-3">
                             <legend><span>Select billing address</span></legend>
                             <div class="card-deck card-cols-sm-1 card-cols-md-2 card-cols-lg-3 address-list">
-								@foreach(Auth::user()->bookaddreses as $bookaddress)
+								@foreach(Auth::user()->bookaddresses as $bookaddress)
                                 <div class="card card-block address-list-item">
                                     <div class="address-item">
-                                        <button class="btn btn-warning btn-block select-billing-address-button" onclick="setLocation('/Cart/Checkout/SelectBillingAddress?addressId={{$bookaddress->id}}')">
+                                        <button class="btn btn-warning btn-block select-billing-address-button" onclick="setLocation('/Checkout/SelectBillingAddress?addressId={{$bookaddress->id}}')">
 											<span>Bill to this address</span>
 											<i class="fa fa-angle-right"></i>
 										</button>
@@ -93,15 +93,16 @@
                         <fieldset class="content-group">
                             <legend>
 								<span>
-									@if(Auth::user()->bookaddresses()) > 0)
-									Or enter</span>
+									@if(count(Auth::user()->bookaddresses()) > 0)
+									Or enter
 									@else 
 									Enter
 									@endif
 									new address
+                                </span>
 							</legend>
                             <div class="enter-address">
-                                <form action="/Checkout/ShippingAddress" method="post" novalidate="novalidate">
+                                <form action="{{url('/Checkout/ShippingAddress')}}" method="POST" novalidate="novalidate">
 								{{ csrf_field() }}	
 									<div class="enter-address-body">
                                         <input data-val="true" data-val-number="The field 'ID' must be a number." data-val-required="'Id' must not be empty." id="NewAddress_Id" name="NewAddress.Id" type="hidden" value="0">
