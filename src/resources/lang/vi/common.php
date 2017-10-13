@@ -25,5 +25,7 @@ return [
      'see-more' => 'Xem thêm',
      'categories' => 'Danh mục',
      'search' => 'Tìm kiếm',     
-	 'home' => 'Trang chủ',                           	 	 	 	      
+	 'home' => 'Trang chủ',
+     'company-name' => ' Công ty TNHH Dakmark Foods',
+     'headquarter-address' => 'Tầng 1, tòa nhà Vinaconex D, đường số 1, Trần Thái Tông, Cầu Giấy, Hà Nội',   	                            	 	 	 	      
 ];

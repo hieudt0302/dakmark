@@ -15,8 +15,8 @@
                             <div class="widget-body">
                                 <div class="widget-text clearfix">
                                     
-                                        <b>Công ty TNHH Dakmark Foods.</b><br>
-                                        Tầng 1, tòa nhà Vinaconex D, đường số 1, Trần Thái Tông, Cầu Giấy, Hà Nội.<br><br>
+                                        <b>@lang('common.company-name').</b><br>
+                                        @lang('common.headquarter-address').<br><br>
                                     
                                     <address>
                                         <span class="fa-stack fa-lg">
