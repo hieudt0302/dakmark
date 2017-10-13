@@ -32,7 +32,7 @@
             <!-- Item With Sub - Level 1 -->
             @foreach($menus as $key => $menu)
             <li>
-                <a href="#" class="mn-has-sub">{{$menu->translations->first()->name}}<i class="fa fa-angle-down"></i></a>
+                <a href="#" class="mn-has-sub">{{$menu->translation->name}}<i class="fa fa-angle-down"></i></a>
                 <!-- Sub - Level 2 -->
                 <ul class="mn-sub">
                     @foreach($menu->GetMenuSubLevel1() as $sub)
