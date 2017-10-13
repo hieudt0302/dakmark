@@ -49,7 +49,10 @@ class HomeController extends Controller
         return View("front.home.infopage",compact('info_page_translation'));
     }   
 
-
+    public function contact()
+    {
+        return View("front/home/contact");
+    }
 
     /**
      * Show the form for creating a new resource.

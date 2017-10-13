@@ -1,20 +1,17 @@
 @extends('layouts.master')
-@section('title','Cà phê Đak Hà - Sản Phẩm')
+@section('title',$product->name)
 @section('header')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 @endsection
 @section('content')
 
 <!-- Head Section -->
-<section class="small-section bg-gray-lighter">
+<section class="small-section bg-gray-lighter pt-30 pb-30">
     <div class="relative container align-left">
         <div class="row">
             
             <div class="col-md-8">
                 <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">@lang('shoppings.product-details')</h1>
-                <div class="hs-line-4 font-alt black">
-                    Choose the best products in our shop
-                </div>
             </div>
             
             <div class="col-md-4 mt-30">

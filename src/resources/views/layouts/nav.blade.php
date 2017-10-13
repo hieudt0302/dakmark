@@ -47,11 +47,15 @@
             </li>
             @endforeach
             <!-- End Item With Sub - Level 1 -->
-            
+            <!-- Item With Sub -->
+            <li>
+                <a href="{{ url('/contact') }}" class="mn-has-sub">@lang('header.contact')</a>
+            </li>
+            <!-- End Item With Sub -->            
          
             
             <!-- Divider -->
-            <li><a>&nbsp;</a></li>
+            <li><a>&nbsp;&nbsp;</a></li>
             <!-- End Divider -->
             
             <!-- Search -->
