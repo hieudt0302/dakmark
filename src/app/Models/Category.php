@@ -50,4 +50,12 @@ class Category extends Model
      {
          return $this->belongsTo('App\Models\Category');
      }
+
+     /**
+     * Get the translations for the category.
+     */
+    public function translations()
+    {
+        return $this->hasMany('App\Models\CategoryTranslation');
+    }
 }
