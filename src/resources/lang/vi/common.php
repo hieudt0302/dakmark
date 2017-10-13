@@ -24,6 +24,6 @@ return [
      'profile' => 'Thông tin cá nhân',
      'see-more' => 'Xem thêm',
      'categories' => 'Danh mục',
-     'search' => 'Tìm kiếm...',
+     'search' => 'Tìm kiếm',     
 	 'home' => 'Trang chủ',                           	 	 	 	      
 ];

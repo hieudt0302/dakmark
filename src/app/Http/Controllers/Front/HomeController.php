@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Carbon\Carbon;
+use App\Models\Post;
+use App\Models\Product;
 use App\Models\InfoPage;
 use App\Models\InfoPageTranslation;
 use App\Models\Language;
@@ -115,6 +117,25 @@ class HomeController extends Controller
         //
     }
 
+    public function search(Request $request){
+        $search_key = $request->input('key'); 
+        
+
+        $products = Product::where('published',1)
+        ->whereNull('deleted_at')
+        ->where("name", "LIKE", "%$search_key%")
+        ->paginate(10);
+
+        $posts = Post::where('published',1)
+        ->whereNull('deleted_at')
+        ->where("title", "LIKE", "%$search_key%")
+        ->paginate(10);            
+
+        //TODO search multilang
+
+        return view('front/home/search',compact('products','posts','search_key'));
+    }      
+
     function getInfoPageTranslation($slug){
         $language_id = 1; //make vietnamese as default alternative
         $locale = \App::getLocale(); 
@@ -127,4 +148,6 @@ class HomeController extends Controller
         return $info_page_translation;      
 
     }
+
+
 }

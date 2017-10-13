@@ -25,7 +25,7 @@ return [
      'profile' => 'Profile',
      'see-more' => 'See more',     	 
      'categories' => 'Categories',   
-     'search' => 'Search...',
+     'search' => 'Search',
 	 'home' => 'Home',     
 
 

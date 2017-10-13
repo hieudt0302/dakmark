@@ -18,6 +18,8 @@ return [
     'about-us' => 'GIỚI THIỆU',
     'cert' => 'CHỨNG CHỈ',
     'shop' => 'MUA HÀNG',
+    'product' => 'SẢN PHẨM',
+    'blogs' => 'BÀI VIẾT',        
     'blog' => 'BÀI VIẾT',
     'contact' => 'LIÊN HỆ',
     'search' => 'TÌM KIẾM',
