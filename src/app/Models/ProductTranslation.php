@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductTranslation extends Model
 {
-     /**
-     * The database table used by the model.
-     *
-     * @var string
+    /**
+     * Get the product that owns the producttranslation.
      */
-    protected $table = 'product_translations';
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }

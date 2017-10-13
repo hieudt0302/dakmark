@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class InfoPage extends Model
 {
      /**
-     * The database table used by the model.
-     *
-     * @var string
+     * Get the translations for the infopage.
      */
-    protected $table = 'info_pages';
+    public function translations()
+    {
+        return $this->hasMany('App\Models\InfoPageTranslation');
+    }
 }

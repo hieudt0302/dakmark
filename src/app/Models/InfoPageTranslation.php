@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class InfoPageTranslation extends Model
 {
-     /**
-     * The database table used by the model.
-     *
-     * @var string
+      /**
+     * Get the infopage that owns the infopage translation.
      */
-    protected $table = 'info_page_translations';
+    public function infopage()
+    {
+        return $this->belongsTo('App\Models\InfoPage');
+    }
 }

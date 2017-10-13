@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class FaqTranslation extends Model
 {
      /**
-     * The database table used by the model.
-     *
-     * @var string
+     * Get the infopage that owns the faq translation.
      */
-    protected $table = 'faq_translations';
+    public function faq()
+    {
+        return $this->belongsTo('App\Models\Faq');
+    }
 }

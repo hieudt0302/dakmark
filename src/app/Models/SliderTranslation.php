@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class SliderTranslation extends Model
 {
      /**
-     * The database table used by the model.
-     *
-     * @var string
+     * Get the product that owns the slider translation.
      */
-    protected $table = 'slider_translations';
+    public function slider()
+    {
+        return $this->belongsTo('App\Models\Slider');
+    }
 }
