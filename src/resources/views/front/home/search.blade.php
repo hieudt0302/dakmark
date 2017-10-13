@@ -1,12 +1,12 @@
 @extends('layouts.master') 
-@section('title','Search')
+@section('title','Dakmark Foods - Search')
 @section('header')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 @endsection 
 @section('content')
 
 <!-- Head Section -->
-<section class="small-section bg-dark-alfa-50 pt-30 pb-30" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/caphe.jpg') }}');">
+<section class="small-section bg-gray-lighter pt-30 pb-30" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/caphe.jpg') }}');">
     <div class="relative container align-left">
 
         <div class="row">
@@ -17,7 +17,7 @@
 
             <div class="col-md-4 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<span>@lang('common.search')</span>
+                    <a href="">@lang('header.home')</a>&nbsp;/&nbsp;<span>@lang('common.search')</span>
                 </div>
 
             </div>

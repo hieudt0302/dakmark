@@ -6,22 +6,16 @@
 @section('content')
 
 <!-- Head Section -->
-<section class="page-section bg-dark-alfa-50 parallax-3" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/caphe.jpg') }}');">
+<section class="small-section bg-dark-alfa-30 pt-30 pb-30" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/caphe.jpg') }}');">
     <div class="relative container align-left">
 
         <div class="row">
 
             <div class="col-md-8">
                 <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{{$info_page_translation->title}}</h1>
-                <div class="hs-line-4 font-alt">
-                </div>
             </div>
 
             <div class="col-md-4 mt-30">
-                <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<span>InfoPage</span>
-                </div>
-
             </div>
         </div>
 

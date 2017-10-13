@@ -4,6 +4,7 @@ return [
 	'' => '',
     'new-products' => 'Sản phẩm mới',
     'price' => 'Giá',
-    'best-sellers' => 'Sản phẩm bán chạy',
-	'our-blogs' => 'Bài viết của chúng tôi',      
+    'best-sellers-products' => 'Sản phẩm bán chạy',
+	'our-blogs' => 'Bài viết của chúng tôi',
+    'sale-products' => 'Sản phẩm khuyễn mãi',	      
 ];

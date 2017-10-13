@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title','Blog') 
+@section('title','Dakmark Foods - Post') 
 @section('header')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 @endsection
 @section('content')
 
 <!-- Head Section -->
-<section class="small-section bg-gray-lighter">
+<section class="small-section bg-gray-lighter pt-30 pb-30">    
     <div class="relative container align-left">
 
         <div class="row">
@@ -20,7 +20,7 @@
 
             <div class="col-md-4 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
-                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;<a href="#">@lang('header.blog')</a>&nbsp;
+                    <a href="#">@lang('header.home')</a>&nbsp;/&nbsp;@lang('header.blog')&nbsp;
                 </div>
 
             </div>

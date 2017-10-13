@@ -33,7 +33,7 @@
 
                                         <span class="fa-stack fa-lg">
                                           <i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
-                                          <i class="fa glyphicon glyphicon-envelope fa-stack-1x" aria-hidden="true"></i>
+                                          <i class="fa fa-send-o fa-stack-1x" aria-hidden="true"></i>
                                         </span>                              
                                         dakmark@dakmark.com.vn
                                     </address>

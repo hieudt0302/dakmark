@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Cà phê Đak Hà - Trang chủ')
+@section('title','Dakmark Foods - Home')
 @section('header')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 @endsection
@@ -9,7 +9,7 @@
 <div class="home-section fullwidth-slider bg-dark">
 
     <!-- Slide Item -->
-    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/trungthu.jpg') }}');">
+    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/foods/trungthu.jpg') }}');">
         <div class="relative container">
 
             <!-- Hero Content -->
@@ -31,7 +31,7 @@
     <!-- End Slide Item -->
 
     <!-- Slide Item -->
-    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/caphe.jpg') }}');">
+    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/foods/caphe.jpg') }}');">
         <div class="relative container">
 
             <!-- Hero Content -->
@@ -55,7 +55,7 @@
     <!-- End Slide Item -->
 
     <!-- Slide Item -->
-    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('public/assets/rhythm/images/foods/keomut.jpg') }}');">
+    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/foods/keomut.jpg') }}');">
         <div class="relative container">
 
             <!-- Hero Content -->
@@ -88,42 +88,46 @@
         <h2 class="section-title font-alt mb-70 mb-sm-40">
             @lang('home.new-products')
         </h2>
-
-        <div class="row multi-columns-row">
-            @foreach($new_products as $product)
-            <!-- Shop Item -->
-            <div class="col-md-3 col-lg-3 mb-40">
-
-                <div class="post-prev-img">
-                    <a href="products/{{$product->id}}"><img src="/images/caphe.jpg" alt="" /></a> 
-                    @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
-                    <div class="intro-label">
-                        <span class="label label-danger bg-red">@lang('product.sale')</span>
+        <!-- Product Content -->
+            <div class="col-sm-12">
+            <div class="row multi-columns-row">
+                 <!-- Shop Item -->
+                @foreach($new_products as $product)
+                <div class="col-md-3 col-lg-3 mb-60 mb-xs-40">
+                    <div class="post-prev-img">
+                        <a href="{{url('/')}}/product/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
+                        <div class="intro-label">
+                            <span class="label label-danger bg-red">Sale</span>
+                        </div>
                     </div>
-                    @endif
+                    <div class="post-prev-title font-alt align-center">
+                        <a href="{{url('/')}}/product/{{$product->id}}">{{$product->name}}</a>
+                    </div>
 
-                </div>
-
-                <div class="post-prev-title font-alt align-center">
-                    <a href="shop-single.html">{{ $product->name }}</a>
-                </div>
-
-                <div class="post-prev-text align-center mb-0">                    
-                    @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
-                        <del>{{$product->price}}</del> &nbsp;
-                        <strong>{{$product->special_price}}</strong>
-                    @else
-                        @if($product->old_price > 0)
-                        <del>{{$product->old_price}}</del> &nbsp;
+                    <div class="post-prev-text align-center">
+                        @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
+                            <del class="section-text">{{$product->price}}</del> &nbsp;
+                            <strong>{{$product->special_price}}</strong>
+                        @else
+                            @if($product->old_price > 0)
+                            <del class="section-text">{{$product->old_price}}</del> &nbsp;
+                            @endif
+                            <strong>{{$product->price}}</strong>
                         @endif
-                        <strong>{{$product->price}}</strong>
-                    @endif
+                    </div>
+                    
+                    <div class="post-prev-more align-center">
+                        <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" id="product_name" name="product_name" value="{{$product->name}}">
+                        <input type="hidden" id="product_price" name="product_price" value="{{$product->price}}">
+                        <button class="btn btn-mod btn-gray btn-round add-shoopingcart"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                    </div>
+                    
                 </div>
+                @endforeach
+                <!-- End Shop Item -->
 
             </div>
-            <!-- End Shop Item -->
-            @endforeach
-
         </div>
 
         <div class="mt-20 align-center">
@@ -133,6 +137,123 @@
     </div>
 </section>
 <!-- New Product  End Section -->
+
+<!-- Best Sellers Product Section -->
+<section class="page-section">
+    <div class="container relative">
+
+        <h2 class="section-title font-alt mb-70 mb-sm-40">
+            @lang('home.best-sellers-products')
+        </h2>
+
+        <!-- Product Content -->
+        <div class="col-sm-12">
+            <div class="row multi-columns-row">
+                 <!-- Shop Item -->
+                @foreach($new_products as $product)
+                <div class="col-md-3 col-lg-3 mb-60 mb-xs-40">
+                    <div class="post-prev-img">
+                        <a href="{{url('/')}}/product/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
+                        <div class="intro-label">
+                            <span class="label label-danger bg-red">Sale</span>
+                        </div>
+                    </div>
+                    <div class="post-prev-title font-alt align-center">
+                        <a href="{{url('/')}}/product/{{$product->id}}">{{$product->name}}</a>
+                    </div>
+
+                    <div class="post-prev-text align-center">
+                        @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
+                            <del class="section-text">{{$product->price}}</del> &nbsp;
+                            <strong>{{$product->special_price}}</strong>
+                        @else
+                            @if($product->old_price > 0)
+                            <del class="section-text">{{$product->old_price}}</del> &nbsp;
+                            @endif
+                            <strong>{{$product->price}}</strong>
+                        @endif
+                    </div>
+                    
+                    <div class="post-prev-more align-center">
+                        <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" id="product_name" name="product_name" value="{{$product->name}}">
+                        <input type="hidden" id="product_price" name="product_price" value="{{$product->price}}">
+                        <button class="btn btn-mod btn-gray btn-round add-shoopingcart"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                    </div>
+                    
+                </div>
+                @endforeach
+                <!-- End Shop Item -->
+
+            </div>
+        </div>
+
+        <div class="mt-20 align-center">
+            <a href="" class="btn btn-mod btn-round btn-medium">@lang('common.see-more')</a>
+        </div>
+
+    </div>
+</section>
+<!-- Best Sellers Product  End Section -->
+
+<!-- Sale Product Section -->
+<section class="page-section">
+    <div class="container relative">
+
+        <h2 class="section-title font-alt mb-70 mb-sm-40">
+            @lang('home.sale-products')
+        </h2>
+
+        <!-- Product Content -->
+        <div class="col-sm-12">
+            <div class="row multi-columns-row">
+                 <!-- Shop Item -->
+                @foreach($new_products as $product)
+                <div class="col-md-3 col-lg-3 mb-60 mb-xs-40">
+                    <div class="post-prev-img">
+                        <a href="{{url('/')}}/product/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
+                        <div class="intro-label">
+                            <span class="label label-danger bg-red">Sale</span>
+                        </div>
+                    </div>
+                    <div class="post-prev-title font-alt align-center">
+                        <a href="{{url('/')}}/product/{{$product->id}}">{{$product->name}}</a>
+                    </div>
+
+                    <div class="post-prev-text align-center">
+                        @if(!empty($product->special_price_start_date) && $product->special_price_start_date  <= $product->special_price_end_date )
+                            <del class="section-text">{{$product->price}}</del> &nbsp;
+                            <strong>{{$product->special_price}}</strong>
+                        @else
+                            @if($product->old_price > 0)
+                            <del class="section-text">{{$product->old_price}}</del> &nbsp;
+                            @endif
+                            <strong>{{$product->price}}</strong>
+                        @endif
+                    </div>
+                    
+                    <div class="post-prev-more align-center">
+                        <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" id="product_name" name="product_name" value="{{$product->name}}">
+                        <input type="hidden" id="product_price" name="product_price" value="{{$product->price}}">
+                        <button class="btn btn-mod btn-gray btn-round add-shoopingcart"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                    </div>
+                    
+                </div>
+                @endforeach
+                <!-- End Shop Item -->
+
+            </div>
+        </div>
+
+        <div class="mt-20 align-center">
+            <a href="" class="btn btn-mod btn-round btn-medium">@lang('common.see-more')</a>
+        </div>
+
+    </div>
+</section>
+<!-- Sale Product  End Section -->
+
 
 <!-- Section -->
 <section class="page-section bg-gray-lighter">
@@ -157,7 +278,7 @@
             <div class="col-sm-4 mb-20 wow fadeIn" data-wow-delay="0.1s" data-wow-duration="2s">
 
                 <div class="post-prev-img">
-                    <a href="#"><img src="{{ asset('public/assets/rhythm/images/foods/mienbac.jpg')}}" alt="" /></a>
+                    <a href="#"><img src="{{ asset('images/foods/mienbac.jpg')}}" alt="" /></a>
                 </div>
 
             </div>
@@ -167,7 +288,7 @@
             <div class="col-sm-4 mb-20 wow fadeIn" data-wow-delay="0.2s" data-wow-duration="2s">
 
                 <div class="post-prev-img">
-                    <a href="#"><img src="{{ asset('public/assets/rhythm/images/foods/mientrung.jpg')}}" alt="" /></a>
+                    <a href="#"><img src="{{ asset('images/foods/mientrung.jpg')}}" alt="" /></a>
                 </div>
 
             </div>
@@ -177,484 +298,13 @@
             <div class="col-sm-4 mb-20 wow fadeIn" data-wow-delay="0.3s" data-wow-duration="2s">
 
                 <div class="post-prev-img">
-                    <a href="#"><img src="{{ asset('public/assets/rhythm/images/foods/miennam.jpg')}}" alt="" /></a>
+                    <a href="#"><img src="{{ asset('images/foods/miennam.jpg')}}" alt="" /></a>
                 </div>
 
             </div>
             <!-- End Item -->
 
         </div>
-
-    </div>
-</section>
-<!-- End Section -->
-
-
-<!-- Section -->
-<section class="page-section">
-    <div class="container relative">
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs tpl-tabs animate">
-            <li class="active">
-                <a href="#one" data-toggle="tab">Trendness</a>
-            </li>
-            <li>
-                <a href="#two" data-toggle="tab">Bestsellers</a>
-            </li>
-            <li>
-                <a href="#three" data-toggle="tab">Featured</a>
-            </li>
-        </ul>
-        <!-- End Nav tabs -->
-
-        <!-- Tab panes -->
-        <div class="tab-content tpl-tabs-cont section-text">
-            <div class="tab-pane fade in active" id="one">
-
-                <div class="row">
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-1.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        <del>
-                                                50.00
-                                            </del>&nbsp; $25.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-2.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Slim Fit Pique Badge Logo</a>
-                                    <div>
-                                        $75.00
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-3.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Esprit Pique Polo Shirt</a>
-                                    <div>
-                                        $30.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-4.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        $15.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-2.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Slim Fit Pique Badge Logo</a>
-                                    <div>
-                                        $75.00
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-5.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        $15.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="tab-pane fade" id="two">
-
-                <div class="row">
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-2.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Slim Fit Pique Badge Logo</a>
-                                    <div>
-                                        $75.00
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-5.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        $15.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-1.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        <del>
-                                                50.00
-                                            </del>&nbsp; $25.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-2.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Slim Fit Pique Badge Logo</a>
-                                    <div>
-                                        $75.00
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-3.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Esprit Pique Polo Shirt</a>
-                                    <div>
-                                        $30.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-4.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        $15.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="tab-pane fade" id="three">
-
-                <div class="row">
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-1.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        <del>
-                                                50.00
-                                            </del>&nbsp; $25.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-2.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Slim Fit Pique Badge Logo</a>
-                                    <div>
-                                        $75.00
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-2.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Slim Fit Pique Badge Logo</a>
-                                    <div>
-                                        $75.00
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-5.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        $15.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                    <div class="col-sm-4">
-
-                        <ul class="clearlist widget-posts">
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-3.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Esprit Pique Polo Shirt</a>
-                                    <div>
-                                        $30.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                            <!-- Preview item -->
-                            <li class="clearfix">
-                                <a href=""><img src="{{ asset('public/assets/rhythm/images/shop/previews/shop-prev-4.jpg')}}" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Polo Shirt With Argyle Print</a>
-                                    <div>
-                                        $15.99
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- End Preview item -->
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!-- End Tab panes -->
 
     </div>
 </section>
@@ -725,4 +375,34 @@
     </div>
 </section>
 <!-- End Section -->
+
+<!-- Newsletter Section -->
+<section class="small-section bg-dark-alfa-50 pt-30 pb-30">
+    <div class="container relative">
+        
+        <form class="form align-center" id="mailchimp">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    
+                    <div class="newsletter-label font-alt">
+                        @lang('footer.newsletter-message')
+                    </div>
+                    
+                    <div class="mb-20">
+                        <input placeholder="{{ __('profile.email') }}" class="newsletter-field form-control input-md round mb-xs-10" type="email" pattern=".{5,100}" required/>
+                        
+                        <button type="submit" class="btn btn-mod btn-w btn-medium btn-round mb-xs-10">
+                            @lang('footer.subscribe')
+                        </button>
+                    </div>
+                    
+                    <div id="subscribe-result"></div>
+                    
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</section>
+<!-- End Newsletter Section -->
 @endsection
