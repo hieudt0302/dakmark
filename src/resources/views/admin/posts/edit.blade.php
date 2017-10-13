@@ -44,9 +44,9 @@
                                 
 
 
-                <form class="form-horizontal" method="POST" action="{{url('/admin/posts')}}/{{$post->id}}" id="form" role="form">
+                <!-- <form class="form-horizontal" method="POST" action="{{url('/admin/posts')}}/{{$post->id}}" id="form" role="form"> -->
+                {!! Form::open(array('method' => 'PATCH','route' => ['admin.posts.update', $post->id],'files'=>'true', 'class'=>'form-horizontal', 'id'=>'form')) !!}                                    
                   {{csrf_field()}}
-                   <input name="_method" type="hidden" value="PATCH">
 
                     <!-- nagigation tab -->
                     <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">

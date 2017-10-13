@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\PostTranslation;
 use App\Models\Language;
 use Validator;
+use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
 {
@@ -69,9 +70,12 @@ class PostsController extends Controller
             $img_name = '' ;
             $img_file = $request->file('img');
             if($img_file != NULL){
-                $path = './public/assets/img/blog';
+                $path = './images/blog';
+                if(!is_dir($path)){
+                    mkdir($path, 0777, true);
+                }                   
                 $img = Image::make($img_file->getRealPath());
-                $img->fit(370, 200)->save($path.'/'.$img_file->getClientOriginalName());            
+                $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());            
                 $img_name = $img_file->getClientOriginalName();
             }
             $post->img = $img_name;
@@ -156,9 +160,12 @@ class PostsController extends Controller
         $img_name = '' ;
         $img_file = $request->file('img');
         if($img_file != NULL){
-            $path = './public/assets/img/blog';
+            $path = './images/blog';
+            if(!is_dir($path)){
+                mkdir($path, 0777, true);
+            }               
             $img = Image::make($img_file->getRealPath());
-            $img->fit(370, 200)->save($path.'/'.$img_file->getClientOriginalName());            
+            $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());            
             $img_name = $img_file->getClientOriginalName();
         }
         $post->img = $img_name;

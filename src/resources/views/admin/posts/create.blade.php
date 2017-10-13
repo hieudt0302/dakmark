@@ -21,7 +21,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Tạo Mới Bài Viết</h3>
                 </div>
-                <form class="form-horizontal" method="post" action="{{url('/admin/posts/create')}}" id="form" role="form">
+                <!-- <form class="form-horizontal" method="post" action="{{url('/admin/posts/create')}}" id="form" role="form"> -->
+                {!! Form::open(array('method' => 'POST','route' => 'admin.posts.create','files'=>'true', 'class'=>'form-horizontal', 'id'=>'form','role'=>'form')) !!}                    
                     {{ csrf_field() }}
 
                     <!-- nagigation tab -->
