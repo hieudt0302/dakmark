@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class InfoPage extends Model
 {
-     /**
+    /*
      * Get the translations for the infopage.
      */
     public function translations()
-    {
+    { 
+        /* It return list but just contain one or none. Because condition of scope has override. */       
         return $this->hasMany('App\Models\InfoPageTranslation');
+    }
+
+    public function translation()
+    {
+        /* It hack a bit of translations above */
+        return $this->hasOne('App\Models\InfoPageTranslation'); //hack relationship
     }
 }

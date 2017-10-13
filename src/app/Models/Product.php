@@ -58,11 +58,18 @@ class Product extends Model
          return $this->belongsTo('App\Models\User');
      }
 
-     /**
+     /*
      * Get the translations for the product.
      */
     public function translations()
-    {
+    { 
+        /* It return list but just contain one or none. Because condition of scope has override. */       
         return $this->hasMany('App\Models\ProductTranslation');
+    }
+
+    public function translation()
+    {
+        /* It hack a bit of translations above */
+        return $this->hasOne('App\Models\PostTranslation'); //hack relationship
     }
 }
