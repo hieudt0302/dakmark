@@ -20,6 +20,7 @@ class PostsTableSeeder extends Seeder
             $post1 = Post::create([
                 'title'  => 'Ca phe va bo',
                 'slug' => 'post-1',
+                'img' => 'test.jpg',                
                 'published'       => true,
                 'category_id' => 5,
                 'author_id' => $user->id

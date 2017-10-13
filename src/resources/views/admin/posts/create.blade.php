@@ -21,7 +21,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Tạo Mới Bài Viết</h3>
                 </div>
-                <form class="form-horizontal" method="post" action="{{url('/admin/posts/create')}}" id="form" role="form">
+                <!-- <form class="form-horizontal" method="post" action="{{url('/admin/posts/create')}}" id="form" role="form"> -->
+                {!! Form::open(array('method' => 'POST','route' => 'admin.posts.create','files'=>'true', 'class'=>'form-horizontal', 'id'=>'form','role'=>'form')) !!}                    
                     {{ csrf_field() }}
 
                     <!-- nagigation tab -->
@@ -53,6 +54,13 @@
                                         <input type="slug" name="slug" class="form-control" id="slug" placeholder="Tiêu đề bài viết">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Hình đại diện</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="img"/>
+                                        <span class="text-danger">{{ $errors->first('img') }}</span>                                        
+                                    </div>
+                                </div>                                
                                 <div class="form-group">
                                     <label for="slug" class="col-sm-2 control-label">Xuất Bản</label>
                                     <div class="col-sm-10">
