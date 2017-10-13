@@ -38,22 +38,14 @@
             
             <!-- Content -->
             <div class="col-sm-8">
-                
+                 
                 <!-- Shop options -->
                 <div class="clearfix mb-40">
                     
                     <div class="left section-text mt-10">
-                        Showing 1–12 of 23 results
-                    </div>
-                    
-                    <div class="right">
-                        <form method="post" action="#" class="form">
-                            <select class="input-md round">
-                                <option>Default sorting</option>
-                                <option>Sort by price: low to high</option>
-                                <option>Sort by price: high to low</option>
-                            </select>
-                        </form>
+                        @if(!empty($search_key) && count($products)==0)
+                            @lang('common.zero-search-message')&nbsp;{{$search_key}}
+                        @endif 
                     </div>
                     
                 </div>
@@ -117,10 +109,27 @@
             
             <!-- Sidebar -->
             <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
-                
+                <!-- Search Widget -->
+                <div class="widget">
+                    {!! Form::open(array('method'=>'post','url' => '/products','class'=>'form-inline form','role'=>'form')) !!}
+                        <div class="search-wrap">
+                            <button class="search-button animate" type="submit" title="Start Search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        @if(!empty($search_key))
+                            <input type="text" class="form-control search-field" name="key" placeholder="{{$search_key}}">                            
+                        @else
+                            <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">                        
+                        @endif                             
+
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+                <!-- End Search Widget -->                
+
                 <!-- Widget -->
                 <div class="widget">
-                    
+
                     <h5 class="widget-title font-alt">@lang('shoppings.cart')</h5>
                     
                     <div class="widget-body">
@@ -174,32 +183,6 @@
                             
                         </div>
                         
-                    </div>
-                    
-                </div>
-                <!-- End Widget -->
-                
-                <!-- Widget -->
-                <div class="widget">
-                    
-                    <h5 class="widget-title font-alt">@lang('shoppings.filter-price')</h5>
-                    
-                    <div class="widget-body">
-                        <form method="post" action="#" class="form">
-                            
-                            <div class="row mb-20">
-                                <div class="col-xs-6">
-                                    <input type="text" name="price-from" id="price-from" class="input-md round form-control" placeholder="From, $" maxlength="100">
-                                </div>
-                                
-                                <div class="col-xs-6">
-                                    <input type="text" name="price-to" id="price-to" class="input-md round form-control" placeholder="To, $" maxlength="100">
-                                </div>
-                            </div>
-                            
-                            <button class="btn btn-mod btn-medium btn-full btn-round">@lang('shoppings.filter')</button>
-                            
-                        </form>
                     </div>
                     
                 </div>

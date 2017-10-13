@@ -39,11 +39,17 @@
 
             <!-- Content -->
             <div class="col-sm-8">
-                @if(!empty($search_key))
-                <h2 class="section-title font-alt mb-70 mb-sm-40">
-                    {{count($posts)}}&nbsp;@lang('common.search-message')&nbsp;{{$search_key}}
-                </h2>
-                @endif                
+                <!-- Blog options -->
+                <div class="clearfix mb-40">
+                    
+                    <div class="left section-text mt-10">
+                        @if(!empty($search_key) && count($posts)==0)
+                            @lang('common.zero-search-message')&nbsp;{{$search_key}}
+                        @endif 
+                    </div>
+                    
+                </div>
+                <!-- End Blog options -->              
                 <!-- Post -->
                 @foreach($posts as $post)
                 <div class="blog-item">
@@ -111,7 +117,11 @@
                             <button class="search-button animate" type="submit" title="Start Search">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">
+                            @if(!empty($search_key))
+                                <input type="text" class="form-control search-field" name="key" placeholder="{{$search_key}}">                            
+                            @else
+                                <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">                        
+                            @endif  
                         </div>
                     {!! Form::close() !!}
                 </div>

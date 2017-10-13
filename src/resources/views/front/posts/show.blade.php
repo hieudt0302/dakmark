@@ -197,14 +197,14 @@
 
                 <!-- Search Widget -->
                 <div class="widget">
-                    <form class="form-inline form" role="form">
+                    {!! Form::open(array('method'=>'post','url' => '/posts','class'=>'form-inline form','role'=>'form')) !!}
                         <div class="search-wrap">
                             <button class="search-button animate" type="submit" title="Start Search">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" class="form-control search-field" placeholder="{{ __('common.search') }}">
+                            <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">                        
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
                 <!-- End Search Widget -->
 
