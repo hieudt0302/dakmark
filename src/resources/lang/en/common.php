@@ -26,7 +26,7 @@ return [
      'see-more' => 'See more',     	 
      'categories' => 'Categories',   
      'search' => 'Search',
-	 'home' => 'Home',     
-
-
+	 'home' => 'Home',
+     'company-name' => ' Dakmark Foods Co.,Ltd',
+     'headquarter-address' => ' 1F D Vinaconex Bld, Street 1, Tran Thai Tong, Dich Vong, Cau Giay District, Hanoi',   
 ];

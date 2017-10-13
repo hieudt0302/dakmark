@@ -6,7 +6,7 @@
     <!-- Logo ( * your text or image into link tag *) -->
     <div class="nav-logo-wrap local-scroll">
         <a href="/" class="logo">
-            <img src="/images/logo.png" alt="" />
+            <img src="{{asset('images/logo.png')}}" alt="" />
         </a>
     </div>
     
