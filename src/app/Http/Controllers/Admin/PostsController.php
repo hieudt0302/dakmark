@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\PostTranslation;
 use App\Models\Language;
 use Validator;
+use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
 {
@@ -65,6 +66,20 @@ class PostsController extends Controller
                 $post->category_id = $request->category_id;
             $post->author_id = Auth::user()->id;
             $post->published = $request->published??0;
+
+            $img_name = '' ;
+            $img_file = $request->file('img');
+            if($img_file != NULL){
+                $path = './images/blog';
+                if(!is_dir($path)){
+                    mkdir($path, 0777, true);
+                }                   
+                $img = Image::make($img_file->getRealPath());
+                $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());            
+                $img_name = $img_file->getClientOriginalName();
+            }
+            $post->img = $img_name;
+
             $post->save();            
 
             $language_list = Language::all();
@@ -140,9 +155,20 @@ class PostsController extends Controller
             $post->category_id = $request->category_id;
 
         $post->author_id = Auth::user()->id;
-
-
         $post->published = $request->published??0;
+        
+        $img_name = '' ;
+        $img_file = $request->file('img');
+        if($img_file != NULL){
+            $path = './images/blog';
+            if(!is_dir($path)){
+                mkdir($path, 0777, true);
+            }               
+            $img = Image::make($img_file->getRealPath());
+            $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());            
+            $img_name = $img_file->getClientOriginalName();
+        }
+        $post->img = $img_name;
 
         $post->save();
 

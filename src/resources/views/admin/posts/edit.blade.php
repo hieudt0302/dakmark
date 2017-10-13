@@ -44,9 +44,9 @@
                                 
 
 
-                <form class="form-horizontal" method="POST" action="{{url('/admin/posts')}}/{{$post->id}}" id="form" role="form">
+                <!-- <form class="form-horizontal" method="POST" action="{{url('/admin/posts')}}/{{$post->id}}" id="form" role="form"> -->
+                {!! Form::open(array('method' => 'PATCH','route' => ['admin.posts.update', $post->id],'files'=>'true', 'class'=>'form-horizontal', 'id'=>'form')) !!}                                    
                   {{csrf_field()}}
-                   <input name="_method" type="hidden" value="PATCH">
 
                     <!-- nagigation tab -->
                     <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">
@@ -77,6 +77,13 @@
                                         <input type="slug" name="slug" value="{{$post->slug}}" class="form-control" id="slug" placeholder="Tiêu đề bài viết">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="slug" class="col-sm-2 control-label">Hình đại diện</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="img"/>
+                                        <span class="text-danger">{{ $errors->first('img') }}</span>                                        
+                                    </div>
+                                </div>                                  
                                 <div class="form-group">
                                     <label for="slug" class="col-sm-2 control-label">Xuất Bản</label>
                                     <div class="col-sm-10">

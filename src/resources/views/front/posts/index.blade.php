@@ -39,7 +39,11 @@
 
             <!-- Content -->
             <div class="col-sm-8">
-
+                @if(!empty($search_key))
+                <h2 class="section-title font-alt mb-70 mb-sm-40">
+                    {{count($posts)}}&nbsp;@lang('common.search-message')&nbsp;{{$search_key}}
+                </h2>
+                @endif                
                 <!-- Post -->
                 @foreach($posts as $post)
                 <div class="blog-item">
@@ -59,19 +63,9 @@
                         <a href="#"><i class="fa fa-comments"></i> {{count($post->comments)}} Comments</a>
                     </div>
 
-                    <!-- Media Gallery -->
+                    <!-- Image -->
                     <div class="blog-media">
-                        <ul class="clearlist content-slider">
-                            <li>
-                                <img src="{{asset('images/portfolio/full-project-1.jpg')}}" alt="" />
-                            </li>
-                            <li>
-                                <img src="{{asset('images/portfolio/full-project-2.jpg')}}" alt="" />
-                            </li>
-                            <li>
-                                <img src="{{asset('images/portfolio/full-project-3.jpg')}}" alt="" />
-                            </li>
-                        </ul>
+                        <a href="{{url('/')}}/posts/{{$post->slug}}"><img src="{{ asset('images/blog/' . $post->img) }}" alt="" /></a>
                     </div>
 
                     <!-- Text Intro -->
@@ -90,42 +84,6 @@
                 @endforeach
                 <!-- End Post -->
 
-                <!-- Post -->
-                <div class="blog-item">
-                    <!-- Post Title -->
-                    <h2 class="blog-item-title font-alt"><a href="blog-single-sidebar-right.html">Video post only</a></h2>
-
-                    <!-- Author, Categories, Comments -->
-                    <div class="blog-item-data">
-                        <a href="#"><i class="fa fa-clock-o"></i> 4 December</a>
-                        <span class="separator">&nbsp;</span>
-                        <a href="#"><i class="fa fa-user"></i> John Doe</a>
-                        <span class="separator">&nbsp;</span>
-                        <i class="fa fa-folder-open"></i>
-                        <a href="">Design</a>, <a href="#">Branding</a>
-                        <span class="separator">&nbsp;</span>
-                        <a href="#"><i class="fa fa-comments"></i> 5 Comments</a>
-                    </div>
-
-                    <!-- Media Gallery -->
-                    <div class="blog-media">
-                        <iframe width="640" height="360" src="http://www.youtube.com/embed/w2JUhDd0CAA" frameborder="0" allowfullscreen></iframe>
-                    </div>
-
-                    <!-- Text Intro -->
-                    <div class="blog-item-body">
-                        <p>
-                            Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.
-                        </p>
-                    </div>
-
-                    <!-- Read More Link -->
-                    <div class="blog-item-foot">
-                        <a href="blog-single-sidebar-right.html" class="btn btn-mod btn-round  btn-small">Read More <i class="fa fa-angle-right"></i></a>
-                    </div>
-
-                </div>
-                <!-- End Post -->
 
                 <!-- Pagination -->
                 {{ $posts->links() }}
@@ -148,14 +106,14 @@
 
                 <!-- Search Widget -->
                 <div class="widget">
-                    <form class="form-inline form" role="form">
+                    {!! Form::open(array('method'=>'post','url' => '/posts','class'=>'form-inline form','role'=>'form')) !!}
                         <div class="search-wrap">
                             <button class="search-button animate" type="submit" title="Start Search">
                                 <i class="fa fa-search"></i>
                             </button>
-                            <input type="text" class="form-control search-field" placeholder="{{ __('common.search') }}">
+                            <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
                 <!-- End Search Widget -->
 

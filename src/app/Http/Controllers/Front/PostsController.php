@@ -95,4 +95,18 @@ class PostsController extends Controller
     {
         //
     }
+
+    public function search(Request $request){
+        $search_key = $request->input('key'); 
+        
+
+        $posts = Post::where('published',1)
+        ->whereNull('deleted_at')
+        ->where("title", "LIKE", "%$search_key%")
+        ->paginate(10);  
+
+        //TODO search multilang
+
+        return view('front/posts/index',compact('posts','search_key'));
+    }    
 }
