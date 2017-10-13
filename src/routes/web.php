@@ -27,6 +27,7 @@ Route::get('/about', 'Front\HomeController@about');
 Route::get('/returns', 'Front\HomeController@returns');
 Route::get('/showrooms', 'Front\HomeController@showrooms');
 Route::get('/purchase-flow', 'Front\HomeController@purchase_flow');
+Route::post('/search', 'Front\HomeController@search');
 
 /* ACCOUNT */
 Route::get('/orders',  ['uses'=>'Front\HomeController@orders','middleware' => 'auth']);
@@ -40,9 +41,12 @@ Route::get('/faqs', 'Front\FaqController@index');
 Route::get('/products', 'Front\ProductsController@index');
 Route::get('/products/{id}', 'Front\ProductsController@show');
 Route::post('/add-to-cart', 'Front\ProductsController@addToCart');
+Route::post('/products','Front\ProductsController@search'); 
+
 /* POST */
 Route::get('/posts', 'Front\PostsController@index');
 Route::get('/posts/{slug}', 'Front\PostsController@show');
+Route::post('/posts','Front\PostsController@search');  
 
 /* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
