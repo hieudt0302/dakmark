@@ -161,41 +161,17 @@
 
                 <!-- Widget -->
                 <div class="widget">
-
                     <h5 class="widget-title font-alt">@lang('common.categories')</h5>
-
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
+                            @foreach($posts as $item)
                             <li>
-                                <a href="#" title="">Branding</a>
+                                <a href="#" title="">{{$item->category->name}}</a>
                                 <small>
-                                    - 7
+                                    - {{count($item->category->posts)}}
                                 </small>
                             </li>
-                            <li>
-                                <a href="#" title="">Design</a>
-                                <small>
-                                    - 15
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Development</a>
-                                <small>
-                                    - 3
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Photography</a>
-                                <small>
-                                    - 5
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Other</a>
-                                <small>
-                                    - 1
-                                </small>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -204,22 +180,14 @@
 
                 <!-- Widget -->
                 <div class="widget">
-
                     <h5 class="widget-title font-alt">Tags</h5>
-
                     <div class="widget-body">
                         <div class="tags">
-                            <a href="">Design</a>
-                            <a href="">Portfolio</a>
-                            <a href="">Digital</a>
-                            <a href="">Branding</a>
-                            <a href="">Theme</a>
-                            <a href="">Clean</a>
-                            <a href="">UI & UX</a>
-                            <a href="">Love</a>
+                            @foreach($tags as $tag)
+                            <a href="">{{$tag->name}}</a>
+                            @endforeach
                         </div>
                     </div>
-
                 </div>
                 <!-- End Widget -->
 
@@ -230,92 +198,38 @@
 
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">
+                            @foreach($lastPosts as $post)
                             <li class="clearfix">
                                 <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="" class="widget-posts-img" /></a>
                                 <div class="widget-posts-descr">
-                                    <a href="#" title="">Minimalistic Design Forever</a> Posted by John Doe 7 Mar
+                                    <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->title}}</a> Posted by {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
                                 </div>
                             </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-2.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Ipsum dolor sit amet, consectetur adipiscing elit</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-3.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">New Web Design Trends in 2015 year</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-4.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Hipster’s Style in Web Design and Logo</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-5.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Duis tristique condimentum nulla, bibendum consectetu</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
-
                 </div>
                 <!-- End Widget -->
 
                 <!-- Widget -->
                 <div class="widget">
-
                     <h5 class="widget-title font-alt">Comments</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-comments">
+                            @foreach($comments as $comment)
                             <li>
-                                John Doe on <a href="#" title="">Lorem ipsum dolor sit amet</a>
+                            {{$comment->author->last_name}} {{$comment->author->first_name}} <a href="#" title="">{{ str_limit($comment->comment, $limit = 60, $end = '...') }}</a>
                             </li>
-                            <li>
-                                Emma Johnson on <a href="#" title="">Suspendisse accumsan interdum tellus</a>
-                            </li>
-                            <li>
-                                John Doe on <a href="#" title="">Praesent ultricies ut ipsum</a>
-                            </li>
-                            <li>
-                                Mark Deen on <a href="#" title="">Vivamus malesuada vel nulla vulputate</a>
-                            </li>
-                            <li>
-                                Sam Brin on <a href="#" title="">Aenean auctor egestas auctor</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
-
                 </div>
                 <!-- End Widget -->
 
                 <!-- Widget -->
                 <div class="widget">
-
-                    <h5 class="widget-title font-alt">Text widget</h5>
-
-                    <div class="widget-body">
-                        <div class="widget-text clearfix">
-
-                            <img src="images/user-avatar.png" alt="" width="70" class="img-circle left img-left"> Consectetur adipiscing elit. Quisque magna ante eleifend eleifend. Purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat
-                            sem elit non sem. Quisque magna ante eleifend eleifend.
-
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Widget -->
-
-                <!-- Widget -->
-                <div class="widget">
-
                     <h5 class="widget-title font-alt">Archive</h5>
-
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
                             <li>

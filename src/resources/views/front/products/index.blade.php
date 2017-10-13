@@ -212,36 +212,14 @@
                     
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
+                            @foreach($products as $item)
                             <li>
-                                <a href="#" title="">Branding</a>
+                                <a href="#" title="">{{$item->category->name}}</a>
                                 <small>
-                                    - 7
+                                    - {{count($item->category->posts)}}
                                 </small>
                             </li>
-                            <li>
-                                <a href="#" title="">Design</a>
-                                <small>
-                                    - 15
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Development</a>
-                                <small>
-                                    - 3
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Photography</a>
-                                <small>
-                                    - 5
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Other</a>
-                                <small>
-                                    - 1
-                                </small>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     
@@ -349,14 +327,9 @@
                     
                     <div class="widget-body">
                         <div class="tags">
-                            <a href="">Design</a>
-                            <a href="">Portfolio</a>
-                            <a href="">Digital</a>
-                            <a href="">Branding</a>
-                            <a href="">Theme</a>
-                            <a href="">Clean</a>
-                            <a href="">UI & UX</a>
-                            <a href="">Love</a>
+                            @foreach($tags as $tag)
+                            <a href="">{{$tag->name}}</a>
+                            @endforeach
                         </div>
                     </div>
                     
