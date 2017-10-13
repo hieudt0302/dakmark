@@ -37,8 +37,8 @@
                 <ul class="mn-sub">
                     @foreach($menu->GetMenuSubLevel1() as $sub)
                     <li>                        
-                        <a href="{{url('/menu')}}/{{$sub->parent->slug}}/{{$sub->slug}}" title="  {{$sub->translation->first()->name}}">
-                        {{$sub->translation->first()->name}}
+                        <a href="{{url('/menu')}}/{{$sub->parent->slug}}/{{$sub->slug}}" title="  {{$sub->translations->first()->name}}">
+                        {{$sub->translation->name}}
                         </a> 
                     </li>
                     @endforeach

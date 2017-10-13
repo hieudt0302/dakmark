@@ -61,7 +61,7 @@ class Category extends Model
 
     public function translation()
     {
-        return $this->hasMany('App\Models\CategoryTranslation');
+        return $this->hasOne('App\Models\CategoryTranslation'); //hack relationship
     }
 
 }
