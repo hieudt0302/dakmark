@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Validator;
 use DB;
 
@@ -22,7 +23,9 @@ class PostsController extends Controller
         ->whereNull('deleted_at')
         ->paginate(10);
 
-        return View('front/posts/index',compact('posts'));
+         $tags = Tag::has('posts')->get();
+
+        return View('front/posts/index',compact('posts','tags'));
     }
 
 

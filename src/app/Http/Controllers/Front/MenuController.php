@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 
 class MenuController extends Controller
 {
@@ -14,17 +15,19 @@ class MenuController extends Controller
     {
         if ($parent == "shop") {
             $category = Category::where('slug', $slug)->firstOrFail();
-            
-            $products = $category->products()->paginate(10);
-
-            return View('front/products/index', compact('products'));
+            $tags = Tag::has('products')->get();
+            $comments = Tag::has('products')->get();
+            $lastProducts = Product::take(10)->get(); ///TODO: move number limit to database setting
+            $products = $category->products()->paginate(10);  ///TODO: move number limit to database setting
+            return View('front/products/index', compact('products','tags','comments', 'lastProducts'));
 
         } elseif ($parent == "blog") {
             $category = Category::where('slug', $slug)->firstOrFail();
-
-            $posts = $category->posts()->paginate(10);
-
-            return View('front/posts/index', compact('posts'));
+            $tags = Tag::has('posts')->get();
+            $comments = Tag::has('posts')->get();
+            $lastPosts = Post::take(10)->get(); ///TODO: move number limit to database setting
+            $posts = $category->posts()->paginate(10);  ///TODO: move number limit to database setting
+            return View('front/posts/index', compact('posts','tags','comments', 'lastPosts'));
         }
     }
 }
