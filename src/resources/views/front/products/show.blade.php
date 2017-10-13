@@ -117,7 +117,7 @@
                 <hr class="mt-0 mb-30"/> 
                 
                 <div class="section-text mb-30">
-                    {{$product->summary}}
+                    {{$product->translation->summary}}
                 </div>
                 
                 <hr class="mt-0 mb-30"/> 
@@ -216,11 +216,11 @@
         <!-- Tab panes -->
         <div class="tab-content tpl-tabs-cont">
             <div class="tab-pane fade in active" id="one">
-                {{$product->description}}
+                {{$product->translation->description}}
             </div>
             <div class="tab-pane fade" id="two">
                 
-                {{$product->specs}}
+                {{$product->translation->specs}}
                 
             </div>
             <div class="tab-pane fade" id="three">
