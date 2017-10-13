@@ -20,4 +20,10 @@ class TranslationScope implements Scope
     {
         return $builder->where('language_id', Language::where('name',\App::getLocale())->firstOrFail()->id);
     }
+
+    /* HOW TO REMOVE IT*/
+
+    ///TODO: CategoryTranslation::withoutGlobalScopes()->get();
+    
+    ///TODO: CategoryTranslation::withoutGlobalScopes([FirstScope::class, SecondScope::class])->get();
 }
