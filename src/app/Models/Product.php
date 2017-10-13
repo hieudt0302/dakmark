@@ -70,6 +70,6 @@ class Product extends Model
     public function translation()
     {
         /* It hack a bit of translations above */
-        return $this->hasOne('App\Models\PostTranslation'); //hack relationship
+        return $this->hasOne('App\Models\ProductTranslation'); //hack relationship
     }
 }
