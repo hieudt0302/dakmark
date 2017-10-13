@@ -17,7 +17,7 @@ class CreateCategoryTranslationsTable extends Migration
             $table->increments('id');
             
             //Start - Column Support Translation
-            $table->string('name',20);
+            $table->string('name',255);
             $table->string('description',255)->nullable();
             //Start - Column Support Translation
 
@@ -26,7 +26,7 @@ class CreateCategoryTranslationsTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('category_id')->unsigned();        
-            $table->foreign('category_id')->references('id')->on('category')
+            $table->foreign('category_id')->references('id')->on('categories')
                 ->onUpdate('cascade')->onDelete('cascade');
 
 

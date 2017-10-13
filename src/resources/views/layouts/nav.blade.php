@@ -32,13 +32,13 @@
             <!-- Item With Sub - Level 1 -->
             @foreach($menus as $key => $menu)
             <li>
-                <a href="#" class="mn-has-sub">{{ $menu->name }}<i class="fa fa-angle-down"></i></a>
+                <a href="#" class="mn-has-sub">{{ $menu->translations->where('language_id',1)->first()->name }}<i class="fa fa-angle-down"></i></a>
                 <!-- Sub - Level 2 -->
                 <ul class="mn-sub">
                     @foreach($menu->GetMenuSubLevel1() as $sub)
                     <li>                        
-                        <a href="{{url('/menu')}}/{{$sub->parent->slug}}/{{$sub->slug}}" title="{{ $sub->name }}">
-                            {{ $sub->name }}
+                        <a href="{{url('/menu')}}/{{$sub->parent->slug}}/{{$sub->slug}}" title="{{ $sub->translations->where('language_id',1)->first()->name }}">
+                        {{ $sub->translations->where('language_id',1)->first()->name }}
                         </a> 
                     </li>
                     @endforeach
