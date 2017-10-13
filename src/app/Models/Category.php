@@ -58,4 +58,10 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\CategoryTranslation');
     }
+
+    public function translation()
+    {
+        return $this->hasMany('App\Models\CategoryTranslation');
+    }
+
 }
