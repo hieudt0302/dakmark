@@ -13,4 +13,6 @@ return [
     'my-wishlist' => 'Danh sách muốn mua',
     'order-history' => 'Lịch sử mua hàng',
     'faqs' => 'Câu hỏi thường gặp',        
+    'newsletter-message' => 'Đămg kí nhận tin từ Darmark Foods',
+    'subscribe' => 'Đăng ký',   
 ];
