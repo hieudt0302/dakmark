@@ -40,4 +40,12 @@ class Post extends Model
      {
          return $this->belongsTo('App\Models\User');
      }
+
+      /**
+     * Get the translations for the post.
+     */
+    public function translations()
+    {
+        return $this->hasMany('App\Models\PostTranslation');
+    }
 }

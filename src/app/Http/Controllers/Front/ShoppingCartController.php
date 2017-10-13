@@ -16,7 +16,11 @@ class ShoppingCartController extends Controller
      */
      public function cart()
      {
-        //  $new_products = DB::table('products')->where('created_at', '>=', Carbon::now()->subWeeks(1))->get();
          return View("front/shoppingcart/cart");
+     }
+
+     public function wishlist()
+     {
+         return View("front/shoppingcart/wishlist");
      }
 }

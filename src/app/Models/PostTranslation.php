@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class PostTranslation extends Model
 {
      /**
-     * The database table used by the model.
-     *
-     * @var string
+     * Get the post that owns the post translation.
      */
-    protected $table = 'post_translations';
+    public function post()
+    {
+        return $this->belongsTo('App\Models\Post');
+    }
 }

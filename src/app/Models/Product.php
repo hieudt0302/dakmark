@@ -57,4 +57,12 @@ class Product extends Model
      {
          return $this->belongsTo('App\Models\User');
      }
+
+     /**
+     * Get the translations for the product.
+     */
+    public function translations()
+    {
+        return $this->hasMany('App\Models\ProductTranslation');
+    }
 }

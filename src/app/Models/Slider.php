@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slider extends Model
 {
-     /**
-     * The database table used by the model.
-     *
-     * @var string
+      /**
+     * Get the translations for the slider.
      */
-    protected $table = 'sliders';
+    public function translations()
+    {
+        return $this->hasMany('App\Models\SliderTranslation');
+    }
 }

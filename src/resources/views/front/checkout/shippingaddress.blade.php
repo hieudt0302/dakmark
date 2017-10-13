@@ -3,7 +3,10 @@
 @section('header') @parent
 <!-- OVERRIDER MASTER CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ asset('css/theme.css') }}"> @endsection @section('content')
+<link rel="stylesheet" href="{{ asset('css/theme.css') }}"> 
+@endsection 
+
+@section('content')
 <div id="content-wrapper">
     <section id="content" class="container mt-3">
         <div class="costeps row no-gutters">
@@ -59,7 +62,7 @@
 								@foreach(Auth::user()->bookaddresses as $bookaddress)
                                 <div class="card card-block address-list-item">
                                     <div class="address-item">
-                                        <button class="btn btn-warning btn-block select-billing-address-button" onclick="setLocation('/Checkout/SelectBillingAddress?addressId={{$bookaddress->id}}')">
+                                        <button class="btn btn-warning btn-block select-billing-address-button" onclick="setLocation('/Checkout/SelectShippingAddress?addressId={{$bookaddress->id}}')">
 											<span>Ship to this address</span>
 											<i class="fa fa-angle-right"></i>
 										</button>
@@ -229,7 +232,7 @@
 
                                     </div>
                                     <div class="buttons">
-                                        <a class="btn btn-secondary btn-lg" href="/frontend/en/cart">
+                                        <a class="btn btn-secondary btn-lg" href="{{url('/Checkout/BillingAddress')}}">
                                             <i class="fa fa-angle-left"></i>
                                             <span>Back</span>
                                         </a>

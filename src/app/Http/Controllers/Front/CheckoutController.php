@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -36,15 +37,14 @@ class CheckoutController extends Controller
 
     public function SelectBillingAddress()
     {
+        session(['BillingAddressId' => Input::get('addressId',0)]);
         return redirect()->action('Front\CheckoutController@ShippingAddress');
     }
 
-    public function BillingAddressNext(Request $request)
+    public function BillingAddressCreateNew(Request $request)
     {
-        if(!empty($request->bookaddress_id))
-        {
-            session(['BillingAddressId' => $request->bookaddress_id]);
-        }else{
+        ///TODO: Working on it...
+       
             $validator = Validator::make($request->all(), [
                 'contact' => 'required',
                 'phone' => 'required',
@@ -74,7 +74,6 @@ class CheckoutController extends Controller
             ]);
 
             session(['BillingAddressId' => $address_id]);
-        }
 
         return redirect()->action('Front\CheckoutController@ShippingAddress');
     }
@@ -86,12 +85,15 @@ class CheckoutController extends Controller
         return View('front.checkout.shippingaddress', compact('book_addresses'));
     }
 
-    public function ShippingAddressNext(Request $request)
+    public function SelectShippingAddress()
     {
-        if(!empty($request->bookaddress_id))
-        {
-            session(['ShippingAddressId' => $request->bookaddress_id]);
-        }else{
+        session(['ShippingAddressId' =>  Input::get('addressId',0)]);
+        return redirect()->action('Front\CheckoutController@ShippingMethod');
+    }
+
+    public function ShippingAddressCreateNew(Request $request)
+    {
+        ///TODO: Working on it...
             $validator = Validator::make($request->all(), [
                 'contact' => 'required',
                 'phone' => 'required',
@@ -106,7 +108,9 @@ class CheckoutController extends Controller
             }
 
             $address_id = DB::table('book_addresses')->insertGetId([
-                'contact'=>  $request->contact??'',
+                'company'=>  $request->contact??'',
+                'first_name'=>  $request->contact??'',
+                'last_name'=>  $request->contact??'',
                 'address' =>$request->address??'',
                 'district' => $request->district??'',
                 'city' => $request->city??'',
@@ -121,20 +125,19 @@ class CheckoutController extends Controller
             ]);
 
             session(['ShippingAddressId' => $address_id]);
-        }
 
         return redirect()->action('Front\CheckoutController@ShippingMethod');
     }
 
     public function ShippingMethod(Request $request)
-    {
+    {        
         return View('front.checkout.shippingmethod');
     }
 
     public function ShippingMethodNext(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'shippingmethod_id' => 'required'
+            'shippingoption' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -144,7 +147,7 @@ class CheckoutController extends Controller
             ->withInput();
         }
 
-        session(['ShippingMethodId' => $request->shippingmethod_id]);
+        session(['ShippingMethodId' => $request->shippingoption]);
         return redirect()->action('Front\CheckoutController@PaymentMethod');
     }
 
@@ -156,7 +159,7 @@ class CheckoutController extends Controller
     public function PaymentMethodNext(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'paymentmethod_id' => 'required'
+            'paymentmethod' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -166,7 +169,7 @@ class CheckoutController extends Controller
             ->withInput();
         }
 
-        session(['PaymentMethodId' => $request->paymentmethod_id]);
+        session(['PaymentMethodId' => $request->paymentmethod]);
         return redirect()->action('Front\CheckoutController@Confirm');
     }
 
@@ -198,11 +201,13 @@ class CheckoutController extends Controller
         //     ->withInput();
         // }
 
-        $billingAddressId = $value = session('BillingAddressId');
-        $shippingAddressId = $value = session('ShippingAddressId');
-        $shippingMethodId = $value = session('ShippingMethodId');
-        $paymentMethodId = $value = session('PaymentMethodId');
+        $billingAddressId =  session('BillingAddressId');
+        $shippingAddressId = session('ShippingAddressId');
+        $shippingMethodId = session('ShippingMethodId');
+        $paymentMethodId = session('PaymentMethodId');
         $note = $request->note;
+
+        $order_id = null; //default order id before create
 
         DB::beginTransaction();
         try{
@@ -249,14 +254,25 @@ class CheckoutController extends Controller
                 ->withInput();
         }
 
-        Cart::destroy();
-         session()->flush();
-         return redirect()->action('Front\CheckoutController@Complete');
+        //Cart::destroy();
+        //session()->flush();
+        session()->forget('BillingAddressId');
+        session()->forget('ShippingAddressId');
+        session()->forget('ShippingMethodId');
+        session()->forget('PaymentMethodId');
+
+        session(['OrderId' => $order_id]);
+        return redirect()->action('Front\CheckoutController@Complete');
     }
 
-    public function Complete(Request $request)
+    public function Complete()
     {
-        return View('front.checkout.complete');
+        $order_id =  session('OrderId');
+        if(empty($order_id))
+            return abort(404);
+
+        session()->forget('OrderId');
+        return View('front.checkout.complete',compact('order_id'));
     }
 
     public function CompleteNext(Request $request)
