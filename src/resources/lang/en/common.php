@@ -12,6 +12,7 @@ return [
 	 'cancel' => 'Cancel',
 	 'or' => 'Or',
 	 'search-message' => 'Search results for keyword: ',
+	 'zero-search-message' => 'Found nothing for keyword: ',	 
 	 'no-result' => 'No result',	 	
 	 'created-at' => 'Created at',
 	 'action' => 'Action', 	 	     
@@ -24,7 +25,7 @@ return [
      'profile' => 'Profile',
      'see-more' => 'See more',     	 
      'categories' => 'Categories',   
-     'search' => 'Search...',
+     'search' => 'Search',
 	 'home' => 'Home',     
 
 

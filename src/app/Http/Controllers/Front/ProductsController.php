@@ -128,4 +128,18 @@ class ProductsController extends Controller
             'newCartItemCount' => Cart::count()
         ]);
     }
+
+    public function search(Request $request){
+        $search_key = $request->input('key'); 
+        
+
+        $products = Product::where('published',1)
+        ->whereNull('deleted_at')
+        ->where("name", "LIKE", "%$search_key%")
+        ->paginate(10);  
+
+        //TODO search multilang
+
+        return view('front/products/index',compact('products','search_key'));
+    }     
 }

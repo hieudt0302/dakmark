@@ -1,5 +1,8 @@
 @extends('layouts.master') 
-@section('title','Dakmark Foods') 
+@section('title','Dakmark Foods')
+@section('header')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+@endsection 
 @section('content')
 
 <!-- Head Section -->
@@ -27,7 +30,7 @@
 <!-- End Head Section -->
 
 
-<!-- About Section -->
+<!-- Info Page Section -->
 <section class="page-section" id="about">
     <div class="container relative">
         <div class="section-text mb-50 mb-sm-20">
@@ -38,6 +41,6 @@
     </div>
 </section>
 
-<!-- End Aboud Section -->
+<!-- End Info Page Section -->
 
 @endsection

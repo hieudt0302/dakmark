@@ -11,6 +11,7 @@ return [
 	 'cancel' => 'Hủy',	 
 	 'or' => 'Hoặc',
 	 'search-message' => 'Kết quả tìm kiếm cho từ khóa: ',
+	 'zero-search-message' => 'Không có kết quả tìm kiếm cho từ khóa: ',	 
 	 'no-result' => 'Không tìm thấy dữ liệu',	 
 	 'created-at' => 'Ngày tạo',
 	 'action' => 'Thao tác',	 
@@ -23,6 +24,6 @@ return [
      'profile' => 'Thông tin cá nhân',
      'see-more' => 'Xem thêm',
      'categories' => 'Danh mục',
-     'search' => 'Tìm kiếm...',
+     'search' => 'Tìm kiếm',     
 	 'home' => 'Trang chủ',                           	 	 	 	      
 ];
