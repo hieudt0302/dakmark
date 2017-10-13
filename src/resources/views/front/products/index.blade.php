@@ -54,13 +54,13 @@
                     @foreach($products as $product)
                     <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
                         <div class="post-prev-img">
-                            <a href="{{url('/')}}/product/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
+                            <a href="{{url('/')}}/products/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
                             <div class="intro-label">
                                 <span class="label label-danger bg-red">Sale</span>
                             </div>
                         </div>
                         <div class="post-prev-title font-alt align-center">
-                            <a href="{{url('/')}}/product/{{$product->id}}">{{$product->name}}</a>
+                            <a href="{{url('/')}}/products/{{$product->id}}">{{$product->name}}</a>
                         </div>
 
                         <div class="post-prev-text align-center">
