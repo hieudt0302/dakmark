@@ -42,11 +42,11 @@
                     <!-- Text -->
                     <div class="blog-item-body">
 
-                        <h1 class="mt-0 font-alt">{{$post->title}}</h1>
+                        <h1 class="mt-0 font-alt">{{$post->translation->title}}</h1>
 
                         <div class="lead">
                             <p>
-                                {{$post->excerpt}}
+                                {{$post->translation->excerpt}}
                             </p>
                         </div>
                         <!-- End Text -->
@@ -212,36 +212,14 @@
 
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
+                            @foreach($categories as $category)
                             <li>
-                                <a href="#" title="">Branding</a>
+                                <a href="#" title="">{{$category->translation->name}}</a>
                                 <small>
-                                    - 7
+                                    - {{$category->postsCount}}
                                 </small>
                             </li>
-                            <li>
-                                <a href="#" title="">Design</a>
-                                <small>
-                                    - 15
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Development</a>
-                                <small>
-                                    - 3
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Photography</a>
-                                <small>
-                                    - 5
-                                </small>
-                            </li>
-                            <li>
-                                <a href="#" title="">Other</a>
-                                <small>
-                                    - 1
-                                </small>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -272,7 +250,7 @@
                 <!-- Widget -->
                 <div class="widget">
 
-                    <h5 class="widget-title font-alt">>@lang('blog.last-posts')</h5>
+                    <h5 class="widget-title font-alt">@lang('blog.last-posts')</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">

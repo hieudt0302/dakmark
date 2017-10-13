@@ -77,7 +77,7 @@
                     <!-- Text Intro -->
                     <div class="blog-item-body">
                         <p>
-                            {{$post->excerpt}}
+                            {{$post->translation->excerpt}}
                         </p>
                     </div>
 
@@ -134,7 +134,7 @@
                         <ul class="clearlist widget-menu">
                             @foreach($posts as $item)
                             <li>
-                                <a href="#" title="">{{$item->category->name}}</a>
+                                <a href="#" title="">{{$item->category->translation->name}}</a>
                                 <small>
                                     - {{count($item->category->posts)}}
                                 </small>
@@ -170,7 +170,7 @@
                             <li class="clearfix">
                                 <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="" class="widget-posts-img" /></a>
                                 <div class="widget-posts-descr">
-                                    <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->title}}</a> Posted by {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
+                                    <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->translation->title}}</a> Posted by {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
                                 </div>
                             </li>
                             @endforeach

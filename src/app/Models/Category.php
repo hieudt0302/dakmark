@@ -33,6 +33,26 @@ class Category extends Model
          return $this->hasMany('App\Models\Product');
      }
 
+     public function productsCount()
+     {
+       return $this->hasOne('App\Models\Product')
+         ->selectRaw('category_id, count(*) as aggregate')
+         ->groupBy('category_id');
+     }
+
+     public function getProductsCountAttribute()
+     {
+       // if relation is not loaded already, let's do it first
+       if ( ! array_key_exists('productsCount', $this->relations)) 
+         $this->load('productsCount');
+      
+       $related = $this->getRelation('productsCount');
+      
+       // then return the count directly
+       return ($related) ? (int) $related->aggregate : 0;
+     }
+
+
      /**
      * Get the products for the category.
      */
@@ -41,6 +61,23 @@ class Category extends Model
          return $this->hasMany('App\Models\Post');
      }
 
+     public function postsCount()
+     {
+       return $this->hasOne('App\Models\Post')
+         ->selectRaw('category_id, count(*) as aggregate')
+         ->groupBy('category_id');
+     }
+     public function getPostsCountAttribute()
+     {
+       // if relation is not loaded already, let's do it first
+       if ( ! array_key_exists('postsCount', $this->relations)) 
+         $this->load('postsCount');
+      
+       $related = $this->getRelation('postsCount');
+      
+       // then return the count directly
+       return ($related) ? (int) $related->aggregate : 0;
+     }
 
 
      /**
