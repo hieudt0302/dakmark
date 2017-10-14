@@ -226,13 +226,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     //Order
     Route::get('orders',['as'=>'admin.orders.index','uses'=>'OrdersController@index','middleware' => ['role:admin|manager']]);
     Route::post('orders',['as'=>'admin.orders.find','uses'=>'OrdersController@find','middleware' => ['role:admin|manager']]);
-
-    Route::get('orders/create',['as'=>'admin.orders.create','uses'=>'OrdersController@create','middleware' => ['role:admin|manager']]);
-    Route::post('orders/create',['as'=>'admin.orders.store','uses'=>'OrdersController@store','middleware' => ['role:admin|manager']]);
-    Route::get('orders/{id}/edit',['as'=>'admin.orders.edit','uses'=>'OrdersController@edit','middleware' => ['role:admin|manager']]);
-    Route::patch('orders/{id}',['as'=>'admin.orders.update','uses'=>'OrdersController@update','middleware' => ['role:admin|manager']]);
-    Route::delete('orders/{id}',['as'=>'admin.orders.destroy','uses'=>'OrdersController@destroy','middleware' => ['role:admin|manager']]);
-
+    Route::get('orders/{id}',['as'=>'admin.orders.show','uses'=>'OrdersController@show','middleware' => ['role:admin|manager']]);
+    
     // InfoPages
     Route::get('info-pages',['as'=>'admin.info-pages.index','uses'=>'InfoPagesController@index']);
     Route::get('info-pages/create',['as'=>'admin.info-pages.create','uses'=>'InfoPagesController@create']);
