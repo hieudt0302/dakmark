@@ -21,9 +21,8 @@ class FaqController extends Controller
     public function index(Request $request)
     {
 
-        $faqs = FaqTranslation::where('language_id',1)->orderBy('faq_id', 'desc')->paginate(10);
-        return view('admin.faqs.index',compact('faqs'))
-        ->with('i', ($request->input('page', 1) - 1) * 10);        
+        $faqs = Faq::orderBy('id', 'desc')->paginate(10);
+        return view('admin.faqs.index',compact('faqs'));        
     }
 
     /**
@@ -45,11 +44,12 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $faq = new Faq;
-        $faq->save();
-        $this->validate($request,['1-question' => 'required',
-                                  '1-answer' => 'required'
+        $this->validate($request,['question' => 'required'
                                 ]);
+        $faq = new Faq;
+        $faq->question = $request->question;
+        $faq->is_show = $request->is_show??0;       
+        $faq->save();
 
         // Update data bảng faq
         $language_list = Language::all();
@@ -61,8 +61,8 @@ class FaqController extends Controller
             $faq_translation->answer = $request->input($language->id.'-answer');
             $faq_translation->save();
         }
-        session()->flash('success_message', "Thêm mới thành công !");
-        return redirect()->route('admin.faqs.index'); 
+        return redirect()->back()
+        ->with('success_message', 'FAQ mới đã được tạo.');
     }
 
     /**
@@ -88,7 +88,7 @@ class FaqController extends Controller
     {
         $faq = Faq::find($id);
         $language_list = Language::all();
-        $faq_translations = FaqTranslation::where('faq_id',$id)->orderBy('language_id','asc')->get();
+        $faq_translations = $faq->translations()->get();    
         return view('admin.faqs.edit',compact('faq','language_list','faq_translations'));                  
     }
 
@@ -101,11 +101,13 @@ class FaqController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $faq = Faq::find($id);
-        $this->validate($request,['1-question' => 'required',
-                                  '1-answer' => 'required'
+        $this->validate($request,['question' => 'required'
                                 ]);
 
+        $faq = Faq::find($id);
+        $faq->question = $request->question;
+        $faq->is_show = $request->is_show??0;   
+        $faq->save();
         // Update data bảng faq
         $language_list = Language::all();
         foreach ($language_list as $language){
@@ -120,8 +122,8 @@ class FaqController extends Controller
             $faq_translation->answer = $request->input($language->id.'-answer');
             $faq_translation->save();
         }
-        session()->flash('success_message', "Cập nhật thành công !");
-        return redirect()->route('admin.faqs.index'); 
+        return redirect()->back()
+        ->with('success_message', 'FAQ đã được cập nhật.');
     }
 
     /**

@@ -42,7 +42,7 @@
                     </div>
                 @endif
                                 
-                {!! Form::open(array('method' => 'PATCH','route' => ['admin.sliders.update', $slider->id])) !!}
+                {!! Form::open(array('method' => 'PATCH','route' => ['admin.sliders.update', $slider->id],'files'=>'true')) !!}
                     <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">
                         <li class="active">
                             <a href="#general" data-toggle="tab">Thông tin chung</a>

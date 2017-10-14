@@ -8,6 +8,7 @@ use DB;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\Slider;
 use App\Models\InfoPage;
 use App\Models\InfoPageTranslation;
 use App\Models\Language;
@@ -22,7 +23,8 @@ class HomeController extends Controller
     public function index()
     {
         $new_products = DB::table('products')->where('created_at', '>=', Carbon::now()->subWeeks(1))->get();
-        return View("front/home/index",compact('new_products'));
+        $sliders = Slider::all();
+        return View("front/home/index",compact('new_products','sliders'));
     }
 
     public function about()

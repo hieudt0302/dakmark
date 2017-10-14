@@ -41,7 +41,7 @@
 							<tr>
 								<td>{{ $faq->question }}</td>
 								<td>
-									<a class="btn btn-primary btn-sm" href="{{ route('admin.faqs.edit',$faq->faq_id) }}"><i class="fa fa-edit"></i></a> 
+									<a class="btn btn-primary btn-sm" href="{{ route('admin.faqs.edit',$faq->id) }}"><i class="fa fa-edit"></i></a> 
 								</td>
 								<td>
 	                             	{!! Form::open(['method' => 'DELETE','route' => ['admin.faqs.destroy', $faq->id],'style'=>'display:inline']) !!}
