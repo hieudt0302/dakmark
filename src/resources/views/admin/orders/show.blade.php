@@ -542,53 +542,31 @@
                                                             </p>
                                                         </td>
                                                         <td style="width: 15%;">
-                                                            {{$detail->price}}
-                                                            <div id="pnlEditPvUnitPrice4" style="display: block;">
+                                                            <div>{{$detail->price}}</div>
+                                                            <div id="pnlEditPvPrice4" style="display: block;">
                                                                 <div class="form-group">
-                                                                    <div class="col-md-5">
-                                                                        Incl tax:
-                                                                    </div>
-                                                                    <div class="col-md-7">
-                                                                        <input name="pvUnitPriceInclTax4" type="text" value="1000" id="pvUnitPriceInclTax4" class="form-control input-sm">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="col-md-5">
-                                                                        Excl tax:
-                                                                    </div>
-                                                                    <div class="col-md-7">
-                                                                        <input name="pvUnitPriceExclTax4" type="text" value="2100.0000" id="pvUnitPriceExclTax4" class="form-control input-sm">
+                                                                    <div class="col-md-8 col-md-offset-2">
+                                                                        <input name="pvPrice4" type="text" value="{{$detail->price}}" id="pvPrice4" class="form-control input-sm">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td style="width: 10%;">
-                                                            <div>{{$detail->quantiy}}</div>
+                                                            <div>{{$detail->quantity}}</div>
                                                             <div id="pnlEditPvQuantity4" style="display: block;">
                                                                 <div class="form-group">
                                                                     <div class="col-md-8 col-md-offset-2">
-                                                                        <input name="pvQuantity4" type="text" value="5" id="pvQuantity4" class="form-control input-sm">
+                                                                        <input name="pvQuantity4" type="text" value="{{$detail->quantity}}" id="pvQuantity4" class="form-control input-sm">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td style="width: 15%;">
-                                                            {{$detail->discount}}
+                                                            <div>{{$detail->discount}}</div>
                                                             <div id="pnlEditPvDiscount4" style="display: block;">
                                                                 <div class="form-group">
-                                                                    <div class="col-md-5">
-                                                                        Incl tax:
-                                                                    </div>
-                                                                    <div class="col-md-7">
-                                                                        <input name="pvDiscountInclTax4" type="text" value="0.0000" id="pvDiscountInclTax4" class="form-control input-sm">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="col-md-5">
-                                                                        Excl tax:
-                                                                    </div>
-                                                                    <div class="col-md-7">
-                                                                        <input name="pvDiscountExclTax4" type="text" value="0.0000" id="pvDiscountExclTax4" class="form-control input-sm">
+                                                                    <div class="col-md-8 col-md-offset-2">
+                                                                        <input name="pvDiscount4" type="text" value="{{$detail->discount}}" id="pvDiscount4" class="form-control input-sm">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -597,20 +575,20 @@
                                                             {{$detail->total}}
                                                         </td>
                                                         <td style="width: 15%;">
-                                                            <button type="submit" class="btn btn-default" name="btnEditOrderItem4" onclick="toggleOrderItemEdit4(true);return false;" id="btnEditOrderItem4" style="display: none;">
+                                                            <button type="submit" class="btn btn-default" name="btnEditOrderItem{{$detail->id}}" onclick="toggleOrderItemEdit(true);return false;" id="btnEditOrderItem{{$detail->id}}" style="display: none;">
                                                             <i class="fa fa-pencil"></i>
                                                                 Edit
                                                             </button>
-                                                            <button type="button" class="btn btn-default" name="" id="btnDeleteOrderItem4" data-toggle="modal" data-target="#btnDeleteOrderItem4-action-confirmation" style="display: none;">
+                                                            <button type="button" class="btn btn-default" name="" id="btnDeleteOrderItem{{$detail->id}}" data-toggle="modal" data-target="#btnDeleteOrderItem{{$detail->id}}-action-confirmation" style="display: none;">
                                                             <i class="fa fa-trash"></i>
                                                             Delete
                                                             </button>
-                                                            <button type="button" class="btn btn-default" name="" id="btnSaveOrderItem4" style="" data-toggle="modal" data-target="#btnSaveOrderItem4-action-confirmation">
+                                                            <button type="button" class="btn btn-default" name="" id="btnSaveOrderItem{{$detail->id}}" style="" data-toggle="modal" data-target="#btnSaveOrderItem{{$detail->id}}-action-confirmation">
                                                             <i class="fa fa-floppy-o"></i>
                                                             Save
                                                             </button>
                                                         
-                                                            <button type="submit" class="btn btn-default" name="btnCancelOrderItem4" onclick="toggleOrderItemEdit4(false);return false;" id="btnCancelOrderItem4" style="">
+                                                            <button type="submit" class="btn btn-default" name="btnCancelOrderItem{{$detail->id}}" onclick="toggleOrderItemEdit(false);return false;" id="btnCancelOrderItem{{$detail->id}}" style="">
                                                             <i class="fa fa-close"></i>
                                                             Cancel
                                                             </button>
@@ -626,8 +604,85 @@
                         </div>
                         <!-- ORDER NOTE(s) TAB -->
                         <div class="tab-pane" id="order_notes">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div id="ordernotes-grid" data-role="grid" class="k-grid k-widget">
+                                            <table role="grid">
+                                                <colgroup>
+                                                    <col style="width:200px">
+                                                    <col>
+                                                    <col style="width:200px">
+                                                    <col style="width:150px">
+                                                    <col style="width:100px">
+                                                </colgroup>
+                                                <thead class="k-grid-header" role="rowgroup">
+                                                    <tr role="row">
+                                                        <th role="columnheader" data-field="CreatedOn" data-title="Created on" class="k-header">Created on</th>
+                                                        <th role="columnheader" data-field="Note" data-title="Note" class="k-header">Note</th>
+                                                        <th role="columnheader" data-field="DownloadId" data-title="Attached file" style="text-align:center" class="k-header">Attached file</th>
+                                                        <th role="columnheader" data-field="DisplayToCustomer" data-title="Display to customer" style="text-align:center" class="k-header">Display to customer</th>
+                                                        <th class="k-header">Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody role="rowgroup">
+                                                    <tr data-uid="8ab853c8-a5ed-40df-8fc9-7bb05fe14f9f" role="row">
+                                                        <td role="gridcell">10/14/2017 11:18:25 PM</td>
+                                                        <td role="gridcell">Order item has been edited</td>
+                                                        <td style="text-align:center" role="gridcell"> No file attached </td>
+                                                        <td style="text-align:center" role="gridcell"> <i class="fa fa-close false-icon"></i> </td>
+                                                        <td role="gridcell"><a class="k-button k-button-icontext k-grid-delete" href="#"><span class="k-icon k-delete"></span>Delete</a></td>
+                                                    </tr>
+                                                    <tr class="k-alt" data-uid="0d3f2714-1d0a-4fc0-91fb-bbf382388290" role="row">
+                                                        <td role="gridcell">3/13/2017 6:20:09 PM</td>
+                                                        <td role="gridcell">Order placed</td>
+                                                        <td style="text-align:center" role="gridcell"> No file attached </td>
+                                                        <td style="text-align:center" role="gridcell"> <i class="fa fa-close false-icon"></i> </td>
+                                                        <td role="gridcell"><a class="k-button k-button-icontext k-grid-delete" href="#"><span class="k-icon k-delete"></span>Delete</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="k-pager-wrap k-grid-pager k-widget" data-role="pager"><a href="#" class="k-pager-refresh k-link" title="Refresh"><span class="k-icon k-i-refresh">Refresh</span></a></div>
+                                        </div>
 
-                        
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    
+                                    <div class="panel-heading">
+                                        Add order note
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <div class="label-wrapper"><label class="control-label" for="AddOrderNoteMessage" title="">Note</label>
+                                                    <div class="ico-help" title="Enter this order note message."><i class="fa fa-question-circle"></i></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" cols="20" id="AddOrderNoteMessage" name="AddOrderNoteMessage" rows="4"></textarea>
+                                                <span class="field-validation-valid" data-valmsg-for="AddOrderNoteMessage" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <div class="label-wrapper"><label class="control-label" for="AddOrderNoteDisplayToCustomer" title="">Display to customer</label>
+                                                    <div class="ico-help" title="A value indicating whether to display this order note to a customer."><i class="fa fa-question-circle"></i></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input class="check-box" id="AddOrderNoteDisplayToCustomer" name="AddOrderNoteDisplayToCustomer" type="checkbox" value="true"><input name="AddOrderNoteDisplayToCustomer" type="hidden" value="false">
+                                                <span class="field-validation-valid" data-valmsg-for="AddOrderNoteDisplayToCustomer" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-md-offset-3">
+                                                <button type="button" id="addOrderNote" class="btn btn-primary">Add order note</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
                         </div>
                     </div>
                 </div>
@@ -913,5 +968,19 @@
         $("#btnSaveOrderItem4").attr("name", "")
         if ($("#btnSaveOrderItem4").attr("type") == "submit") $("#btnSaveOrderItem4").attr("type", "button")
     });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#AddOrderNoteHasDownload").change(toggleAddOrderNoteHasDownload);
+        toggleAddOrderNoteHasDownload();
+    });
+
+    function toggleAddOrderNoteHasDownload() {
+        if ($('#AddOrderNoteHasDownload').is(':checked')) {
+            $('#pnlAddOrderNoteDownloadId').show();
+        } else {
+            $('#pnlAddOrderNoteDownloadId').hide();
+        }
+    }
 </script>
 @endsection
