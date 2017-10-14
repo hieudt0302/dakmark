@@ -32,7 +32,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $blogCategory = Category::where('name','blog')->firstOrFail();
+        $blogCategory = Category::where('slug','posts')->firstOrFail();
         $categories = Category::where('parent_id',$blogCategory->id)->get();
         $language_list = Language::all();    
 
@@ -118,11 +118,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $blogCategory = Category::where('name','blog')->firstOrFail();
+        $blogCategory = Category::where('slug','posts')->firstOrFail();
         $categories = Category::where('parent_id',$blogCategory->id)->get();
         $post = Post::where('id',$id)->firstOrFail();
         $language_list = Language::all();
-        $post_translations = PostTranslation::where('post_id',$id)->orderBy('language_id','asc')->get();        
+        $post_translations = $post->translations->withoutGlobalScopes()->get();       
         return View('admin.posts.edit',compact('post','post_translations','language_list','categories'));
     }
 

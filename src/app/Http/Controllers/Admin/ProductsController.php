@@ -31,7 +31,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $shopCategory = Category::where('name', 'shop')->firstOrFail();
+        $shopCategory = Category::where('slug', 'products')->firstOrFail();
         $categories = Category::where('parent_id', $shopCategory->id)->get();
         $language_list = Language::all();         
 
@@ -146,7 +146,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $shopCategory = Category::where('name', 'shop')->firstOrFail();
+        $shopCategory = Category::where('slug', 'products')->firstOrFail();
         $categories = Category::where('parent_id', $shopCategory->id)->get();
         $product = Product::where('id', $id)->firstOrFail();
         $language_list = Language::all();
