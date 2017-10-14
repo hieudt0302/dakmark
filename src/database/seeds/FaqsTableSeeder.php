@@ -13,7 +13,8 @@ class FaqsTableSeeder extends Seeder
     public function run()
     {
         Faq::create([
-            'id'=>1
+            'id'=>1,
+            'question'=>'Thịt choá?'            
         ]);
         /* php artisan db:seed --class=FaqTableSeeder */  
     }

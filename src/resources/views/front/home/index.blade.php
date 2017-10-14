@@ -7,9 +7,9 @@
 
 <!-- Fullwidth Slider -->
 <div class="home-section fullwidth-slider bg-dark">
-
+    @foreach ($sliders as $slider)
     <!-- Slide Item -->
-    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/foods/trungthu.jpg') }}');">
+    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/slider/'.$slider->image) }}');">
         <div class="relative container">
 
             <!-- Hero Content -->
@@ -18,7 +18,9 @@
 
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="hs-line-6 no-transp font-alt">Quăng đi gánh lo mâm cỗ trung thu <a href="shop-columns-2col.html" class="btn btn-mod btn-w btn-round" style="margin-top:-3px;">Shop Now</a></h1>
+                            <h1 class="hs-line-6 no-transp font-alt">{{$slider->translation->description}}
+                                <a href="{{url('/menu')}}/{{$slider->url}}" class="btn btn-mod btn-w btn-round" style="margin-top:-3px;">@lang('common.more-details')</a>
+                            </h1>
                         </div>
                     </div>
 
@@ -29,55 +31,7 @@
         </div>
     </section>
     <!-- End Slide Item -->
-
-    <!-- Slide Item -->
-    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/foods/caphe.jpg') }}');">
-        <div class="relative container">
-
-            <!-- Hero Content -->
-            <div class="home-content">
-                <div class="home-text">
-
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-
-                            <h1 class="hs-line-6 no-transp font-alt">Cà phê "thuần cà phê"" <a href="shop-columns-2col.html" class="btn btn-mod btn-w btn-round" style="margin-top:-3px;">Shop Now</a></h1>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- End Hero Content -->
-
-        </div>
-    </section>
-    <!-- End Slide Item -->
-
-    <!-- Slide Item -->
-    <section class="page-section bg-scroll bg-dark bg-dark-alfa-50" style="background-image:url('{{ asset('images/foods/keomut.jpg') }}');">
-        <div class="relative container">
-
-            <!-- Hero Content -->
-            <div class="home-content">
-                <div class="home-text">
-
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-
-                            <h1 class="hs-line-6 no-transp font-alt">Đặc sản 3 miền <a href="shop-columns-2col.html" class="btn btn-mod btn-w btn-round" style="margin-top:-3px;">Shop Now</a></h1>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- End Hero Content -->
-
-        </div>
-    </section>
-    <!-- End Slide Item -->
-
+    @endforeach
 </div>
 <!-- End Fullwidth Slider -->
 

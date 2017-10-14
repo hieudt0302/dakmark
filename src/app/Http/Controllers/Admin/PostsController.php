@@ -122,7 +122,7 @@ class PostsController extends Controller
         $categories = Category::where('parent_id',$blogCategory->id)->get();
         $post = Post::where('id',$id)->firstOrFail();
         $language_list = Language::all();
-        $post_translations = $post->translations->withoutGlobalScopes()->get();       
+        $post_translations = $post->translations()->get();       
         return View('admin.posts.edit',compact('post','post_translations','language_list','categories'));
     }
 

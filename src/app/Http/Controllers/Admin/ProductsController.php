@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\ProductTranslation;
 use App\Models\Language;
 use Validator;
+use Intervention\Image\Facades\Image;
 
 class ProductsController extends Controller
 {
@@ -150,7 +151,7 @@ class ProductsController extends Controller
         $categories = Category::where('parent_id', $shopCategory->id)->get();
         $product = Product::where('id', $id)->firstOrFail();
         $language_list = Language::all();
-        $product_translations = ProductTranslation::where('product_id',$id)->orderBy('language_id','asc')->get();         
+        $product_translations = $product->translations()->get();         
         return View('admin.products.edit', compact('product','product_translations','language_list', 'categories'));
     }
 
