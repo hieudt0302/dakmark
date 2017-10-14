@@ -13,7 +13,7 @@
     <meta name="description" content="@yield('description')">
 
     <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="{{asset('adminlte/css/bootstrap.min.css')}}"> 
+  <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
   <!-- Ionicons -->
@@ -382,9 +382,9 @@ ol {
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
+          <!-- <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -556,7 +556,7 @@ ol {
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+  <!-- <div class="control-sidebar-bg"></div> -->
 </div>
     <!-- /#wrapper -->
     <!-- jQuery 3 -->
@@ -568,7 +568,7 @@ ol {
         $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="{{asset('adminlte/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <!-- Morris.js charts -->
     <script src="{{asset('adminlte/js/raphael.min.js')}}"></script>
     <script src="{{asset('adminlte/js/morris.min.js')}}"></script>

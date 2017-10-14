@@ -81,7 +81,6 @@ mix.copyDirectory('resources/assets/adminlte/dist', 'public/adminlte/dist')
     //PLUGINS
 mix.copyDirectory('resources/assets/adminlte/plugins', 'public/adminlte/plugins')
     //CSS
-mix.copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/adminlte/css')
 mix.copy('node_modules/ionicons/dist/css/ionicons.min.css', 'public/adminlte/css')
 mix.copy('node_modules/morris.js/morris.css', 'public/adminlte/css')
 mix.copy('node_modules/jvectormap/jquery-jvectormap.css', 'public/adminlte/css')
@@ -90,7 +89,6 @@ mix.copy('node_modules/bootstrap-daterangepicker/daterangepicker.css', 'public/a
 mix.copy('node_modules/select2/dist/css/select2.min.css', 'public/adminlte/css')
     //JS
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/adminlte/js')
-mix.copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/adminlte/js')
 
 mix.copy('node_modules/raphael/raphael.min.js', 'public/adminlte/js')
 mix.copy('node_modules/morris.js/morris.min.js', 'public/adminlte/js')
@@ -106,3 +104,8 @@ mix.copy('node_modules/slimscroll/lib/slimscroll.js', 'public/adminlte/js')
 mix.copy('node_modules/select2/dist/js/select2.full.min.js', 'public/adminlte/js')
     //FONTS
 mix.copyDirectory('node_modules/ionicons/dist/fonts', 'public/adminlte/fonts');
+
+//ADMIN Bootstrap
+// mix.js('node_modules/bootstrap-sass/assets/javascripts/bootstrap.js', 'public/adminlte/js')
+//     .sass('node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss', 'public/css')
+// mix.copyDirectory('node_modules/bootstrap-sass/assets/fonts/bootstrap', 'public/adminlte/fonts');
