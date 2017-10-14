@@ -44,23 +44,41 @@
 
                 {!! Form::open(array('method' => 'POST','route' => ['admin.faqs.store'])) !!}
                     <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">
-                        @foreach ($language_list as $language)
-                        @if ($language->id == 1) 
                         <li class="active">
-                        @else
+                            <a href="#general" data-toggle="tab">Thông tin chung</a>
+                        </li>                          
+                        @foreach ($language_list as $language)
                         <li>
-                        @endif
                             <a href="#{{$language->id}}-content" data-toggle="tab">Nội dung - {{$language->name}}</a>
                         </li>
                         @endforeach
                     </ul>
                     <div class="tab-content">
+                        <div class="tab-pane active" id="general">
+                            <table class="table table-responsive">            
+                                <tr>
+                                    <td>
+                                        Câu hỏi
+                                        <span class="text-danger">*</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="question" class="form-control" name="question" placeholder="Nhập câu hỏi" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cho phép hiển thị</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="col-sm-10 checkbox">
+                                                <label>{{ Form::checkbox('is_show', 1 ,false, array('class' => 'is_show')) }}Hiển thị</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>                                           
+                            </table>                
+                        </div>                        
                         @foreach ($language_list as $language)
-                        @if ($language->id == 1)   
-                        <div class="tab-pane active" id="{{$language->id}}-content">
-                        @else
                         <div class="tab-pane fade" id="{{$language->id}}-content">
-                        @endif
                             <table class="table table-responsive">
                                 <tr>
                                     <td>

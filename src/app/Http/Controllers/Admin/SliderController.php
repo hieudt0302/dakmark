@@ -9,6 +9,7 @@ use App\Models\Slider;
 use App\Models\SliderTranslation;
 use App\Models\Language;
 use DB;
+use Intervention\Image\Facades\Image;
 
 class SliderController extends Controller
 {
@@ -32,7 +33,7 @@ class SliderController extends Controller
         $image = '';
         $img_file = $request->file('image');
         if($img_file != NULL){
-            $path = './public/assets/img/slider';
+            $path = './images/slider';
             if(!is_dir($path)){
                 mkdir($path, 0777, true);
             }
@@ -82,20 +83,20 @@ class SliderController extends Controller
         $image = '';
         $img_file = $request->file('image');
         if($img_file != NULL){
-            $path = './public/assets/img/slider';
+            $path = './images/slider';
             if(!is_dir($path)){
                 mkdir($path, 0777, true);
             }
             $img = Image::make($img_file->getRealPath());
             $img->fit(1920, 1080)->save($path.'/'.$img_file->getClientOriginalName());               
             $image = $img_file->getClientOriginalName();
+            $slider->image = $image;            
         }   
 
         $slider->title = $request->title;
         $slider->url = $request->url;
         $slider->order = $request->sort_order;
         $slider->is_show = $request->is_show;
-        $slider->image = $image;
         $slider->save();
 
         $language_list = Language::all();
