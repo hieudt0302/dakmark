@@ -240,7 +240,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-3">
-                                                <div class="label-wrapper"><label class="control-label" for="shipping_status" title="">Payment status</label>
+                                                <div class="label-wrapper"><label class="control-label" for="shipping_status" title="">Shipping status</label>
                                                     <div class="ico-help" title="The shipping status of the order."><i class="fa fa-question-circle"></i></div>
                                                 </div>
                                             </div>
