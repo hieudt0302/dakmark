@@ -17,7 +17,7 @@ class CategoriesTableSeeder extends Seeder
         if (Category::count() == 0) {
             //1
             $category1 = Category::create([
-                'slug' => 'blog',
+                'slug' => 'posts',
                 'order'         => 0,
                 'image_icon'       => '',
                 'is_menu_avaiable'=>true,
@@ -37,7 +37,7 @@ class CategoriesTableSeeder extends Seeder
 
             //2
             $category2 =Category::create([
-                'slug' => 'shop',
+                'slug' => 'products',
                 'order'         => 1,
                 'is_menu_avaiable'=>true,
                 'image_icon'       => ''

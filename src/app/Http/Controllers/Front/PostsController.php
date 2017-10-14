@@ -18,14 +18,12 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $posts = Post::where('published',1)
-        ->whereNull('deleted_at')
-        ->paginate(10);
-
-         $tags = Tag::has('posts')->get();
-
-        return View('front/posts/index',compact('posts','tags'));
+    {     
+        $tags = Tag::has('posts')->get();
+        $comments = Tag::has('posts')->get();
+        $lastPosts = Post::take(10)->get(); ///TODO: move number limit to database setting
+        $post_group = Post::all()->groupBy('category_id');  ///TODO: move number limit to database setting
+        return View('front/posts/index-allcat', compact('post_group','tags','comments', 'lastPosts'));        
     }
 
 

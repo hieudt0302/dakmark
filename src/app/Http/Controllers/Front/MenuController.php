@@ -13,7 +13,7 @@ class MenuController extends Controller
 {
     public function menu($parent, $slug)
     {
-        if ($parent == "shop") {
+        if ($parent == "products") {
             $category = Category::where('slug', $slug)->firstOrFail();
             $tags = Tag::has('products')->get();
             $comments = Tag::has('products')->get();
@@ -21,7 +21,7 @@ class MenuController extends Controller
             $products = $category->products()->paginate(10);  ///TODO: move number limit to database setting
             return View('front/products/index', compact('products','tags','comments', 'lastProducts'));
 
-        } elseif ($parent == "blog") {
+        } elseif ($parent == "posts") {
             $category = Category::where('slug', $slug)->firstOrFail();
             $tags = Tag::has('posts')->get();
             $comments = Tag::has('posts')->get();

@@ -51,6 +51,8 @@
                 </div>
                 <!-- End Blog options -->              
                 <!-- Post -->
+                @foreach($post_group as $cat_id => $posts)
+                {{$cat_id}}
                 @foreach($posts as $post)
                 <div class="blog-item">
                     <!-- Post Title -->
@@ -88,11 +90,11 @@
 
                 </div>
                 @endforeach
+                @endforeach
                 <!-- End Post -->
 
 
                 <!-- Pagination -->
-                {{ $posts->links() }}
                 <!-- <div class="pagination">
                     <a href=""><i class="fa fa-angle-left"></i></a>
                     <a href="" class="active">1</a>
