@@ -112,13 +112,13 @@ class OrdersController extends Controller
         $customer = $request->customer_name;
         if (strlen($customer) > 0) {
             $query->where(function ($subQuery) use ($customer) {
-                $subQuery->where('book_addreses.first_name', 'LIKE', '%'.$customer.'%');
-                $subQuery->orWhere('book_addreses.last_name', 'LIKE', '%'.$customer.'%');
+                $subQuery->where('book_addresses.first_name', 'LIKE', '%'.$customer.'%');
+                $subQuery->orWhere('book_addresses.last_name', 'LIKE', '%'.$customer.'%');
             });
         }
 
         if (strlen($request->billing_email) > 0) {
-            $query->where('book_addreses.email', '<=', $request->billing_email);
+            $query->where('book_addresses.email', '<=', $request->billing_email);
         }
 
         if (count($request->orders_status) > 0) {
