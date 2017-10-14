@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Scope;
+use App\Scopes;
 use DB;
 
 class Category extends Model
@@ -93,8 +95,11 @@ class Category extends Model
      */
     public function translations()
     { 
-        /* It return list but just contain one or none. Because condition of scope has override. */       
-        return $this->hasMany('App\Models\CategoryTranslation');
+        /* 
+        * It return list but just contain one or none. Because condition of scope has override. 
+        * If use ->withoutGlobalScopes(); it wil be remove several or even all of the global scopes
+        */ 
+        return $this->hasMany('App\Models\CategoryTranslation')->withoutGlobalScopes();
     }
 
     public function translation()

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Order;
 use Validator;
+use DB;
 
 class OrdersController extends Controller
 {
@@ -16,12 +17,16 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
-        
-        return View('admin.orders.index', compact('orders'));
+        return $this->filter($request);
     }
+
+    public function find(Request $request)
+    {
+        return $this->filter($request);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -87,5 +92,55 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function filter(Request $request)
+    {
+        $query = DB::table('orders')
+            ->join('book_addresses', 'book_addresses.id', '=', 'orders.billing_address_id')
+            ->select('orders.*', 'book_addresses.last_name', 'book_addresses.first_name', 'book_addresses.email', 'book_addresses.phone');
+        
+        if (strlen($request->order_start_date) > 0) {
+            $startDate = date('Y-m-d'.' 00:00:00', strtotime($request->order_start_date));
+            $query->where('orders.order_date', '>=', $startDate);
+        }
+        if (strlen($request->order_end_date) > 0) {
+            $endDate = date('Y-m-d'.' 23:59:59', strtotime($request->order_end_date));
+            $query->where('orders.order_date', '<=', $endDate);
+        }
+
+        $customer = $request->customer_name;
+        if (strlen($customer) > 0) {
+            $query->where(function ($subQuery) use ($customer) {
+                $subQuery->where('book_addreses.first_name', 'LIKE', '%'.$customer.'%');
+                $subQuery->orWhere('book_addreses.last_name', 'LIKE', '%'.$customer.'%');
+            });
+        }
+
+        if (strlen($request->billing_email) > 0) {
+            $query->where('book_addreses.email', '<=', $request->billing_email);
+        }
+
+        if (count($request->orders_status) > 0) {
+            $query->whereIn('order_status', $request->orders_status);
+        }
+
+        if (count($request->payments_status) > 0) {
+            $query->whereIn('payment_status', $request->payments_status);
+        }
+
+        if (count($request->shippings_status) > 0) {
+            $query->whereIn('shipping_status', $request->shippings_status);
+        }
+
+        if (strlen($request->order_no) > 0) {
+            $query->where('orders.order_no', $request->order_no);
+        }
+
+
+        $orders = $query->paginate(21);
+        
+        return View('admin.orders.index', compact('orders'))
+        ->with('i', ($request->input('page', 1) - 1) * 21);
     }
 }

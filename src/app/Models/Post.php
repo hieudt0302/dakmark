@@ -47,8 +47,12 @@ class Post extends Model
      */
     public function translations()
     { 
-        /* It return list but just contain one or none. Because condition of scope has override. */       
-        return $this->hasMany('App\Models\PostTranslation');
+        
+        /* 
+        * It return list but just contain one or none. Because condition of scope has override. 
+        * If use ->withoutGlobalScopes(); it wil be remove several or even all of the global scopes
+        */ 
+        return $this->hasMany('App\Models\PostTranslation')->withoutGlobalScopes();
     }
 
     public function translation()

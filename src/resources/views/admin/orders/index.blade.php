@@ -5,7 +5,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Sản Phẩm
+    Đơn Hàng
         <small>Danh Sách</small>
     </h1>
     <ol class="breadcrumb">
@@ -26,20 +26,21 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form action="{{url('admin/orders/find')}}" method="POST" class="form-horizontal">
+                {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="order_start_date" class="col-sm-2 control-label">Start Date</label>
                             <div class="col-sm-4 input-group date">
                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                <input type="text" name="order_start_date" class="form-control pull-right" id="start_datepicker">
+                                <input type="text" name="order_start_date" class="form-control pull-right" id="start_datepicker" data-date-end-date="-1d">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="order_end_date" class="col-sm-2 control-label">End Date</label>
                             <div class="col-sm-4 input-group date">
                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                <input type="text" name="order_end_date" class="form-control pull-right" id="end_datepicker">
+                                <input type="text" name="order_end_date" class="form-control pull-right" id="end_datepicker" data-date-end-date="0d">
                             </div>
                         </div>
                         <div class="form-group">
@@ -57,7 +58,7 @@
                         <div class="form-group">
                             <label for="order_status" class="col-sm-2 control-label">OrderStatus</label>
                             <div class="col-sm-8">
-                                <select id="order_status" multiple name="order_status" class="form-control select2" style="width: 100%;">
+                                <select id="order_status" multiple name="order_status[]" class="form-control select2" style="width: 100%;">
                                     @foreach(\Lang::get('status.order') as $key =>$value)
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -67,8 +68,8 @@
                         <div class="form-group">
                             <label for="payment_status" class="col-sm-2 control-label">Payment Status</label>
                             <div class="col-sm-8">
-                                <select id="payment_status" multiple name="payment_status" class="form-control select2" style="width: 100%;">
-                                    @foreach(\Lang::get('status.shipping') as $key =>$value)
+                                <select id="payment_status" multiple name="paymenst_status[]" class="form-control select2" style="width: 100%;">
+                                    @foreach(\Lang::get('status.payment') as $key =>$value)
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
                                 </select>
@@ -77,7 +78,7 @@
                         <div class="form-group">
                             <label for="shipping_status" class="col-sm-2 control-label">Shipping Status</label>
                             <div class="col-sm-8">
-                                <select id="shipping_status" multiple name="shipping_status" class="form-control select2" style="width: 100%;">
+                                <select id="shipping_status" multiple name="shippings_status[]" class="form-control select2" style="width: 100%;">
                                     @foreach(\Lang::get('status.shipping') as $key =>$value)
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -93,8 +94,12 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                        <button type="submit" class="btn btn-default pull-right">
+                            <i class="fa fa-print"></i> Export
+                        </button>
                     </div>
                     <!-- /.box-footer -->
                 </form>
@@ -105,7 +110,7 @@
     <!-- TABLE -->
     <div class="row">
         <div class="col-xs-12">
-            <div class="box">
+            <div class="box box-danger">
                 <div class="box-header">
                     <h3 class="box-title"></h3>Danh Sách Đơn Hàng
                 </div>
@@ -113,12 +118,12 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Order No</th>
-                                <th>Order Status</th>
-                                <th>Payment Status</th>
-                                <th>Shipping Status</th>
-                                <th>Customer Name</th>
-                                <th>Mail</th>
+                                <th>#No</th>
+                                <th>Order</th>
+                                <th>Payment</th>
+                                <th>Shipping</th>
+                                <th>Customer</th>
+                                <th>Email</th>
                                 <th>Phone</th>
                                 <th>Order Date</th>
                                 <th>Order Total</th>
@@ -130,11 +135,11 @@
                             <tr>
                                 <td>#{{$order->order_no}}</td>
                                 <td>{{__('status.order.'.$order->order_status)}}</td>
-                                <td>{{__('status.order.'.$order->payment_status)}}</td>
-                                <td>{{__('status.order.'.$order->shipping_status)}}</td>
-                                <td>{{$order->user->last_name}} {{$order->user->first_name}}</td>
-                                <td>{{$order->user->email}}</td>
-                                <td>{{$order->user->phone}}</td>
+                                <td>{{__('status.payment.'.$order->payment_status)}}</td>
+                                <td>{{__('status.shipping.'.$order->shipping_status)}}</td>
+                                <td>{{$order->last_name}} {{$order->first_name}}</td>
+                                <td>{{$order->email}}</td>
+                                <td>{{$order->phone}}</td>
                                 <td>{{$order->order_start_date}}</td>
                                 <td>{{$order->order_total}}</td>
                                 <td></td>
@@ -143,12 +148,12 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Order No</th>
-                                <th>Order Status</th>
-                                <th>Payment Status</th>
-                                <th>Shipping Status</th>
-                                <th>Customer Name</th>
-                                <th>Mail</th>
+                                <th>#No</th>
+                                <th>Order</th>
+                                <th>Payment</th>
+                                <th>Shipping</th>
+                                <th>Customer</th>
+                                <th>Email</th>
                                 <th>Phone</th>
                                 <th>Order Date</th>
                                 <th>Order Total</th>
@@ -167,26 +172,38 @@
 <script>
     $(function(){
          //Date picker
-        $('#start_datepicker').datepicker({
-            autoclose: true
+      
+        $('#start_datepicker, #end_datepicker').datepicker({
+            format : 'yyyy-mm-dd',
+            autoclose : true,
+            clearBtn : true
         })
-        $('#end_datepicker').datepicker({
-            autoclose: true
-        })
+       
 
-        //Select2
+        $('#start_datepicker').datepicker().on('changeDate', function(e) {
+           
+        });
+
+        $('#end_datepicker').datepicker().on('changeDate', function(e) {
+          
+        });
+
+        //Select2: Order Status
         $('#order_status').select2();
         $('#order_status').on('select2:opening select2:closing', function( event ) {
             var $searchfield = $(this).parent().find('.select2-search__field');
             $searchfield.prop('disabled', true);
+            console.log("Selected value is: "+$("#order_status").val());
         });
 
+        //Select2: Payment Status
         $('#payment_status').select2();
         $('#payment_status').on('select2:opening select2:closing', function( event ) {
             var $searchfield = $(this).parent().find('.select2-search__field');
             $searchfield.prop('disabled', true);
         });
 
+        //Select2: Shipping Status
         $('#shipping_status').select2();
         $('#shipping_status').on('select2:opening select2:closing', function( event ) {
             var $searchfield = $(this).parent().find('.select2-search__field');

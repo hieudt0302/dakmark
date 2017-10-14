@@ -84,7 +84,7 @@ mix.copyDirectory('resources/assets/adminlte/plugins', 'public/adminlte/plugins'
 mix.copy('node_modules/ionicons/dist/css/ionicons.min.css', 'public/adminlte/css')
 mix.copy('node_modules/morris.js/morris.css', 'public/adminlte/css')
 mix.copy('node_modules/jvectormap/jquery-jvectormap.css', 'public/adminlte/css')
-mix.copy('node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css', 'public/adminlte/css')
+mix.copy('node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css', 'public/adminlte/css')
 mix.copy('node_modules/bootstrap-daterangepicker/daterangepicker.css', 'public/adminlte/css')
 mix.copy('node_modules/select2/dist/css/select2.min.css', 'public/adminlte/css')
     //JS
