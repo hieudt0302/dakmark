@@ -16,6 +16,93 @@
 </section>
 <!-- Main content -->
 <section class="content">
+    <!-- SEARCH -->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                <h3 class="box-title">Quick Search</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="order_start_date" class="col-sm-2 control-label">Start Date</label>
+                            <div class="col-sm-4 input-group date">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input type="text" name="order_start_date" class="form-control pull-right" id="start_datepicker">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order_end_date" class="col-sm-2 control-label">End Date</label>
+                            <div class="col-sm-4 input-group date">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input type="text" name="order_end_date" class="form-control pull-right" id="end_datepicker">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer_name" class="col-sm-2 control-label">Customer Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="customer_name" class="form-control" id="customer_name" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="billing_email" class="col-sm-2 control-label">Billing email</label>
+                            <div class="col-sm-8">
+                                <input type="email" name="billing_email" class="form-control" id="billing_email" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order_status" class="col-sm-2 control-label">OrderStatus</label>
+                            <div class="col-sm-8">
+                                <select id="order_status" multiple name="order_status" class="form-control select2" style="width: 100%;">
+                                    @foreach(\Lang::get('status.order') as $key =>$value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_status" class="col-sm-2 control-label">Payment Status</label>
+                            <div class="col-sm-8">
+                                <select id="payment_status" multiple name="payment_status" class="form-control select2" style="width: 100%;">
+                                    @foreach(\Lang::get('status.shipping') as $key =>$value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping_status" class="col-sm-2 control-label">Shipping Status</label>
+                            <div class="col-sm-8">
+                                <select id="shipping_status" multiple name="shipping_status" class="form-control select2" style="width: 100%;">
+                                    @foreach(\Lang::get('status.shipping') as $key =>$value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order_no" class="col-sm-2 control-label">#Order No</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="order_no" class="form-control" id="order_no" >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <!-- TABLE -->
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -77,5 +164,34 @@
 @endsection 
 
 @section('scripts') 
+<script>
+    $(function(){
+         //Date picker
+        $('#start_datepicker').datepicker({
+            autoclose: true
+        })
+        $('#end_datepicker').datepicker({
+            autoclose: true
+        })
 
+        //Select2
+        $('#order_status').select2();
+        $('#order_status').on('select2:opening select2:closing', function( event ) {
+            var $searchfield = $(this).parent().find('.select2-search__field');
+            $searchfield.prop('disabled', true);
+        });
+
+        $('#payment_status').select2();
+        $('#payment_status').on('select2:opening select2:closing', function( event ) {
+            var $searchfield = $(this).parent().find('.select2-search__field');
+            $searchfield.prop('disabled', true);
+        });
+
+        $('#shipping_status').select2();
+        $('#shipping_status').on('select2:opening select2:closing', function( event ) {
+            var $searchfield = $(this).parent().find('.select2-search__field');
+            $searchfield.prop('disabled', true);
+        });
+    });
+</script>
 @endsection
