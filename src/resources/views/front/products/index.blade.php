@@ -54,13 +54,13 @@
                     @foreach($products as $product)
                     <div class="col-md-4 col-lg-4 mb-60 mb-xs-40">
                         <div class="post-prev-img">
-                            <a href="{{url('/')}}/products/{{$product->id}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
+                            <a href="{{url('/')}}/products/{{$product->slug}}"><img class="product-main-img" src="images/shop/shop-prev-1.jpg" alt="" /></a>
                             <div class="intro-label">
                                 <span class="label label-danger bg-red">Sale</span>
                             </div>
                         </div>
                         <div class="post-prev-title font-alt align-center">
-                            <a href="{{url('/')}}/products/{{$product->id}}">{{$product->name}}</a>
+                            <a href="{{url('/')}}/products/{{$product->slug}}">{{$product->name}}</a>
                         </div>
 
                         <div class="post-prev-text align-center">
@@ -79,7 +79,7 @@
                             <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
                             <input type="hidden" id="product_name" name="product_name" value="{{$product->name}}">
                             <input type="hidden" id="product_price" name="product_price" value="{{$product->price}}">
-                            <button class="btn btn-mod btn-gray btn-round add-shoopingcart"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                            <button class="btn btn-mod btn-gray btn-round add-shoopingcart"><i class="fa fa-shopping-cart"></i> @lang('shoppings.add-cart')</button>
                         </div>
                         
                     </div>
@@ -188,15 +188,15 @@
                 <!-- Widget -->
                 <div class="widget">
                     
-                    <h5 class="widget-title font-alt">Shop Categories</h5>
+                    <h5 class="widget-title font-alt">@lang('common.categories')</h5>
                     
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
-                            @foreach($products as $item)
+                            @foreach($categories as $category)
                             <li>
-                                <a href="#" title="">{{$item->category->name}}</a>
+                                <a href="{{url('/menu')}}/{{$product_category->slug}}/{{$category->slug}}" title="">{{$category->translation->name}}</a>
                                 <small>
-                                    - {{count($item->category->posts)}}
+                                    - {{$category->productsCount}}
                                 </small>
                             </li>
                             @endforeach
@@ -209,7 +209,7 @@
                 <!-- Widget -->
                 <div class="widget">
                     
-                    <h5 class="widget-title font-alt">@lang('home.best-sellers')</h5>
+                    <h5 class="widget-title font-alt">@lang('home.best-sellers-products')</h5>
                     
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">

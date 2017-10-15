@@ -34,7 +34,7 @@
         <div class="row mb-60 mb-xs-30">
             
             <!-- Product Images -->
-            <div class="col-md-4 mb-md-30">
+            <div class="col-md-5 mb-md-30">
                 
                 <div class="post-prev-img">
                     <a href="{{asset('images/caphe.jpg')}}" class="lightbox-gallery-3 mfp-image"><img class="product-main-img" src="{{asset('images/caphe.jpg')}}" alt="" /></a>
@@ -110,7 +110,7 @@
                         @else
                         <i class="fa fa-star-o"></i>
                         @endif
-                        &nbsp;({{count($product->comments)}} reviews)
+                        &nbsp;({{count($product->comments)}} @lang('product.reviews'))
                     </div>
                 </div>
                 
@@ -126,7 +126,7 @@
                     <!-- <form method="post" action class="form"> -->
                     <div class="form">
                         <input name="quantity" type="number" class="input-lg round" min="1" max="1000000" value="1" />
-                        <button  class="btn btn-mod btn-large btn-round add-shoopingcart">Add to Cart</button> 
+                        <button  class="btn btn-mod btn-large btn-round add-shoopingcart">@lang('shoppings.add-cart')</button> 
                     </div>
                        
                     <!-- </form> -->
@@ -151,49 +151,6 @@
             </div>
             <!-- End Product Description -->
             
-            <!-- Features -->
-            <div class="col-sm-4 col-md-3 mb-xs-40">
-                
-                <!-- Features Item -->
-                <div class="alt-service-wrap">
-                    <div class="alt-service-item">
-                        <div class="alt-service-icon">
-                            <i class="fa fa-paper-plane-o"></i>
-                        </div>
-                        <h3 class="alt-services-title font-alt">Free Shipping</h3>
-                        Vivamus neque orci, ultricies blandit ultricies vel, semper..
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                
-                <!-- Features Item -->
-                <div class="alt-service-wrap">
-                    <div class="alt-service-item">
-                        <div class="alt-service-icon">
-                            <i class="fa fa-clock-o"></i>
-                        </div>
-                        <h3 class="alt-services-title font-alt">14 days moneyback</h3>
-                        Vivamus neque orci, ultricies blandit ultricies vel, semper..
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                
-                <!-- Features Item -->
-                <div class="alt-service-wrap">
-                    <div class="alt-service-item">
-                        <div class="alt-service-icon">
-                            <i class="fa fa-gift"></i>
-                        </div>
-                        <h3 class="alt-services-title font-alt">100% Original</h3>
-                        Vivamus neque orci, ultricies blandit ultricies vel, semper..
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                    
-                    
-                
-            </div>
-            <!-- End Features -->
             
         </div>
         <!-- End Product Content -->
@@ -202,13 +159,13 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs tpl-tabs animate">
             <li class="active">
-                <a href="#one" data-toggle="tab">Description</a>
+                <a href="#one" data-toggle="tab">@lang('product.description')</a>
             </li>
             <li>
-                <a href="#two" data-toggle="tab">Specs</a>
+                <a href="#two" data-toggle="tab">@lang('product.specs')</a>
             </li>
             <li>
-                <a href="#three" data-toggle="tab">Reviews ({{count($product->comments)}})</a>
+                <a href="#three" data-toggle="tab">@lang('product.reviews') ({{count($product->comments)}})</a>
             </li>
         </ul>
         <!-- End Nav tabs -->
@@ -280,7 +237,7 @@
                     <!-- Add Review -->
                     <div>
                         
-                        <h4 class="blog-page-title font-alt">Add Review</h4>
+                        <h4 class="blog-page-title font-alt">@lang('product.add-review')</h4>
                         
                         <!-- Form -->
                         <form method="post" action="{{url('/products')}}/{{$product->id}}/review" id="form" role="form" class="form">
@@ -305,7 +262,7 @@
                             <div class="mb-20 mb-md-10">
                                 <!-- Rating -->
                                 <select name="rate" class="input-md round form-control">
-                                    <option value="0">-- Select one --</option>
+                                    <option value="0">-- @lang('product.select-one') --</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -316,12 +273,12 @@
                             
                             <!-- Comment -->
                             <div class="mb-30 mb-md-10">
-                                <textarea name="comment" id="text" class="input-md form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
+                                <textarea name="comment" id="text" class="input-md form-control" rows="6" placeholder="@lang('product.comment')" maxlength="400"></textarea>
                             </div>
                             
                             <!-- Send Button -->
                             <button type="submit" class="btn btn-mod btn-medium btn-round">
-                                Send Review
+                                @lang('product.send-review')
                             </button>
                             
                         </form>

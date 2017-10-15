@@ -130,7 +130,7 @@
                 <!-- Widget -->
                 <div class="widget">
 
-                    <h5 class="widget-title font-alt">@lang('common.categories')a</h5>
+                    <h5 class="widget-title font-alt">@lang('common.categories')</h5>
 
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">

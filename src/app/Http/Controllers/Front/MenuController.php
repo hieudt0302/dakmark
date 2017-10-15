@@ -19,7 +19,9 @@ class MenuController extends Controller
             $comments = Tag::has('products')->get();
             $lastProducts = Product::take(10)->get(); ///TODO: move number limit to database setting
             $products = $category->products()->paginate(10);  ///TODO: move number limit to database setting
-            return View('front/products/index', compact('products','tags','comments', 'lastProducts'));
+            $product_category = Category::where('slug','products')->firstOrFail();
+            $categories = Category::where('parent_id',$product_category->id)->get();            
+            return View('front/products/index', compact('products','tags','comments', 'lastProducts','product_category','categories'));
 
         } elseif ($parent == "posts") {
             $category = Category::where('slug', $slug)->firstOrFail();
