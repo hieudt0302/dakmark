@@ -12,6 +12,7 @@ use App\Models\ProductTranslation;
 use App\Models\Language;
 use Validator;
 use Intervention\Image\Facades\Image;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -20,10 +21,15 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return View('admin.products.index', compact('products'));
+        return $this->filter($request);
+    }
+
+
+    public function find(Request $request)
+    {
+        return $this->filter($request);
     }
 
     /**
@@ -300,5 +306,48 @@ class ProductsController extends Controller
         $product->delete();
         session()->flash('success_message', "Xóa thành công!");        
         return redirect()->route('admin.products.index'); 
+    }
+
+    public function filter(Request $request)
+    {
+        $query = DB::table('products')
+             ->leftJoin('product_media', 'products.id', '=', 'product_media.product_id')
+             ->leftJoin('medias', 'product_media.media_id', '=', 'medias.id')
+             ->select('products.id','products.name', 'products.sku', 'products.published', 'products.created_at', 'medias.source')
+             ->groupBy('products.id');
+        
+        if (strlen($request->from_date) > 0) {
+            $startDate = date('Y-m-d'.' 00:00:00', strtotime($request->from_date));
+            $query->where('products.created_at', '>=', $startDate);
+        }
+        if (strlen($request->to_date) > 0) {
+            $endDate = date('Y-m-d'.' 23:59:59', strtotime($request->to_date));
+            $query->where('products.created_at', '<=', $endDate);
+        }
+
+        $product_name = $request->product_name;
+        if (strlen($product_name) > 0) {
+            $query->where(function ($subQuery) use ($product_name) {
+                $subQuery->where('products.name', 'LIKE', '%'.$product_name.'%');
+                ///TODO: find in translation table
+                 $subQuery->orWhere(DB::raw('SELECT name FROM product_translation'), 'LIKE', '%'.$product_name.'%');
+            });
+        }
+
+        if (strlen($request->sku) > 0) {
+            $query->where('products.sku','LIKE', '%'.$request->sku. '%');
+        }
+
+        if (count($request->category_id) > 0) {
+            $query->whereIn('category_id', $request->category_id);
+        }
+        ///TODO: Get sub category. Not yet!
+
+
+        $products = $query->paginate(21);
+        $categories = Category::all();
+        
+        return View('admin.products.index', compact('products','categories'))
+      ->with('i', ($request->input('page', 1) - 1) * 21);
     }
 }
