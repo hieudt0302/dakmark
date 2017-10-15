@@ -32,6 +32,7 @@
                         <thead>						
 							<tr>
 								<th>Câu hỏi</th>
+                                <th>Hiển thị</th>                                
                                 <th></th>
                                 <th></th>
 							</tr>
@@ -40,7 +41,10 @@
 							@foreach ($faqs as $faq)
 							<tr>
 								<td>{{ $faq->question }}</td>
-								<td>
+                                <td>
+                                    <i class="fa {!! ($faq->is_show==1) ? 'fa-check' : 'fa-times' !!}"></i>
+                                </td>								
+                                <td>
 									<a class="btn btn-primary btn-sm" href="{{ route('admin.faqs.edit',$faq->id) }}"><i class="fa fa-edit"></i></a> 
 								</td>
 								<td>
@@ -55,6 +59,7 @@
                         <tfoot>
 							<tr>
 								<th>Câu hỏi</th>
+                                <th>Hiển thị</th>                                
                                 <th></th>
                                 <th></th>
 							</tr>                        	

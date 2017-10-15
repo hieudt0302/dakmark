@@ -106,6 +106,9 @@ class PostsController extends Controller
 
         //TODO search multilang
 
-        return view('front/posts/index',compact('posts','search_key'));
+        $tags = Tag::has('posts')->get();
+        $comments = Tag::has('posts')->get();
+        $lastPosts = Post::take(10)->get(); ///TODO: move number limit to database setting
+        return view('front/posts/index',compact('posts','search_key','tags','comments', 'lastPosts')); 
     }    
 }

@@ -23,7 +23,7 @@ class HomeController extends Controller
     public function index()
     {
         $new_products = DB::table('products')->where('created_at', '>=', Carbon::now()->subWeeks(1))->get();
-        $sliders = Slider::all();
+        $sliders = Slider::where('is_show',1)->get();
         return View("front/home/index",compact('new_products','sliders'));
     }
 

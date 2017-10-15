@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Tag;
 use Validator;
 use \Cart as Cart;
 use DB;
@@ -139,7 +140,10 @@ class ProductsController extends Controller
         ->paginate(10);  
 
         //TODO search multilang
+        $tags = Tag::has('products')->get();
+        $comments = Tag::has('products')->get();
+        $lastProducts = Product::take(10)->get(); ///TODO: move number limit to database setting        
 
-        return view('front/products/index',compact('products','search_key'));
+        return view('front/products/index',compact('products','search_key','tags','comments', 'lastProducts'));
     }     
 }
