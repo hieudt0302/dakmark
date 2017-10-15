@@ -304,7 +304,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <a href="http://admin-demo.nopcommerce.com/content/images/thumbs/0000081_100-physical-gift-card.jpeg" target="_blank"><img alt="81" src="http://admin-demo.nopcommerce.com/content/images/thumbs/0000081_100-physical-gift-card.jpeg" width="150"></a>
+                                                        <a href="{{asset('images/shop/previews/shop-prev-1.jpg')}}" target="_blank"><img alt="81" src="{{asset('images/shop/previews/shop-prev-1.jpg')}}" width="150"></a>
                                                     </td>
                                                     <td>5</td>
                                                     <td ></td>
