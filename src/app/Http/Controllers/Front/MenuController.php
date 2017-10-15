@@ -27,7 +27,9 @@ class MenuController extends Controller
             $comments = Tag::has('posts')->get();
             $lastPosts = Post::take(10)->get(); ///TODO: move number limit to database setting
             $posts = $category->posts()->paginate(10);  ///TODO: move number limit to database setting
-            return View('front/posts/index', compact('posts','tags','comments', 'lastPosts'));
+            $post_category = Category::where('slug','posts')->firstOrFail();
+            $categories = Category::where('parent_id',$post_category->id)->get();            
+            return View('front/posts/index', compact('posts', 'lastPosts','tags','comments','post_category','categories'));
         }
     }
 }

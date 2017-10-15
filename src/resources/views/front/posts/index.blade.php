@@ -57,7 +57,7 @@
                     <h2 class="blog-item-title font-alt"><a href="{{url('/')}}/posts/{{$post->slug}}">{{$post->translation->title}}</a></h2>
                     <!-- Author, Categories, Comments -->
                     <div class="blog-item-data">
-                        <a href="#"><i class="fa fa-clock-o"></i> {{$post->created_at}}</a>
+                        <a href="#"><i class="fa fa-clock-o"></i> {{ date('d-m-Y', strtotime($post->created_at)) }}</a>
                         <span class="separator">&nbsp;</span>
                         <a href="#"><i class="fa fa-user"></i> {{$post->author->first_name}}</a>
                         <span class="separator">&nbsp;</span>
@@ -129,14 +129,16 @@
 
                 <!-- Widget -->
                 <div class="widget">
-                    <h5 class="widget-title font-alt">@lang('common.categories')</h5>
+
+                    <h5 class="widget-title font-alt">@lang('common.categories')a</h5>
+
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
-                            @foreach($posts as $item)
+                            @foreach($categories as $category)
                             <li>
-                                <a href="#" title="">{{$item->category->translation->name}}</a>
+                                <a href="{{url('/menu')}}/{{$post_category->slug}}/{{$category->slug}}" title="">{{$category->translation->name}}</a>
                                 <small>
-                                    - {{count($item->category->posts)}}
+                                    - {{$category->postsCount}}
                                 </small>
                             </li>
                             @endforeach
@@ -168,9 +170,9 @@
                         <ul class="clearlist widget-posts">
                             @foreach($lastPosts as $post)
                             <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="" class="widget-posts-img" /></a>
+                                <a href="{{url('/posts')}}/{{$post->slug}}"><img src="{{ asset('images/blog/preview/' . $post->img) }}" alt="" class="widget-posts-img" /></a>
                                 <div class="widget-posts-descr">
-                                    <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->translation->title}}</a> Posted by {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
+                                    <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->translation->title}}</a> @lang('blog.posted-by') {{$post->author->last_name}} {{$post->author->first_name}} {{ date('d-m-Y', strtotime($post->created_at)) }}
                                 </div>
                             </li>
                             @endforeach
@@ -179,41 +181,6 @@
                 </div>
                 <!-- End Widget -->
 
-                <!-- Widget -->
-                <div class="widget">
-                    <h5 class="widget-title font-alt">Comments</h5>
-
-                    <div class="widget-body">
-                        <ul class="clearlist widget-comments">
-                            @foreach($comments as $comment)
-                            <li>
-                            {{$comment->author->last_name}} {{$comment->author->first_name}} <a href="#" title="">{{ str_limit($comment->comment, $limit = 60, $end = '...') }}</a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Widget -->
-
-                <!-- Widget -->
-                <div class="widget">
-                    <h5 class="widget-title font-alt">Archive</h5>
-                    <div class="widget-body">
-                        <ul class="clearlist widget-menu">
-                            <li>
-                                <a href="#" title="">February 2014</a>
-                            </li>
-                            <li>
-                                <a href="#" title="">January 2014</a>
-                            </li>
-                            <li>
-                                <a href="#" title="">December 2013</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- End Widget -->
 
             </div>
             <!-- End Sidebar -->

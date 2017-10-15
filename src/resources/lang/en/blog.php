@@ -13,6 +13,7 @@ return [
 	'last-posts' => 'Last posts',
 	'most-viewed-posts' => 'Most viewed posts',	
      'posted-on' => 'Posted on',
+     'posted-by' => 'Posted by',     
      'comment' => 'Comment',
      'name' => 'Name',                       
      'email' => 'email',

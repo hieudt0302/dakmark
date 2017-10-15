@@ -57,8 +57,10 @@ class PostsController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug',$slug)->firstOrFail();
-        $categories = Category::all();
-        return View('front/posts/show', compact('post','categories'));
+        $post_category = Category::where('slug','posts')->firstOrFail();
+        $categories = Category::where('parent_id',$post_category->id)->get();
+        $last_posts = Post::take(10)->get(); ///TODO: move number limit to database setting        
+        return View('front/posts/show', compact('post','categories','last_posts','post_category'));
     }
 
     /**
@@ -109,6 +111,8 @@ class PostsController extends Controller
         $tags = Tag::has('posts')->get();
         $comments = Tag::has('posts')->get();
         $lastPosts = Post::take(10)->get(); ///TODO: move number limit to database setting
-        return view('front/posts/index',compact('posts','search_key','tags','comments', 'lastPosts')); 
+        $post_category = Category::where('slug','posts')->firstOrFail();
+        $categories = Category::where('parent_id',$post_category->id)->get();        
+        return view('front/posts/index',compact('posts','search_key','tags','comments', 'lastPosts','categories','post_category')); 
     }    
 }

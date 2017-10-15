@@ -43,32 +43,24 @@
                     <div class="blog-item-body">
 
                         <h1 class="mt-0 font-alt">{{$post->translation->title}}</h1>
-
                         <div class="lead">
                             <p>
-                                {{$post->translation->excerpt}}
+                                {{$post->author->last_name}} {{$post->author->first_name}} | {{ date('d-m-Y', strtotime($post->created_at)) }} | <a href="{{url('/menu')}}/{{$post_category->slug}}/{{$post->category->slug}}">{{$post->category->translation->name}}</a>
                             </p>
                         </div>
+                        <hr>
                         <!-- End Text -->
 
                         <!-- Media Gallery -->
                         <div class="blog-media mt-40 mb-40 mb-xs-30">
-                            <ul class="clearlist content-slider">
-                                <li>
-                                    <img src="{{asset('images/portfolio/full-project-1.jpg')}}" alt="" />
-                                </li>
-                                <li>
-                                    <img src="{{asset('images/portfolio/full-project-2.jpg')}}" alt="" />
-                                </li>
-                                <li>
-                                    <img src="{{asset('images/portfolio/full-project-3.jpg')}}" alt="" />
-                                </li>
-                            </ul>
+                            <a href="#"><img src="{{ asset('images/blog/' . $post->img) }}" alt="" /></a>      
                         </div>
+
+                        <!-- End Text -->
                           
                         <!-- This is contnet of the post -->
                         <!-- TODO: Render html -->
-                        {{$post->content}}
+                        {!! $post->translation->content !!}
                     </div>
                     <!-- End Text -->
                 </div>
@@ -134,7 +126,7 @@
                 <!-- Add Comment -->
                 <div class="mb-80 mb-xs-40">
 
-                    <h4 class="blog-page-title font-alt">{{ __('blog.leave-a-comment') }}</h4>
+                    <h4 class="blog-page-title font-alt">@lang('blog.leave-a-comment')</h4>
 
                     <!-- Form -->
                     <form method="post" action="{{url('/posts')}}/{{$post->slug}}/comment" id="form" role="form" class="form">
@@ -147,7 +139,7 @@
                                 <input type="name" name="name" id="name" class="input-md form-control" placeholder="{{ __('blog.name') }} *" maxlength="100" required>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 ">
                                 <!-- Email -->
                                 <input type="email" name="email" id="email" class="input-md form-control" placeholder="{{ __('blog.email') }} *" maxlength="100" required>
                             </div>
@@ -170,7 +162,7 @@
 
                         <!-- Send Button -->
                         <button type="submit" class="btn btn-mod btn-medium btn-round btn-round">
-                            {{ __('blog.send_comment') }}
+                            @lang('blog.send-comment')
                         </button>
 
                     </form>
@@ -178,13 +170,6 @@
 
                 </div>
                 <!-- End Add Comment -->
-
-                <!-- Prev/Next Post -->
-                <div class="clearfix mt-40">
-                    <a href="#" class="blog-item-more left"><i class="fa fa-angle-left"></i>&nbsp;Prev post</a>
-                    <a href="#" class="blog-item-more right">Next post&nbsp;<i class="fa fa-angle-right"></i></a>
-                </div>
-                <!-- End Prev/Next Post -->
 
             </div>
             <!-- End Content -->
@@ -214,7 +199,7 @@
                         <ul class="clearlist widget-menu">
                             @foreach($categories as $category)
                             <li>
-                                <a href="#" title="">{{$category->translation->name}}</a>
+                                <a href="{{url('/menu')}}/{{$post_category->slug}}/{{$category->slug}}" title="">{{$category->translation->name}}</a>
                                 <small>
                                     - {{$category->postsCount}}
                                 </small>
@@ -254,106 +239,16 @@
 
                     <div class="widget-body">
                         <ul class="clearlist widget-posts">
+                            @foreach($last_posts as $post)
                             <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="" class="widget-posts-img" /></a>
+                                <a href=""><img src="{{ asset('images/blog/preview/' . $post->img) }}" alt="" class="widget-posts-img" /></a>
                                 <div class="widget-posts-descr">
-                                    <a href="#" title="">Minimalistic Design Forever</a> Posted by John Doe 7 Mar
+                                    <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->translation->title}}</a> @lang('blog.posted-by') {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
                                 </div>
                             </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-2.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Ipsum dolor sit amet, consectetur adipiscing elit</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-3.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">New Web Design Trends in 2015 year</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-4.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Hipster’s Style in Web Design and Logo</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-5.jpg" alt="" class="widget-posts-img" /></a>
-                                <div class="widget-posts-descr">
-                                    <a href="#" title="">Duis tristique condimentum nulla, bibendum consectetu</a> Posted by John Doe 7 Mar
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
-
-                </div>
-                <!-- End Widget -->
-
-                <!-- Widget -->
-                <div class="widget">
-
-                    <h5 class="widget-title font-alt">Comments</h5>
-
-                    <div class="widget-body">
-                        <ul class="clearlist widget-comments">
-                            <li>
-                                John Doe on <a href="#" title="">Lorem ipsum dolor sit amet</a>
-                            </li>
-                            <li>
-                                Emma Johnson on <a href="#" title="">Suspendisse accumsan interdum tellus</a>
-                            </li>
-                            <li>
-                                John Doe on <a href="#" title="">Praesent ultricies ut ipsum</a>
-                            </li>
-                            <li>
-                                Mark Deen on <a href="#" title="">Vivamus malesuada vel nulla vulputate</a>
-                            </li>
-                            <li>
-                                Sam Brin on <a href="#" title="">Aenean auctor egestas auctor</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- End Widget -->
-
-                <!-- Widget -->
-                <div class="widget">
-
-                    <h5 class="widget-title font-alt">Text widget</h5>
-
-                    <div class="widget-body">
-                        <div class="widget-text clearfix">
-
-                            <img src="images/user-avatar.png" alt="" width="70" class="img-circle left img-left"> Consectetur adipiscing elit. Quisque magna ante eleifend eleifend. Purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat
-                            sem elit non sem. Quisque magna ante eleifend eleifend.
-
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Widget -->
-
-                <!-- Widget -->
-                <div class="widget">
-
-                    <h5 class="widget-title font-alt">Archive</h5>
-
-                    <div class="widget-body">
-                        <ul class="clearlist widget-menu">
-                            <li>
-                                <a href="#" title="">February 2014</a>
-                            </li>
-                            <li>
-                                <a href="#" title="">January 2014</a>
-                            </li>
-                            <li>
-                                <a href="#" title="">December 2013</a>
-                            </li>
-                        </ul>
-                    </div>
-
                 </div>
                 <!-- End Widget -->
 

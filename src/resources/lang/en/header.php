@@ -18,6 +18,7 @@ return [
     'about-us' => 'ABOUT',
     'cert' => 'CERTIFICATES',
     'shop' => 'SHOP',
+    'product' => 'PRODUCT',    
     'products' => 'PRODUCTS',
     'blogs' => 'BLOGS',        
     'blog' => 'BLOG',

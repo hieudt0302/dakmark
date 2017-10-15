@@ -73,9 +73,14 @@ class PostsController extends Controller
                 $path = './images/blog';
                 if(!is_dir($path)){
                     mkdir($path, 0777, true);
-                }                   
+                }                                   
                 $img = Image::make($img_file->getRealPath());
-                $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());            
+                $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName()); 
+                $path = './images/blog/preview';
+                if(!is_dir($path)){
+                    mkdir($path, 0777, true);
+                }
+                $img->fit(70, 70)->save($path.'/'.$img_file->getClientOriginalName());                                            
                 $img_name = $img_file->getClientOriginalName();
             }
             $post->img = $img_name;
@@ -165,7 +170,12 @@ class PostsController extends Controller
                 mkdir($path, 0777, true);
             }               
             $img = Image::make($img_file->getRealPath());
-            $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());            
+            $img->fit(1140, 642)->save($path.'/'.$img_file->getClientOriginalName());
+            $path = './images/blog/preview';
+            if(!is_dir($path)){
+                mkdir($path, 0777, true);
+            }
+            $img->fit(70, 70)->save($path.'/'.$img_file->getClientOriginalName());                         
             $img_name = $img_file->getClientOriginalName();
         }
         $post->img = $img_name;
