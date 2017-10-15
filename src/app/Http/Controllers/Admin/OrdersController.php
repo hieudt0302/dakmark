@@ -57,7 +57,8 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id);
+        return view('admin/orders/show',compact('order'));
     }
 
     /**

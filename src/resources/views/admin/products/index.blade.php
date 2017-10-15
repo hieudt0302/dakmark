@@ -16,6 +16,77 @@
 </section>
 <!-- Main content -->
 <section class="content">
+     <!-- SEARCH -->
+     <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                <h3 class="box-title">Quick Search</h3>
+                </div>
+                <form action="{{url('admin/products')}}" method="POST" class="form-horizontal" >
+                {{ csrf_field() }}
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="from_date" class="col-sm-2 control-label">From Date</label>
+                            <div class="col-sm-4 input-group date">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input type="text" name="from_date" class="form-control pull-right" id="from_date" data-date-end-date="-1d">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="to_date" class="col-sm-2 control-label">To Date</label>
+                            <div class="col-sm-4 input-group date">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input type="text" name="to_date" class="form-control pull-right" id="to_date" data-date-end-date="0d">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_name" class="col-sm-2 control-label">Product Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="product_name" class="form-control" id="product_name" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sku" class="col-sm-2 control-label">SKU</label>
+                            <div class="col-sm-4">
+                                <input type="email" name="sku" class="form-control" id="billing_email" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_id" class="col-sm-2 control-label">Category</label>
+                            <div class="col-sm-4">
+                                <select name="category_id" class="form-control select2" style="width: 100%;">
+                                    <option value="0" selected>-----All-----</option>
+                                    @foreach($categories as $category)
+                                       <option value="{{$category->id}}">{{$category->translation->name}}</option>
+                                    @endforeach
+                             </select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="show_sub_categories" class="col-sm-2 control-label">Show Sub Categories</label>
+                            <div class="col-sm-4">
+                                <input type="checkbox" name="show_sub_categories" id="show_sub_categories" >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                        <button type="submit" class="btn btn-default pull-right">
+                            <i class="fa fa-print"></i> Export
+                        </button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -26,9 +97,10 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>Ảnh</th>
                                 <th>Tên</th>
                                 <th>SKU</th>
-                                <th>Xuất Bản(s)</th>
+                                <th>Xuất Bản</th>
                                 <th>Ngày Tạo</th>
                                 <th></th>
                                 <th></th>
@@ -37,10 +109,17 @@
                         <tbody>
                             @foreach($products as $product)
                             <tr>
-                                <td>{{$product->name}}</td>
+                                <td>
+                                   <img src="{{asset('/images/shop/previews/shop-prev-1.jpg')}}" alt="" title="">
+                                </td>
+                                <td><a href="{{url('/admin/products/')}}/{{$product->id}}/edit">{{$product->name}}</a></td>
                                 <td>{{$product->sku}}</td>
                                 <td>
-                                    @if($product->published==1) Đã xuất bản @else Chưa xuất bản @endif
+                                    @if($product->published==1) 
+                                    <i class="fa fa-check true-icon"></i>
+                                    @else 
+                                    <i class="fa fa-check false-icon"></i>
+                                    @endif
                                 </td>
                                 <td>{{$product->created_at}}</td>
                                 <td>
@@ -60,8 +139,9 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                            <th>Tên</th>
-                            <th>SKU</th>
+                                <th>Ảnh</th>
+                                <th>Tên</th>
+                                <th>SKU</th>
                                 <th>Xuất Bản(s)</th>
                                 <th>Ngày Tạo</th>
                                 <th></th>

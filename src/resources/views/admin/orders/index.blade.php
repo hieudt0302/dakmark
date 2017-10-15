@@ -50,13 +50,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="billing_email" class="col-sm-2 control-label">Billing email</label>
+                            <label for="billing_email" class="col-sm-2 control-label">Billing Email</label>
                             <div class="col-sm-8">
                                 <input type="email" name="billing_email" class="form-control" id="billing_email" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="order_status" class="col-sm-2 control-label">OrderStatus</label>
+                            <label for="order_status" class="col-sm-2 control-label">Order Status</label>
                             <div class="col-sm-8">
                                 <select id="order_status" multiple name="order_status[]" class="form-control select2" style="width: 100%;">
                                     @foreach(\Lang::get('status.order') as $key =>$value)
@@ -112,7 +112,7 @@
         <div class="col-xs-12">
             <div class="box box-danger">
                 <div class="box-header">
-                    <h3 class="box-title"></h3>Danh Sách Đơn Hàng
+                    <h3 class="box-title">Danh Sách Đơn Hàng</h3>
                 </div>
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
@@ -133,7 +133,7 @@
                         <tbody>
                             @foreach($orders as $order)
                             <tr>
-                                <td>#{{$order->order_no}}</td>
+                                <td><a href="{{url('admin/orders/')}}/{{$order->id}}">#{{$order->order_no}}</a></td>
                                 <td>{{__('status.order.'.$order->order_status)}}</td>
                                 <td>{{__('status.payment.'.$order->payment_status)}}</td>
                                 <td>{{__('status.shipping.'.$order->shipping_status)}}</td>
