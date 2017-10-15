@@ -423,14 +423,14 @@ ol {
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Đơn Hàng</span>
+            <span>Bán Hàng</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/orders')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+            <li><a href="{{url('/admin/orders')}}"><i class="fa fa-circle-o"></i> Đơn Hàng</a></li>
+            <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Tạo Mới</a></li> -->
             <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Thống Kê</a></li> -->
             <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Thiết Lập</a></li> -->
           </ul>

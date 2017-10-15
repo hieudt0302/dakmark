@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductTranslation;
@@ -32,11 +33,13 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $shopCategory = Category::where('slug', 'products')->firstOrFail();
-        $categories = Category::where('parent_id', $shopCategory->id)->get();
-        $language_list = Language::all();         
+        // $shopCategory = Category::where('slug', 'products')->firstOrFail();
+        // $categories = Category::where('parent_id', $shopCategory->id)->get();
+        // $language_list = Language::all();         
+        // return View('admin.products.create', compact('categories','language_list'));
 
-        return View('admin.products.create', compact('categories','language_list'));
+        $languages = Language::all(); ///TODO: make condition active
+        return View('admin/products/create',compact('languages'));
     }
 
     /**
@@ -147,12 +150,16 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $shopCategory = Category::where('slug', 'products')->firstOrFail();
-        $categories = Category::where('parent_id', $shopCategory->id)->get();
-        $product = Product::where('id', $id)->firstOrFail();
-        $language_list = Language::all();
-        $product_translations = $product->translations()->get();         
-        return View('admin.products.edit', compact('product','product_translations','language_list', 'categories'));
+        // $shopCategory = Category::where('slug', 'products')->firstOrFail();
+        // $categories = Category::where('parent_id', $shopCategory->id)->get();
+        // $product = Product::where('id', $id)->firstOrFail();
+        // $language_list = Language::all();
+        // $product_translations = $product->translations()->get();        
+        // return View('admin.products.edit', compact('product','product_translations','language_list', 'categories'));
+
+        $product = Product::find($id);
+        $languages = Language::all(); ///TODO: make condition active
+        return View('admin/products/edit',compact('product','languages'));
     }
 
     /**
@@ -260,6 +267,25 @@ class ProductsController extends Controller
         
         return redirect()->back()
         ->with('success_message', 'Sản phẩm đã được cập nhật.');
+    }
+    
+    public function upload(){
+        if(Input::hasFile('file')){
+            $file = Input::file('file');
+            $file->move('uploads/images', $file->getClientOriginalName());
+
+            return response()->json([
+                'message' => 'Đã upload ảnh của sản phẩm',
+                'status' => 'success',
+                'src' => 'uploads/images/' . $file->getClientOriginalName()
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'ERROR: EU1001',
+            'status' => 'danger',
+            'src' => ''
+        ]);
     }
 
     /**

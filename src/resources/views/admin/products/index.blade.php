@@ -26,9 +26,10 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>Ảnh</th>
                                 <th>Tên</th>
                                 <th>SKU</th>
-                                <th>Xuất Bản(s)</th>
+                                <th>Xuất Bản</th>
                                 <th>Ngày Tạo</th>
                                 <th></th>
                                 <th></th>
@@ -37,10 +38,17 @@
                         <tbody>
                             @foreach($products as $product)
                             <tr>
-                                <td>{{$product->name}}</td>
+                                <td>
+                                   <img src="{{asset('/images/shop/previews/shop-prev-1.jpg')}}" alt="" title="">
+                                </td>
+                                <td><a href="{{url('/admin/products/')}}/{{$product->id}}/edit">{{$product->name}}</a></td>
                                 <td>{{$product->sku}}</td>
                                 <td>
-                                    @if($product->published==1) Đã xuất bản @else Chưa xuất bản @endif
+                                    @if($product->published==1) 
+                                    <i class="fa fa-check true-icon"></i>
+                                    @else 
+                                    <i class="fa fa-check false-icon"></i>
+                                    @endif
                                 </td>
                                 <td>{{$product->created_at}}</td>
                                 <td>
@@ -60,8 +68,9 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                            <th>Tên</th>
-                            <th>SKU</th>
+                                <th>Ảnh</th>
+                                <th>Tên</th>
+                                <th>SKU</th>
                                 <th>Xuất Bản(s)</th>
                                 <th>Ngày Tạo</th>
                                 <th></th>

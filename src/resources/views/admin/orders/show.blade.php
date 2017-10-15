@@ -30,8 +30,8 @@
                         <li><a href="#products" data-toggle="tab">Product(s)</a></li>
                         <li><a href="#order_notes" data-toggle="tab">Order Note(s)</a></li>
                     </ul>
-                    <!-- INFO TAB -->
                     <div class="tab-content">
+                        <!-- INFO TAB -->
                         <div class="active tab-pane" id="info">
                             <div class="panel-group">
                                 <div class="panel panel-default">
@@ -575,20 +575,20 @@
                                                             {{$detail->total}}
                                                         </td>
                                                         <td style="width: 15%;">
-                                                            <button type="submit" class="btn btn-default" name="btnEditOrderItem{{$detail->id}}" onclick="toggleOrderItemEdit(true);return false;" id="btnEditOrderItem{{$detail->id}}" style="display: none;">
+                                                            <button type="submit" class="btn btn-default" name="btnEditOrderItem4" onclick="toggleOrderItemEdit(true);return false;" id="btnEditOrderItem4}" style="display: none;">
                                                             <i class="fa fa-pencil"></i>
                                                                 Edit
                                                             </button>
-                                                            <button type="button" class="btn btn-default" name="" id="btnDeleteOrderItem{{$detail->id}}" data-toggle="modal" data-target="#btnDeleteOrderItem{{$detail->id}}-action-confirmation" style="display: none;">
+                                                            <button type="button" class="btn btn-default" name="" id="btnDeleteOrderItem4" data-toggle="modal" data-target="#btnDeleteOrderItem4-action-confirmation" style="display: none;">
                                                             <i class="fa fa-trash"></i>
                                                             Delete
                                                             </button>
-                                                            <button type="button" class="btn btn-default" name="" id="btnSaveOrderItem{{$detail->id}}" style="" data-toggle="modal" data-target="#btnSaveOrderItem{{$detail->id}}-action-confirmation">
+                                                            <button type="button" class="btn btn-default" name="" id="btnSaveOrderItem4" style="" data-toggle="modal" data-target="#btnSaveOrderItem4-action-confirmation">
                                                             <i class="fa fa-floppy-o"></i>
                                                             Save
                                                             </button>
                                                         
-                                                            <button type="submit" class="btn btn-default" name="btnCancelOrderItem{{$detail->id}}" onclick="toggleOrderItemEdit(false);return false;" id="btnCancelOrderItem{{$detail->id}}" style="">
+                                                            <button type="submit" class="btn btn-default" name="btnCancelOrderItem4" onclick="toggleOrderItemEdit(false);return false;" id="btnCancelOrderItem4" style="">
                                                             <i class="fa fa-close"></i>
                                                             Cancel
                                                             </button>

@@ -1,112 +1,32 @@
-<script>
-    $(document).ready(function() {
-        $("#ordernotes-grid").kendoGrid({
-            dataSource: {
-                type: "json",
-                transport: {
-                    read: {
-                        url: "/Admin/Order/OrderNotesSelect?orderId=2",
-                        type: "POST",
-                        dataType: "json",
-                        data: addAntiForgeryToken
-                    },
-                    destroy: {
-                        url: "/Admin/Order/OrderNoteDelete?orderId=2",
-                        type: "POST",
-                        dataType: "json",
-                        data: addAntiForgeryToken
-                    }
-                },
-                schema: {
-                    data: "Data",
-                    total: "Total",
-                    errors: "Errors",
-                    model: {
-                        id: "Id",
-                        fields: {
-                            //do not implicitly specify all fields
-                            //we do it only for fields which implicitly require it
-                            //otherwise, they'll be formatted wrong way
-                            CreatedOn: {
-                                type: "date"
-                            }
-                        }
-                    }
-                },
-                error: function(e) {
-                    display_kendoui_grid_error(e);
-                    // Cancel the changes
-                    this.cancelChanges();
-                },
-                serverPaging: true,
-                serverFiltering: true,
-                serverSorting: true
-            },
-            pageable: {
-                refresh: true,
-                numeric: false,
-                previousNext: false,
-                info: false,
-                messages: {
-                    display: "{0} - {1} of {2} items",
-                    empty: "No items to display",
-                    page: "Page",
-                    of: "of {0}",
-                    itemsPerPage: "items per page",
-                    first: "Go to the first page",
-                    previous: "Go to the previous page",
-                    next: "Go to the next page",
-                    last: "Go to the last page",
-                    refresh: "Refresh",
-                    allPages: "All",
-                    morePages: "More pages"
-                }
-            },
-            editable: {
-                confirmation: "Are you sure you want to delete this item?",
-                mode: "inline"
-            },
-            scrollable: false,
-            columns: [{
-                field: "CreatedOn",
-                title: "Created on",
-                width: 200,
-                type: "date",
-                format: "{0:G}"
-            }, {
-                field: "Note",
-                title: "Note",
-                encoded: false
-            }, {
-                field: "DownloadId",
-                title: "Attached file",
-                width: 200,
-                headerAttributes: {
-                    style: "text-align:center"
-                },
-                attributes: {
-                    style: "text-align:center"
-                },
-                template: '# if(DownloadId > 0) {# <a class="btn btn-default" href="/Admin/Download/DownloadFile?downloadGuid=#=DownloadGuid#"><i class="fa fa-download"></i>Download</a> #} else {# No file attached #} #'
-            }, {
-                field: "DisplayToCustomer",
-                title: "Display to customer",
-                width: 150,
-                headerAttributes: {
-                    style: "text-align:center"
-                },
-                attributes: {
-                    style: "text-align:center"
-                },
-                template: '# if(DisplayToCustomer) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
-            }, {
-                command: {
-                    name: "destroy",
-                    text: "Delete"
-                },
-                title: "Delete",
-                width: 100
-            }]
-        });
-    });
-</script>
+<div id="productpictures-grid" data-role="grid" class="k-grid k-widget">
+    <table role="grid">
+        <colgroup>
+            <col style="width:200px">
+            <col style="width:150px">
+            <col style="width:200px">
+            <col style="width:200px">
+            <col style="width:200px">
+        </colgroup>
+        <thead class="k-grid-header" role="rowgroup">
+            <tr role="row">
+                <th role="columnheader" data-field="PictureUrl" data-title="Picture" class="k-header">Picture</th>
+                <th role="columnheader" data-field="DisplayOrder" data-title="Display order" class="k-header">Display order</th>
+                <th role="columnheader" data-field="OverrideAltAttribute" data-title="Alt" class="k-header">Alt</th>
+                <th role="columnheader" data-field="OverrideTitleAttribute" data-title="Title" class="k-header">Title</th>
+                <th class="k-header"></th>
+            </tr>
+        </thead>
+        <tbody role="rowgroup">
+            <tr class="k-alt" data-uid="027b02f4-7a83-49b1-97e7-adc421db3173" role="row">
+                <td role="gridcell">
+                    <a href="http://admin-demo.nopcommerce.com/content/images/thumbs/0000081_100-physical-gift-card.jpeg" target="_blank"><img alt="81" src="http://admin-demo.nopcommerce.com/content/images/thumbs/0000081_100-physical-gift-card.jpeg" width="150"></a>
+                </td>
+                <td role="gridcell">5</td>
+                <td role="gridcell"></td>
+                <td role="gridcell"></td>
+                <td role="gridcell"><a class="k-button k-button-icontext k-grid-edit" href="#"><span class="k-icon k-edit"></span>Edit</a><a class="k-button k-button-icontext k-grid-delete" href="#"><span class="k-icon k-delete"></span>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="k-pager-wrap k-grid-pager k-widget" data-role="pager"><a href="#" class="k-pager-refresh k-link" title="Refresh"><span class="k-icon k-i-refresh">Refresh</span></a></div>
+</div>

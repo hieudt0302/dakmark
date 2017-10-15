@@ -110,12 +110,13 @@
                                         <legend><span>Options</span></legend>
                                         <div class="form-group row">
                                             <div class="col-lg-9">
-                                                <div class="form-check"><label class="form-check-label">
-                                                    <label>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
                                                         {{ Form::checkbox('newsletter', 1 , Auth::user()->newsletter ? true : false, array('class' => 'name')) }}
                                                         Newsletter
                                                     </label>
-                                                <span class="field-validation-valid" data-valmsg-for="Newsletter" data-valmsg-replace="true"></span>
+                                                    <span class="field-validation-valid" data-valmsg-for="Newsletter" data-valmsg-replace="true"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </fieldset>
