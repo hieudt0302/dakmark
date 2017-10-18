@@ -74,7 +74,7 @@
                         <a href="{{ url('/wishlist') }}">@lang('footer.my-wishlist')</i></a>
                     </li>
                     <li>
-                        <a href="{{ url('/orders') }}">@lang('footer.order-history')</i></a>
+                        <a href="{{ url('/Account/Orders') }}">@lang('footer.order-history')</i></a>
                     </li>
                 </ul>
                 @endif                
