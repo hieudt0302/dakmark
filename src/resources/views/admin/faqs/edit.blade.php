@@ -4,110 +4,149 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
       <h1>
-        Chỉnh sửa FAQ
+      FAQ {{$tab}}
         <small>
             <i class="fa fa-arrow-circle-left"></i>
             <a href="{{url('/admin/faqs')}}">Quay lại danh sách</a>
-        </small>        
+        </small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li class="active">Chỉnh sửa</li>
+        <li><a href="#">Bài viết</a></li>
+        <li class="active">Cập nhật</li>
       </ol>
+      <div class="row">
+        <div class="col-xs-12">
+        @include('notifications.status_message') 
+        @include('notifications.errors_message') 
+        </div>
+    </div>
 </section>
 <!-- Main content -->
 <section class="content">
+    <!-- PRODUCTS EDIT -->
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-primary">
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Lỗi!</strong> Kiểm tra lại thông tin đã nhập.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                @if ($message = Session::get('success_message'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif
-                @if ($message = Session::get('danger_message'))
-                    <div class="alert alert-danger">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif   
-
-
-                {!! Form::open(array('method' => 'PATCH','route' => ['admin.faqs.update', $faq->id])) !!}
-                    <ul class="nav nav-tabs" role="tablist" style="padding-left: 10px">
-                        <li class="active">
-                            <a href="#general" data-toggle="tab">Thông tin chung</a>
-                        </li>                         
-                        @foreach ($language_list as $language)
-                        <li>
-                            <a href="#{{$language->id}}-content" data-toggle="tab">Nội dung - {{$language->name}}</a>
-                        </li>
-                        @endforeach
+            <div class="form-horizontal">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="{{$tab==1?'active':''}}"><a href="#info" data-toggle="tab">Thông tin chung</a></li>
+                        <li class="{{$tab==2?'active':''}}"><a href="#content" data-toggle="tab">Nội dung</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="general">
-                            <table class="table table-responsive">            
-                                <tr>
-                                    <td>
-                                        Câu hỏi
-                                        <span class="text-danger">*</span>
-                                    </td>
-                                    <td>
-                                        <input type="text" id="question" class="form-control" name="question" value="{{ $faq->question }}"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Cho phép hiển thị</td>
-                                    <td>
-                                            <div class="col-sm-10 checkbox">
-                                                <label>{{ Form::checkbox('is_show', 1 ,$faq->is_show ? true : false, array('class' => 'is_show')) }}Hiển thị</label>
+                        <!-- INFO TAB -->
+                        <div class="{{$tab==1?'active':''}} tab-pane" id="info">
+                            <form action="{{url('/admin/faqs')}}/{{$faq->id}}" method="post">
+                            {!! method_field('patch') !!} 
+                            {{ csrf_field()}}
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="title" title="">Câu hỏi</label>
+                                                <div class="col-md-4">
+                                                    <div class="input-group input-group-required">
+                                                        <input class="form-control text-box single-line valid" id="title" name="question" type="text" value="{{$faq->question}}">
+                                                        <div class="input-group-btn">
+                                                            <span class="required">*</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                        
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="title" title="">Hiển thị</label>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            {{ Form::checkbox('is_show', 1 , $faq->is_show ? true : false, array('class' => 'check-box')) }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>                                                                                      
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                                </div>
                                             </div>
-                                    </td>
-                                </tr>                              
-                            </table>                
-                        </div>                        
-                        @foreach ($faq_translations as $faqtran)
-                        <div class="tab-pane fade" id="{{$faqtran->language_id}}-content">
-                            <input type="hidden" id="faq-translation-id" name="{{$faqtran->language_id}}-id" value="{{ $faqtran->id }}" />
-                            <table class="table table-responsive">
-                                <tr>
-                                    <td>
-                                        Câu hỏi
-                                        <span class="text-danger">*</span>
-                                    </td>
-                                    <td>
-                                        <input type="text" id="title" class="form-control" name="{{$faqtran->language_id}}-question" value="{{ $faqtran->question }}" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trả lời
-                                    <span class="text-danger">*</span>
-                                    </td>                    
-                                    <td>
-                                        <textarea class="form-control" name="{{$faqtran->language_id}}-answer">{{ $faqtran->answer }}</textarea>
-                                    </td>
-                                </tr> 
-                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        @endforeach
-                    </div>
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary pull-right">Cập Nhật</button>
-                    </div>
-                </form>    
+                        <!-- CONTENT TAB -->
+                        <div class="{{$tab==2?'active':''}} tab-pane" id="content">
+                            <div class="panel-group">
+                                <form id="getTranslation" action="{{url('/admin/faqs')}}/{{$faq->id}}/edit" method="GET">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="title" title="">Ngôn ngữ</label>
+                                                <div class="col-md-4">
+                                                    <select id="language-select" name="language_id" class="form-control">
+                                                        <option value="0">-----Chọn Ngôn Ngữ-----</option>                                                        
+                                                        @foreach($languages as  $language)
+                                                            @if( ($translation->language_id??0) === $language->id )
+                                                                <option value="{{$language->id}}" selected>{{$language->name}}</option>
+                                                            @else
+                                                                <option value="{{$language->id}}" >{{$language->name}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
 
+                                <form action="{{url('/admin/faqs')}}/{{$faq->id}}/translation" method="post">
+                                {!! method_field('patch') !!} 
+                                {{ csrf_field()}}
+                                <input type="hidden" name="language_id" value="{{$translation->language_id??0}}">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="title" title="">Câu hỏi</label>
+                                                <div class="col-md-4">
+                                                    <div class="input-group input-group-required">
+                                                        <input class="form-control text-box single-line valid" id="title_translate" name="question_translate" type="text" value="{{$translation->question??''}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="title" title="">Câu trả lời</label>
+                                                <div class="col-md-8">
+                                                    <textarea id="excerpt_translate" class="form-control" name="answer_translate" rows="3"  placeholder="">{{$translation->answer??''}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>        
+    </div>  
+@endsection
+
+
+@section('scripts')
+<script>
+  $(function () {
+    $('#language-select').on('change', function() {
+        $('form#getTranslation').submit();
+        return false;
+    })    
+  })
+</script>
 @endsection
