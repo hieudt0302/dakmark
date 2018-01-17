@@ -7,7 +7,7 @@
     Chi Tiết Đơn Hàng
         <small>
             <i class="fa fa-arrow-circle-left"></i>
-            <a href="{{url('/admin/orders')}}">back to order list</a>
+            <a href="{{url('/admin/orders')}}">quay lại danh sách</a>
         </small>
     </h1>
     <ol class="breadcrumb">

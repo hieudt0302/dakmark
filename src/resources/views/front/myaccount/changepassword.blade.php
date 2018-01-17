@@ -32,7 +32,7 @@
                                 <form action="{{url('/Account/ChangePassword/Update')}}" class="form-horizontal" method="post">
                                 {{ csrf_field()}}
                                     <div class="form-group row row-hardcode">
-                                        <label class="col-lg-4 col-form-label required" for="OldPassword">Old password</label>
+                                        <label class="col-lg-4 col-form-label required" for="OldPassword">@lang('profile.current-password')</label>
                                         <div class="col-lg-8">
                                             <input class="form-control" id="OldPassword" name="old_password" type="password">
                                         </div>
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row row-hardcode">
-                                        <label class="col-lg-4 col-form-label required" for="ConfirmNewPassword" >Confirm password</label>
+                                        <label class="col-lg-4 col-form-label required" for="ConfirmNewPassword" >@lang('profile.retype-password')</label>
                                         <div class="col-lg-8">
                                             <input class="form-control" id="ConfirmNewPassword" name="new_password_confirmation" type="password">
                                         </div>

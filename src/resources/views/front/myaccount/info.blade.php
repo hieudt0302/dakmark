@@ -77,18 +77,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row row-hardcode"><label class="col-lg-3 col-form-label required" for="Email" aria-required="true">Email</label>
+                                        <div class="form-group row row-hardcode"><label class="col-lg-3 col-form-label required" for="Email" aria-required="true">@lang('profile.email')</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" id="Email" name="email" type="email" value="{{Auth::user()->email}}">
                                             </div>
                                         </div>
-                                        <div class="form-group row row-hardcode"><label class="col-lg-3 col-form-label" for="Phone" aria-required="true">Phone</label>
+                                        <div class="form-group row row-hardcode"><label class="col-lg-3 col-form-label" for="Phone" aria-required="true">@lang('profile.phone')</label>
                                             <div class="col-lg-9">
                                                 <input class="form-control" id="Phone" name="phone" type="text" value="{{Auth::user()->phone}}">
                                             </div>
                                         </div>
                                         <div class="form-group row row-hardcode">
-                                            <label class="col-lg-3 col-form-label required" for="Username" aria-required="true">Username</label>
+                                            <label class="col-lg-3 col-form-label required" for="Username" aria-required="true">@lang('profile.name')</label>
                                             <div class="col-lg-9">
                                                 <p class="form-control-static">{{Auth::user()->username}}</p>
                                             </div>
