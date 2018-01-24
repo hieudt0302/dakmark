@@ -22,6 +22,7 @@ return [
     'courier' => 'Delivery from Vietnam by courier',
     'courier-message' => 'The dispatch will be initiated by us in your order. For orders below $300, we charge a surcharge of $30.',
     'select-shipping-method' => 'Chọn phương pháp chuyển hàng',
+    'select-payment-method' => 'Chọn phương pháp thanh toán',    
     'confirm-order' => 'Xin vui lòng xác nhận đơn hàng.', 
     'confirm-message' => 'Xin vui lòng kiểm tra kĩ mọi thông tin.', 
     'agree-message' => 'Tôi đồng ý với mọi điều khoản dịch vụ', 

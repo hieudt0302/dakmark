@@ -14,7 +14,7 @@
                     <div class="clearfix mb-3">
                         <div class="page-title mb-3 float-sm-left">
                             <h1 class="h2 mb-0">
-                                Order details
+                                @lang('account.order-details')
                                 <small class="text-muted">
                                     <small>#{{$order->order_no}}</small>
                                 </small>
@@ -34,19 +34,19 @@
                     <div class="page-body">
                         <div class="row row-hardcode mb-3">
                             <div class="col-6 col-sm-auto pb-3">
-                                <h5 class="text-muted">Order Date</h5>
+                                <h5 class="text-muted">@lang('account.order-date')</h5>
                                 <div>{{date("Y-m-d", strtotime($order->order_start_date))}}</div>
                             </div>
                             <div class="col-6 col-sm-auto pb-3">
-                                <h5 class="text-muted">Order</h5>
+                                <h5 class="text-muted">@lang('account.order')</h5>
                                 <div>#{{$order->order_no}}</div>
                             </div>
                             <div class="col-6 col-sm-auto pb-3">
-                                <h5 class="text-muted">Order Status</h5>
+                                <h5 class="text-muted">@lang('account.order-status')</h5>
                                 <div>{{__('status.order.'. $order->order_status)}}</div>
                             </div>
                             <div class="col-6 col-sm-auto pb-3">
-                                <h5 class="text-muted">Order Total</h5>
+                                <h5 class="text-muted">@lang('account.order-total')</h5>
                                 <div class="text-success">{{FormatPrice::price($order->order_total)}}</div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                 <div class="col-md-8">
                                     <div class="row row-hardcode">
                                         <div class="col mb-4 mb-lg-0 billinginfo">
-                                            <h5>Billing Address</h5>
+                                            <h5>@lang('checkout.billing-address')</h5>
                                             <div class="mb-2">
                                                 <div class="company">
                                                     {{$order->billingaddress->company??''}}
@@ -86,7 +86,7 @@
                                         </div>
 
                                         <div class="col mb-4 mb-lg-0 shippinginfo">
-                                            <h5>Shipping Address</h5>
+                                            <h5>@lang('checkout.shipping-address')</h5>
                                             <div class="mb-2">
                                                 <div class="company">
                                                     {{$order->shippingaddress->company??''}}
@@ -108,10 +108,10 @@
                                                 </div>
                                             </div>
                                             <div class="email">
-                                                Email: {{$order->shippingaddress->email??''}}
+                                                @lang('profile.email'): {{$order->shippingaddress->email??''}}
                                             </div>
                                             <div class="phone">
-                                                Phone: {{$order->shippingaddress->phone??''}}
+                                                @lang('profile.phone'): {{$order->shippingaddress->phone??''}}
                                             </div>
 
                                         </div>
@@ -121,9 +121,9 @@
                                 <div class="col-md-4">
                                     <div class="row row-hardcode">
                                         <div class="col">
-                                            <h5>Shipping Method</h5>
+                                            <h5>@lang('checkout.shipping-method')</h5>
                                             <p>{{__('method.shipping.'. $order->shipping_method . '.name')}}</p>
-                                            <h5>Payment Method</h5>
+                                            <h5>@lang('checkout.payment-method')</h5>
                                             <p>{{__('method.payment.'. $order->payment_method . '.name')}}</p>
                                         </div>
                                     </div>
@@ -139,16 +139,16 @@
                                 <div class="cart-head">
                                     <div class="cart-row">
                                         <div class="cart-col cart-col-main">
-                                            Item
+                                            @lang('shoppings.items')
                                         </div>
                                         <div class="cart-col cart-col-price">
-                                            Price
+                                            @lang('shoppings.price')
                                         </div>
                                         <div class="cart-col cart-col-qty">
-                                            Quantity
+                                            @lang('shoppings.qty')
                                         </div>
                                         <div class="cart-col cart-col-price cart-col-subtotal">
-                                            Total
+                                            @lang('shoppings.total')
                                         </div>
                                     </div>
                                 </div>
@@ -194,19 +194,19 @@
                                         <table class="cart-summary">
                                             <tbody>
                                                 <tr class="cart-summary-subtotal">
-                                                    <td class="cart-summary-label">Sub-Total:</td>
+                                                    <td class="cart-summary-label">@lang('shoppings.subtotal'):</td>
                                                     <td class="cart-summary-value">{{FormatPrice::price($order->orderdetails->sum('total'))}}</td>
                                                 </tr>
                                                 <tr class="cart-summary-shipping cart-summary-neg">
-                                                    <td class="cart-summary-label">Shipping:</td>
+                                                    <td class="cart-summary-label">@lang('shoppings.shipping'):</td>
                                                     <td class="cart-summary-value">{{FormatPrice::price($order->order_shipping_price)}}</td>
                                                 </tr>
                                                 <tr class="cart-summary-tax">
-                                                    <td class="cart-summary-label">Tax:</td>
+                                                    <td class="cart-summary-label">@lang('shoppings.tax'):</td>
                                                     <td class="cart-summary-value">{{FormatPrice::price($order->order_tax)}}</td>
                                                 </tr>
                                                 <tr class="cart-summary-total">
-                                                    <td class="cart-summary-label">Order Total:</td>
+                                                    <td class="cart-summary-label">@lang('shoppings.order-total-price'):</td>
                                                     <td class="cart-summary-value">{{FormatPrice::price($order->order_total)}}</td>
                                                 </tr>
                                             </tbody>

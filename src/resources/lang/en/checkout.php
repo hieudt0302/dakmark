@@ -22,6 +22,7 @@ return [
     'courier' => 'Delivery from Vietnam by courier',
     'courier-message' => 'The dispatch will be initiated by us in your order. For orders below $300, we charge a surcharge of $30.',
     'select-shipping-method' => 'Select shipping method',
+    'select-payment-method' => 'Select payment method',      
     'confirm-order' => 'Please confirm your order.', 
     'confirm-message' => 'Please verify the order total and the specifics regarding the billing address and, if required, the shipping address. You can make corrections to your entry anytime by clicking on back. If everything is as it should be, deliver your order to us by clicking confirm.', 
     'agree-message' => 'I agree with the terms of service and I adhere to them unconditionally', 

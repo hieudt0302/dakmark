@@ -13,37 +13,37 @@
             <div class="col-2 costep visited" data-step="cart">
                 <a class="costep-link" href="{{url('/cart')}}">
                     <i class="costep-icon"></i>
-                    <span class="costep-label">Cart</span>
+                    <span class="costep-label">@lang('shoppings.cart')</span>
                 </a>
             </div>
             <div class="col-2 costep visited" data-step="address">
                 <a class="costep-link" href="{{url('/Checkout/BillingAddress')}}">
                     <i class="costep-icon"></i>
-                    <span class="costep-label">Address</span>
+                    <span class="costep-label">@lang('profile.address')</span>
                 </a>
             </div>
             <div class="col-2 costep visited" data-step="shipping">
                 <a class="costep-link" href="{{url('/Checkout/ShippingMethod')}}">
                     <i class="costep-icon"></i>
-                    <span class="costep-label">Shipping</span>
+                    <span class="costep-label">@lang('shoppings.shipping')</span>
                 </a>
             </div>
             <div class="col-2 costep active" data-step="payment">
                 <a class="costep-link" href="{{url('/Checkout/PaymentMethod')}}">
                     <i class="costep-icon"></i>
-                    <span class="costep-label">Payment</span>
+                    <span class="costep-label">@lang('shoppings.payment')</span>
                 </a>
             </div>
             <div class="col-2 costep inactive" data-step="confirm">
                 <a class="costep-link" href="javascript:void(0)">
                     <i class="costep-icon"></i>
-                    <span class="costep-label">Confirm</span>
+                    <span class="costep-label">@lang('shoppings.confirm')</span>
                 </a>
             </div>
             <div class="col-2 costep inactive" data-step="complete">
                 <a class="costep-link" href="javascript:void(0)">
                     <i class="costep-icon"></i>
-                    <span class="costep-label">Complete</span>
+                    <span class="costep-label">@lang('shoppings.complete')</span>
                 </a>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <div id="content-center" class="col-lg-12">
                 <div class="page payment-method-page">
                     <div class="page-title">
-                        <h1 class="h3">Select payment method</h1>
+                        <h1 class="h3">@lang('checkout.select-payment-method')</h1>
                     </div>
                     <div class="page-body checkout-data">
                         <form action="{{url('/Checkout/PaymentMethod/Next')}}" method="post">
@@ -81,12 +81,12 @@
                             <div class="buttons">
                                 <a class="btn btn-secondary btn-lg" href="{{url('/Checkout/ShippingMethod')}}">
                                     <i class="fa fa-angle-left"></i>
-                                    <span>Back</span>
+                                    <span>@lang('checkout.back')</span>
                                 </a>
                                 <input type="submit" name="nextstep" id="nextstep" class="d-none">
 
                                 <button class="btn btn-warning btn-lg payment-method-next-step-button" onclick="$('#nextstep').trigger('click');return false;">
-                                    <span>Next</span>
+                                    <span>@lang('checkout.next')</span>
                                     <i class="fa fa-angle-right"></i>
                                 </button>
                             </div>
