@@ -77,10 +77,10 @@
                                                 </div>
                                             </div>
                                             <div class="email">
-                                                Email: {{$order->billingaddress->email??''}}
+                                                @lang('profile.email'): {{$order->billingaddress->email??''}}
                                             </div>
                                             <div class="phone">
-                                                Phone: {{$order->billingaddress->phone??''}}
+                                                @lang('profile.phone'): {{$order->billingaddress->phone??''}}
                                             </div>
 
                                         </div>
