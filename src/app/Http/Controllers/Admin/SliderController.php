@@ -111,7 +111,7 @@ class SliderController extends Controller
         return redirect()->back()
         ->with('message', 'Slider đã được cập nhật')
         ->with('status', 'success')
-        ->withInput(['tab'=> 1]);
+        ->withInput();
     }
 
     public function updateTranslation(Request $request, $id)
