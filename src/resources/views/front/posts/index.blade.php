@@ -95,7 +95,7 @@
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="bg-sidebar">
                     <div class="search">
-                        {!! Form::open(array('method'=>'post','url' => '/posts','class'=>'form-inline form','role'=>'form')) !!}
+                        {!! Form::open(array('method'=>'post','url' => '/search','class'=>'form-inline form','role'=>'form')) !!}
                             <div class="search-wrap">
                                 <button class="search-button hidden" type="submit" title="Start Search">
                                     <i class="fa fa-search"></i>
@@ -118,7 +118,7 @@
                         <ul>
                             @foreach($categories as $category)
                             <li>
-                                <a href="{{url('/menu')}}/{{$post_category->slug}}/{{$category->slug}}" title="">{{$category->translation->name}}</a>
+                                <a href="{{url('/subject')}}/{{$post_category->slug}}/{{$category->slug}}" title="">{{$category->translation->name}}</a>
                                 <small>
                                     - {{$category->postsCount}}
                                 </small>
