@@ -56,8 +56,12 @@ Route::get('/subject/posts/tags/{slug}', 'Front\PostsController@filterByTag');
 Route::get('/posts/{slug}', 'Front\PostsController@show');
 Route::post('/posts','Front\PostsController@search');  
 
+Route::get('/subject/products/tags/{slug}', 'Front\ProductsController@filterByTag');
 /* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
+
+/* SEARCH - PRODUCT */
+Route::post('/products','Front\ProductsController@search');  
 
 /* COMMENT - PRODUCT */
 Route::post('/posts/{id}/comment', 'Front\CommentsController@store');

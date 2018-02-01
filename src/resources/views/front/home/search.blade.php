@@ -23,12 +23,23 @@
                     <h1>@lang('header.products')</h1>                
                 </div>              
             </div>
-            <div class="left">
-                @if(!empty($search_key) && count($products)==0)
-                    @lang('common.zero-search-message')&nbsp;{{$search_key}}
-                @endif 
-            </div>            
+
         </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="left-it">
+                    @if(!empty($search_key) && count($products)==0)
+                    <h5>                        
+                        @lang('common.zero-search-message')&nbsp;{{$search_key}}
+                    </h5>                            
+                    @endif 
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="right-it">
+                </div>
+            </div>
+        </div>         
         @foreach($products as $key => $product_tran)
             @if($key == 0 || $key%4 === 0)
             <div class="row">
@@ -38,6 +49,7 @@
                         <div class="pro-it">
                             <a href="{{url('/products')}}/{{$product_tran->product->slug}}">
                             <img class="pro-img" src="{{ asset('/storage') }}/{{$product_tran->product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="">
+                            </a>
                             <div class="pro-infor">
                                 <h2>{{$product_tran->name??$product_tran->product->name}}</h2>
                                 <span class="pro-cost">{{$product_tran->product->price}}</span>
@@ -84,11 +96,22 @@
         </div>      
         <div class="row">
 
-            <div class="left">
-                @if(!empty($search_key) && count($posts)==0)
-                    @lang('common.zero-search-message')&nbsp;{{$search_key}}
-                @endif 
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="left-it">
+                    @if(!empty($search_key) && count($posts)==0)
+                    <h5>                        
+                        @lang('common.zero-search-message')&nbsp;{{$search_key}}
+                    </h5>                            
+                    @endif 
+                </div>
             </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="right-it">
+                </div>
+            </div>
+        </div>
+
 
             @if(!empty($search_key) && count($posts)!=0)
             @foreach($posts as $post_tran)

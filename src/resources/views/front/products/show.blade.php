@@ -288,7 +288,7 @@
 		<div class="col-md-3 col-sm-4 col-xs-12">
 		    <div class="bg-sidebar">
 		        <div class="search">
-		            {!! Form::open(array('method'=>'post','url' => '/search','class'=>'form-inline form','role'=>'form')) !!}
+		            {!! Form::open(array('method'=>'posts','url' => '/search','class'=>'form-inline form','role'=>'form')) !!}
 		                <div class="search-wrap">
 		                    <button class="search-button hidden" type="submit" title="Start Search">
 		                        <i class="fa fa-search"></i>

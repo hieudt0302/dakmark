@@ -52,11 +52,11 @@
         @else
         <div class="row">
             <div class="col-md-12">
-                <h1>{{$category->translation->name??'List'}}</h1>
+                <h1>{{$category->translation->name??__('product.products')}}</h1>
                 <ul class="breadcumb">
                     <li><a href="{{ Setting::config('website')}}">@lang('common.home')</a></li>
                     <li><span>/</span>@lang('product.product')</li>
-                    <li><span>/</span>{{$category->translation->name??'List'}}</li>
+                    <li><span>/</span>{{$category->translation->name??__('product.products')}}</li>
                 </ul>
             </div>
         </div>

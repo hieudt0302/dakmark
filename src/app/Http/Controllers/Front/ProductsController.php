@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductTranslation   ;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Comment;
@@ -183,16 +184,19 @@ class ProductsController extends Controller
         $search_key = $request->input('key'); 
         
 
-        $products = Product::where('published',1)
-        ->whereNull('deleted_at')
-        ->where("name", "LIKE", "%$search_key%")
-        ->paginate(10);  
+        $results = ProductTranslation::where("name", "LIKE", "%$search_key%")
+        ->paginate(21);     
 
-        //TODO search multilang
-        $tags = Tag::has('products')->get();
-        $comments = Tag::has('products')->get();
-        $lastProducts = Product::take(10)->get(); ///TODO: move number limit to database setting        
+        return view('front/products/index',compact('results','search_key'))
+        ->with('i', ($page??1 - 1) * 21);
+    }
 
-        return view('front/products/index',compact('products','search_key','tags','comments', 'lastProducts'));
-    }     
+    public function filterByTag($slug)
+    {     
+        // GET PRODUCTS
+        $results = Tag::where('slug', $slug)->first()->products()->paginate(21);  
+
+        return View('front/products/index', compact('results'))
+        ->with('i', ($page??1 - 1) * 21);
+    }         
 }
