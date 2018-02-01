@@ -63,7 +63,7 @@ class ProductsController extends Controller
         $starAvg = $product->comments->avg('rate');
         $product_category = Category::where('slug','products')->firstOrFail();
         $categories = Category::where('parent_id',$product_category->id)->get();
-        $tags = Tag::has('posts')->get(); 
+        $tags = Tag::has('products')->get(); 
         
         $is_sales = false;
         if(!empty($product->special_price_start_date) && !empty($product->special_price_end_date)){
