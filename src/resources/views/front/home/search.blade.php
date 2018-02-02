@@ -83,8 +83,6 @@
     </div>
 </section>
 
-<hr>
-
 <div class="blog">
     <div class="container">
         <div class="row">
