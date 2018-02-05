@@ -251,7 +251,7 @@
 										<input name="name" class="name" type="text" placeholder="{{ __('profile.name')}}">
 									</div>
 									<div class="col-md-4 col-sm-4 col-xs-12">
-										<input name="email" class="email" type="text" placeholder="E-{{ __('profile.email')}}*">
+										<input name="email" class="email" type="text" placeholder="{{ __('profile.email')}}*">
 									</div>
 									<div class="col-md-4 col-sm-4 col-xs-12">
 										<input name="website" class="website" type="text" placeholder="Website">
