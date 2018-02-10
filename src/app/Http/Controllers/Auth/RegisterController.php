@@ -55,6 +55,9 @@ class RegisterController extends Controller
             'phone'             => 'string|min:10|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:5|max:32|confirmed',
+        ],
+        [
+            'username.nospaces'=>'Please do not enter space in Username.'
         ]);
     }
 
