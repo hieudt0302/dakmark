@@ -137,9 +137,18 @@ class HomeController extends Controller
     }
 
     public function subscribe(Request $request){
-        if(Subscribe::existEmail($request->email)){
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:subscribe'           
+        ]);
+
+        if ($validator->fails()) {
             return response()->json(['success' => false]);
         }
+
+        // if(Subscribe::existEmail($request->email)){
+        //     return response()->json(['success' => false]);
+        // }
+        
         $subscribe = new Subscribe();
         $subscribe->email = $request->email;
         $subscribe->locale = \App::getLocale(); 
