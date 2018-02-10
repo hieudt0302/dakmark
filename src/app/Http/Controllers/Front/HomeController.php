@@ -20,7 +20,7 @@ use App\Models\Category;
 use App\Models\MailTemplate;
 use App\Models\MailTemplateTranslation;
 use Setting;
-
+use Validator;
 class HomeController extends Controller
 {
     /**
@@ -148,7 +148,7 @@ class HomeController extends Controller
         // if(Subscribe::existEmail($request->email)){
         //     return response()->json(['success' => false]);
         // }
-        
+
         $subscribe = new Subscribe();
         $subscribe->email = $request->email;
         $subscribe->locale = \App::getLocale(); 
