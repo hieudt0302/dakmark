@@ -270,7 +270,7 @@ $(document).ready(function(){
                 {
                     if (response['newCartItemCount'] == 0) {
                         orderSummary.html(
-                            '<div class="alert alert-warning fade show">Your Shopping Cart is empty!</div>'
+                            '<div class="alert alert-warning fade show">'+"@lang('shoppings.cart-empty')"   +'</div>'
                         );
                     }
 
