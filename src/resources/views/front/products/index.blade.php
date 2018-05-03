@@ -77,8 +77,13 @@
 				</div>
 			</div>
         </div>
+        @php($curDate = Carbon\Carbon::now())
         @php($index = 0)
         @foreach($results as $product)
+            @php($isSale = 0)
+            @if($product->special_price != 0 && $product->special_price_start_date  <= $curDate && $curDate <= $product->special_price_end_date )
+                @php($isSale = 1)
+            @endif          
             @if($index == 0 || $index % 4 == 0)
             <div class="row">
                 <div class="products-it">
@@ -89,8 +94,16 @@
                         <img class="pro-img" src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="">
                         </a>
                         <div class="pro-infor">
+                            @if ($isSale == 1)
+                            <p><span class="hot">@lang('product.sale')</span></p>
+                            @endif                              
                             <h2>{{$product->translation->name??$product->name}}</h2>
-                            <span class="pro-cost">{{FormatPrice::price($product->price)}}</span>
+                            @if ($isSale == 1)
+                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
+                            <strong>{{FormatPrice::price($product->special_price)}}</strong>
+                            @else
+                                <strong>{{FormatPrice::price($product->price)}}</strong>
+                            @endif
                         </div>
                     </div>
                 </div>

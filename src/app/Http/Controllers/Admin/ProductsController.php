@@ -62,7 +62,7 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required|string|min:5|unique:products',
-            'old_price' => 'numeric|min:0',
+            // 'old_price' => 'numeric|min:0',
             'price' => 'numeric|min:0',
             'special_price' => 'numeric|min:0'
         ],
@@ -70,7 +70,7 @@ class ProductsController extends Controller
             'name.required' => 'Không được để trống tên sản phẩm.',
             'slug.required' => 'Không được để trống hoặc có khoảng trắng trong chuỗi slug.',
             'slug.min' => 'Độ dài tối thiểu của slug là 5.',
-            'old_price.numeric' => 'Giá trị nhập của [Giá Tiền Cũ]  phải là chữ số, không âm.',
+            // 'old_price.numeric' => 'Giá trị nhập của [Giá Tiền Cũ]  phải là chữ số, không âm.',
             'price.numeric' => 'Giá trị nhập của [Giá Tiền]  phải là chữ số, không âm.',
             'special_price.numeric' => 'Giá trị nhập của [Giá Tiền Đặc Biệt]  phải là chữ số, không âm.',
         ]);

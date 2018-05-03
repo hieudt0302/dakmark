@@ -111,14 +111,14 @@
                                             Giá ({{Setting::config('currency')}})
                                         </div>
                                         <div class="panel-body">
-                                            <div class="form-group">
+<!--                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="old_price" title="">Giá cũ</label>
                                                 <div class="col-md-4">
                                                     <div class="input-group bootstrap-touchspin">
                                                         <input  id="old_price" name="old_price" type="text" value="{{$product->old_price}}" class="form-control" >
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="price" title="">Giá</label>
                                                 <div class="col-md-4">

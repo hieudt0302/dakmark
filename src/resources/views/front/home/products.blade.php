@@ -15,16 +15,24 @@
 				</ul>
 			</div>
 		</div>
+        @php($curDate = Carbon\Carbon::now())
 		<div class="row">
 			<div class="products-it grid">
 			@foreach($specialty_coffee as $product)
+                @php($isSale = 0)
+                @if($product->special_price != 0 && $product->special_price_start_date  <= $curDate && $curDate <= $product->special_price_end_date )
+                    @php($isSale = 1)
+                @endif			
 				<div class="pro-it new col-md-3 col-sm-6 col-xs-12">
 					<a href="{{url('/products')}}/{{$product->slug}}">
 					<img class="pro-img" src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="">
 					<div class="pro-infor">
+						@if ($isSale == 1)
+						<p><span class="hot">@lang('product.sale')</span></p>
+						@endif							
 						<h2><a href="{{url('/products')}}/{{$product->slug}}">{{$product->translation->name??$product->name}}</a></h2>
 						<span class="pro-cost">
-							@if($product->special_price != 0 && $product->special_price_start_date  <= $product->special_price_end_date )
+							@if ($isSale == 1)
                             <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
                             <strong>{{FormatPrice::price($product->special_price)}}</strong>
                         	@else
@@ -36,13 +44,20 @@
             @endforeach
 
 			@foreach($commercial_coffee as $product)
+                @php($isSale = 0)
+                @if($product->special_price != 0 && $product->special_price_start_date  <= $curDate && $curDate <= $product->special_price_end_date )
+                    @php($isSale = 1)
+                @endif			
 				<div class="pro-it best-sellers col-md-3 col-sm-6 col-xs-12">
 					<a href="{{url('/products')}}/{{$product->slug}}">
 					<img class="pro-img" src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="">
 					<div class="pro-infor">
+						@if ($isSale == 1)
+						<p><span class="hot">@lang('product.sale')</span></p>
+						@endif							
 						<h2><a href="{{url('/products')}}/{{$product->slug}}">{{$product->translation->name??$product->name}}</a></h2>
 						<span class="pro-cost">
-							@if($product->special_price != 0 && $product->special_price_start_date  <= $product->special_price_end_date )
+							@if ($isSale == 1)
                             <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
                             <strong>{{$product->special_price}}</strong>
                         	@else
@@ -54,13 +69,20 @@
             @endforeach
 			
 			@foreach($sale_products as $product)
+                @php($isSale = 0)
+                @if($product->special_price != 0 && $product->special_price_start_date  <= $curDate && $curDate <= $product->special_price_end_date )
+                    @php($isSale = 1)
+                @endif			
 				<div class="pro-it sale col-md-3 col-sm-6 col-xs-12">
 					<a href="{{url('/products')}}/{{$product->slug}}">
 					<img class="pro-img" src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="">
 					<div class="pro-infor">
+						@if ($isSale == 1)
+						<p><span class="hot">@lang('product.sale')</span></p>
+						@endif						
 						<h2><a href="{{url('/products')}}/{{$product->slug}}">{{$product->translation->name??$product->name}}</a></h2>
 						<span class="pro-cost">
-							@if($product->special_price != 0 && $product->special_price_start_date  <= $product->special_price_end_date )
+							@if ($isSale == 1)
                             <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
                             <strong>{{$product->special_price}}</strong>
                         	@else
