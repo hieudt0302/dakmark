@@ -80,7 +80,6 @@ class BannersController extends Controller
         if (request()->hasFile('icon-3')) {
             $icon = $request->file('icon-3');            
             $img = Image::make($icon->getRealPath());
-           dd(storage_path());
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/fairtrade.png');                      
