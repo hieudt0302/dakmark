@@ -36,28 +36,28 @@ class BannersController extends Controller
             $img = Image::make($banner->getRealPath());
             $img->fit(960, 400)
                //->save('frontend/images/uploads/ads-bg1.jpg');                      
-               ->save(public_path('images/uploads/'. $banner->originalName));
+               ->save(public_path('images/uploads/'. $banner->getClientOriginalName()));
         } 
         if (request()->hasFile('banner-right')) {
             $banner = $request->file('banner-right');            
             $img = Image::make($banner->getRealPath());
             $img->fit(960, 400)
                //->save('frontend/images/uploads/ads-bg2.jpg');                      
-              ->save(public_path('images/uploads/'. $banner->originalName));
+              ->save(public_path('images/uploads/'. $banner->getClientOriginalName()));
         } 
         if (request()->hasFile('banner-full')) {
             $banner = $request->file('banner-full');            
             $img = Image::make($banner->getRealPath());
             $img->fit(1920, 400)
                //->save('frontend/images/uploads/ads-bg3.jpg');                      
-               ->save(public_path('images/uploads/'. $banner->originalName));
+               ->save(public_path('images/uploads/'. $banner->getClientOriginalName()));
         }
         if (request()->hasFile('banner-blog')) {
             $banner = $request->file('banner-blog');            
             $img = Image::make($banner->getRealPath());
             $img->fit(270, 370)
                //->save('frontend/images/uploads/sale.jpg');                      
-               ->save(public_path('images/uploads/'. $banner->originalName));
+               ->save(public_path('images/uploads/'. $banner->getClientOriginalName()));
         }          
 
         //Icon
@@ -67,7 +67,7 @@ class BannersController extends Controller
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/poko.png');    
-               })->save(public_path('images/logo/'. $icon->originalName));
+               })->save(public_path('images/logo/'. $icon->getClientOriginalName()));
         }
         if (request()->hasFile('icon-2')) {
             $icon = $request->file('icon-2');            
@@ -75,7 +75,7 @@ class BannersController extends Controller
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/origin.png'); 
-               })->save(public_path('images/logo/'. $icon->originalName));
+               })->save(public_path('images/logo/'. $icon->getClientOriginalName()));
         }
         if (request()->hasFile('icon-3')) {
             $icon = $request->file('icon-3');            
@@ -84,7 +84,7 @@ class BannersController extends Controller
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/fairtrade.png');                      
-            })->save(public_path('images/logo/'. $icon->originalName));
+            })->save(public_path('images/logo/'. $icon->getClientOriginalName()));
         }    
         if (request()->hasFile('icon-4')) {
             $icon = $request->file('icon-4');            
@@ -92,7 +92,7 @@ class BannersController extends Controller
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/community-icon.png');      
-               })->save(public_path('images/logo/'. $icon->originalName));
+               })->save(public_path('images/logo/'. $icon->getClientOriginalName()));
         }                                                 
       
         return redirect()->back()
