@@ -84,7 +84,7 @@ class BannersController extends Controller
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/fairtrade.png');                      
-            })->save(storage_path('images/logo/'. $icon->getClientOriginalName()));
+            })->save(storage_path('app/public/images/logo/'. $icon->getClientOriginalName()));
         }    
         if (request()->hasFile('icon-4')) {
             $icon = $request->file('icon-4');            
@@ -92,7 +92,7 @@ class BannersController extends Controller
             $img->resize(null, 120, function ($constraint) {
                 $constraint->aspectRatio();
             //})->save('images/logo/community-icon.png');      
-               })->save(storage_path('images/logo/'. $icon->getClientOriginalName()));
+               })->save(storage_path('app/public/images/logo/'. $icon->getClientOriginalName()));
         }                                                 
       
         return redirect()->back()
