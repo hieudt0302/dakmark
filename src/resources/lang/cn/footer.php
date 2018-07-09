@@ -15,5 +15,6 @@ return [
     'faqs' => '常见问题',        
     'newsletter-message' => 'Pô Kô Farms<br>接收信息',
     'subscribe' => '注册',
-    'about-us' => '联系',         
+    'about-us' => '联系',
+    'supported-by' => 'Supported by',              
 ];

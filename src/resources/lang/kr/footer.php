@@ -16,5 +16,6 @@ return [
     'newsletter-message' => 'Pô Kô Farms<br>의 구독 신청',  
     'subscribe' => '구독', 
     'about-us' => '연락', 
-    'subscribe-success' => '성공적으로 구독하셨습니다!',               
+    'subscribe-success' => '성공적으로 구독하셨습니다!',
+    'supported-by' => 'Supported by',                    
 ];

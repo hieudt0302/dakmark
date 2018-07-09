@@ -91,6 +91,19 @@
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="ft-photo">
+
+                <div class="photo-it">
+                    <div class="ft-heading">
+                        <h6>@lang('footer.supported-by')&nbsp;&nbsp;</h6>
+                    </div>
+                    <div class="img-ft">
+                        <a href="#"><img class="img-ft" src="{{asset('/images/logo/tdc-logo.png')}}" alt=""></a>
+                    </div>
+                </div>              
+            </div>
+            <br>
+
+            <div class="ft-photo">
                 <div class="ft-heading">
                     <h6>@lang('common.our-gallery')</h6>
                 </div>

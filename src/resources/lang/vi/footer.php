@@ -18,5 +18,6 @@ return [
     'unsubscribe' => 'Hủy đăng ký nhận mail',
     'subscribe-success' => 'Bạn đã đăng ký thành công !',
     'subscribe-failed' => 'Email này đã được đăng ký !',
-    'about-us' => 'Liên Hệ',    
+    'about-us' => 'Liên Hệ',
+    'supported-by' => 'Hỗ trợ bởi',         
 ];

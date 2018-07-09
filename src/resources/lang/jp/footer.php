@@ -16,5 +16,6 @@ return [
     'newsletter-message' => 'Pô Kô Farmsから<br>ニュースをもらう',
     'subscribe' => '登録',   
     'subscribe-success' => '登録が成功しました!',       
-    'about-us' => 'Pô Kô Farmsについて',          
+    'about-us' => 'Pô Kô Farmsについて',
+    'supported-by' => 'Supported by',               
 ];
