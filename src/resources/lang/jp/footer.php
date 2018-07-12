@@ -17,5 +17,5 @@ return [
     'subscribe' => '登録',   
     'subscribe-success' => '登録が成功しました!',       
     'about-us' => 'Pô Kô Farmsについて',
-    'supported-by' => 'Supported by',               
+    'supported-by' => 'スポンサー',               
 ];
