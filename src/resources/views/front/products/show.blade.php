@@ -355,7 +355,7 @@
                data: {
                     'id': '{{$product->id}}',//just test
                     'name': '{{$product->name}}',//just test
-                    'price': {{$final_price}},//just test
+                    'price': {{isset($final_price)? $final_price : 0}},//just test
                     'quantity': quantity,//just test
                 },
                success:function(response){
