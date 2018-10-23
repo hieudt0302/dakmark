@@ -76,14 +76,14 @@ Sharing together and developing together, make the world better with quality cof
                 <div class="ab-item">
                     <img src="frontend/images/uploads/abflower1.png" alt="">
                     <h2>@lang('about.our-vision')</h2>
-                    <p>{!!@lang('about.vision-details')!!}</p>
+                    <p>{!!__('about.vision-details')!!}</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="ab-item">
                     <img src="frontend/images/uploads/abflower2.png" alt="">
                     <h2>@lang('about.our-mission')</h2>
-                    <p>{!!@lang('about.mission-details')!!}</p>
+                    <p>{!!__('about.mission-details')!!}</p>
                 </div>
             </div>
         </div>
