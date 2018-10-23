@@ -57,7 +57,7 @@ Sharing together and developing together, make the world better with quality cof
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="heading-sec">
                     <h1>{{$info_page_translation->title}}</h1>
-                    <h4 class="green">-{!! $info_page_translation->description !!}-</h4>
+                    <h4 class="green">{!! $info_page_translation->description !!}</h4>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
