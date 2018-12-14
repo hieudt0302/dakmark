@@ -93,7 +93,7 @@
                         <a href="{{url('/products')}}/{{$product->slug}}">
                         <img class="pro-img" src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="">
                         </a>
-{{$product}}
+
 			@if(!$product->call_for_price)
                         <div class="pro-infor tuan-fix-test">
                             @if ($isSale == 1)
