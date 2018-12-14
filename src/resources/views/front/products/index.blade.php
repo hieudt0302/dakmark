@@ -94,7 +94,7 @@
                         <img class="pro-img" src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="">
                         </a>
 			@if(!$product->call_for_price)
-                        <div class="pro-infor">
+                        <div class="pro-infor tuan-fix-test">
                             @if ($isSale == 1)
                             <p><span class="hot">@lang('product.sale')</span></p>
                             @endif                              
