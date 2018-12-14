@@ -93,6 +93,7 @@
                         <a href="{{url('/products')}}/{{$product->slug}}">
                         <img class="pro-img" src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="">
                         </a>
+			@if(!$product->call_for_price)
                         <div class="pro-infor">
                             @if ($isSale == 1)
                             <p><span class="hot">@lang('product.sale')</span></p>
@@ -105,6 +106,7 @@
                                 <strong>{{FormatPrice::price($product->price)}}</strong>
                             @endif
                         </div>
+			@endif
                     </div>
                 </div>
             @if(($index > 0 && $index % 3 === 0) || $index + 1 === count($results))
