@@ -52,7 +52,7 @@
                                             <span>{{$post_tran->post->author->first_name}} {{$post_tran->post->author->last_name}} | {{ date('d-m-Y', strtotime($post_tran->post->created_at)) }}</span>
                                         </div>                                
                                         <h2><a href="{{url('/')}}/posts/{{$post_tran->post->slug}}">{{$post_tran->title}}</a></h2>
-                                        <p>{{$post_tran->excerpt}} </p>
+                                        <p>{{str_limit($post_tran->excerpt, $limit = 180, $end = '...')}} </p>
                                         <a class="readmore2" href="{{url('/')}}/posts/{{$post_tran->post->slug}}">/ &nbsp; @lang('common.read-more')</a>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                         <span>{{$post->author->first_name}} {{$post->author->last_name}} | {{ date('d-m-Y', strtotime($post->created_at)) }}</span>
                                     </div>                                
                                     <h2><a href="{{url('/')}}/posts/{{$post->slug}}">{{$post->translation->title}}</a></h2>
-                                    <p>{{$post->translation->excerpt??""}} </p>
+                                    <p>{{str_limit($post->translation->excerpt??"", $limit = 150, $end = '...')}} </p>
                                     <a class="readmore2" href="{{url('/')}}/posts/{{$post->slug}}">/ &nbsp; @lang('common.read-more')</a>
                                 </div>
                             </div>
