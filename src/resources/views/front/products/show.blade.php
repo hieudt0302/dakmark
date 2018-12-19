@@ -55,6 +55,7 @@
 							<img src="{{asset('/images/no-image.png')}}" alt="" class="product-main-img">
 						</div>
 					@endif 
+					
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<div class="pro-list-it it">
