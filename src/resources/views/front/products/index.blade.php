@@ -94,20 +94,22 @@
                         <img class="pro-img" src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="">
                         </a>
 
-			@if(!$product->call_for_price)
+			
                         <div class="pro-infor tuan-fix-test">
                             @if ($isSale == 1)
                             <p><span class="hot">@lang('product.sale')</span></p>
                             @endif                              
                             <h2>{{$product->translation->name??$product->name}}</h2>
+			    @if(!$product->call_for_price)
                             @if ($isSale == 1)
                             <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
                             <strong>{{FormatPrice::price($product->special_price)}}</strong>
                             @else
                                 <strong>{{FormatPrice::price($product->price)}}</strong>
                             @endif
+			    @endif
                         </div>
-			@endif
+			
                     </div>
                 </div>
             @if(($index > 0 && $index % 3 === 0) || $index + 1 === count($results))
