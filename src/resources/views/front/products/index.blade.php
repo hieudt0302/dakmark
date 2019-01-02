@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Poko Farms - Product')
+@section('title','Pô Kô Farms')
 @section('header')
 <!-- Share Nav -->
 @include('layouts.share')
