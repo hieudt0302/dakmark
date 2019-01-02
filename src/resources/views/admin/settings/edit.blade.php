@@ -119,9 +119,9 @@
 	                                </td>
 	                            </tr>	
 	                            <tr>
-	                                <td>Vimeo</td>
+	                                <td>Linkedin</td>
 	                                <td>
-	                                    <input type="text" class="form-control" name="vimeo" value="{{ Setting::config('vimeo') }}"/>
+	                                    <input type="text" class="form-control" name="linkedin" value="{{ Setting::config('linkedin') }}"/>
 	                                </td>
 	                            </tr>
 	                            <tr>
