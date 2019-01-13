@@ -32,11 +32,13 @@
 						@endif							
 						<h2><a href="{{url('/products')}}/{{$product->slug}}">{{$product->translation->name??$product->name}}</a></h2>
 						<span class="pro-cost">
-							@if ($isSale == 1)
-                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
-                            <strong>{{FormatPrice::price($product->special_price)}}</strong>
-                        	@else
-                            	<strong>{{FormatPrice::price($product->price)}}</strong>
+							@if(!$product->call_for_price)
+								@if ($isSale == 1)
+	                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
+	                            <strong>{{FormatPrice::price($product->special_price)}}</strong>
+	                        	@else
+	                            	<strong>{{FormatPrice::price($product->price)}}</strong>
+	                        	@endif
                         	@endif
 						</span>
 					</div>
@@ -57,12 +59,14 @@
 						@endif							
 						<h2><a href="{{url('/products')}}/{{$product->slug}}">{{$product->translation->name??$product->name}}</a></h2>
 						<span class="pro-cost">
-							@if ($isSale == 1)
-                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
-                            <strong>{{$product->special_price}}</strong>
-                        	@else
-                            	<strong>{{FormatPrice::price($product->price)}}</strong>
-                        	@endif
+							@if(!$product->call_for_price)
+								@if ($isSale == 1)
+	                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
+	                            <strong>{{$product->special_price}}</strong>
+	                        	@else
+	                            	<strong>{{FormatPrice::price($product->price)}}</strong>
+	                        	@endif
+                        	@endif                  	
 						</span>
 					</div>
             	</div>
@@ -82,12 +86,14 @@
 						@endif						
 						<h2><a href="{{url('/products')}}/{{$product->slug}}">{{$product->translation->name??$product->name}}</a></h2>
 						<span class="pro-cost">
-							@if ($isSale == 1)
-                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
-                            <strong>{{$product->special_price}}</strong>
-                        	@else
-                            	<strong>{{FormatPrice::price($product->price)}}</strong>
-                        	@endif
+							@if(!$product->call_for_price)
+								@if ($isSale == 1)
+	                            <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
+	                            <strong>{{$product->special_price}}</strong>
+	                        	@else
+	                            	<strong>{{FormatPrice::price($product->price)}}</strong>
+	                        	@endif
+	                        @endif
 						</span>
 					</div>
             	</div>
