@@ -51,9 +51,8 @@
                     <div class="ct-it ct-icon">
                         <h4>@lang('contact.social')</h4><br>
                         <a target="_blank" href="//www.facebbook.com/{{ Setting::config('facebook') }}"><i class="fa fa-facebook" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
-                        <a target="_blank" href="//www.twitter.com/{{ Setting::config('twitter') }}"><i class="fa fa-twitter" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+                        <a target="_blank" href="//www.instagram.com/{{ Setting::config('twitter') }}"><i class="fa fa-instagram" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
                         <a target="_blank" href="//www.youtube.com/{{ Setting::config('youtube') }}"><i class="fa fa-youtube-play" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Youtube"></i></a>
-                        <a target="_blank" href="//www.linkedin.com/in/{{ Setting::config('linkedin') }}"><i class="fa fa-linkedin" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Vimeo"></i></a>
                     </div>
                 </div>
             </div>
