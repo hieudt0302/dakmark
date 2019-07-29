@@ -20,8 +20,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="heading-sec">
-                    <h1>@lang('header.products')</h1>                
-                </div>              
+                    <h1>@lang('header.products')</h1>
+                </div>
             </div>
 
         </div>
@@ -29,44 +29,44 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="left-it">
                     @if(!empty($search_key) && count($products)==0)
-                    <h5>                        
+                    <h5>
                         @lang('common.zero-search-message')&nbsp;{{$search_key}}
-                    </h5>                            
-                    @endif 
+                    </h5>
+                    @endif
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="right-it">
                 </div>
             </div>
-        </div>         
+        </div>
         @foreach($products as $key => $product_tran)
-            @if($key == 0 || $key%4 === 0)
-            <div class="row">
-                <div class="products-it">
-            @endif                    
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="pro-it">
-                            <a href="{{url('/products')}}/{{$product_tran->product->slug}}">
-                            <img class="pro-img" src="{{ asset('/storage') }}/{{$product_tran->product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="">
-                            </a>
-                            <div class="pro-infor">
-                                <h2>{{$product_tran->name??$product_tran->product->name}}</h2>
-                                <span class="pro-cost">{{$product_tran->product->price}}</span>
-                            </div>
+        @if($key == 0 || $key%4 === 0)
+        <div class="row">
+            <div class="products-it">
+                @endif
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pro-it">
+                        <a href="{{url('/products')}}/{{$product_tran->product->slug}}">
+                            <img class="pro-img" src="{{ asset('/storage') }}/{{$product_tran->product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="{{$product_tran->name??$product_tran->product->name}}">
+                        </a>
+                        <div class="pro-infor">
+                            <h2>{{$product_tran->name??$product_tran->product->name}}</h2>
+                            <span class="pro-cost">{{$product_tran->product->price}}</span>
                         </div>
                     </div>
-            @if(($key > 0 && ($key+1) %4 === 0) || $key +1 ===count($products))
                 </div>
+                @if(($key > 0 && ($key+1) %4 === 0) || $key +1 ===count($products))
             </div>
-            @endif
+        </div>
+        @endif
         @endforeach
-        
-        
+
+
         <div class="row">
             <div class="blogpanigation">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-<!--                     <ul>
+                    <!--                     <ul>
                         <li class="prev"><a href="#">prev</a></li>
                         <li class="num"><a href="#">1</a></li>
                         <li class="num active"><a href="#">2</a></li>
@@ -91,24 +91,24 @@
                     <h1>@lang('header.blogs')</h1>
                 </div>
             </div>
-        </div>      
+        </div>
         <div class="row">
 
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="left-it">
-                    @if(!empty($search_key) && count($posts)==0)
-                    <h5>                        
-                        @lang('common.zero-search-message')&nbsp;{{$search_key}}
-                    </h5>                            
-                    @endif 
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="left-it">
+                        @if(!empty($search_key) && count($posts)==0)
+                        <h5>
+                            @lang('common.zero-search-message')&nbsp;{{$search_key}}
+                        </h5>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="right-it">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="right-it">
-                </div>
-            </div>
-        </div>
 
 
             @if(!empty($search_key) && count($posts)!=0)
@@ -117,7 +117,7 @@
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="blog-it-left">
                     <a href="{{url('/posts')}}/{{$post_tran->post->slug}}">
-                        <img class="blog-img" src="{{asset('/storage/images/blog/')}}/{{$post_tran->post->img}}" alt="">
+                        <img class="blog-img" src="{{asset('/storage/images/blog/')}}/{{$post_tran->post->img}}" alt="{{ $post_tran->title??'' }}">
                     </a>
                     <div class="blog-ct-left">
                         <div class="date">
@@ -137,7 +137,7 @@
         <div class="row">
             <div class="blogpanigation">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-<!--                     <ul>
+                    <!--                     <ul>
                         <li class="prev"><a href="#">prev</a></li>
                         <li class="num"><a href="#">1</a></li>
                         <li class="num active"><a href="#">2</a></li>
@@ -150,7 +150,7 @@
                     {{ $posts->links() }}
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
 </div>
 

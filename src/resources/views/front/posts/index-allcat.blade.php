@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Pô Kô Farms - Post') 
+@section('title','Pô Kô Farms - Post')
 @section('header')
 <!-- Share Nav -->
 @include('layouts.share')
@@ -7,7 +7,7 @@
 @section('content')
 
 <!-- Head Section -->
-<section class="small-section bg-gray-lighter pt-30 pb-30">    
+<section class="small-section bg-gray-lighter pt-30 pb-30">
     <div class="relative container align-left">
 
         <div class="row">
@@ -42,15 +42,15 @@
             <div class="col-sm-8">
                 <!-- Blog options -->
                 <div class="clearfix mb-40">
-                    
+
                     <div class="left section-text mt-10">
                         @if(!empty($search_key) && count($posts)==0)
-                            @lang('common.zero-search-message')&nbsp;{{$search_key}}
-                        @endif 
+                        @lang('common.zero-search-message')&nbsp;{{$search_key}}
+                        @endif
                     </div>
-                    
+
                 </div>
-                <!-- End Blog options -->              
+                <!-- End Blog options -->
                 <!-- Post -->
                 @foreach($post_group as $cat_id => $posts)
                 {{$cat_id}}
@@ -66,7 +66,7 @@
                         <span class="separator">&nbsp;</span>
                         <i class="fa fa-folder-open"></i>
                         @foreach ($post->tags as $tag)
-                            <a href="">{{$tag->name}}</a>,
+                        <a href="">{{$tag->name}}</a>,
                         @endforeach
                         <span class="separator">&nbsp;</span>
                         <a href="#"><i class="fa fa-comments"></i> {{count($post->comments)}} Comments</a>
@@ -74,7 +74,7 @@
 
                     <!-- Image -->
                     <div class="blog-media">
-                        <a href="{{url('/')}}/posts/{{$post->slug}}"><img src="{{ asset('images/blog/' . $post->img) }}" alt="" /></a>
+                        <a href="{{url('/')}}/posts/{{$post->slug}}"><img src="{{ asset('images/blog/' . $post->img) }}" alt="{{$post->translation->title}}" /></a>
                     </div>
 
                     <!-- Text Intro -->
@@ -116,16 +116,16 @@
                 <!-- Search Widget -->
                 <div class="widget">
                     {!! Form::open(array('method'=>'post','url' => '/posts','class'=>'form-inline form','role'=>'form')) !!}
-                        <div class="search-wrap">
-                            <button class="search-button animate" type="submit" title="Start Search">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            @if(!empty($search_key))
-                                <input type="text" class="form-control search-field" name="key" placeholder="{{$search_key}}">                            
-                            @else
-                                <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">                        
-                            @endif  
-                        </div>
+                    <div class="search-wrap">
+                        <button class="search-button animate" type="submit" title="Start Search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        @if(!empty($search_key))
+                        <input type="text" class="form-control search-field" name="key" placeholder="{{$search_key}}">
+                        @else
+                        <input type="text" class="form-control search-field" name="key" placeholder="{{ __('common.search') }}">
+                        @endif
+                    </div>
                     {!! Form::close() !!}
                 </div>
                 <!-- End Search Widget -->
@@ -171,7 +171,7 @@
                         <ul class="clearlist widget-posts">
                             @foreach($lastPosts as $post)
                             <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="" class="widget-posts-img" /></a>
+                                <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="Previous" class="widget-posts-img" /></a>
                                 <div class="widget-posts-descr">
                                     <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->translation->title}}</a> Posted by {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
                                 </div>
@@ -190,7 +190,7 @@
                         <ul class="clearlist widget-comments">
                             @foreach($comments as $comment)
                             <li>
-                            {{$comment->author->last_name}} {{$comment->author->first_name}} <a href="#" title="">{{ str_limit($comment->comment, $limit = 60, $end = '...') }}</a>
+                                {{$comment->author->last_name}} {{$comment->author->first_name}} <a href="#" title="">{{ str_limit($comment->comment, $limit = 60, $end = '...') }}</a>
                             </li>
                             @endforeach
                         </ul>

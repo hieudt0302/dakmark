@@ -7,13 +7,13 @@
 					<h4>-@lang('home.farm-activities-message')-</h4>
 				</div>
 			</div>
-		</div>		
+		</div>
 		<div class="row">
 			@foreach ($new_blogs as $blog)
 			<div class="col-md-4 col-sm-4 col-xs-4">
 				<div class="blog-it-left">
 					<a href="{{url('/posts')}}/{{$blog->slug}}">
-						<img class="blog-img" src="{{asset('/storage/images/blog/')}}/{{$blog->img}}" alt="">
+						<img class="blog-img" src="{{asset('/storage/images/blog/')}}/{{$blog->img}}" alt="Post Thumb">
 					</a>
 					<div class="blog-ct-left">
 						<div class="date">

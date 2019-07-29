@@ -1,4 +1,4 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 @section('title','Pô Kô Farms')
 
 @section('content')
@@ -62,26 +62,26 @@ Sharing together and developing together, make the world better with quality cof
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="ab-decorate">
-                    <img src="frontend/images/logo2.png" alt="">
+                    <img src="frontend/images/logo2.png" alt="About">
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="ab-intro">
                     <p>{!! $info_page_translation->content !!} </p>
-                </div>  
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="ab-item">
-                    <img src="frontend/images/uploads/abflower1.png" alt="">
+                    <img src="frontend/images/uploads/abflower1.png" alt="About">
                     <h2>@lang('about.our-vision')</h2>
                     <p>{!!__('about.vision-details')!!}</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="ab-item">
-                    <img src="frontend/images/uploads/abflower2.png" alt="">
+                    <img src="frontend/images/uploads/abflower2.png" alt="About">
                     <h2>@lang('about.our-mission')</h2>
                     <p>{!!__('about.mission-details')!!}</p>
                 </div>

@@ -4,7 +4,7 @@
 
 <!-- Slider -->
 @include('front.home.slider')
- <!-- End Slider -->
+<!-- End Slider -->
 <!-- <section id="decorate">
     <div class="row">
         <div class="container">
@@ -35,13 +35,13 @@
                     <iframe width="560" height="315" src="{{ __('home.home-video-url')}}?autoplay=1&amp;rel=0&amp;mute=1" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-            <!-- End Video -->            
+            <!-- End Video -->
         </div>
 
         <div class="row is-same-height">
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/poko.png') }}" alt="">
+                    <img src="{{ asset('images/logo/poko.png') }}" alt="Logo">
                     <h2>@lang('home.about-us')</h2>
                     <p>{{ str_pad($pokofarms_message->translation->description??"",200) }}</p>
                     <a class="learnmore" href="{{url('/about')}}">@lang('common.more-details')</a>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/origin.png') }}" alt="">
+                    <img src="{{ asset('images/logo/origin.png') }}" alt="Logo">
                     <h2>@lang('home.product-origin')</h2>
                     <p>{{ str_pad($product_origin->translation->description??"",200) }}</p>
                     <a class="learnmore" href="{{url('/product-origin')}}">@lang('common.more-details')</a>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/fairtrade.png') }}" alt="">
+                    <img src="{{ asset('images/logo/fairtrade.png') }}" alt="Quality Control Approved">
                     <h2>@lang('home.product-quality')</h2>
                     <p>{{ str_pad($product_quality->translation->description??"",200) }}</p>
                     <a class="learnmore" href="{{url('/product-quality')}}">@lang('common.more-details')</a>
@@ -65,38 +65,38 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/community-icon.png') }}" alt="">
+                    <img src="{{ asset('images/logo/community-icon.png') }}" alt="Community">
                     <h2>@lang('home.community')</h2>
                     <p>{{ str_pad($community_category->translation->description??"",200)}}</p>
                     <a class="learnmore" href="{{url('subject/posts/'.$community_category->slug)}}">@lang('common.more-details')</a>
                 </div>
-            </div>            
+            </div>
         </div>
 
     </div>
-</div>      
-    <!-- Quotes -->
-    @include('front.home.quotes')
-    <!-- End Quotes -->
-        
-    <!-- Promo -->
-    @include('front.home.promo')
-    <!-- End Promo -->
+</div>
+<!-- Quotes -->
+@include('front.home.quotes')
+<!-- End Quotes -->
 
-    <!-- Products -->
-    @include('front.home.products')
-    <!-- End Products -->
+<!-- Promo -->
+@include('front.home.promo')
+<!-- End Promo -->
+
+<!-- Products -->
+@include('front.home.products')
+<!-- End Products -->
 
 
-    <!-- Subscribe -->
+<!-- Subscribe -->
 <!--     @include('front.home.subscribe') -->
-    <!-- End Subscribe -->    
+<!-- End Subscribe -->
 
-    <!-- Blogs -->
+<!-- Blogs -->
 <!--     @include('front.home.blogs') -->
-    <!-- End Blogs -->
+<!-- End Blogs -->
 
-    <!-- Social -->
+<!-- Social -->
 
-    <!-- End Social -->
+<!-- End Social -->
 @endsection
