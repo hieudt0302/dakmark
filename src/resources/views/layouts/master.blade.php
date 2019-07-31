@@ -43,7 +43,6 @@
 	<link rel="mask-icon" href="{{asset('frontend/images/favicons/safari-pinned-tab.svg')}}" color="#5bbad5">
 	<meta name="theme-color" content="#ffffff">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-	<script src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<!-- 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js" integrity="sha256-QBfKkye/UQUiiCmVVEsU6b/j9bh5luFhnFgal4ncox0=" crossorigin="anonymous"></script>
@@ -117,7 +116,9 @@
 		<!-- End Main Page -->
 
 	</div>
-
+	<!--
+-->
+	<script src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
 	<script defer src="{{asset('frontend/js/plugins.js')}}"></script>
 	<script defer src="{{asset('frontend/js/custom.js')}}"></script>
 	<script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
