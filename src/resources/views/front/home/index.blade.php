@@ -25,7 +25,7 @@
                     <div class="ab-intro">
                         <p>- <b>{{$video_message->translation->title??""}}</b> -</p>
                         <p>"{{$video_message->translation->description??""}}"</p>
-                        </br>
+
                     </div>
                 </div>
             </div>
