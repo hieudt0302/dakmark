@@ -3,7 +3,8 @@
 @section('title', 'Dashboard')
 @section('description', 'This is the dashboard')
 
-@section('content')<!-- Content Header (Page header) -->
+@section('content')
+<!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
     Dashboard
@@ -28,7 +29,7 @@
           <p>Đơn Hàng Mới</p>
         </div>
         <div class="icon">
-          <i class="ion ion-bag"></i>
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </div>
         <a href="{{url('admin/orders')}}" class="small-box-footer">Chi Tiết <i class="fa fa-arrow-circle-right"></i></a>
       </div>
@@ -43,13 +44,13 @@
           <p>Đơn Hàng Chờ Giao</p>
         </div>
         <div class="icon">
-          <i class="ion ion-stats-bars"></i>
+          <i class="fa fa-bar-chart" aria-hidden="true"></i>
         </div>
         <a href="{{url('admin/orders')}}" class="small-box-footer">Chi Tiết <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
@@ -58,7 +59,7 @@
           <p>Sản Phẩm</p>
         </div>
         <div class="icon">
-          <i class="ion ion-pie-graph"></i>
+          <i class="fa fa-pie-chart" aria-hidden="true"></i>
         </div>
         <a href="{{url('admin/products')}}" class="small-box-footer">Chi Tiết <i class="fa fa-arrow-circle-right"></i></a>
       </div>
@@ -74,16 +75,16 @@
           <p>Người Dùng Mới</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
         </div>
         <a href="{{url('admin/users')}}" class="small-box-footer">Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
-  
+
   </div>
   <!-- /.row -->
 </section>
-<!-- /.content -->        
+<!-- /.content -->
 @endsection
 
 @section('scripts')
