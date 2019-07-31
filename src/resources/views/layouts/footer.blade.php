@@ -109,7 +109,7 @@
                     <div class="photo-it">
                         @foreach($latestMediaOfGallery as $m)
                         <div class="img-ft">
-                            <a href="/galleries"><img class="img-ft" src="{{asset('/storage')}}/{{$m->source}}" alt=""></a>
+                            <a href="/galleries"><img class="lazyload img-ft" data-src="{{asset('/storage')}}/{{$m->source}}" alt="Image"></a>
                         </div>
                         @endforeach
                     </div>
