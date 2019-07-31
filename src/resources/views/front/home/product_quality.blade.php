@@ -1,4 +1,4 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 @section('title','Pô Kô Farms')
 
 @section('content')
@@ -16,14 +16,14 @@
 <!-- End Head Section -->
 
 <section id="farm">
-    <div class="container">     
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-sec">
                     <h2>@lang('quality.message')</h2>
                 </div>
             </div>
-        </div>             
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="farm-it">
@@ -56,7 +56,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="farm-img">
-                    <img src="frontend/images/uploads/farm-img.jpg" alt="farm">
+                    <img class="lazyload" data-src="frontend/images/uploads/farm-img.jpg" alt="farm">
                 </div>
             </div>
         </div>

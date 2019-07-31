@@ -25,7 +25,7 @@
 					@endif
 					<div class="pro-it new col-md-3 col-sm-6 col-xs-12">
 						<a href="{{url('/products')}}/{{$product->slug}}">
-							<img class="pro-img" src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="Product">
+							<img class="lazyload pro-img" data-src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="Product">
 							<div class="pro-infor">
 								@if ($isSale == 1)
 								<p><span class="hot">@lang('product.sale')</span></p>
@@ -52,7 +52,7 @@
 						@endif
 						<div class="pro-it best-sellers col-md-3 col-sm-6 col-xs-12">
 							<a href="{{url('/products')}}/{{$product->slug}}">
-								<img class="pro-img" src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="Product">
+								<img class="lazyload pro-img" data-src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="Product">
 								<div class="pro-infor">
 									@if ($isSale == 1)
 									<p><span class="hot">@lang('product.sale')</span></p>
@@ -79,7 +79,7 @@
 							@endif
 							<div class="pro-it sale col-md-3 col-sm-6 col-xs-12">
 								<a href="{{url('/products')}}/{{$product->slug}}">
-									<img class="pro-img" src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="Product">
+									<img class="lazyload pro-img" data-src="{{ asset('/storage') }}/{{$product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="Product">
 									<div class="pro-infor">
 										@if ($isSale == 1)
 										<p><span class="hot">@lang('product.sale')</span></p>

@@ -4,15 +4,16 @@
 <!-- Share Nav -->
 @include('layouts.share')
 <style>
-  .search-form div input{
+  .search-form div input {
     padding: 12px;
     /* border: none; */
     font-family: "Lato", 'Source Sans Pro', serif;
     color: #ababab;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-}
-.search-form button{
+  }
+
+  .search-form button {
     padding: 5px 20px 5px 20px;
     text-transform: uppercase;
     background-color: #8eb35a;
@@ -25,13 +26,14 @@
     font-style: Bold;
     padding-left: 40px;
     padding-right: 40px;
-}
-.search-form button:hover{
+  }
+
+  .search-form button:hover {
     color: #8eb35a;
     background-color: #ffffff;
     border: 1px solid #8eb35a;
     text-decoration: none;
-}
+  }
 </style>
 @endsection
 @section('content')
@@ -82,46 +84,46 @@
     @php($index = 0)
     <div class="row">
       <div class="products-it">
-    @foreach($results as $product)
-      {{-- IS SALE --}}
-      @php($isSale = 0)
-      @if($product->special_price != 0 && $product->special_price_start_date <= $curDate && $curDate <=$product->special_price_end_date )
-        @php($isSale = 1)
-      @endif
-        {{-- @if($index == 0 || $index % 4 == 0)
+        @foreach($results as $product)
+        {{-- IS SALE --}}
+        @php($isSale = 0)
+        @if($product->special_price != 0 && $product->special_price_start_date <= $curDate && $curDate <=$product->special_price_end_date )
+          @php($isSale = 1)
+          @endif
+          {{-- @if($index == 0 || $index % 4 == 0)
         <div class="row">
           <div class="products-it">
         @endif --}}
-            {{-- BEGIN P --}}
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="pro-it">
-                <a href="{{url('/products')}}/{{$product->slug}}">
-                  <img class="pro-img" src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}"  alt="No Image">
-                </a>
-                <div class="pro-infor tuan-fix-test">
-                  @if ($isSale == 1)
-                  <p><span class="hot">@lang('product.sale')</span></p>
-                  @endif
-                  <h2>{{$product->translation->name??$product->name}}</h2>
-                  @if(!$product->call_for_price)
-                  @if ($isSale == 1)
-                  <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
-                  <strong>{{FormatPrice::price($product->special_price)}}</strong>
-                  @else
-                  <strong>{{FormatPrice::price($product->price)}}</strong>
-                  @endif
-                  @endif
-                </div>
+          {{-- BEGIN P --}}
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="pro-it">
+              <a href="{{url('/products')}}/{{$product->slug}}">
+                <img class="lazyload pro-img" data-src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="No Image">
+              </a>
+              <div class="pro-infor tuan-fix-test">
+                @if ($isSale == 1)
+                <p><span class="hot">@lang('product.sale')</span></p>
+                @endif
+                <h2>{{$product->translation->name??$product->name}}</h2>
+                @if(!$product->call_for_price)
+                @if ($isSale == 1)
+                <del class="section-text">{{FormatPrice::price($product->price)}}</del> &nbsp;
+                <strong>{{FormatPrice::price($product->special_price)}}</strong>
+                @else
+                <strong>{{FormatPrice::price($product->price)}}</strong>
+                @endif
+                @endif
               </div>
             </div>
-            {{-- END P --}}
-        {{-- @if(($index > 0 && $index % 3 === 0) || $index + 1 === count($results))
+          </div>
+          {{-- END P --}}
+          {{-- @if(($index > 0 && $index % 3 === 0) || $index + 1 === count($results))
           </div>
         </div>
         @endif --}}
-    @endforeach
-  </div>
-</div>
+          @endforeach
+      </div>
+    </div>
     <div class="row">
       <div class="blogpanigation">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -141,7 +143,7 @@
   {
     {
       --
-      $(document).ready(function () {
+      $(document).ready(function() {
         // $('.add-shoopingcart').click(function() {
         //     var id = $("input[name='product_id']").val();
         //     var name = $("input[name='product_name']").val();

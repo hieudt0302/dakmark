@@ -54,21 +54,21 @@
                     <div class="page-title">
                         <h1 class="h3">@lang('checkout.confirm-order')</h1>
                     </div>
-                    <div class="page-body checkout-data">                       
-                            <p class="page-intro lead">
-                                @lang('checkout.confirm-message')
-                            </p>
-                            <div class="terms-of-service alert alert-info mb-3">
-                                <div class="checkbox">
-                                    <label class="mb-0 form-check-label">
-                                        <input id="termsofservice" type="checkbox" name="termsofservice" class="form-check-input"> @lang('checkout.agree-message')
-                                    </label>
-                                </div>
-                                <!-- Terms of service -->
+                    <div class="page-body checkout-data">
+                        <p class="page-intro lead">
+                            @lang('checkout.confirm-message')
+                        </p>
+                        <div class="terms-of-service alert alert-info mb-3">
+                            <div class="checkbox">
+                                <label class="mb-0 form-check-label">
+                                    <input id="termsofservice" type="checkbox" name="termsofservice" class="form-check-input"> @lang('checkout.agree-message')
+                                </label>
                             </div>
-                            <div class="confirm-order">
-                            </div>
-                  
+                            <!-- Terms of service -->
+                        </div>
+                        <div class="confirm-order">
+                        </div>
+
                         <div class="order-summary-body mb-4">
                             <div class="order-summary-content">
                                 <div class="card card-block order-review-data-box mb-3">
@@ -94,13 +94,13 @@
                                                             {{$billingaddress->last_name}} {{$billingaddress->first_name}}
                                                         </div>
                                                         <div class="address1">
-                                                        {{$billingaddress->address1}}
+                                                            {{$billingaddress->address1}}
                                                         </div>
                                                         <div class="city-state-zip">
                                                             {{$billingaddress->ciy}}, {{$billingaddress->zipcode}}
                                                         </div>
                                                         <div class="country">
-                                                        {{$billingaddress->country}}
+                                                            {{$billingaddress->country}}
                                                         </div>
                                                     </div>
                                                     <div class="email">
@@ -132,13 +132,13 @@
                                                             {{$shippingaddress->last_name}} {{$shippingaddress->first_name}}
                                                         </div>
                                                         <div class="address1">
-                                                        {{$shippingaddress->address1}}
+                                                            {{$shippingaddress->address1}}
                                                         </div>
                                                         <div class="city-state-zip">
                                                             {{$shippingaddress->ciy}}, {{$shippingaddress->zipcode}}
                                                         </div>
                                                         <div class="country">
-                                                        {{$shippingaddress->country}}
+                                                            {{$shippingaddress->country}}
                                                         </div>
                                                     </div>
                                                     <div class="email">
@@ -182,10 +182,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <form action="{{url('/Checkout/Confirm/Next')}}" id="confirm-order-form" method="post">
-                                    {{ csrf_field() }}	
+                                    {{ csrf_field() }}
                                     <div class="comment-box card mb-3">
                                         <div class="card-header h5">
                                             @lang('checkout.checkout-comment')
@@ -219,14 +219,12 @@
                                                 <div class="cart-col cart-col-main">
                                                     <div class="row row-hardcode sm-gutters">
                                                         <div class="col cart-item-img">
-                                                            <img class="img-fluid" alt="Picture of Item" 
-                                                            src="{{asset('/storage')}}/{{$row->options->source}}"
-                                                                title="Show details for Herren T-Shirt">
+                                                            <img class="lazyload img-fluid" alt="Picture of Item" data-src="{{asset('/storage')}}/{{$row->options->source}}" title="Show details for Herren T-Shirt">
                                                         </div>
                                                         <div class="col">
                                                             <a class="cart-item-link" href="{{url('/products')}}/$row->id" title="Description">{{$row->name}}</a>
                                                             <div class="cart-item-desc fs-sm">
-                                                            {{$row->options->summary}}
+                                                                {{$row->options->summary}}
                                                             </div>
                                                             <!-- <div class="cart-item-attrs fs-sm my-2">
                                                                 Atributes
@@ -268,7 +266,7 @@
                                                                 <td class="cart-summary-label">
                                                                     <span class="text-nowrap">@lang('checkout.shipping'):</span>
                                                                     <span class="font-weight-medium">
-                                                                    {{__('method.shipping.'. $shippingMethodId . '.name')}}
+                                                                        {{__('method.shipping.'. $shippingMethodId . '.name')}}
                                                                     </span>
                                                                 </td>
                                                                 <td class="cart-summary-value">
@@ -319,50 +317,50 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>  -->
-<script type="text/javascript" src="{{ asset('js/viewport.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/SmoothScroll.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/eventbroker.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/underscore.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/underscore.mixins.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/underscore.string.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/system.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/system.common.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/public.common.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/throbber.js') }}"></script>     
-<script type="text/javascript" src="{{ asset('js/doAjax.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/offcanvas.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/offcanvas-cart.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.animate.js') }}"></script> 
- 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#terms-of-service-trigger").on("click", function (event) {
-                event.preventDefault();
-                $("#terms-of-service-modal .modal-body").html(
-                    '<iframe id="iframe-terms-of-service" src="/frontend/en/t-popup/conditionsofuse" frameBorder="0" />'
-                );
-            });
-            $("#disclaimer-trigger").on("click", function (event) {
-                event.preventDefault();
-                $("#terms-of-service-modal .modal-body").html(
-                    '<iframe id="iframe-terms-of-service" src="/frontend/en/t-popup/disclaimer" frameBorder="0" />'
-                );
-            });
+<script type="text/javascript" src="{{ asset('js/viewport.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/SmoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/eventbroker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/underscore.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/underscore.mixins.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/underscore.string.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/system.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/system.common.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/public.common.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/throbber.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/doAjax.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/offcanvas.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/offcanvas-cart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.animate.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#terms-of-service-trigger").on("click", function(event) {
+            event.preventDefault();
+            $("#terms-of-service-modal .modal-body").html(
+                '<iframe id="iframe-terms-of-service" src="/frontend/en/t-popup/conditionsofuse" frameBorder="0" />'
+            );
         });
-    </script>
-	
+        $("#disclaimer-trigger").on("click", function(event) {
+            event.preventDefault();
+            $("#terms-of-service-modal .modal-body").html(
+                '<iframe id="iframe-terms-of-service" src="/frontend/en/t-popup/disclaimer" frameBorder="0" />'
+            );
+        });
+    });
+</script>
+
 <script>
-    $(function () {
-        $('#confirm-order-form').submit(function () {
+    $(function() {
+        $('#confirm-order-form').submit(function() {
             $('.btn-buy', this).attr('disabled', 'disabled');
         });
         var checkoutButton = $(".btn-buy");
-        checkoutButton.on("click", function () {
+        checkoutButton.on("click", function() {
             var termOfServiceOk = true,
                 userAgreementsOk = true,
                 esdRevocationWaiverOk = true;
@@ -391,7 +389,7 @@
 
 
             // agree user agreement for downloadable products
-            cartItems.find('input[name^=AgreeUserAgreement]').each(function () {
+            cartItems.find('input[name^=AgreeUserAgreement]').each(function() {
                 if (!$(this).is(':checked')) {
                     userAgreementsOk = false;
                     displayNotification(
@@ -408,7 +406,7 @@
 
             // agree esd revocation waiver
 
-            cartItems.find('input[name^=AgreeEsdRevocationWaiver]').each(function () {
+            cartItems.find('input[name^=AgreeEsdRevocationWaiver]').each(function() {
                 if (!$(this).is(':checked')) {
                     esdRevocationWaiverOk = false;
                     displayNotification(

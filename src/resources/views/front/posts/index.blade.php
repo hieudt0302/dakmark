@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="video2">
-                                <img src="{{asset('/storage/images/blog/')}}/{{$post_tran->post->img}}" alt="{{$post_tran->title}}">
+                                <img class="lazyload" data-src="{{asset('/storage/images/blog/')}}/{{$post_tran->post->img}}" alt="{{$post_tran->title}}">
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -70,7 +70,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="video2">
-                                <img src="{{asset('/storage/images/blog/')}}/{{$post->img}}" alt="{{$post->translation->title}}">
+                                <img class="lazyload" data-src="{{asset('/storage/images/blog/')}}/{{$post->img}}" alt="{{$post->translation->title}}">
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -132,7 +132,7 @@
                         @foreach($lastPosts as $post)
                         @if(!empty($post->translation->title))
                         <div class="pp-post-it">
-                            <img src="{{asset('/storage/images/blog/preview/')}}/{{$post->img}}" alt="{{$post->translation->title}}">
+                            <img class="lazyload" data-src="{{asset('/storage/images/blog/preview/')}}/{{$post->img}}" alt="{{$post->translation->title}}">
                             <div class="pp-infor">
                                 <div class="date">
                                     <span>{{$post->author->first_name}} {{$post->author->last_name}} | {{ date('d-m-Y', strtotime($post->created_at)) }}</span>
@@ -146,7 +146,7 @@
                     <br><br>
                     @if (Setting::config('banner-blog-active')=='1')
                     <div class="sale">
-                        <a href="{{ Setting::config('banner-blog-url') }}"><img src="{{asset('frontend/images/uploads/sale.jpg')}}" alt="post1"></a>
+                        <a href="{{ Setting::config('banner-blog-url') }}"><img class="lazyload" data-src="{{asset('frontend/images/uploads/sale.jpg')}}" alt="post1"></a>
                     </div>
                     @endif
                     <div class="searchbytag">

@@ -48,7 +48,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="pro-it">
                         <a href="{{url('/products')}}/{{$product_tran->product->slug}}">
-                            <img class="pro-img" src="{{ asset('/storage') }}/{{$product_tran->product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="{{$product_tran->name??$product_tran->product->name}}">
+                            <img class="lazyload pro-img" data-src="{{ asset('/storage') }}/{{$product_tran->product->GetMediaByOrderAsc()->source??'images/no-image.png'}}" alt="{{$product_tran->name??$product_tran->product->name}}">
                         </a>
                         <div class="pro-infor">
                             <h2>{{$product_tran->name??$product_tran->product->name}}</h2>
@@ -117,7 +117,7 @@
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <div class="blog-it-left">
                     <a href="{{url('/posts')}}/{{$post_tran->post->slug}}">
-                        <img class="blog-img" src="{{asset('/storage/images/blog/')}}/{{$post_tran->post->img}}" alt="{{ $post_tran->title??'' }}">
+                        <img class="lazyload blog-img" data-src="{{asset('/storage/images/blog/')}}/{{$post_tran->post->img}}" alt="{{ $post_tran->title??'' }}">
                     </a>
                     <div class="blog-ct-left">
                         <div class="date">

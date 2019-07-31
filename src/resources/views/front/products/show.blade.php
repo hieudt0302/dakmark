@@ -30,7 +30,7 @@
 						@foreach($product->medias as $key =>  $media)
 							@if($key === 0)
 							<div class="pro-img">
-								<img src="{{asset('/storage')}}/{{$media->source}}" alt="product" class="product-main-img">
+								<img data-src="{{asset('/storage')}}/{{$media->source}}" alt="product" class="lazyload product-main-img">
 							</div>
 							@else 
 								@if($key === 1)
@@ -39,9 +39,9 @@
 								@endif 
 									@if($key < 4)
 										@if($key === 1)
-										<img class="sub-img img1" src="{{asset('/storage')}}/{{$media->source}}" alt="product">
+										<img class="lazyload sub-img img1" data-src="{{asset('/storage')}}/{{$media->source}}" alt="product">
 										@else
-										<img class="sub-img" src="{{asset('/storage')}}/{{$media->source}}" alt="product">
+										<img class="lazyload sub-img" data-src="{{asset('/storage')}}/{{$media->source}}" alt="product">
 										@endif
 									@endif
 								@if($key + 1  == count($product->medias))
@@ -52,7 +52,7 @@
 						@endforeach
 					@else
 						<div class="pro-img">
-							<img src="{{asset('/images/no-image.png')}}" alt="No Images" class="product-main-img">
+							<img data-src="{{asset('/images/no-image.png')}}" alt="No Images" class="lazyload product-main-img">
 						</div>
 					@endif 
 					
@@ -109,7 +109,7 @@
 							@endif
 
 							<p class="para">{{$product->translation->summary??''}}</p>
-							<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line">
+							<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line">
 							@if(!$product->call_for_price && !$product->disable_buy_button && !$product->sold_off)
 								<div class="right-it">
 										<form class="quantity" method="post" action="#">
@@ -122,7 +122,7 @@
 											<i class="fa fa-check-circle" aria-hidden="true"></i>@lang('common.in-stock')
 										</span>	
 								</div>
-								<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line">
+								<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line">
 							@endif
 							<div class="pro-description"> 
 								<p>SKU:<span>{{$product->sku}}</span></p>
@@ -134,7 +134,7 @@
 	                                		@endforeach
 	                                </span></p>
 							</div>
-							<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line-3">
+							<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line-3">
 							@if(!$product->call_for_price && !$product->disable_buy_button && !$product->sold_off)
 								<a class="readmore add-shoopingcart" href="javascript:void(0)">@lang('shoppings.add-cart')</a>
 								@if(!$product->disable_wishlist_button)
@@ -148,7 +148,7 @@
 
 							<div id="call-number" style="display:none;">
 								<br>
-								<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line-3">		
+								<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line-3">		
 								<!-- TODO: Get Phone from setting data -->
 							  	<h2 class="cmt-heading">{{ __('common.call-details')}}: {{ Setting::config('hotline') }}.</h2>
 							</div>
@@ -164,7 +164,7 @@
 							<li><a href="#tab2">@lang('product.add-info')</a></li>
 							<li><a href="#tab3">@lang('product.reviews') <span>({{count($product->comments)}})</span></a></li>
 						</span>
-						<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line4" width="100">
+						<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line4" width="100">
 					    <div class="tab-content">
 					        <div id="tab1" class="tab active comment list-item">
 					            <h2 class="cmt-heading">@lang('product.description')</span></h2>
@@ -176,7 +176,7 @@
 									
 									</div>
 								</div>
-								<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line4">
+								<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line4">
 				
 					        </div>
 					        <div id="tab2" class="tab comment list-item">
@@ -190,7 +190,7 @@
 										</div>
 									</div>
 								</div>
-								<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line4">
+								<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line4">
 					        </div>
 					        <div id="tab3" class="tab comment list-item">
 					        	<h2 class="cmt-heading">@lang('product.reviews')({{count($product->comments)}})</span></h2>
@@ -198,7 +198,7 @@
 	                            <div class="cmt-it pro-list-it ">
 									<div class="row">
 										<div class="col-md-2 col-sm-2 col-xs-2">
-											<img src="{{asset('frontend/images/uploads/cmt1.png')}}" alt="Comment">
+											<img class="lazyload" data-src="{{asset('frontend/images/uploads/cmt1.png')}}" alt="Comment">
 										</div>
 										<div class="col-md-10 col-sm-10 col-xs-10">
 											<div class="cmt-content">
@@ -238,7 +238,7 @@
 										</div>
 									</div>
 								</div>
-								<img src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="div-line4">
+								<img data-src="{{asset('frontend/images/uploads/div-line.png')}}" alt="Sep" class="lazyload div-line4">
 	                            @endforeach
 	                            
 				       	 	</div>
@@ -322,7 +322,7 @@
 		        </div> 
 		        @if (Setting::config('banner-blog-active')=='1')
 		        <div class="sale">
-		                <a href="{{ Setting::config('banner-blog-url') }}"><img src="{{asset('frontend/images/uploads/sale.jpg')}}" alt="post1"></a>
+		                <a href="{{ Setting::config('banner-blog-url') }}"><img class="lazyload" data-src="{{asset('frontend/images/uploads/sale.jpg')}}" alt="post1"></a>
 		        </div>
 		        @endif
 		        <div class="searchbytag">

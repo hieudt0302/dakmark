@@ -41,7 +41,7 @@
         <div class="row is-same-height">
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/poko.png') }}" alt="Logo">
+                    <img class="lazyload" data-src="{{ asset('images/logo/poko.png') }}" alt="Logo">
                     <h2>@lang('home.about-us')</h2>
                     <p>{{ str_pad($pokofarms_message->translation->description??"",200) }}</p>
                     <a class="learnmore" href="{{url('/about')}}">@lang('common.more-details')</a>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/origin.png') }}" alt="Logo">
+                    <img class="lazyload" data-src="{{ asset('images/logo/origin.png') }}" alt="Logo">
                     <h2>@lang('home.product-origin')</h2>
                     <p>{{ str_pad($product_origin->translation->description??"",200) }}</p>
                     <a class="learnmore" href="{{url('/product-origin')}}">@lang('common.more-details')</a>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/fairtrade.png') }}" alt="Quality Control Approved">
+                    <img class="lazyload" data-src="{{ asset('images/logo/fairtrade.png') }}" alt="Quality Control Approved">
                     <h2>@lang('home.product-quality')</h2>
                     <p>{{ str_pad($product_quality->translation->description??"",200) }}</p>
                     <a class="learnmore" href="{{url('/product-quality')}}">@lang('common.more-details')</a>
@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 ab-items">
                 <div class="ab-item">
-                    <img src="{{ asset('images/logo/community-icon.png') }}" alt="Community">
+                    <img class="lazyload" data-src="{{ asset('images/logo/community-icon.png') }}" alt="Community">
                     <h2>@lang('home.community')</h2>
                     <p>{{ str_pad($community_category->translation->description??"",200)}}</p>
                     <a class="learnmore" href="{{url('subject/posts/'.$community_category->slug)}}">@lang('common.more-details')</a>

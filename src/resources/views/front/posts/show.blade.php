@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 <div class="blogsingle">
-    <img class="blog-img" src="/frontend/images/uploads/blogsingle.png" alt="Detail">
+    <img class="lazyload blog-img" data-src="/frontend/images/uploads/blogsingle.png" alt="Detail">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -38,7 +38,7 @@
                         <div class="cmt-it">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="images/uploads/cmt1.png" alt="Comment">
+                                    <img class="lazyload" data-src="images/uploads/cmt1.png" alt="Comment">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="cmt-content">
@@ -90,7 +90,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="farm-img">
-            <img src="{{asset('frontend/images/uploads/blogsingle-bg-footer.jpg')}}" alt="farm">
+            <img class="lazyload" data-src="{{asset('frontend/images/uploads/blogsingle-bg-footer.jpg')}}" alt="farm">
         </div>
     </div>
 </div>

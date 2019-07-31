@@ -1,4 +1,4 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 @section('title','Pô Kô Farms')
 
 @section('content')
@@ -27,13 +27,13 @@
             </div>
         </div>
     </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="farm-img">
-            <img src="{{asset('frontend/images/uploads/infopage-bg-footer.jpg')}}" alt="farm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="farm-img">
+                <img class="lazyload" data-src="{{asset('frontend/images/uploads/infopage-bg-footer.jpg')}}" alt="farm">
+            </div>
         </div>
     </div>
-</div>    
 </section>
 
 <!-- End Info Page Section -->

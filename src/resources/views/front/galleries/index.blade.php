@@ -39,7 +39,7 @@
 				@foreach($gallery->medias as $m)
 				<div class="grid-item {{str_slug($gallery->name, "-")}} gallery-it it pro-it">
 					<a href="{{asset('/storage')}}/{{$m->thumb}}" data-lightbox="test1">
-						<img class="pro-img" src="{{asset('/storage')}}/{{$m->source}}" alt="Image Gallery">
+						<img class="lazyload pro-img" data-src="{{asset('/storage')}}/{{$m->source}}" alt="Image Gallery">
 						<div class="hover-inner">
 							<h1>{{$m->name}}</h1>
 							<span class="sub">{{$m->description}}</span>

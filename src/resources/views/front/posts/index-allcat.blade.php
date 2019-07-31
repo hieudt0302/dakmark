@@ -74,7 +74,7 @@
 
                     <!-- Image -->
                     <div class="blog-media">
-                        <a href="{{url('/')}}/posts/{{$post->slug}}"><img src="{{ asset('images/blog/' . $post->img) }}" alt="{{$post->translation->title}}" /></a>
+                        <a href="{{url('/')}}/posts/{{$post->slug}}"><img class="lazyload" data-src="{{ asset('images/blog/' . $post->img) }}" alt="{{$post->translation->title}}" /></a>
                     </div>
 
                     <!-- Text Intro -->
@@ -171,7 +171,7 @@
                         <ul class="clearlist widget-posts">
                             @foreach($lastPosts as $post)
                             <li class="clearfix">
-                                <a href=""><img src="images/blog/previews/post-prev-1.jpg" alt="Previous" class="widget-posts-img" /></a>
+                                <a href=""><img class="lazyload" data-src="images/blog/previews/post-prev-1.jpg" alt="Previous" class="widget-posts-img" /></a>
                                 <div class="widget-posts-descr">
                                     <a href="{{url('/posts')}}/{{$post->slug}}" title="">{{$post->translation->title}}</a> Posted by {{$post->author->last_name}} {{$post->author->first_name}} {{ date('F d, Y', strtotime($post->created_at)) }}
                                 </div>

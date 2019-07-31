@@ -62,7 +62,7 @@ Sharing together and developing together, make the world better with quality cof
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="ab-decorate">
-                    <img src="frontend/images/logo2.png" alt="About">
+                    <img class="lazyload" data-src="frontend/images/logo2.png" alt="About">
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -74,14 +74,14 @@ Sharing together and developing together, make the world better with quality cof
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="ab-item">
-                    <img src="frontend/images/uploads/abflower1.png" alt="About">
+                    <img class="lazyload" data-src="frontend/images/uploads/abflower1.png" alt="About">
                     <h2>@lang('about.our-vision')</h2>
                     <p>{!!__('about.vision-details')!!}</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="ab-item">
-                    <img src="frontend/images/uploads/abflower2.png" alt="About">
+                    <img class="lazyload" data-src="frontend/images/uploads/abflower2.png" alt="About">
                     <h2>@lang('about.our-mission')</h2>
                     <p>{!!__('about.mission-details')!!}</p>
                 </div>
@@ -92,7 +92,7 @@ Sharing together and developing together, make the world better with quality cof
 <div class="row">
     <div class="col-md-12">
         <div class="farm-img">
-            <img src="frontend/images/uploads/aboutv1-bg-footer.jpg" alt="farm">
+            <img class="lazyload" data-src="frontend/images/uploads/aboutv1-bg-footer.jpg" alt="farm">
         </div>
     </div>
 </div>

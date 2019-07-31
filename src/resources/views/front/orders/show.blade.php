@@ -61,19 +61,19 @@
                                                     {{$order->billingaddress->company??''}}
                                                 </div>
                                                 <div class="name">
-                                                {{$order->billingaddress->last_name??''}} {{$order->billingaddress->first_name??''}}
+                                                    {{$order->billingaddress->last_name??''}} {{$order->billingaddress->first_name??''}}
                                                 </div>
                                                 <div class="address1">
-                                                {{$order->billingaddress->address1??''}}
+                                                    {{$order->billingaddress->address1??''}}
                                                 </div>
                                                 <div class="address2">
-                                                {{$order->billingaddress->address2??''}}
+                                                    {{$order->billingaddress->address2??''}}
                                                 </div>
                                                 <div class="city-state-zip">
-                                                {{$order->billingaddress->city??''}}, {{$order->billingaddress->zipcode??''}}
+                                                    {{$order->billingaddress->city??''}}, {{$order->billingaddress->zipcode??''}}
                                                 </div>
                                                 <div class="country">
-                                                {{$order->billingaddress->country??''}}
+                                                    {{$order->billingaddress->country??''}}
                                                 </div>
                                             </div>
                                             <div class="email">
@@ -92,19 +92,19 @@
                                                     {{$order->shippingaddress->company??''}}
                                                 </div>
                                                 <div class="name">
-                                                {{$order->shippingaddress->last_name??''}} {{$order->shippingaddress->first_name??''}}
+                                                    {{$order->shippingaddress->last_name??''}} {{$order->shippingaddress->first_name??''}}
                                                 </div>
                                                 <div class="address1">
-                                                {{$order->shippingaddress->address1??''}}
+                                                    {{$order->shippingaddress->address1??''}}
                                                 </div>
                                                 <div class="address2">
-                                                {{$order->shippingaddress->address2??''}}
+                                                    {{$order->shippingaddress->address2??''}}
                                                 </div>
                                                 <div class="city-state-zip">
-                                                {{$order->shippingaddress->city??''}}, {{$order->shippingaddress->zipcode??''}}
+                                                    {{$order->shippingaddress->city??''}}, {{$order->shippingaddress->zipcode??''}}
                                                 </div>
                                                 <div class="country">
-                                                {{$order->shippingaddress->country??''}}
+                                                    {{$order->shippingaddress->country??''}}
                                                 </div>
                                             </div>
                                             <div class="email">
@@ -159,15 +159,15 @@
                                             <div class="row row-hardcode sm-gutters">
                                                 <div class="col cart-item-img">
                                                     @if(strlen($orderdetail->product->GetMediaByOrderAsc()->source??'') > 0)
-                                                    <img class="img-fluid" alt="{{$orderdetail->product->name}}" src="{{asset('/storage')}}/{{$orderdetail->product->GetMediaByOrderAsc()->source??'images/default-image.png'}}" title="{{$orderdetail->product->name}}">
+                                                    <img class="lazyload img-fluid" alt="{{$orderdetail->product->name}}" data-src="{{asset('/storage')}}/{{$orderdetail->product->GetMediaByOrderAsc()->source??'images/default-image.png'}}" title="{{$orderdetail->product->name}}">
                                                     @else
-                                                    <img class="img-fluid" alt="{{$orderdetail->product->name}}" src="{{asset('/images/no-image.png')}}">
+                                                    <img class="lazyload img-fluid" alt="{{$orderdetail->product->name}}" data-src="{{asset('/images/no-image.png')}}">
                                                     @endif
                                                 </div>
                                                 <div class="col">
                                                     <a class="cart-item-link" href="{{url('/products/')}}/{{$orderdetail->product->id}}" title="Description">{{$orderdetail->product->name}}</a>
                                                     <div class="cart-item-desc fs-sm">
-                                                    {{$orderdetail->product->translation->summary??''}}
+                                                        {{$orderdetail->product->translation->summary??''}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,7 +176,7 @@
                                             <span class="price">{{FormatPrice::price($orderdetail->price)}}</span>
                                         </div>
                                         <div class="cart-col cart-col-qty" data-caption="Quantity">
-                                            {{$orderdetail->quantity}} 
+                                            {{$orderdetail->quantity}}
                                         </div>
                                         <div class="cart-col cart-col-price cart-col-subtotal" data-caption="Total">
                                             <span class="price">{{FormatPrice::price($orderdetail->total)}}</span>
@@ -235,29 +235,29 @@
 @endsection
 
 @section('scripts')
-    <!-- <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>  -->
+<!-- <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>  -->
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>  -->
-<script type="text/javascript" src="{{ asset('js/viewport.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/eventbroker.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/underscore.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/underscore.mixins.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/underscore.string.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/system.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/system.common.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/public.common.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/throbber.js') }}"></script>     
-<script type="text/javascript" src="{{ asset('js/doAjax.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/offcanvas.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/offcanvas-cart.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.animate.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/viewport.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/eventbroker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/underscore.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/underscore.mixins.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/underscore.string.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/system.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/system.common.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/public.common.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/throbber.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/doAjax.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.bootstrap-touchspin.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/offcanvas.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/offcanvas-cart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dist/pnotify/pnotify.animate.js') }}"></script>
 
-  
+
 <script>
-    $(function () {
-        
+    $(function() {
+
     });
 </script>
 @endsection
