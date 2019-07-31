@@ -26,26 +26,29 @@
 	<!-- <link  rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,700,900"> -->
 	<!-- 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=vietnamese" rel="stylesheet">
-	
-	-->
-	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	-->
+
 	<!-- Mobile specific meta -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="format-detection" content="telephone-no">
 	<!-- CSS files -->
 	<!-- CSS files -->
-	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{asset('frontend/images/favicons/apple-touch-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicons/favicon-32x32.png')}}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicons/favicon-16x16.png')}}">
 	<link rel="manifest" href="{{asset('frontend/images/favicons/manifest.json')}}">
 	<link rel="mask-icon" href="{{asset('frontend/images/favicons/safari-pinned-tab.svg')}}" color="#5bbad5">
 	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
+	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="{{asset('frontend/js/plugins.js')}}"></script>
 	<!-- 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js" integrity="sha256-QBfKkye/UQUiiCmVVEsU6b/j9bh5luFhnFgal4ncox0=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
@@ -156,15 +159,16 @@
 
 	</div>
 	<!--
--->
-	<script src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
-	<script defer src="{{asset('frontend/js/plugins.js')}}"></script>
-	<script defer src="{{asset('frontend/js/custom.js')}}"></script>
 	<script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script defer src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
-	<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script defer src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
-	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJyWgPF1EBDeQjx4ctp4e_DuoLi7Zf8OA" type="text/javascript"></script>
+	-->
+
+	<script src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
+	<script src="{{asset('frontend/js/custom.js')}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+	<script src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJyWgPF1EBDeQjx4ctp4e_DuoLi7Zf8OA" type="text/javascript"></script>
 
 	<script>
 		(function() {
