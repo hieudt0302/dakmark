@@ -1,7 +1,7 @@
 <div class="main-nav clearfix">
     <div class="container">
         <a href="#" class="mobile-menu clearfix"><i class="fa fa-bars" aria-hidden="true"></i> PÔ KÔ FARM</a>
-        <a class="hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.png')}}" alt=""></a>
+        <a class="hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.min.png')}}" alt=""></a>
         <nav id="main-Nav">
             <ul class="mainnavitems">
                 <li>
@@ -9,15 +9,15 @@
                 </li>
                 <li>
                     <a href="{{ url('/about')}}">
-                    Pô Kô Farms
+                        Pô Kô Farms
                     </a>
                 </li>
                 @foreach($blog_menu as $menu)
                 <li>
                     <a href="{{url('/subject')}}/{{$menu->parent->slug}}/{{$menu->slug}}">
-                    {{$menu->translation->name??$menu->name}}
+                        {{$menu->translation->name??$menu->name}}
                     </a>
-                </li>  
+                </li>
                 @endforeach
                 <li class="has-submenu">
                     <a href="#">{{$product_menu->translation->name??$product_menu->name}} <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
@@ -54,27 +54,27 @@
                         <li>
                             <a href="{{URL::asset('')}}language/vi">
                                 Tiếng Việt
-                            </a>                                        
+                            </a>
                         </li>
                         <li>
                             <a href="{{URL::asset('')}}language/en">
                                 English
-                            </a>                                        
-                        </li> 
+                            </a>
+                        </li>
                         <li>
                             <a href="{{URL::asset('')}}language/cn">
                                 中文
-                            </a>                                        
-                        </li> 
+                            </a>
+                        </li>
                         <li>
                             <a href="{{URL::asset('')}}language/jp">
                                 日本語
-                            </a>                                        
-                        </li> 
+                            </a>
+                        </li>
                         <li>
                             <a href="{{URL::asset('')}}language/kr">
                                 한국어
-                            </a>                                        
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -83,7 +83,7 @@
                         @guest
                         @lang('header.account')
                         @else
-                            {{Auth::user()->first_name}}
+                        {{Auth::user()->first_name}}
                         @endguest
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
@@ -91,7 +91,7 @@
                         @guest
                         <li><a href="{{ url('/login') }}">@lang('auth.login')</a></li>
                         <li><a href="{{ url('/register') }}">@lang('auth.register')</a></li>
-                        @else 
+                        @else
                         <li><a href="{{ url('/Account/Info') }}">@lang('account.my-account')</a></li>
                         <li><a href="{{ url('/wishlist') }}">@lang('account.wishlist')</a></li>
                         <li><a href="{{ url('/cart') }}"></i>@lang('shoppings.cart')</a></li>

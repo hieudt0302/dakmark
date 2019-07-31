@@ -13,7 +13,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <a class="hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.png')}}" alt=""></a>
+                                <a class="hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.min.png')}}" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -30,15 +30,15 @@
                             </li>
                             <li style="float: left">
                                 <a href="{{ url('/about')}}">
-                                Pô Kô Farms
+                                    Pô Kô Farms
                                 </a>
                             </li>
                             @foreach($blog_menu as $menu)
                             <li style="float: left">
                                 <a href="{{url('/subject')}}/{{$menu->parent->slug}}/{{$menu->slug}}">
-                                {{$menu->translation->name??$menu->name}}
+                                    {{$menu->translation->name??$menu->name}}
                                 </a>
-                            </li>  
+                            </li>
                             @endforeach
                             <li class="dropdown first" style="float: left">
                                 <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">{{$product_menu->translation->name??$product_menu->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -60,14 +60,14 @@
 
                             <li class="devider" style="float: left">
                                 &nbsp; &nbsp;
-                            </li>               
+                            </li>
                             <li class="dropdown first" style="float: right">
-                                <a class="main-right-menu btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">    
+                                <a class="main-right-menu btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
                                     @guest
-                                        <i class="fa fa-user-circle-o " aria-hidden="true"></i>
+                                    <i class="fa fa-user-circle-o " aria-hidden="true"></i>
                                     @else
-                                        <i class="fa fa-user-circle-o " aria-hidden="true"></i>
-                                        {{Auth::user()->last_name}}
+                                    <i class="fa fa-user-circle-o " aria-hidden="true"></i>
+                                    {{Auth::user()->last_name}}
                                     @endguest
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
@@ -75,7 +75,7 @@
                                     @guest
                                     <li><a href="{{ url('/login') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('auth.login')</a></li>
                                     <li><a href="{{ url('/register') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('auth.register')</a></li>
-                                    @else 
+                                    @else
                                     <li><a href="{{ url('/Account/Info') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('account.my-account')</a></li>
                                     <li><a href="{{ url('/wishlist') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('account.wishlist')</a></li>
                                     <li><a href="{{ url('/cart') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('shoppings.cart')</a></li>
@@ -83,17 +83,17 @@
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                                     @endguest
                                 </ul>
-                            </li>           
+                            </li>
                             <li style="float: right">
                                 <a class="main-right-menu shopping-cart" href="{{ url('/cart') }}">
-                                <!-- PLEASE DONT REMOVE CLASS FOR ADD CART HERE -->
+                                    <!-- PLEASE DONT REMOVE CLASS FOR ADD CART HERE -->
                                     <i class="fa fa-shopping-cart shopping-cart-icon" aria-hidden="true"></i>&nbsp;<span class="cartItemCount">({{ Cart::instance('default')->count(false) }})</span>
                                 </a>
-                            </li>                                                                                                               
-                            
-<!--                             <li style="float: right">
+                            </li>
+
+                            <!--                             <li style="float: right">
                                 <a>|</a>
-                            </li>  -->                                                                                                     
+                            </li>  -->
                             <li style="float: right">
                                 <a class="main-right-menu search-top-bt" href="javascript:void(0);"><i class="fa fa-search" aria-hidden="true"></i></a>
                             </li>
