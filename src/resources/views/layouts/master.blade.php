@@ -46,6 +46,7 @@
 	<script src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<!-- 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js" integrity="sha256-QBfKkye/UQUiiCmVVEsU6b/j9bh5luFhnFgal4ncox0=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/bootstrap-dropdownhover.css')}}">
