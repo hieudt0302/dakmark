@@ -44,12 +44,12 @@
 	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
-	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 	<!-- 
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js" integrity="sha256-QBfKkye/UQUiiCmVVEsU6b/j9bh5luFhnFgal4ncox0=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
