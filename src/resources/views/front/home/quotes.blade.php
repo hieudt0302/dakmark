@@ -1,4 +1,4 @@
-<div class="planttestimonial testimonial">
+<div class="planttestimonial testimonial lazyload" data-bg="frontend/images/uploads/planttest.jpg">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-4">
