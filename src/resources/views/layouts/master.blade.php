@@ -41,8 +41,8 @@
 	<link rel="manifest" href="{{asset('frontend/images/favicons/manifest.json')}}">
 	<link rel="mask-icon" href="{{asset('frontend/images/favicons/safari-pinned-tab.svg')}}" color="#5bbad5">
 	<meta name="theme-color" content="#ffffff">
-	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />

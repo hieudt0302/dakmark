@@ -6735,6 +6735,7 @@ section {
 .aboutv2 .ab-item img {
     margin-bottom: 45px;
     text-align: center;
+    height: auto !important;
 }
 
 .about .ab-item h2,
