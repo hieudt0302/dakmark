@@ -126,7 +126,7 @@
                         <span class="caret"></span>
                         <span class="sr-only"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{ strtoupper(app()->getLocale()) }}</span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <ul class="dropdown-menu dropdown-menu-right">
                         <li>
                             <a href="{{URL::asset('')}}language/vi">Tiếng Việt</a>
                         </li>

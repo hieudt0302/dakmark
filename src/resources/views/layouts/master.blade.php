@@ -46,7 +46,7 @@
 	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
 
 	<!-- 
 	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -107,7 +107,7 @@
 	<!-- 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 	End of code snippet for Google Fonts -->
-
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
@@ -162,14 +162,15 @@
 	<!--
 	<script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	-->
-	<script src="{{asset('frontend/js/plugins.js')}}"></script>
-	<script src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
-	<script src="{{asset('frontend/js/custom.js')}}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
-	<script src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJyWgPF1EBDeQjx4ctp4e_DuoLi7Zf8OA" type="text/javascript"></script>
+	
+	<script defer src="{{asset('frontend/js/plugins.js')}}"></script>
+	<script defer src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
+	<script defer src="{{asset('frontend/js/custom.js')}}"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+	<script defer src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+	<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script defer src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
+	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJyWgPF1EBDeQjx4ctp4e_DuoLi7Zf8OA" type="text/javascript"></script>
 
 	<script>
 		(function() {
