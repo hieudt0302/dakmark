@@ -70,12 +70,8 @@
 
 	@yield('header')
 	<meta name="google-site-verification" content="SBNKsjbUQHBBai8E7O5TxOH4R1pHOiD1F2qaSZbPxBk" />
-	<!-- Code snippet to speed up Google Fonts rendering: googlefonts.3perf.com -->
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet">
-
-	<!-- 
 	<link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=vietnamese" as="fetch" crossorigin="anonymous">
 	<script type="text/javascript">
 		! function(e, n, t) {
@@ -108,6 +104,8 @@
 			}).then(f).catch(a)) : a()
 		}(window, document, localStorage);
 	</script>
+	<!-- 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 	End of code snippet for Google Fonts -->
 
 </head>
