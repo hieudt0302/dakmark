@@ -32,7 +32,7 @@
 
             <div class="video-section">
                 <div class="video-wrapper">
-                    <iframe class="lazyload" width="560" height="315" data-src="{{ __('home.home-video-url')}}?autoplay=1&amp;rel=0&amp;mute=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe title="Intro" class="lazyload" width="560" height="315" data-src="{{ __('home.home-video-url')}}?autoplay=1&amp;rel=0&amp;mute=1" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <!-- End Video -->

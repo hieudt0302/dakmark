@@ -14085,11 +14085,11 @@ nav#menu {
     color: #558B2F;
 }
 
-button#btn {
+button.open-btn {
     display: block;
 }
 
-button#close-btn {
+button.close-btn {
     display: none;
 }
 

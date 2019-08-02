@@ -8,8 +8,8 @@
                         <div class="main-logo">
                             <div class="col-md-5">
                                 <div class="mobile-btn">
-                                    <button id="btn"><i class="ion-navicon"></i></button>
-                                    <button id="close-btn"><i class="ion-android-close"></i></button>
+                                    <button class="open-btn"><i class="ion-navicon"></i></button>
+                                    <button class="close-btn"><i class="ion-android-close"></i></button>
                                 </div>
                             </div>
                             <div class="col-md-7">
