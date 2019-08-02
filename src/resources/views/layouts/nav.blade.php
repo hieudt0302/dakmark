@@ -8,8 +8,8 @@
                         <div class="main-logo">
                             <div class="col-md-5">
                                 <div class="mobile-btn">
-                                    <button class="open-btn"><i class="fa fa-bars" aria-hidden="true"></i></button>
-                                    <button class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                    <button name="open-btn" class="open-btn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                                    <button name="close-btn" class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                             <div class="col-md-7">

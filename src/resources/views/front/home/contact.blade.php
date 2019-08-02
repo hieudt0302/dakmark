@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('title','Pô Kô Farms - '.__('header.contact'))
 @section('content')
@@ -17,17 +16,17 @@
 
 <section class="contact blogsingle">
     <div class="container">
-        @include('notifications.status_message') 
+        @include('notifications.status_message')
         @include('notifications.errors_message')
         @if (session()->has('success_message'))
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session()->get('success_message') }}
+        </div>
         @endif
         @if (session()->has('error_message'))
-            <div class="alert alert-danger">
-                {{ session()->get('error_message') }}
-            </div>
+        <div class="alert alert-danger">
+            {{ session()->get('error_message') }}
+        </div>
         @endif
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
@@ -40,7 +39,7 @@
                     <div class="ct-it">
                         <h4>@lang('contact.phone')</h4>
                         <p>Mobile: {{ Setting::config('phone') }}<br>
-                        Hotline: {{ Setting::config('hotline') }}</p>
+                            Hotline: {{ Setting::config('hotline') }}</p>
                         <hr>
                     </div>
                     <div class="ct-it">
@@ -50,7 +49,7 @@
                     </div>
                     <div class="ct-it ct-icon">
                         <h4>@lang('contact.social')</h4><br>
-                        <a target="_blank" href="//www.facebbook.com/{{ Setting::config('facebook') }}"><i class="fa fa-facebook" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+                        <a target="_blank" href="//www.facebook.com/{{ Setting::config('facebook') }}"><i class="fa fa-facebook" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
                         <a target="_blank" href="//www.instagram.com/{{ Setting::config('twitter') }}"><i class="fa fa-instagram" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
                         <a target="_blank" href="//www.youtube.com/{{ Setting::config('youtube') }}"><i class="fa fa-youtube-play" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Youtube"></i></a>
                     </div>
@@ -60,24 +59,24 @@
                 <div class="contact-form blogsingle-content">
                     <!-- comment form -->
                     {!! Form::open(array('route' => 'front.send-contact', 'class' => 'post-cmt')) !!}
-                        <label>@lang('contact.review')</label>
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <input class="name" type="text" name="name" placeholder="@lang('contact.name')">
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <input class="email" type="text" name="email" placeholder="@lang('contact.email')*">
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <input class="website" type="text" name="phone" placeholder="@lang('contact.phone')">
-                            </div>
+                    <label>@lang('contact.review')</label>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input class="name" type="text" name="name" placeholder="@lang('contact.name')">
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12 col-sm-12">
-                                <input  class="comt" type="text" name="message" placeholder="@lang('contact.message')*">
-                            </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input class="email" type="text" name="email" placeholder="@lang('contact.email')*">
                         </div>
-                        <input class="submit" type="submit" value="@lang('contact.submit')">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input class="website" type="text" name="phone" placeholder="@lang('contact.phone')">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <input class="comt" type="text" name="message" placeholder="@lang('contact.message')*">
+                        </div>
+                    </div>
+                    <input class="submit" type="submit" value="@lang('contact.submit')">
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -85,7 +84,7 @@
         <br><br><br>
     </div>
 </section>
-    <!-- Subscribe -->
-    @include('front.home.subscribe')
-    <!-- End Subscribe -->    
+<!-- Subscribe -->
+@include('front.home.subscribe')
+<!-- End Subscribe -->
 @endsection
