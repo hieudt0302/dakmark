@@ -109,7 +109,7 @@
 	<!-- 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 	End of code snippet for Google Fonts -->
-	<script defer src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
