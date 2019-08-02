@@ -1,4 +1,4 @@
-<div class="sticky-wrapper" style="height: 110px;">
+<div class="sticky-wrapper">
     <header class="ht-header" id="hd-fixed">
         <div class="row">
             <nav id="mainNav" class="navbar navbar-default navbar-custom">
@@ -8,8 +8,8 @@
                         <div class="main-logo">
                             <div class="col-md-5">
                                 <div class="mobile-btn">
-                                    <button class="open-btn"><i class="ion-navicon"></i></button>
-                                    <button class="close-btn"><i class="ion-android-close"></i></button>
+                                    <button class="open-btn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                                    <button class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                             <div class="col-md-7">

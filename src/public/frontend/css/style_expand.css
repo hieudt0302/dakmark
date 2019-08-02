@@ -14254,7 +14254,7 @@ button.close-btn {
     }
 
     .ht-header {
-        padding-bottom: 35px;
+        /* padding-bottom: 35px; */
         background: #ffffff;
     }
 
@@ -14333,7 +14333,7 @@ button.close-btn {
     }
 
     .ht-header {
-        padding-bottom: 30px;
+        /* padding-bottom: 30px; */
         background: #ffffff;
     }
 
@@ -14354,6 +14354,8 @@ button.close-btn {
     .main-logo img.logo {
         width: 60%;
         margin-left: 10px;
+        max-width: 120px;
+        height: auto;
     }
 
     header .right-menu {

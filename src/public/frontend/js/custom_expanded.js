@@ -20,12 +20,12 @@ $(document).ready(function () {
 	}
 
 	//   	//js or mobile menu
-	$("#btn").click(function (event) {
+	$(".mobile-btn .open-btn").click(function (event) {
 		/* Act on the event */
 		document.getElementById("menu").style.display = "block";
 		document.getElementById("page").style.transform = "translate3d(240px ,0 ,0)";
 		document.getElementById("page").style.position = "fixed";
-		document.getElementById("btn").style.display = "none";
+		$(this).css('display', "none");
 		$('#page').addClass('main');
 	});
 	$("#page").click(function (event) {
@@ -38,7 +38,7 @@ $(document).ready(function () {
 			document.getElementById("menu").style.display = "none";
 			document.getElementById("page").style.transform = "translate3d(0 ,0 ,0)";
 			document.getElementById("page").style.position = "inherit";
-			document.getElementById("btn").style.display = "block";
+			$(".mobile-btn .open-btn").css('display', "block");
 			$('#page').removeClass('main');
 		}
 	});
@@ -894,6 +894,41 @@ $(document).ready(function () {
 			});
 		}
 	});	/*ready*/
+	//js for scroll menu
+	// cache the element
+	// var $navBar = $('header');
+
+	// // find original navigation bar position
+	// var navPos = $navBar.offset().top;
+	$(window).scroll(function (event) {
+		/* Act on the event */
+		var scrollPos = $(window).scrollTop(),
+			nav1 = $('.ht-header');
+		nav3 = $('.ht-headerv3');
+		nav4 = $('.ht-headerv4');
+		if (scrollPos > 1300) {
+			nav1.addClass('fixed-nav1');
+			nav3.addClass('fixed-nav3');
+			nav4.addClass('fixed-nav4');
+
+		} else {
+			nav1.removeClass('fixed-nav1');
+			nav3.removeClass('fixed-nav3');
+			nav4.removeClass('fixed-nav4');
+		}
+	});
+	$('.count').each(function () {
+		$(this).prop('Counter', 0).animate({
+			Counter: $(this).text()
+		}, {
+				duration: 20000,
+				easing: 'swing',
+				step: function (now) {
+					$(this).text(Math.ceil(now));
+				}
+			});
+	});
+
 	//js for map
 	var geocoder;
 	var map;
@@ -948,39 +983,5 @@ $(document).ready(function () {
 		}
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
-	//js for scroll menu
-	// cache the element
-	// var $navBar = $('header');
-
-	// // find original navigation bar position
-	// var navPos = $navBar.offset().top;
-	$(window).scroll(function (event) {
-		/* Act on the event */
-		var scrollPos = $(window).scrollTop(),
-			nav1 = $('.ht-header');
-		nav3 = $('.ht-headerv3');
-		nav4 = $('.ht-headerv4');
-		if (scrollPos > 1300) {
-			nav1.addClass('fixed-nav1');
-			nav3.addClass('fixed-nav3');
-			nav4.addClass('fixed-nav4');
-
-		} else {
-			nav1.removeClass('fixed-nav1');
-			nav3.removeClass('fixed-nav3');
-			nav4.removeClass('fixed-nav4');
-		}
-	});
-	$('.count').each(function () {
-		$(this).prop('Counter', 0).animate({
-			Counter: $(this).text()
-		}, {
-				duration: 20000,
-				easing: 'swing',
-				step: function (now) {
-					$(this).text(Math.ceil(now));
-				}
-			});
-	});
 
 }); // end ready
