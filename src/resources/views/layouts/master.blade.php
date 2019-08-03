@@ -144,8 +144,8 @@
 	<script defer src="{{asset('frontend/js/plugins.js')}}"></script>
 	<script defer src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
 	-->
-
-	<script defer src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js"></script>
+	<script defer src="{{asset('frontend/js/lazysizes.min.js')}}"></script>
 	<script defer src="{{asset('frontend/js/custom.js')}}"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 	<script defer src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>

@@ -32,7 +32,13 @@
 
             <div class="video-section">
                 <div class="video-wrapper">
-                    <iframe title="Intro" class="lazyload" width="560" height="315" data-src="{{ __('home.home-video-url')}}?autoplay=1&amp;rel=0&amp;mute=1" frameborder="0" allowfullscreen></iframe>
+                    <div class="youtube" data-embed="Ln6C1mUrUdY">
+                        <div class="play-button"></div>
+                    </div>
+                    <!-- <div class="ratio-16-9 lazyload" data-youtube="Ln6C1mUrUdY" data-ytparams="autoplay=1">
+                        <button class="play-btn">play</button>
+                    </div> -->
+                    <!-- <iframe title="Intro" class="lazyload" width="560" height="315" data-src="{{ __('home.home-video-url')}}?autoplay=1&amp;rel=0&amp;mute=1" frameborder="0" allowfullscreen></iframe> -->
                 </div>
             </div>
             <!-- End Video -->
