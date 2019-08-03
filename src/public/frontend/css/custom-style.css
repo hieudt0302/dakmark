@@ -413,3 +413,16 @@ header nav ul.hd-menu {
 	margin-right: 100px;
 	background-color: #fff
 }
+
+footer .language-select a {
+	padding: 5px 10px;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	opacity: 0.5;
+}
+
+footer .language-select a:hover,
+footer .language-select a.active {
+	opacity: 1;
+}

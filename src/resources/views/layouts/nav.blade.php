@@ -42,7 +42,7 @@
                             @endforeach
                             <li class="dropdown first" style="float: left">
                                 <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">{{$product_menu->translation->name??$product_menu->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="dropdown-menu level1">
+                                <ul class="dropdown-menu level1" style="display: none;">
                                     @foreach($product_menu->GetMenuSubLevel1() as $sub)
                                     <li>
                                         <a href="{{url('/subject')}}/{{$sub->parent->slug}}/{{$sub->slug}}">
@@ -71,7 +71,7 @@
                                     @endguest
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
-                                <ul class="dropdown-menu level1">
+                                <ul class="dropdown-menu level1" style="display: none;">
                                     @guest
                                     <li><a href="{{ url('/login') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('auth.login')</a></li>
                                     <li><a href="{{ url('/register') }}"><i class="fa fa-angle-right" aria-hidden="true"></i> @lang('auth.register')</a></li>

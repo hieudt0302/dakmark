@@ -120,7 +120,7 @@
                     </ul>
                 </div>
                 <br>
-                <div class="langchoose btn-group dropup float-right">
+                <!-- <div class="langchoose btn-group dropup float-right">
                     <button type="button" class="btn btn-default"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{ strtoupper(app()->getLocale()) }}</button>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
@@ -128,25 +128,34 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li>
-                            <a href="{{URL::asset('')}}language/vi">Tiếng Việt</a>
+                            <a class="btn" href="{{URL::asset('')}}language/vi">Tiếng Việt</a>
                         </li>
                         <li>
-                            <a href="{{URL::asset('')}}language/en">English</a>
+                            <a class="btn" href="{{URL::asset('')}}language/en">English</a>
                         </li>
                         <li>
-                            <a href="{{URL::asset('')}}language/cn">中文</a>
+                            <a class="btn" href="{{URL::asset('')}}language/cn">中文</a>
                         </li>
                         <li>
-                            <a href="{{URL::asset('')}}language/jp">日本語</a>
+                            <a class="btn" href="{{URL::asset('')}}language/jp">日本語</a>
                         </li>
                         <li>
-                            <a href="{{URL::asset('')}}language/kr">한국어</a>
+                            <a class="btn" href="{{URL::asset('')}}language/kr">한국어</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
 
             </div>
             <!--         <img class="ft-line" src="{{asset('frontend/images/uploads/div-line.png')}}" alt="line">   -->
+        </div>
+        <div class="row">
+            <div class="btn-group language-select center-block text-center" role="group" aria-label="Select Language">
+                <a class="{{ strtoupper(app()->getLocale())=='VI' ? 'active' : '' }}" href="{{URL::asset('')}}language/vi">Tiếng Việt</a>
+                <a class="{{ strtoupper(app()->getLocale())=='EN' ? 'active' : '' }}" href="{{URL::asset('')}}language/en">English</a>
+                <a class="{{ strtoupper(app()->getLocale())=='CN' ? 'active' : '' }}" href="{{URL::asset('')}}language/cn">中文</a>
+                <a class="{{ strtoupper(app()->getLocale())=='JP' ? 'active' : '' }}" href="{{URL::asset('')}}language/jp">日本語</a>
+                <a class="{{ strtoupper(app()->getLocale())=='KR' ? 'active' : '' }}" href="{{URL::asset('')}}language/kr">한국어</a>
+            </div>
         </div>
         <!--     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
