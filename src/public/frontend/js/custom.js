@@ -1,6 +1,5 @@
-//js for dropdown menu
-$(document).ready(function () {
 
+$(document).ready(function () {
   setMaxheight('.is-same-height .ab-items .ab-item img', getMaxHeight('.is-same-height .ab-items .ab-item img'));
   setMaxheight('.is-same-height .ab-items .ab-item h2', getMaxHeight('.is-same-height .ab-items .ab-item h2'));
   setMaxheight('.is-same-height .ab-items .ab-item p', getMaxHeight('.is-same-height .ab-items .ab-item p'));
@@ -20,9 +19,7 @@ $(document).ready(function () {
     $(el).height(h);
   }
 
-  //   	//js or mobile menu
   $(".mobile-btn .open-btn").click(function (event) {
-    /* Act on the event */
     document.getElementById("menu").style.display = "block";
     document.getElementById("page").style.transform = "translate3d(240px ,0 ,0)";
     document.getElementById("page").style.position = "fixed";
@@ -102,45 +99,9 @@ $(document).ready(function () {
     }
   );
 
-  // 		function menuRes(){
-  // 			if ( window.innerWidth < 992 ){
-  //  			$('.main-nav a.mobile-menu').click(function(e){
-  //  				e.stopPropagation();
-  //  				if ( $(this).hasClass('expand') ){
-  //  					$(this).removeClass('expand')
-  //  					$('.mainnavitems').removeClass('mobile-expand');
-  //  				}else{
-  //  					$(this).addClass('expand')
-  //  					$('.mainnavitems').addClass('mobile-expand');
-  //  				}
-  //  			});
-
-  //  			$('.nav-items li.has-submenu').click(function(e){
-  //  				e.stopPropagation();
-  //  				if ( $(this).hasClass('expand') ){
-  //  					$(this).removeClass('expand')
-  //  				}else{
-  //  					$(this).addClass('expand')
-  //  				}
-  //  			});
-  // 			}
-  // 		}
-
-  // 		menuRes();
-  // 		$( window ).resize(function() {
-  // 			menuRes();
-  // });
-
-  // $(window).click(function() {
-  // 	$('.main-nav a.mobile-menu').removeClass('expand');
-  // 	$('.mainnavitems').removeClass('mobile-expand');
-  // 	$('.nav-items li.has-submenu').removeClass('expand');
-  // });
-
   $('a.search-top-bt').click(function () {
     showorhideSearch();
   });
-  //$('.langchoose')..dropdown('toggle');
   $(".dropdown-toggle").dropdown();
   function showorhideSearch(el) {
     if ($('.topsearch').hasClass('show')) {
@@ -894,13 +855,7 @@ $(document).ready(function () {
         }
       });
     }
-  });	/*ready*/
-  //js for scroll menu
-  // cache the element
-  // var $navBar = $('header');
-
-  // // find original navigation bar position
-  // var navPos = $navBar.offset().top;
+  });
   $(window).scroll(function (event) {
     /* Act on the event */
     var scrollPos = $(window).scrollTop(),

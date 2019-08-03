@@ -318,7 +318,7 @@ nav#mainNav {
 }
 
 .ht-header .hd-logo img.logo {
-	margin-top: 5px
+	margin-top: 15px
 }
 
 img.logo {
@@ -425,4 +425,57 @@ footer .language-select a {
 footer .language-select a:hover,
 footer .language-select a.active {
 	opacity: 1;
+}
+
+.main-logo .logo-sec {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 767px) {
+	#mainNav {
+		padding: 5px;
+	}
+
+	.ht-header .mobile-btn {
+		margin-top: 18px;
+	}
+
+	.ht-header .hd-logo img.logo {
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+	.ht-header .mobile-btn {
+		margin-top: 22px;
+	}
+
+	.ht-header .hd-logo img.logo {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		max-height: 70px;
+	}
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+	header {
+		padding-bottom: 0;
+
+	}
+
+	#mainNav {
+		padding: 5px;
+	}
+
+	.ht-header .hd-logo img.logo {
+		margin-left: 20px;
+		width: 100%;
+		margin-top: 3px !important;
+	}
+
+	.mobile-btn {
+		margin-top: 15px;
+	}
 }

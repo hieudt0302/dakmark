@@ -12,7 +12,7 @@
                                     <button name="close-btn" class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
                                 </div>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 logo-sec">
                                 <a class="hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.min.png')}}" alt=""></a>
                             </div>
                         </div>

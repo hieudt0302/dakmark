@@ -105,8 +105,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.grid').isotope({
-			filter: '.new'
-		});
+		setTimeout(() => {
+			var grid = $('.grid');
+			var $grid = grid.isotope({
+				filter: '.new',
+				itemSelector: '.pro-it',
+				resizeContainer: false
+			});
+		}, 300);
+		// $grid.imagesLoaded().progress(function() {
+		// 	$grid.isotope('layout');
+		// });
 	});
 </script>

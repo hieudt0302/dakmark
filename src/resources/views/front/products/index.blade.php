@@ -139,36 +139,34 @@
 
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ asset('js/flytocart.js') }}"></script>
-<script>
+<!-- <script>
   {
     {
-      --
       $(document).ready(function() {
-        // $('.add-shoopingcart').click(function() {
-        //     var id = $("input[name='product_id']").val();
-        //     var name = $("input[name='product_name']").val();
-        //     var price = $("input[name='product_price']").val();
-        //     var quantity = 1;//$("input[name='quantity']").val();
-        //     $.ajax({
-        //        type:'POST',
-        //        url:'{{ url("/add-to-cart") }}',
-        //        data: {
-        //             'id': id, //just test
-        //             'name': name,//just test
-        //             'price': price,//just test
-        //             'quantity': quantity,//just test
-        //         },
-        //        success:function(response){
-        //         console.log(response['message']);
-        //        },
-        //        error:function(response){
-        //           console.log(response['message']);
-        //        }
-        //     });
-        // });
+        $('.add-shoopingcart').click(function() {
+            var id = $("input[name='product_id']").val();
+            var name = $("input[name='product_name']").val();
+            var price = $("input[name='product_price']").val();
+            var quantity = 1;//$("input[name='quantity']").val();
+            $.ajax({
+               type:'POST',
+               url:'{{ url("/add-to-cart") }}',
+               data: {
+                    'id': id, //just test
+                    'name': name,//just test
+                    'price': price,//just test
+                    'quantity': quantity,//just test
+                },
+               success:function(response){
+                console.log(response['message']);
+               },
+               error:function(response){
+                  console.log(response['message']);
+               }
+            });
+        });
       });
-      --
     }
   }
-</script>
+</script> -->
 @endsection

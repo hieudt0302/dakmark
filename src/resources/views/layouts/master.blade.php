@@ -142,6 +142,7 @@
 	<!--
 	<script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script defer src="{{asset('frontend/js/plugins.js')}}"></script>
+	<script defer src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
 	-->
 
 	<script defer src="{{asset('frontend/js/lazysizes.min.js')}}" async=""></script>
@@ -149,9 +150,10 @@
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 	<script defer src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 	<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script defer src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
+	<script defer src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJyWgPF1EBDeQjx4ctp4e_DuoLi7Zf8OA" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 	<script>
 		(function() {
 			$.ajaxSetup({
