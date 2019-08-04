@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Pô Kô Farms - Home')
+@section('title','Pô Kô Farms')
 @section('content')
 
 <!-- Slider -->
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="ab-intro">
-                        <p>- <b>{{$video_message->translation->title??""}}</b> -</p>
+                        <h1>- {{$video_message->translation->title??""}} -</h1>
                         <p>"{{$video_message->translation->description??""}}"</p>
 
                     </div>
@@ -94,12 +94,14 @@
 <!-- End Products -->
 
 
-<!-- Subscribe -->
-<!--     @include('front.home.subscribe') -->
+<!-- Subscribe 
+@ include('front.home.subscribe')
+-->
 <!-- End Subscribe -->
 
-<!-- Blogs -->
-<!--     @include('front.home.blogs') -->
+<!-- Blogs 
+@ include('front.home.blogs')
+-->
 <!-- End Blogs -->
 
 <!-- Social -->

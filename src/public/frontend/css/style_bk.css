@@ -6740,7 +6740,7 @@ section {
     background-color: #ffffff;
 }
 
-.heading-sec h1 {
+.heading-sec h2 {
     font-family: "Open Sans", 'Source Sans Pro', serif;
     font-size: 40px;
     color: #333333;
@@ -10207,11 +10207,11 @@ img.div-line2 {
     padding-top: 200px;
 }
 
-.floweraboutv2 .heading-sec h1 {
+.floweraboutv2 .heading-sec h2 {
     font-size: 72px;
 }
 
-.floweraboutv2 .heading-sec h1 span {
+.floweraboutv2 .heading-sec h2 span {
     font-size: 40px;
 }
 
@@ -11046,7 +11046,7 @@ img.div-line2 {
     padding-bottom: 90px;
 }
 
-.cakearrival .heading-sec h1 {
+.cakearrival .heading-sec h2 {
     font-family: "Playfair Display", 'Source Sans Pro', serif;
     font-size: 48px;
     color: #333333;
@@ -12481,7 +12481,7 @@ img.div-line2 {
         width: 100%;
         margin-bottom: 50px;
     }
-    .floweraboutv2 .heading-sec h1 {
+    .floweraboutv2 .heading-sec h2 {
         font-size: 48px;
     }
     .flowerarrival {
@@ -12617,7 +12617,7 @@ img.div-line2 {
         margin-top: 30px;
         font-size: 24px;
     }
-    .cakearrival .heading-sec h1 {
+    .cakearrival .heading-sec h2 {
         font-size: 24px;
     }
     .cakearrival .blog-it-left .cakeblog-ct .arr-date {

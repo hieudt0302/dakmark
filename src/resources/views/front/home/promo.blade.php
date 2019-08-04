@@ -7,11 +7,11 @@
                 <a href="{{ Setting::config('fw-banner-url') }}"></a>
                 <div class="ads-text">
                     <h2>Autumn</h2>
-                    <h1>Sale</h1>
+                    <h3>Sale</h3>
                     <p>
                         Sale up to 40% off
-                    </p>                    
-                </div>  
+                    </p>
+                </div>
             </div>
         </div>
         @else
@@ -20,10 +20,10 @@
                 <a href="{{ Setting::config('left-banner-url') }}"></a>
                 <div class="ads-text">
                     <h2>Autumn</h2>
-                    <h1>Sale</h1>
+                    <h3>Sale</h3>
                     <p>
                         Sale up to 40% off
-                    </p>                    
+                    </p>
                 </div>
             </div>
         </div>
@@ -31,15 +31,15 @@
             <div class="ads-right">
                 <a href="{{ Setting::config('right-banner-url') }}"></a>
                 <div class="ads-text ad-r">
-                    <h2 class="ad-r">New products</h2>                    
-                    <h1 class="ad-r">Winged bean tea</h1>
+                    <h2 class="ad-r">New products</h2>
+                    <h3 class="ad-r">Winged bean tea</h3>
                     <p class="ad-r">
                         Coming next week
-                    </p>                    
+                    </p>
                 </div>
             </div>
-        </div>        
-        @endif        
+        </div>
+        @endif
     </div>
 </div>
 @endif

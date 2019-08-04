@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-4">
                 <div class="heading-sec">
-                    <h1>@lang('quote.title')</h1>
+                    <h2>@lang('quote.title')</h2>
                     <h4>-@lang('quote.message')-</h4>
                     <div class="row">
                         <div id="owl-plant">
