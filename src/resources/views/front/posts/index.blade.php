@@ -113,7 +113,7 @@
                     <br><br>
 
                     <div class="categories">
-                        <h1 class="cate-heading">@lang('common.categories')</h1>
+                        <h2 class="cate-heading">@lang('common.categories')</h2>
                         <hr>
                         <ul>
                             @foreach($categories as $category)
@@ -127,7 +127,7 @@
                         </ul>
                     </div>
                     <div class="pp-posts">
-                        <h1 class="cate-heading">@lang('blog.last-posts')</h1>
+                        <h2 class="cate-heading">@lang('blog.last-posts')</h2>
                         <hr>
                         @foreach($lastPosts as $post)
                         @if(!empty($post->translation->title))
@@ -150,7 +150,7 @@
                     </div>
                     @endif
                     <div class="searchbytag">
-                        <h1 class="cate-heading">@lang('blog.search-tags')</h1>
+                        <h2 class="cate-heading">@lang('blog.search-tags')</h2>
                         <hr>
                         <ul class="tags">
                             @foreach($tags as $tag)

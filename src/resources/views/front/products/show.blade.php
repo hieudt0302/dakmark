@@ -9,11 +9,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>@lang('common.product-details')</h1>
+				<h1>{{$product->translation->name??$product->name}}</h1>
 				<ul class="breadcumb">
 					<li><a href="{{ Setting::config('website')}}">@lang('common.home')</a></li>
 					<li><span>/</span>@lang('product.product')</li>
-					<li><span>/</span>{{$product->translation->name??$product->name}}</li>
 				</ul>
 			</div>
 		</div>
@@ -305,7 +304,7 @@
 					{!! Form::close() !!}
 				</div>
 				<div class="categories">
-					<h1 class="cate-heading">@lang('common.categories')</h1>
+					<h2 class="cate-heading">@lang('common.categories')</h2>
 					<hr>
 					<ul>
 						@foreach($categories as $category)
@@ -324,7 +323,7 @@
 				</div>
 				@endif
 				<div class="searchbytag">
-					<h1 class="cate-heading">@lang('blog.search-tags')</h1>
+					<h2 class="cate-heading">@lang('blog.search-tags')</h2>
 					<hr>
 					<ul class="tags">
 						@foreach($tags as $tag)
