@@ -1,5 +1,4 @@
-<!-- START REVOLUTION SLIDER 5.3.1.5 fullwidth mode -->
-<!-- <div class="row">
+<div class="row">
 	<div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-farm" data-source="gallery" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
 		<div id="rev_slider_4_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.3.1.5">
 			<ul>
@@ -14,4 +13,4 @@
 			<div class="tp-bannertimer" style="height: 5px; background-color: rgba(0, 0, 0, 0.15);"></div>
 		</div>
 	</div>
-</div> -->
+</div>
