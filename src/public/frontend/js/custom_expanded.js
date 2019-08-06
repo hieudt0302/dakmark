@@ -120,11 +120,10 @@ $(document).ready(function () {
 			"<i class='fa fa-angle-right' aria-hidden='true'></i>"
 		],
 		pagination: false,
-		autoPlay: 3000, //Set AutoPlay to 3 seconds
-		slideSpeed: 300,
+		// autoPlay: 3000, //Set AutoPlay to 3 seconds
+		slideSpeed: 500,
 		items: 1,
 		singleItem: true,
-		transitionStyle: "fade"
 	});
 	//js for testimonial
 	$("#owl-testimonial").owlCarousel({
