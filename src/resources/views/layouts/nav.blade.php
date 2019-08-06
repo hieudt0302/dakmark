@@ -13,7 +13,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7 logo-sec">
-                                <a class="hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.min.png')}}" alt=""></a>
+                                <a class="lazyload hd-logo" href="{{ url('/')}}"><img class="logo" src="{{asset('frontend/images/logo.min.png')}}" alt="Pô Kô Farms"></a>
                             </div>
                         </div>
                     </div>

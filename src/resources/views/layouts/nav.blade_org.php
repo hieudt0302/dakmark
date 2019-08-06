@@ -113,7 +113,7 @@
                      <div class="col-md-4">
                          <div class="header-logov3">
                              <a class="hd-logo3" href="{{url('/')}}">
-                                 <img class="logo" src="{{asset('frontend/images/logo.min.png')}}" alt="">
+                                 <img class="lazyload logo" data-src="{{asset('frontend/images/logo.min.png')}}" alt="Loho">
                              </a>
                          </div>
                      </div>
