@@ -13569,12 +13569,12 @@ button.close-btn {
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
     header {
-        padding-bottom: 30px;
         background: #ffffff;
     }
 
     .ht-header .mobile-btn {
         opacity: 1;
+        padding-top: 17px;
     }
 
     .ht-header nav ul.hd-menu {
@@ -13712,7 +13712,7 @@ button.close-btn {
 
     .ht-header .mobile-btn {
         opacity: 1;
-        margin-top: 25px;
+        /* margin-top: 25px; */
         margin-left: 10px;
     }
 
