@@ -412,6 +412,180 @@ header nav li.devider {
 	color: #558B2F;
 }
 
+
+#homeslider .slider-meta {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#homeslider .slider-meta .slider-caption {
+	z-index: 15;
+	font-size: 25px;
+	line-height: 35px;
+	font-weight: 700;
+	color: rgb(255, 255, 255);
+	font-family: "Playfair Display";
+	visibility: inherit;
+	transition: none 0s ease 0s;
+	border-width: 0px;
+	margin: 0px;
+	padding: 20px;
+	letter-spacing: 0px;
+	text-align: center;
+}
+
+#homeslider .slider-meta .btn-detail {
+	z-index: 16;
+	white-space: nowrap;
+	font-size: 15px;
+	line-height: 17px;
+	font-weight: 400;
+	color: rgb(85, 139, 47);
+	font-family: Lato;
+	text-transform: uppercase;
+	background-color: rgb(255, 255, 255);
+	border-color: rgba(85, 139, 47, 0);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 30px;
+	outline: none;
+	box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
+	box-sizing: border-box;
+	letter-spacing: 1px;
+	cursor: pointer;
+	visibility: inherit;
+	transition: none 0s ease 0s;
+	margin: 15px 0 0 0;
+	padding: 5px 20px;
+}
+
+#homeslider .owl-controls {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#homeslider .owl-controls .owl-buttons {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+}
+
+#homeslider .owl-controls .owl-buttons .owl-prev,
+#homeslider .owl-controls .owl-buttons .owl-next {
+	background-color: #fff;
+	padding: 15px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
+	opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+
+	#homeslider .slider-meta {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	#homeslider .slider-meta .slider-caption {
+		z-index: 15;
+		white-space: nowrap;
+		font-size: 41px;
+		line-height: 41px;
+		font-weight: 700;
+		color: rgb(255, 255, 255);
+		font-family: "Playfair Display";
+		visibility: inherit;
+		transition: none 0s ease 0s;
+		border-width: 0px;
+		margin: 0px;
+		padding: 0px;
+		letter-spacing: 0px;
+	}
+
+	#homeslider .slider-meta .btn-detail {
+		z-index: 16;
+		white-space: nowrap;
+		font-size: 17px;
+		line-height: 17px;
+		font-weight: 400;
+		color: rgb(85, 139, 47);
+		font-family: Lato;
+		text-transform: uppercase;
+		background-color: rgb(255, 255, 255);
+		border-color: rgba(85, 139, 47, 0);
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 30px;
+		outline: none;
+		box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
+		box-sizing: border-box;
+		letter-spacing: 1px;
+		cursor: pointer;
+		visibility: inherit;
+		transition: none 0s ease 0s;
+		margin: 30px 0 0 0;
+		padding: 14px 35px;
+	}
+
+	#homeslider .owl-controls {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	#homeslider .owl-controls .owl-buttons {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 30px;
+	}
+
+	#homeslider .owl-controls .owl-buttons .owl-prev,
+	#homeslider .owl-controls .owl-buttons .owl-next {
+		background-color: #fff;
+		padding: 20px;
+		width: 60px;
+		height: 60px;
+		text-align: center;
+		font-size: 25px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 2px;
+		opacity: 0.7;
+	}
+}
+
 header nav ul.hd-menu {
 	margin-left: 10px;
 	width: 100%;
@@ -431,4 +605,63 @@ footer .language-select a {
 	border: 1px solid #fff;
 	border-radius: 2px;
 	opacity: 0.5;
+}
+
+.youtube {
+	background-color: #000;
+	margin-bottom: 30px;
+	position: relative;
+	padding-top: 56.25%;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.youtube img {
+	width: 100%;
+	top: -16.84%;
+	left: 0;
+	opacity: 0.7;
+}
+
+.youtube .play-button {
+	width: 90px;
+	height: 60px;
+	background-color: #333;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+	z-index: 1;
+	opacity: 0.8;
+	border-radius: 6px;
+}
+
+.youtube .play-button:before {
+	content: "";
+	border-style: solid;
+	border-width: 15px 0 15px 26.0px;
+	border-color: transparent transparent transparent #fff;
+}
+
+.youtube img,
+.youtube .play-button {
+	cursor: pointer;
+}
+
+.youtube img,
+.youtube iframe,
+.youtube .play-button,
+.youtube .play-button:before {
+	position: absolute;
+}
+
+.youtube .play-button,
+.youtube .play-button:before {
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+}
+
+.youtube iframe {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
 }

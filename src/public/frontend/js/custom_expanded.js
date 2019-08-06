@@ -1,4 +1,4 @@
-//js for dropdown menu
+
 $(document).ready(function () {
 	setMaxheight('.is-same-height .ab-items .ab-item img', getMaxHeight('.is-same-height .ab-items .ab-item img'));
 	setMaxheight('.is-same-height .ab-items .ab-item h2', getMaxHeight('.is-same-height .ab-items .ab-item h2'));
@@ -19,9 +19,7 @@ $(document).ready(function () {
 		$(el).height(h);
 	}
 
-	//   	//js or mobile menu
 	$(".mobile-btn .open-btn").click(function (event) {
-		/* Act on the event */
 		document.getElementById("menu").style.display = "block";
 		document.getElementById("page").style.transform = "translate3d(240px ,0 ,0)";
 		document.getElementById("page").style.position = "fixed";
@@ -101,45 +99,9 @@ $(document).ready(function () {
 		}
 	);
 
-	// 		function menuRes(){
-	// 			if ( window.innerWidth < 992 ){
-	//  			$('.main-nav a.mobile-menu').click(function(e){
-	//  				e.stopPropagation();
-	//  				if ( $(this).hasClass('expand') ){
-	//  					$(this).removeClass('expand')
-	//  					$('.mainnavitems').removeClass('mobile-expand');
-	//  				}else{
-	//  					$(this).addClass('expand')
-	//  					$('.mainnavitems').addClass('mobile-expand');
-	//  				}
-	//  			});
-
-	//  			$('.nav-items li.has-submenu').click(function(e){
-	//  				e.stopPropagation();
-	//  				if ( $(this).hasClass('expand') ){
-	//  					$(this).removeClass('expand')
-	//  				}else{
-	//  					$(this).addClass('expand')
-	//  				}
-	//  			});
-	// 			}
-	// 		}
-
-	// 		menuRes();
-	// 		$( window ).resize(function() {
-	// 			menuRes();
-	// });
-
-	// $(window).click(function() {
-	// 	$('.main-nav a.mobile-menu').removeClass('expand');
-	// 	$('.mainnavitems').removeClass('mobile-expand');
-	// 	$('.nav-items li.has-submenu').removeClass('expand');
-	// });
-
 	$('a.search-top-bt').click(function () {
 		showorhideSearch();
 	});
-	//$('.langchoose')..dropdown('toggle');
 	$(".dropdown-toggle").dropdown();
 	function showorhideSearch(el) {
 		if ($('.topsearch').hasClass('show')) {
@@ -150,6 +112,20 @@ $(document).ready(function () {
 		}
 	}
 
+
+	$("#homeslider").owlCarousel({
+		navigation: true,
+		navigationText: [
+			"<i class='fa fa-angle-left' aria-hidden='true'></i>",
+			"<i class='fa fa-angle-right' aria-hidden='true'></i>"
+		],
+		pagination: false,
+		autoPlay: 3000, //Set AutoPlay to 3 seconds
+		slideSpeed: 300,
+		items: 1,
+		singleItem: true,
+		transitionStyle: "fade"
+	});
 	//js for testimonial
 	$("#owl-testimonial").owlCarousel({
 		navigation: true, // Show next and prev buttons
@@ -386,520 +362,7 @@ $(document).ready(function () {
 		$(this).parent('li').addClass('active').siblings().removeClass('active');
 		e.preventDefault();
 	});
-	var tpj = jQuery;
-	//home v1		
-	var revapi1;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_1_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_1_1");
-		} else {
-			revapi1 = tpj("#rev_slider_1_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "fullscreen",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					onHoverStop: "off",
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: [1370, 1024, 778, 480],
-				gridheight: [900, 768, 960, 720],
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				fullScreenAutoWidth: "off",
-				fullScreenAlignForce: "off",
-				fullScreenOffsetContainer: "",
-				fullScreenOffset: "",
-				disableProgressBar: "on",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	//js for slider
-	//home v2
-	var revapi2;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_2_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_2_1");
-		} else {
-			revapi2 = tpj("#rev_slider_2_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "fullscreen",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					keyboardNavigation: "off",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation: "off",
-					mouseScrollReverse: "default",
-					onHoverStop: "off",
-					arrows: {
-						style: "metis",
-						enable: true,
-						hide_onmobile: false,
-						hide_onleave: false,
-						tmp: '',
-						left: {
-							h_align: "left",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						},
-						right: {
-							h_align: "right",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						}
-					}
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: [1240, 1024, 778, 480],
-				gridheight: [868, 768, 960, 720],
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				fullScreenAutoWidth: "off",
-				fullScreenAlignForce: "off",
-				fullScreenOffsetContainer: "",
-				fullScreenOffset: "",
-				disableProgressBar: "on",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	//home v3
-	var revapi3;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_3_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_3_1");
-		} else {
-			revapi3 = tpj("#rev_slider_3_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "auto",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					keyboardNavigation: "off",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation: "off",
-					mouseScrollReverse: "default",
-					onHoverStop: "off",
-					arrows: {
-						style: "erinyen",
-						enable: true,
-						hide_onmobile: false,
-						hide_onleave: true,
-						hide_delay: 200,
-						hide_delay_mobile: 1200,
-						tmp: '<div class="tp-title-wrap">  	<div class="tp-arr-imgholder"></div>    <div class="tp-arr-img-over"></div>	<span class="tp-arr-titleholder">{{title}}</span> </div>',
-						left: {
-							h_align: "left",
-							v_align: "center",
-							h_offset: -35,
-							v_offset: 0
-						},
-						right: {
-							h_align: "right",
-							v_align: "center",
-							h_offset: -35,
-							v_offset: 0
-						}
-					}
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: [1920, 1024, 778, 480],
-				gridheight: [750, 768, 960, 720],
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	//for home v4
-	var revapi4;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_4_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_4_1");
-		} else {
-			revapi4 = tpj("#rev_slider_4_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "fullwidth",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					keyboardNavigation: "off",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation: "off",
-					mouseScrollReverse: "default",
-					onHoverStop: "off",
-					arrows: {
-						style: "metis",
-						enable: true,
-						hide_onmobile: false,
-						hide_onleave: true,
-						hide_delay: 200,
-						hide_delay_mobile: 1200,
-						tmp: '',
-						left: {
-							h_align: "left",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						},
-						right: {
-							h_align: "right",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						}
-					}
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: [1920, 1024, 778, 480],
-				gridheight: [750, 768, 960, 720],
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	var revapi11;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_11_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_11_1");
-		} else {
-			revapi11 = tpj("#rev_slider_11_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "fullscreen",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					keyboardNavigation: "off",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation: "off",
-					mouseScrollReverse: "default",
-					onHoverStop: "off",
-					arrows: {
-						style: "metis",
-						enable: true,
-						hide_onmobile: false,
-						hide_onleave: true,
-						hide_delay: 200,
-						hide_delay_mobile: 1200,
-						tmp: '',
-						left: {
-							h_align: "left",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						},
-						right: {
-							h_align: "right",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						}
-					}
-				},
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: 1920,
-				gridheight: 1000,
-				lazyType: "none",
-				parallax: {
-					type: "mouse",
-					origo: "enterpoint",
-					speed: 400,
-					levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 51, 55],
-				},
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				fullScreenAutoWidth: "off",
-				fullScreenAlignForce: "off",
-				fullScreenOffsetContainer: "",
-				fullScreenOffset: "",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	var revapi9;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_9_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_9_1");
-		} else {
-			revapi9 = tpj("#rev_slider_9_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "auto",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					keyboardNavigation: "off",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation: "off",
-					mouseScrollReverse: "default",
-					onHoverStop: "off",
-					arrows: {
-						style: "erinyen",
-						enable: true,
-						hide_onmobile: false,
-						hide_onleave: false,
-						tmp: '<div class="tp-title-wrap">  	<div class="tp-arr-imgholder"></div>    <div class="tp-arr-img-over"></div>	<span class="tp-arr-titleholder">{{title}}</span> </div>',
-						left: {
-							h_align: "left",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						},
-						right: {
-							h_align: "right",
-							v_align: "center",
-							h_offset: 20,
-							v_offset: 0
-						}
-					}
-				},
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: 1920,
-				gridheight: 900,
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	var revapi10;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_10_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_10_1");
-		} else {
-			revapi10 = tpj("#rev_slider_10_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "auto",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					onHoverStop: "off",
-				},
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: 1920,
-				gridheight: 1000,
-				lazyType: "none",
-				parallax: {
-					type: "mouse",
-					origo: "enterpoint",
-					speed: 400,
-					levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 51, 55],
-				},
-				shadow: 0,
-				spinner: "spinner3",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				disableProgressBar: "on",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	var revapi8;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_8_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_8_1");
-		} else {
-			revapi8 = tpj("#rev_slider_8_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "fullwidth",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					onHoverStop: "off",
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: [1240, 1024, 778, 480],
-				gridheight: [868, 768, 960, 720],
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner0",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				disableProgressBar: "on",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	var revapi7;
-	tpj(document).ready(function () {
-		if (tpj("#rev_slider_7_1").revolution == undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_7_1");
-		} else {
-			revapi7 = tpj("#rev_slider_7_1").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "../src/js/",
-				sliderLayout: "fullscreen",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					onHoverStop: "off",
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				visibilityLevels: [1240, 1024, 778, 480],
-				gridwidth: [1240, 1024, 778, 480],
-				gridheight: [868, 768, 960, 720],
-				lazyType: "none",
-				shadow: 0,
-				spinner: "spinner0",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				fullScreenAutoWidth: "off",
-				fullScreenAlignForce: "off",
-				fullScreenOffsetContainer: "",
-				fullScreenOffset: "",
-				disableProgressBar: "on",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
-				}
-			});
-		}
-	});	/*ready*/
-	//js for scroll menu
-	// cache the element
-	// var $navBar = $('header');
 
-	// // find original navigation bar position
-	// var navPos = $navBar.offset().top;
 	$(window).scroll(function (event) {
 		/* Act on the event */
 		var scrollPos = $(window).scrollTop(),
@@ -959,7 +422,6 @@ $(document).ready(function () {
 
 							var infowindow = new google.maps.InfoWindow({
 								content: '<div class="map-style">' + address + '<div>',
-								// size: new google.maps.Size(200, 50)
 							});
 
 							var marker = new google.maps.Marker({
@@ -983,5 +445,37 @@ $(document).ready(function () {
 		}
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
+
+	document.addEventListener('lazybeforeunveil', function (e) {
+		var bg = e.target.getAttribute('data-bg');
+		if (bg) {
+			e.target.style.backgroundImage = 'url(' + bg + ')';
+		}
+	});
+
+	var youtube = document.querySelectorAll(".youtube");
+
+	for (var i = 0; i < youtube.length; i++) {
+
+		var source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/sddefault.jpg";
+
+		var image = new Image();
+		image.src = source;
+		image.addEventListener("load", function () {
+			youtube[i].appendChild(image);
+		}(i));
+
+		youtube[i].addEventListener("click", function () {
+
+			var iframe = document.createElement("iframe");
+
+			iframe.setAttribute("frameborder", "0");
+			iframe.setAttribute("allowfullscreen", "");
+			iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.embed + "?rel=0&showinfo=0&autoplay=1");
+
+			this.innerHTML = "";
+			this.appendChild(iframe);
+		});
+	};
 
 }); // end ready

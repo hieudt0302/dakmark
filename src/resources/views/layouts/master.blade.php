@@ -46,17 +46,18 @@
 	<link rel="stylesheet" href="{{asset('frontend/css/owl.transitions.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/pushy.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/revicons.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/css/settings.css')}}"> -->
-	@yield('header')
-	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
-	<!-- REVOLUTION STYLE SHEETS -->
+	<link rel="stylesheet" href="{{asset('frontend/css/settings.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('revolution/css/settings.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('revolution/css/layers.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('revolution/css/navigation.css')}}">
-	<!-- REVOLUTION LAYERS STYLES -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+	-->
+	@yield('header')
+	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" />
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
@@ -149,19 +150,22 @@
 	<script defer src="{{asset('frontend/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 	<script defer src="{{asset('frontend/js/plugins.js')}}"></script>
 	<script defer src="https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
-	-->
 
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js"></script>
-	<script defer src="{{asset('frontend/js/lazysizes.min.js')}}"></script>
-	<script defer src="{{asset('frontend/js/custom.js')}}"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
-	<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script defer src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 	<script defer type="text/javascript" src="{{asset('revolution/js/jquery.themepunch.tools.min.js')}}"></script>
 	<script defer type="text/javascript" src="{{asset('revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
 	<script defer type="text/javascript" src="{{asset('revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
 	<script defer type="text/javascript" src="{{asset('revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
 	<script defer type="text/javascript" src="{{asset('revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/plugins/video-embed/ls.video-embed.min.js"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	-->
+
+	<script defer src="{{asset('frontend/js/lazysizes.min.js')}}"></script>
+	<script defer src="{{asset('frontend/js/custom.js')}}"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+	<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script defer src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJyWgPF1EBDeQjx4ctp4e_DuoLi7Zf8OA" type="text/javascript"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 	<script>

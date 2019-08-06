@@ -5,7 +5,7 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="col-md-2 col-sm-2 col-xs-12">
                     <div class="row">
-                        <div class="main-logo">
+                        <div class="main-logo clearfix">
                             <div class="col-md-5">
                                 <div class="mobile-btn">
                                     <button name="open-btn" class="open-btn"><i class="fa fa-bars" aria-hidden="true"></i></button>
