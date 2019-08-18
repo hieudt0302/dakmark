@@ -17,8 +17,8 @@
       </ol>
       <div class="row">
         <div class="col-xs-12">
-        @include('notifications.status_message') 
-        @include('notifications.errors_message') 
+        @include('notifications.status_message')
+        @include('notifications.errors_message')
         </div>
     </div>
 </section>
@@ -65,7 +65,7 @@
                                                 <div class="col-md-4">
                                                     <input class="form-control text-box single-line valid"  id="slug" name="slug" type="text" value="{{old('slug')}}">
                                                 </div>
-                                            </div>                                           
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="category" title="">Danh mục</label>
                                                 <div class="col-md-4">
@@ -94,7 +94,7 @@
                                                         @endforeach
 
                                                         <!-- Old Data -->
-                                                        @if (is_array(old('tagIds')))                                                            
+                                                        @if (is_array(old('tagIds')))
                                                             @foreach(old('tagIds') as $id)
                                                                 @php($selected = true)
                                                                 @foreach($tags as $key =>$tag)
@@ -102,20 +102,38 @@
                                                                         @php($selected = false)
                                                                     @endif
                                                                 @endforeach
-                                                                
+
                                                                 <option value="{{$id}}" {{$selected?'selected':''}}>{{$id}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="slug" title="">Ảnh đại diện</label>
                                                 <div class="col-md-4">
                                                     <input class="single-line valid" type="file" name="img"/>
-                                                    <span class="text-danger">{{ $errors->first('img') }}</span>                                                        
+                                                    <span class="text-danger">{{ $errors->first('img') }}</span>
                                                 </div>
-                                            </div>                                             
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_title" title="">Meta Title</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid" id="meta_title" name="meta_title" type="text" value="{{old('meta_title')}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_description" title="">Meta Description</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_description" name="meta_description" type="text" value="{{old('meta_description')}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_keywords" title="">Meta Keywords</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_keywords" name="meta_keywords" type="text" value="{{old('meta_keywords')}}">
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <div class="col-md-3">
                                                 </div>
@@ -132,7 +150,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 @endsection
 
 
@@ -144,14 +162,14 @@
         autoclose : true,
         clearBtn : true
     })
-   
+
 
     $('#special_price_start_date').datepicker().on('changeDate', function(e) {
-       
+
     });
 
     $('#special_price_end_date').datepicker().on('changeDate', function(e) {
-      
+
     });
 
     $('.select2').select2();

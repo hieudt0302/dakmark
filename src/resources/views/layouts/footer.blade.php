@@ -157,13 +157,17 @@
                 <a class="{{ strtoupper(app()->getLocale())=='KR' ? 'active' : '' }}" href="{{URL::asset('')}}language/kr">한국어</a>
             </div>
         </div>
-        <!--     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ft-below-left">
-                <p>Copyright © 2018 <a href="#">Pokofarms</a> - All Rights Reserved</p>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                <div class="center-block text-center">
+                    <p style="color: #fff">{{ Setting::config('copyright1') }}</p>
+                    <span style="color: #8e8e8e;">{{ Setting::config('copyright2') }}</span>
+                </div>
             </div>
         </div>
-    </div>   -->
     </div>
 </footer>
 

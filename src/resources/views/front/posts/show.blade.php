@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('title', $post->title)
+@section('meta_description', $post->meta_description)
+@section('meta_keywords', $post->meta_keywords)
 @section('header')
 <!-- Share Nav -->
 @include('layouts.share')

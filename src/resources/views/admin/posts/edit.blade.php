@@ -17,8 +17,8 @@
       </ol>
       <div class="row">
         <div class="col-xs-12">
-        @include('notifications.status_message') 
-        @include('notifications.errors_message') 
+        @include('notifications.status_message')
+        @include('notifications.errors_message')
         </div>
     </div>
 </section>
@@ -37,7 +37,7 @@
                         <!-- INFO TAB -->
                         <div class="{{$tab==1?'active':''}} tab-pane" id="info">
                             <form action="{{url('/admin/posts')}}/{{$post->id}}" method="post" enctype="multipart/form-data">
-                            {!! method_field('patch') !!} 
+                            {!! method_field('patch') !!}
                             {{ csrf_field()}}
                                 <div class="panel-group">
                                     <div class="panel panel-default">
@@ -52,7 +52,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                                        
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="title" title="">Xuất bản</label>
                                                 <div class="col-md-4">
@@ -95,23 +95,41 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>   
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="title" title="">Ảnh đại diện</label>
                                                 <div class="col-md-4">
                                                     <input class="single-line valid" type="file" name="img"/>
-                                                    <span class="text-danger">{{ $errors->first('img') }}</span>                                                        
+                                                    <span class="text-danger">{{ $errors->first('img') }}</span>
                                                 </div>
-                                            </div>  
+                                            </div>
                                             <div class="form-group">
                                                 <div class="col-md-4 col-md-offset-3">
                                                     <div style="height: 200px; border: 1px solid whitesmoke;text-align: center">
                                                         @if(strlen($post->img) > 0)
                                                             <img width="100%" height="100%" src="{{asset('storage/images/blog')}}/{{$post->img}}"/>
-                                                        @else 
+                                                        @else
                                                             <img width="100%" height="100%" src="{{asset('images/no-image.png')}}"/>
-                                                        @endif                                                        
+                                                        @endif
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_title" title="">Meta Title</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid" id="meta_title" name="meta_title" type="text" value="{{$post->meta_title}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_description" title="">Meta Description</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_description" name="meta_description" type="text" value="{{$post->meta_description}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_keywords" title="">Meta Keywords</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_keywords" name="meta_keywords" type="text" value="{{$post->meta_keywords}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -136,7 +154,7 @@
                                                 <label class="control-label col-md-3" for="title" title="">Ngôn ngữ</label>
                                                 <div class="col-md-4">
                                                     <select id="language-select" name="language_id" class="form-control">
-                                                        <option value="0">-----Chọn Ngôn Ngữ-----</option>                                                        
+                                                        <option value="0">-----Chọn Ngôn Ngữ-----</option>
                                                         @foreach($languages as  $language)
                                                             @if( $language_id == $language->id )
                                                                 <option value="{{$language->id}}" selected>{{$language->name}}</option>
@@ -152,7 +170,7 @@
                                 </form>
 
                                 <form action="{{url('/admin/posts')}}/{{$post->id}}/translation" method="post">
-                                    {!! method_field('patch') !!} 
+                                    {!! method_field('patch') !!}
                                     {{ csrf_field()}}
                                     <input type="hidden" name="language_id" value="{{$language_id}}">
                                     <div class="panel panel-default">
@@ -199,7 +217,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </section>
 <script src="{{asset('backend/dist/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('backend/dist/ckfinder/ckfinder.js')}}"></script>
@@ -225,14 +243,14 @@
         autoclose : true,
         clearBtn : true
     })
-   
+
 
     $('#special_price_start_date').datepicker().on('changeDate', function(e) {
-       
+
     });
 
     $('#special_price_end_date').datepicker().on('changeDate', function(e) {
-      
+
     });
 
     $('.select2').select2();
@@ -240,12 +258,12 @@
         tags: true,
         tokenSeparators: [',']
     });
-   
+
     // TAB: CONTENT
     $('#language-select').on('change', function() {
         $('form#getTranslation').submit();
         return false;
-    })    
+    })
 
     $('#title').on('change', function(e) {
         e.preventDefault();

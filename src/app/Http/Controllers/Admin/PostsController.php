@@ -46,11 +46,11 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {      
+    {
         $languages = Language::all();
         $blogCategory = Category::where('slug','posts')->firstOrFail();
-        $categories = Category::where('parent_id',$blogCategory->id)->get();     
-        
+        $categories = Category::where('parent_id',$blogCategory->id)->get();
+
         $tags = Tag::all();
         return View('admin.posts.create',compact('languages','categories','tags'));
     }
@@ -66,7 +66,7 @@ class PostsController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'slug' => 'required|string|min:5',
-            'img' => 'image'            
+            'img' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -85,20 +85,23 @@ class PostsController extends Controller
         $post->author_id = Auth::user()->id;
         $post->published = $request->published??0;
 
+        $post->meta_title = $request->meta_title;
+        $post->meta_description = $request->meta_description;
+        $post->meta_keywords = $request->meta_keywords;
 
         $post->img = '';
         if (request()->hasFile('img')) {
             $image = $request->file('img');
-            $img_path = $image->storeAs('images/blog',$image->getClientOriginalName());                              
+            $img_path = $image->storeAs('images/blog',$image->getClientOriginalName());
             $img = Image::make(Storage::get($img_path))->fit(370, 230)->encode();
-            Storage::put($img_path, $img);                     
+            Storage::put($img_path, $img);
             $post->img = $image->getClientOriginalName();
-            $img_path = $image->storeAs('images/blog/preview',$image->getClientOriginalName());                              
+            $img_path = $image->storeAs('images/blog/preview',$image->getClientOriginalName());
             $img = Image::make(Storage::get($img_path))->fit(80, 100)->encode();
-            Storage::put($img_path, $img);  
+            Storage::put($img_path, $img);
         }
 
-        $post->save();            
+        $post->save();
 
         /* Make new tags */
         $this->SelectTags($post, $request->tagIds);
@@ -106,7 +109,7 @@ class PostsController extends Controller
         return redirect()->action(
             'Admin\PostsController@edit', ['id' => $post->id]
         );
-        
+
     }
 
     /**
@@ -137,8 +140,8 @@ class PostsController extends Controller
         }
         $languages = Language::all();
         $blogCategory = Category::where('slug','posts')->firstOrFail();
-        $categories = Category::where('parent_id',$blogCategory->id)->get();  
-        
+        $categories = Category::where('parent_id',$blogCategory->id)->get();
+
         $language_id = Input::get('language_id')??0;
         $tab = 1;
         $translation =  null;
@@ -162,7 +165,7 @@ class PostsController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'slug' => 'required|string|min:5',
-            'img' => 'image'    
+            'img' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -172,7 +175,7 @@ class PostsController extends Controller
         }
 
         $post = Post::find($id);
-        
+
         $post->title = $request->title;
         $post->slug = $request->slug;
         if(!empty($request->category_id))
@@ -180,27 +183,31 @@ class PostsController extends Controller
 
         $post->author_id = Auth::user()->id;
         $post->published = $request->published??0;
-        
+
+        $post->meta_title = $request->meta_title;
+        $post->meta_description = $request->meta_description;
+        $post->meta_keywords = $request->meta_keywords;
+
         if (request()->hasFile('img')) {
 
             if(!empty($post->img)){
                 Storage::delete('images/blog/'.$post->img);
                 Storage::delete('images/blog/preview'.$post->img);
-                $post->img = '';                
+                $post->img = '';
             }
 
             $image = $request->file('img');
-            $img_path = $image->storeAs('images/blog',$image->getClientOriginalName());                              
+            $img_path = $image->storeAs('images/blog',$image->getClientOriginalName());
             $img = Image::make(Storage::get($img_path))->fit(370, 230)->encode();
-            Storage::put($img_path, $img);                     
+            Storage::put($img_path, $img);
             $post->img = $image->getClientOriginalName();
-            $img_path = $image->storeAs('images/blog/preview',$image->getClientOriginalName());                              
+            $img_path = $image->storeAs('images/blog/preview',$image->getClientOriginalName());
             $img = Image::make(Storage::get($img_path))->fit(80, 100)->encode();
-            Storage::put($img_path, $img);  
+            Storage::put($img_path, $img);
         }
 
         $post->save();
-        
+
         /* Make new tags */
         $this->SelectTags($post, $request->tagIds);
 
@@ -232,7 +239,7 @@ class PostsController extends Controller
         $translation = PostTranslation::where('post_id', $id)
         ->where('language_id', $request->language_id)->withoutGlobalScopes()
         ->first();
-        
+
         if(!empty($translation)){
             $translation->title = $request->title_translate??'';
             $translation->excerpt = $request->excerpt_translate??'';
@@ -250,7 +257,7 @@ class PostsController extends Controller
             $postTranslation->post_id = $id;
             $postTranslation->save();
         }
-        
+
         return redirect()->back()
         ->with('message', 'Cập nhật nội dung mới thành công')
         ->with('status', 'success')
@@ -285,7 +292,7 @@ class PostsController extends Controller
             'description' =>$description,
             'excerpt' => $excerpt
         ]);
-    }    
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -301,8 +308,8 @@ class PostsController extends Controller
             Storage::delete('images/blog/'.$post->img);
             Storage::delete('images/blog/preview'.$post->img);
         }
-            
-        
+
+
         return redirect()->route('admin.posts.index')
         ->with('message', 'Xóa bài viết thành công!')
         ->with('status', 'success');
@@ -314,14 +321,14 @@ class PostsController extends Controller
         return View('admin/posts/categories',compact('categories'));
     }
 
-   
+
 
      public function GenerateSlug($title)
     {
         $slug = str_slug($title, "-");
         if(Post::where('slug',$slug)->count() >0 )
         {
-            $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s'); 
+            $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s');
         }
         return response()->json([
             'slug' =>  $slug,
@@ -339,19 +346,19 @@ class PostsController extends Controller
                     $tag = new Tag();
                     $tag->name = $id;
                     $slug = str_slug($id, "-");
-                    
+
                     if(Tag::where('slug',$slug)->count() >0 )
                     {
-                        $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s'); 
+                        $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s');
                     }
                     $tag->slug = $slug;
                     $tag->save();
-    
+
                     $tagIds[$key] = $tag->id;
-                } 
+                }
             }
             $tags = Tag::whereIn('id',$tagIds)->get();
-            $post->tags()->sync($tags); 
+            $post->tags()->sync($tags);
         }else{
             //delete all tags of post
             $post->tags()->detach();
@@ -363,7 +370,7 @@ class PostsController extends Controller
         //dd($tag_ids);
         Tag::whereNotIn('id', $tag_ids)->delete();
     }
-    
+
       /* COMMENT */
       public function comments(Request $request)
       {
@@ -418,21 +425,21 @@ class PostsController extends Controller
 
         $query = Post::whereNull('deleted_at')
              ->where(function ($query) use ($post_title) {
-                if (strlen($post_title) > 0) 
+                if (strlen($post_title) > 0)
                     $query->where('posts.title', 'LIKE', '%'.strtolower($post_title).'%');
             })
             ->where(function ($query) use ($category_id) {
-                if (is_numeric($category_id) > 0 && (int)$category_id > 0) 
+                if (is_numeric($category_id) > 0 && (int)$category_id > 0)
                     $query->whereIn('category_id', [$category_id]);
             });
-   
+
 
         $posts = $query->orderBy('created_at','desc')->paginate(21);
         $postsCategory = Category::where('slug', 'posts')->first();
         $categories = Category::where('parent_id', $postsCategory->id)->get();
-        
+
         $request->flashOnly([ 'post_title', 'category_id']);
-       
+
         return View('admin.posts.index', compact('posts','categories'))
         ->with('i', ($request->input('page', 1) - 1) * 21);
     }

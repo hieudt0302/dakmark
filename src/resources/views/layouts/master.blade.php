@@ -12,8 +12,10 @@
 	<!-- Basic need -->
 	<title>@yield('title')</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Pô Kô Farms - Share with nature">
-	<meta name="keywords" content="Pô Kô Farms, Pokofarms">
+	<meta name="description" content="@yield('meta_description', 'Pô Kô Farms - Share with nature')">
+	<meta name="keywords" content="@yield('meta_keywords')">
+	{{-- <meta name="description" content="Pô Kô Farms - Share with nature"> --}}
+	{{-- <meta name="keywords" content="Pô Kô Farms, Pokofarms"> --}}
 	<meta name="author" content="Pô Kô Farms">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="google-site-verification" content="SBNKsjbUQHBBai8E7O5TxOH4R1pHOiD1F2qaSZbPxBk" />
@@ -26,7 +28,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicons/favicon-16x16.png')}}">
 	<link rel="manifest" href="{{asset('frontend/images/favicons/manifest.json')}}">
 	<link rel="mask-icon" href="{{asset('frontend/images/favicons/safari-pinned-tab.svg')}}" color="#5bbad5">
-	<!-- 
+	<!--
 	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
