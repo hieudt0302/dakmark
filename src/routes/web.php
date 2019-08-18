@@ -54,14 +54,14 @@ Route::post('/add-to-wishlist', 'Front\ProductsController@addToWishlist');
 // Route::get('/posts', 'Front\PostsController@index');
 Route::get('/subject/posts/tags/{slug}', 'Front\PostsController@filterByTag');
 Route::get('/posts/{slug}', 'Front\PostsController@show');
-Route::post('/posts','Front\PostsController@search');  
+Route::post('/posts','Front\PostsController@search');
 
 Route::get('/subject/products/tags/{slug}', 'Front\ProductsController@filterByTag');
 /* REVIEW - PRODUCT */
 Route::post('/products/{id}/review', 'Front\ReviewsController@store');
 
 /* SEARCH - PRODUCT */
-Route::post('/products','Front\ProductsController@search');  
+Route::post('/products','Front\ProductsController@search');
 
 /* COMMENT - PRODUCT */
 Route::post('/posts/{id}/comment', 'Front\CommentsController@store');
@@ -153,7 +153,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('users/{id}/edit',['as'=>'admin.users.edit','uses'=>'UsersController@edit','middleware'=> ['role:admin|manager']]);
     Route::patch('users/{id}',['as'=>'admin.users.update','uses'=>'UsersController@update','middleware'=> ['role:admin|manager']]);
     Route::delete('users/{id}',['as'=>'admin.users.destroy','uses'=>'UsersController@destroy','middleware'=> ['role:admin|manager']]);
-    
+
     // Navigators
     Route::get('navigator',['as'=>'admin.navigator','uses'=>'NavigatorController@navigatorList','middleware'=> ['role:admin|manager']]);
     Route::get('navigator/add',['as'=>'admin.navigator.add','uses'=>'NavigatorController@addNavigator','middleware'=> ['role:admin|manager']]);
@@ -161,15 +161,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('navigator/edit/{id}',['as'  =>'admin.navigator.edit','uses' => 'NavigatorController@editNavigator','middleware'=> ['role:admin|manager']]);
     Route::post('navigator/edit/{id}',['as' =>'admin.navigator.update','uses' => 'NavigatorController@updateNavigator','middleware'=> ['role:admin|manager']]);
     Route::get('navigator/delete/{id}',['as'  =>'admin.navigator.delete','uses' => 'NavigatorController@deleteNavigator','middleware'=> ['role:admin|manager']]);
-   
+
     //FAQs
     Route::get('faqs',['as'=>'admin.faqs.index','uses'=>'FaqController@index','middleware'=> ['role:admin|manager']]);
     Route::get('faqs/create',['as'=>'admin.faqs.create','uses'=>'FaqController@create','middleware'=> ['role:admin|manager']]);
     Route::post('faqs/create',['as'=>'admin.faqs.store','uses'=>'FaqController@store','middleware'=> ['role:admin|manager']]);
     Route::get('faqs/{id}',['as'  =>'admin.faqs.show','uses' => 'FaqController@show','middleware'=> ['role:admin|manager']]);
     Route::get('faqs/{id}/edit',['as'  =>'admin.faqs.edit','uses' => 'FaqController@edit','middleware'=> ['role:admin|manager']]);
-    Route::patch('faqs/{id}',['as'  =>'admin.faqs.update','uses' => 'FaqController@update','middleware'=> ['role:admin|manager']]);    
-    Route::delete('faqs/{id}',['as'  =>'admin.faqs.destroy','uses' => 'FaqController@destroy','middleware'=> ['role:admin|manager']]); 
+    Route::patch('faqs/{id}',['as'  =>'admin.faqs.update','uses' => 'FaqController@update','middleware'=> ['role:admin|manager']]);
+    Route::delete('faqs/{id}',['as'  =>'admin.faqs.destroy','uses' => 'FaqController@destroy','middleware'=> ['role:admin|manager']]);
     Route::patch('faqs/{id}/translation',['as'=>'admin.faqs.updateTranslation','uses'=>'FaqController@updateTranslation','middleware' => ['role:admin|manager']]);
 
     //Menu
@@ -178,8 +178,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('menu/create',['as'=>'admin.menu.store','uses'=>'MenuController@store','middleware' => ['role:admin|manager']]);
     Route::get('menu/{id}/edit',['as'=>'admin.menu.edit','uses'=>'MenuController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('menu/{id}',['as'=>'admin.menu.update','uses'=>'MenuController@update','middleware' => ['role:admin|manager']]);
-    Route::delete('menu/{id}',['as'=>'admin.menu.destroy','uses'=>'MenuController@destroy','middleware'=> ['role:admin|manager']]);  
-    
+    Route::delete('menu/{id}',['as'=>'admin.menu.destroy','uses'=>'MenuController@destroy','middleware'=> ['role:admin|manager']]);
+
     //
     Route::patch('menu/{id}/translation',['as'=>'admin.menu.updateTranslation','uses'=>'MenuController@updateTranslation','middleware' => ['role:admin|manager']]);
     Route::get('menu/{id}/{code}/fetch',['as'=>'admin.menu.fetchTranslation','uses'=>'MenuController@fetchTranslation','middleware' => ['role:admin|manager']]);
@@ -193,10 +193,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('posts/create',['as'=>'admin.posts.store','uses'=>'PostsController@store','middleware' => ['role:admin|manager']]);
     Route::get('posts/{id}/edit',['as'=>'admin.posts.edit','uses'=>'PostsController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('posts/{id}',['as'=>'admin.posts.update','uses'=>'PostsController@update','middleware' => ['role:admin|manager']]);
-    Route::delete('posts/{id}',['as'=>'admin.posts.destroy','uses'=>'PostsController@destroy','middleware' => ['role:admin|manager']]);  
+    Route::delete('posts/{id}',['as'=>'admin.posts.destroy','uses'=>'PostsController@destroy','middleware' => ['role:admin|manager']]);
     //
     Route::patch('posts/{id}/translation',['as'=>'admin.posts.updateTranslation','uses'=>'PostsController@updateTranslation','middleware' => ['role:admin|manager']]);
-    Route::get('posts/{id}/{code}/fetch',['as'=>'admin.posts.fetchTranslation','uses'=>'PostsController@fetchTranslation','middleware' => ['role:admin|manager']]);    
+    Route::get('posts/{id}/{code}/fetch',['as'=>'admin.posts.fetchTranslation','uses'=>'PostsController@fetchTranslation','middleware' => ['role:admin|manager']]);
     //
     Route::get('posts/categories',['as'=>'admin.posts.categories','uses'=>'PostsController@categories','middleware' => ['role:admin|manager']]);
     Route::post('posts/categories',['as'=>'admin.posts.findcategories','uses'=>'PostsController@findcategories','middleware' => ['role:admin|manager']]);
@@ -206,7 +206,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::delete('posts/comments/{id}',['as'=>'admin.products.deletecomments','uses'=>'PostsController@deletecomments','middleware' => ['role:admin|manager']]);
     //
     Route::get('posts/generateslug/{title}',['as'=>'admin.posts.generateSlug','uses'=>'PostsController@GenerateSlug','middleware' => ['role:admin|manager']]);
-   
+
     //Product
     Route::get('products',['as'=>'admin.products.index','uses'=>'ProductsController@index','middleware' => ['role:admin|manager']]);
     Route::post('products',['as'=>'admin.products.find','uses'=>'ProductsController@find','middleware' => ['role:admin|manager']]);
@@ -257,8 +257,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('info-pages/create',['as'=>'admin.info-pages.store','uses'=>'InfoPagesController@store','middleware'=> ['role:admin|manager']]);
     Route::get('info-pages/{id}',['as'  =>'admin.info-pages.show','uses' => 'InfoPagesController@show','middleware'=> ['role:admin|manager']]);
     Route::get('info-pages/{id}/edit',['as'  =>'admin.info-pages.edit','uses' => 'InfoPagesController@edit','middleware'=> ['role:admin|manager']]);
-    Route::patch('info-pages/{id}',['as'  =>'admin.info-pages.update','uses' => 'InfoPagesController@update','middleware'=> ['role:admin|manager']]);    
-    Route::delete('info-pages/{id}',['as'  =>'admin.info-pages.destroy','uses' => 'InfoPagesController@destroy','middleware'=> ['role:admin|manager']]);   
+    Route::patch('info-pages/{id}',['as'  =>'admin.info-pages.update','uses' => 'InfoPagesController@update','middleware'=> ['role:admin|manager']]);
+    Route::delete('info-pages/{id}',['as'  =>'admin.info-pages.destroy','uses' => 'InfoPagesController@destroy','middleware'=> ['role:admin|manager']]);
     Route::get('info-pages/generateslug/{title}',['as'=>'admin.info-pages.generateSlug','uses'=>'InfoPagesController@GenerateSlug','middleware' => ['role:admin|manager']]);
     Route::patch('info-pages/{id}/translation',['as'=>'admin.info-pages.updateTranslation','uses'=>'InfoPagesController@updateTranslation','middleware' => ['role:admin|manager']]);
 
@@ -268,8 +268,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('sliders/create',['as'=>'admin.sliders.store','uses'=>'SliderController@store','middleware'=> ['role:admin|manager']]);
     Route::get('sliders/{id}',['as'  =>'admin.sliders.show','uses' => 'SliderController@show','middleware'=> ['role:admin|manager']]);
     Route::get('sliders/{id}/edit',['as'  =>'admin.sliders.edit','uses' => 'SliderController@edit','middleware'=> ['role:admin|manager']]);
-    Route::patch('sliders/{id}',['as'  =>'admin.sliders.update','uses' => 'SliderController@update','middleware'=> ['role:admin|manager']]);    
-    Route::delete('sliders/{id}',['as'  =>'admin.sliders.destroy','uses' => 'SliderController@destroy','middleware'=> ['role:admin|manager']]);      
+    Route::patch('sliders/{id}',['as'  =>'admin.sliders.update','uses' => 'SliderController@update','middleware'=> ['role:admin|manager']]);
+    Route::delete('sliders/{id}',['as'  =>'admin.sliders.destroy','uses' => 'SliderController@destroy','middleware'=> ['role:admin|manager']]);
     Route::get('sliders/generateslug/{title}',['as'=>'admin.sliders.generateSlug','uses'=>'SliderController@GenerateSlug','middleware' => ['role:admin|manager']]);
     Route::patch('sliders/{id}/translation',['as'=>'admin.sliders.updateTranslation','uses'=>'SliderController@updateTranslation','middleware' => ['role:admin|manager']]);
 
@@ -278,8 +278,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('mail_templates/create',['as'=>'admin.mail_templates.create','uses'=>'MailTemplateController@create','middleware'=> ['role:admin|manager']]);
     Route::post('mail_templates/create',['as'=>'admin.mail_templates.store','uses'=>'MailTemplateController@store','middleware'=> ['role:admin|manager']]);
     Route::get('mail_templates/{id}/edit',['as'  =>'admin.mail_templates.edit','uses' => 'MailTemplateController@edit','middleware'=> ['role:admin|manager']]);
-    Route::patch('mail_templates/{id}',['as'  =>'admin.mail_templates.update','uses' => 'MailTemplateController@update','middleware'=> ['role:admin|manager']]);    
-    Route::delete('mail_templates/{id}',['as'  =>'admin.mail_templates.destroy','uses' => 'MailTemplateController@destroy','middleware'=> ['role:admin|manager']]);     
+    Route::patch('mail_templates/{id}',['as'  =>'admin.mail_templates.update','uses' => 'MailTemplateController@update','middleware'=> ['role:admin|manager']]);
+    Route::delete('mail_templates/{id}',['as'  =>'admin.mail_templates.destroy','uses' => 'MailTemplateController@destroy','middleware'=> ['role:admin|manager']]);
     Route::patch('mail_templates/{id}/translation',['as'=>'admin.mail_templates.updateTranslation','uses'=>'MailTemplateController@updateTranslation','middleware' => ['role:admin|manager']]);
 
     // Settings
@@ -291,12 +291,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('subscribes',['as'=>'admin.subscribes.search','uses'=>'SubscribeController@search','middleware'=> ['role:admin|manager']]);
     Route::get('subscribes/send_mail',['as'=>'admin.subscribes.send_mail','uses'=>'SubscribeController@send_mail','middleware'=> ['role:admin|manager']]);
     Route::post('subscribes/send_mail',['as'=>'admin.subscribes.send_mail_perform','uses'=>'SubscribeController@send_mail_perform','middleware'=> ['role:admin|manager']]);
-    Route::delete('subscribes/delele_email/{id}',['as'=>'admin.subscribes.destroy','uses'=>'SubscribeController@destroy','middleware'=> ['role:admin|manager']]); 
+    Route::delete('subscribes/delele_email/{id}',['as'=>'admin.subscribes.destroy','uses'=>'SubscribeController@destroy','middleware'=> ['role:admin|manager']]);
     Route::post('subscribes',['as'=>'admin.subscribes.search','uses'=>'SubscribeController@search','middleware'=> ['role:admin|manager']]);
 
     //Banner
     Route::get('banners/edit',['as'=>'admin.banners.edit','uses'=>'BannersController@edit','middleware'=> ['role:admin|manager']]);
-    Route::post('banners/update',['as'=>'admin.banners.update','uses'=>'BannersController@update','middleware'=> ['role:admin|manager']]); 
+    Route::post('banners/update',['as'=>'admin.banners.update','uses'=>'BannersController@update','middleware'=> ['role:admin|manager']]);
 
     // Update Galleries 23/12/2017
     //Gallery
@@ -305,7 +305,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('galleries/create',['as'=>'admin.galleries.store','uses'=>'GalleriesController@store','middleware' => ['role:admin|manager']]);
     Route::get('galleries/{id}/edit',['as'=>'admin.galleries.edit','uses'=>'GalleriesController@edit','middleware' => ['role:admin|manager']]);
     Route::patch('galleries/{id}',['as'=>'admin.galleries.update','uses'=>'GalleriesController@update','middleware' => ['role:admin|manager']]);
-    Route::delete('galleries/{id}',['as'=>'admin.galleries.destroy','uses'=>'GalleriesController@destroy','middleware' => ['role:admin|manager']]);  
+    Route::delete('galleries/{id}',['as'=>'admin.galleries.destroy','uses'=>'GalleriesController@destroy','middleware' => ['role:admin|manager']]);
     Route::get('galleries/generateslug/{title}',['as'=>'admin.galleries.generateSlug','uses'=>'GalleriesController@GenerateSlug','middleware' => ['role:admin|manager']]);
     Route::post('galleries/{id}/image/upload',['as'=>'admin.galleries.uploadImage','uses'=>'GalleriesController@uploadImage','middleware' => ['role:admin|manager']]);
     Route::delete('galleries/images/{id}',['as'=>'admin.galleries.destroyImage','uses'=>'GalleriesController@destroyImage','middleware' => ['role:admin|manager']]);
@@ -313,3 +313,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::post('galleries/images/{id}/update', ['as'=>'admin.galleries.edit','uses'=>'GalleriesController@UpdateImage','middleware' => ['role:admin|manager']]);
 });
 
+// SITEMAP
+Route::get('/sitemap.xml', 'SitemapController@index');
+Route::get('/sitemap.xml/posts', 'SitemapController@posts');
+Route::get('/sitemap.xml/products', 'SitemapController@products');
