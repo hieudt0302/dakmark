@@ -45,9 +45,9 @@ class ProductsController extends Controller
     {
         $languages = Language::all(); ///TODO: make condition active
         $shopCategory = Category::where('slug', 'products')->firstOrFail();
-        $categories = Category::where('parent_id', $shopCategory->id)->get();      
+        $categories = Category::where('parent_id', $shopCategory->id)->get();
         $tags = Tag::all();
-        
+
         return View('admin/products/create',compact('languages','categories', 'tags'));
     }
 
@@ -95,40 +95,42 @@ class ProductsController extends Controller
         $product->call_for_price = $request->call_for_price??0;
         $product->sold_off = $request->sold_off??0;
 
-        
-        
-       
+
+        $product->meta_title = $request->meta_title;
+        $product->meta_description = $request->meta_description;
+        $product->meta_keywords = $request->meta_keywords;
+
         if (!empty($request->old_price)) {
             $product->old_price = $request->old_price;
         }
-    
+
         if (!empty($request->price)) {
             $product->price = $request->price;
         }
-    
+
         if (!empty($request->special_price)) {
             $product->special_price = $request->special_price;
         }
-    
+
         if (!empty($request->special_price_start_date)) {
             $product->special_price_start_date = $request->special_price_start_date;
         }
-    
+
         if (!empty($request->special_price_end_date)) {
             $product->special_price_end_date = $request->special_price_end_date;
         }
-    
+
         if (!empty($request->minimum_amount)) {
             $product->minimum_amount = $request->minimum_amount;
         }
-                
+
         if (!empty($request->maximum_amount)) {
             $product->maximum_amount = $request->maximum_amount;
         }
-                
+
         if (!empty($request->category_id)) {
             $product->category_id = $request->category_id;
-        }        
+        }
 
         $product->author_id = Auth::user()->id;
 
@@ -136,7 +138,7 @@ class ProductsController extends Controller
 
         /* Make new tags */
         $this->SelectTags($product, $request->tagIds);
-        
+
         return redirect()->action(
             'Admin\ProductsController@edit', ['id' => $product->id]
         );
@@ -162,7 +164,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        
+
         if(empty($product))
         {
             return redirect()->route('admin.products.index')
@@ -171,7 +173,7 @@ class ProductsController extends Controller
         }
 
         $shopCategory = Category::where('slug', 'products')->firstOrFail();
-        
+
         $categories = Category::where('parent_id', $shopCategory->id)->get();
 		if(empty($product))
 		{
@@ -204,7 +206,7 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required|string|min:1',
-            
+
         ]);
 
         if ($validator->fails()) {
@@ -217,6 +219,10 @@ class ProductsController extends Controller
         //
         $product->name = $request->name;
         $product->slug = $request->slug;
+
+        $product->meta_title = $request->meta_title;
+        $product->meta_description = $request->meta_description;
+        $product->meta_keywords = $request->meta_keywords;
 
         if (!empty($request->sku)) {
             $product->sku = $request->sku;
@@ -245,12 +251,12 @@ class ProductsController extends Controller
         if (!empty($request->minimum_amount)) {
             $product->minimum_amount = $request->minimum_amount;
         }
-            
+
                 //
         if (!empty($request->special_price)) {
             $product->maximum_amount = $request->maximum_amount;
         }
-            
+
 
         if (!empty($request->category_id)) {
             $product->category_id = $request->category_id;
@@ -275,7 +281,7 @@ class ProductsController extends Controller
         ->with('status', 'success')
         ->withInput();
     }
-    
+
     public function updateTranslation(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -298,8 +304,8 @@ class ProductsController extends Controller
             ->with('status', 'error')
             ->withInput(['tab'=> 2]);
         }
-        
-      
+
+
         // if ($validator->fails()) {
         //     return response()->json([
         //         'message' => 'Vui lòng chọn ngôn ngữ và nhập tên sản phẩm!',
@@ -334,7 +340,7 @@ class ProductsController extends Controller
         ->with('status', 'success')
         ->withInput(['tab'=> 2]);
 
-        
+
         // return response()->json([
         //     'message' => 'Cập nhật nội dung  thành công.',
         //     'status' => 'success',
@@ -391,11 +397,11 @@ class ProductsController extends Controller
                 'status' => 'error',
             ]);
         }
-         
+
         if (request()->hasFile('image_upload')) {
-            $path = $request->file('image_upload')->store('images');                            
+            $path = $request->file('image_upload')->store('images');
             $fitImage = Image::make(Storage::get($path))->fit(420, 420)->encode();
-            Storage::put($path, $fitImage); 
+            Storage::put($path, $fitImage);
 
 
             $product = Product::find($request->product_id);
@@ -404,11 +410,11 @@ class ProductsController extends Controller
             $images->description =$request->description_image;
             $images->source = $path;
             $images->thumb = $path; ///TODO: Make a thumb here
-            $images->type = 1; // is image 
+            $images->type = 1; // is image
             $images->save();
 
             $product->medias()->attach($images->id, ['order'=> $request->display_order]);
-            
+
             return response()->json([
                 'message' => 'Uploaded',
                 'status' => 'success',
@@ -424,7 +430,7 @@ class ProductsController extends Controller
             'message' =>  'Không tìm thấy file.',
             'status' => 'error',
         ]);
-                    
+
     }
 
     /**
@@ -442,7 +448,7 @@ class ProductsController extends Controller
         ->with('message', 'Xóa một sản phẩm thành công!')
         ->with('status', 'success');
     }
-    
+
     public function destroyImage($id)
     {
         DB::beginTransaction();
@@ -469,7 +475,7 @@ class ProductsController extends Controller
         return View('admin/products/categories',compact('categories'));
     }
 
-   
+
 
     public function filter(Request $request)
     {
@@ -484,40 +490,40 @@ class ProductsController extends Controller
              ->select('products.id','products.name', 'products.sku', 'products.published', 'products.created_at', 'medias.source')
              ->groupBy('products.id')
              ->where(function ($query) use ($product_name) {
-                if (strlen($product_name) > 0) 
+                if (strlen($product_name) > 0)
                     $query->where('products.name', 'LIKE', '%'.strtolower($product_name).'%');
             })
             ->whereNull('deleted_at')
             ->where(function ($query) use ($from_date) {
-                if (strlen($from_date) > 0) 
+                if (strlen($from_date) > 0)
                 {
                     $startDate = date('Y-m-d'.' 00:00:00', strtotime($from_date));
                     $query->where('products.created_at', '>=', $startDate);
                 }
             })
             ->where(function ($query) use ($to_date) {
-                if (strlen($to_date) > 0) 
+                if (strlen($to_date) > 0)
                 {
                     $endDate = date('Y-m-d'.' 23:59:59', strtotime($to_date));
                     $query->where('products.created_at', '<=', $endDate);
                 }
             })
             ->where(function ($query) use ($sku) {
-                if (strlen($sku) > 0) 
+                if (strlen($sku) > 0)
                     $query->where('products.sku','LIKE', '%'.$sku. '%');
             })
             ->where(function ($query) use ($category_id) {
-                if (is_numeric($category_id) > 0 && (int)$category_id > 0) 
+                if (is_numeric($category_id) > 0 && (int)$category_id > 0)
                     $query->whereIn('category_id', [$category_id]);
             });
-   
+
 
         $products = $query->orderBy('created_at','desc')->paginate(21);
         $shopCategory = Category::where('slug', 'products')->firstOrFail();
         $categories = Category::where('parent_id', $shopCategory->id)->get();
-        
+
         $request->flashOnly(['from_date', 'to_date', 'product_name', 'sku', 'category_id']);
-       
+
         return View('admin.products.index', compact('products','categories'))
         ->with('i', ($request->input('page', 1) - 1) * 21);
     }
@@ -527,7 +533,7 @@ class ProductsController extends Controller
         $slug = str_slug($name, "-");
         if(Product::where('slug',$slug)->count() >0 )
         {
-            $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s'); 
+            $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s');
         }
         return response()->json([
             'slug' =>  $slug,
@@ -545,19 +551,19 @@ class ProductsController extends Controller
                     $tag = new Tag();
                     $tag->name = $id;
                     $slug = str_slug($id, "-");
-                    
+
                     if(Tag::where('slug',$slug)->count() >0 )
                     {
-                        $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s'); 
+                        $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s');
                     }
                     $tag->slug = $slug;
                     $tag->save();
-    
+
                     $tagIds[$key] = $tag->id;
-                } 
+                }
             }
             $tags = Tag::whereIn('id',$tagIds)->get();
-            $product->tags()->sync($tags); 
+            $product->tags()->sync($tags);
 
         }else{
             //delete all tags of product
@@ -565,8 +571,8 @@ class ProductsController extends Controller
         }
 
 
-        
-        
+
+
          //delete tag not use
          $tag_ids = DB::table('taggables')->pluck('tag_id')->toArray();
          //dd($tag_ids);
@@ -607,7 +613,7 @@ class ProductsController extends Controller
             })
             ->paginate(21);
 
-   
+
         return View('admin/products/reviews',compact('reviews'))
         ->with('message',$content_message)
         ->with('status', $status_message)

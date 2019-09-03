@@ -1,5 +1,7 @@
 @extends('layouts.master')
-@section('title',$product->name)
+@section('title', $product->meta_title??$product->name)
+@section('meta_description', $product->meta_description)
+@section('meta_keywords', $product->meta_keywords)
 @section('header')
 <!-- Share Nav -->
 @include('layouts.share')
@@ -365,7 +367,7 @@
 				success: function(response) {
 					console.log(response['newCartItemCount']); //debug
 					//$('.cartItemCount').html($('.cartItemCount').html().replace (/\((.*?)\)/g,"(" + response['newCartItemCount'] + ")"));
-					$('.cartItemCount').html('(' + response['newCartItemCount'] + ')'); //+ '{{trans('shoppings.items')}}' 
+					$('.cartItemCount').html('(' + response['newCartItemCount'] + ')'); //+ '{{trans('shoppings.items')}}'
 				},
 				error: function(response) {
 					console.log(response['newCartItemCount']); //debug

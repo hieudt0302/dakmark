@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Product extends Model 
+class Product extends Model
 {
     /**/
     use SoftDeletes;
 
-   
+
 
     /**
      * Get the category that owns the product.
@@ -44,7 +44,7 @@ class Product extends Model
          return $this->hasMany('App\Models\OrderDetail');
      }
 
-     
+
 
      /**
      * Get the category that owns the product.
@@ -58,11 +58,11 @@ class Product extends Model
      * Get the translations for the product.
      */
     public function translations()
-    { 
-         /* 
-        * It return list but just contain one or none. Because condition of scope has override. 
+    {
+         /*
+        * It return list but just contain one or none. Because condition of scope has override.
         * If use ->withoutGlobalScopes(); it wil be remove several or even all of the global scopes
-        */ 
+        */
         return $this->hasMany('App\Models\ProductTranslation')->withoutGlobalScopes();
     }
 
@@ -82,6 +82,6 @@ class Product extends Model
     {
        return $this->medias->sortBy('order')->first(); //sortByDesc()
     }
-  
+
 }
 

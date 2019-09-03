@@ -123,7 +123,7 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="meta_description" title="">Meta Description</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line valid"  id="meta_description" name="meta_description" type="text" value="{{$post->meta_description}}">
+                                                    <textarea class="form-control" id="meta_description" name="meta_description" rows="3"  placeholder="">{{$post->meta_description}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">

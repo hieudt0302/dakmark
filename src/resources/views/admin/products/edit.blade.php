@@ -16,10 +16,10 @@
     </ol>
     <div class="row">
         <div class="col-xs-12">
-            @include('notifications.status_message') 
-            @include('notifications.errors_message') 
+            @include('notifications.status_message')
+            @include('notifications.errors_message')
         </div>
-    </div> 
+    </div>
 </section>
 
 <!-- Main content -->
@@ -38,7 +38,7 @@
                         <!-- INFO TAB -->
                         <div class="{{$tab==1?'active':''}}  tab-pane" id="info">
                             <form action="{{url('/admin/products')}}/{{$product->id}}" method="post">
-                            {!! method_field('patch') !!} 
+                            {!! method_field('patch') !!}
                             {{ csrf_field()}}
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <div class="panel-group">
@@ -56,8 +56,8 @@
                                             <div class="form-group">
                                                <label class="col-md-3 control-label" for="sku" title="">SKU</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line valid" 
-                                                    name="sku" type="text" 
+                                                    <input class="form-control text-box single-line valid"
+                                                    name="sku" type="text"
                                                     value="{{$product->sku}}">
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <div class="form-group">
                                                 <label for="tags" class="col-md-3 control-label">Tags</label>
                                                 <div class="col-md-4">
@@ -103,7 +103,25 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>                                   
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_title" title="">Meta Title</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid" id="meta_title" name="meta_title" type="text" value="{{$product->meta_title}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_description" title="">Meta Description</label>
+                                                <div class="col-md-4">
+                                                    <textarea class="form-control" id="meta_description" name="meta_description" rows="3"  placeholder="">{{$product->meta_description}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_keywords" title="">Meta Keywords</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_keywords" name="meta_keywords" type="text" value="{{$product->meta_keywords}}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="panel panel-default">
@@ -167,7 +185,7 @@
                                                         <label class="form-check-label">
                                                             {{ Form::checkbox('disable_buy_button', 1 , $product->disable_buy_button ? true : false, array('class' => 'check-box')) }}
                                                             Vô hiệu nút mua
-                                                        </label>                                                
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,7 +259,7 @@
                                 </form>
 
                                 <form action="{{url('/admin/products')}}/{{$product->id}}/translation" method="post">
-                                {!! method_field('patch') !!} 
+                                {!! method_field('patch') !!}
                                 {{ csrf_field()}}
                                     <!-- Translate Content -->
                                     <div class="panel panel-default">
@@ -297,7 +315,7 @@
                         <div class="{{$tab==3?'active':''}} tab-pane" id="pictures">
                             <div class="panel-group">
                                 <div class="panel panel-default">
-                                    <form id="form-upload-image" name="form-upload-image"  method="post" enctype="multipart/form-data"> 
+                                    <form id="form-upload-image" name="form-upload-image"  method="post" enctype="multipart/form-data">
                                         {{ csrf_field()}}
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
                                         <div class="panel-heading">
@@ -383,7 +401,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </section>
 
 <!-- MESSAGE-->
@@ -432,14 +450,14 @@
             autoclose : true,
             clearBtn : true
         })
-   
+
 
         $('#special_price_start_date').datepicker().on('changeDate', function(e) {
-        
+
         });
 
         $('#special_price_end_date').datepicker().on('changeDate', function(e) {
-        
+
         });
 
         $('.select2').select2();
@@ -447,13 +465,13 @@
             tags: true,
             tokenSeparators: [',']
         });
-    
+
 
     // TAB: CONTENT
         $('#language-select').on('change', function() {
             $('form#getTranslation').submit();
             return false;
-        })    
+        })
 
         // $('#language-select').on('change', function() {
         //     var code_id = this.value;
@@ -567,7 +585,7 @@
         var token = '{{csrf_token()}}';
         var link = $(this);
         var id =link.data("id");
-        
+
         $.ajax({
             cache: false,
             url: link.data("href"),
