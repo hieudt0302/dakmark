@@ -7,10 +7,22 @@ use App\Models\Post;
 use App\Models\Product;
 class SitemapController extends Controller
 {
+
+    // public function index()
+    // {
+    //   $posts = Post::all()->first();
+    //   $products = Product::all()->first();
+
+    //   return response()->view('sitemap.index', [
+    //       'posts' => $posts,
+    //       'products' => $products,
+    //   ])->header('Content-Type', 'text/xml');
+    // }
+
     public function index()
     {
-      $posts = Post::all()->first();
-      $products = Product::all()->first();
+        $posts = Post::latest()->get();
+        $products = Product::latest()->get();
 
       return response()->view('sitemap.index', [
           'posts' => $posts,
