@@ -168,7 +168,7 @@
                               <tr>
                                   <td>Google Analytics</td>
                                   <td>
-                                      <input type="text" class="form-control" name="google_analytics" style="height: 100px" value="{{ Setting::config('google_analytics') }}"/>
+                                      <input type="text" class="form-control" name="google_analytics" value="{{ Setting::config('google_analytics') }}"/>
                                   </td>
                               </tr>
                               <tr>
