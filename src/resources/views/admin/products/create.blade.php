@@ -17,8 +17,8 @@
       </ol>
     <div class="row">
         <div class="col-xs-12">
-        @include('notifications.status_message') 
-        @include('notifications.errors_message') 
+        @include('notifications.status_message')
+        @include('notifications.errors_message')
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="name" title="">Tên sản phẩm</label>                                                    
+                                                <label class="col-md-3 control-label" for="name" title="">Tên sản phẩm</label>
                                                 <div class="col-md-4">
                                                     <div class="input-group">
                                                         <input class="form-control text-box single-line valid" id="name" name="name" type="text" value="{{old('name')}}" >
@@ -104,7 +104,7 @@
                                                         @endforeach
 
                                                         <!-- Old Data -->
-                                                        @if (is_array(old('tagIds')))                                                            
+                                                        @if (is_array(old('tagIds')))
                                                             @foreach(old('tagIds') as $id)
                                                                 @php($selected = true)
                                                                 @foreach($tags as $key =>$tag)
@@ -112,13 +112,13 @@
                                                                         @php($selected = false)
                                                                     @endif
                                                                 @endforeach
-                                                                
+
                                                                 <option value="{{$id}}" {{$selected?'selected':''}}>{{$id}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="panel panel-default">
@@ -157,7 +157,7 @@
                                                 <div class="col-md-4">
                                                     <div class="input-group date">
                                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                        <input type="text" name="special_price_start_date" class="form-control pull-right" 
+                                                        <input type="text" name="special_price_start_date" class="form-control pull-right"
                                                         value="{{ old('special_price_start_date') }}"
                                                         id="special_price_start_date" data-date-start-date="0d">
                                                     </div>
@@ -168,7 +168,7 @@
                                                 <div class="col-md-4">
                                                     <div class="input-group date">
                                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                        <input type="text" name="special_price_end_date" class="form-control pull-right" 
+                                                        <input type="text" name="special_price_end_date" class="form-control pull-right"
                                                         value="{{ old('special_price_end_date') }}"
                                                         id="special_price_end_date" data-date-start-date="+1d">
                                                     </div>
@@ -187,7 +187,7 @@
                                                         <label class="form-check-label">
                                                             {{ Form::checkbox('disable_buy_button', old('disable_buy_button') , false, array('class' => 'check-box')) }}
                                                             Vô hiệu nút mua
-                                                        </label>                                                
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -237,7 +237,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 @endsection
 
 
@@ -249,14 +249,14 @@
         autoclose : true,
         clearBtn : true
     })
-   
+
 
     $('#special_price_start_date').datepicker().on('changeDate', function(e) {
-       
+
     });
 
     $('#special_price_end_date').datepicker().on('changeDate', function(e) {
-      
+
     });
 
     $('.select2').select2();

@@ -16,8 +16,8 @@
       </ol>
     <div class="row">
         <div class="col-xs-12">
-        @include('notifications.status_message') 
-        @include('notifications.errors_message') 
+        @include('notifications.status_message')
+        @include('notifications.errors_message')
         </div>
     </div>
 </section>
@@ -43,15 +43,33 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="name" title="">Tên</label>                                                    
+                                                <label class="col-md-3 control-label" for="name" title="">Tên</label>
                                                 <div class="col-md-4">
                                                     <input class="form-control" id="name" name="name" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_title" title="">Meta Title</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid" id="meta_title" name="meta_title" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_description" title="">Meta Description</label>
+                                                <div class="col-md-4">
+                                                    <textarea class="form-control" id="meta_description" name="meta_description" rows="3"  placeholder=""></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_keywords" title="">Meta Keywords</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_keywords" name="meta_keywords" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="col-md-3 control-label" for="sku" title="">Thứ Tự</label>
                                                 <div class="col-md-4">
-                                                    <input class="form-control text-box single-line valid" 
+                                                    <input class="form-control text-box single-line valid"
                                                     name="order" type="text" value="0">
                                                 </div>
                                             </div>
@@ -74,7 +92,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             Tùy Chọn
@@ -86,7 +104,7 @@
                                                         <label class="form-check-label">
                                                             {{ Form::checkbox('enabled', 1 , true, array('class' => 'check-box')) }}
                                                             Enable
-                                                        </label>                                                
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,8 +118,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                          
+
+
                                             <div class="form-group">
                                                 <div class="col-md-3">
                                                 </div>
@@ -118,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 @endsection
 
 

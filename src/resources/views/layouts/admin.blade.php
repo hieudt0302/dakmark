@@ -448,7 +448,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{url('/admin/menu')}}"><i class="fa fa-circle-o"></i> Danh Sách</a></li>
-              <li><a href="{{url('/admin/subject/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
+              <li><a href="{{url('/admin/menu/create')}}"><i class="fa fa-circle-o"></i> Tạo Mới</a></li>
               <!-- <li><a href="{{url('/admin/subject/config')}}"><i class="fa fa-circle-o"></i> Thiết Lập</a></li> -->
             </ul>
           </li>

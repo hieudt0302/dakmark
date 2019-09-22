@@ -16,8 +16,8 @@
       </ol>
     <div class="row">
         <div class="col-xs-12">
-        @include('notifications.status_message') 
-        @include('notifications.errors_message') 
+        @include('notifications.status_message')
+        @include('notifications.errors_message')
         </div>
     </div>
 </section>
@@ -31,13 +31,13 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#info" data-toggle="tab">Menu</a></li>
                         <li><a href="#content" data-toggle="tab">Nội Dung</a></li>
-                        
+
                     </ul>
                     <div class="tab-content">
                         <!-- INFO TAB -->
                         <div class="active tab-pane" id="info">
                             <form action="{{url('/admin/menu')}}/{{$menu->id}}" method="post">
-                            {!! method_field('patch') !!} 
+                            {!! method_field('patch') !!}
                             {{ csrf_field()}}
                                 <div class="panel-group">
                                     <div class="panel panel-default">
@@ -46,9 +46,27 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="name" title="">Tên</label>                                                    
+                                                <label class="col-md-3 control-label" for="name" title="">Tên</label>
                                                 <div class="col-md-4">
                                                     <input class="form-control" id="name" name="name" type="text" value="{{$menu->name}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_title" title="">Meta Title</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid" id="meta_title" name="meta_title" type="text" value="{{$menu->meta_title}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_description" title="">Meta Description</label>
+                                                <div class="col-md-4">
+                                                    <textarea class="form-control" id="meta_description" name="meta_description" rows="3"  placeholder="">{{$menu->meta_description}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="meta_keywords" title="">Meta Keywords</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control text-box single-line valid"  id="meta_keywords" name="meta_keywords" type="text" value="{{$menu->meta_keywords}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -80,7 +98,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             Tùy Chọn
@@ -92,7 +110,7 @@
                                                         <label class="form-check-label">
                                                             {{ Form::checkbox('enabled', 1 ,$menu->enabled? true:false, array('class' => 'check-box')) }}
                                                             Enable
-                                                        </label>                                                
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,8 +123,8 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                            </div>                                            
-                                          
+                                            </div>
+
                                             <div class="form-group">
                                                 <div class="col-md-3">
                                                 </div>
@@ -120,7 +138,7 @@
                             </form>
                         </div>
                          <!-- CONTENT TAB -->
-                        
+
                          <div class="tab-pane" id="content">
                             <div class="panel-group">
                                 <!-- Language Select -->
@@ -180,7 +198,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 @endsection
 
 

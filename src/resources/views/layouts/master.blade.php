@@ -28,6 +28,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicons/favicon-16x16.png')}}">
 	<link rel="manifest" href="{{asset('frontend/images/favicons/manifest.json')}}">
 	<link rel="mask-icon" href="{{asset('frontend/images/favicons/safari-pinned-tab.svg')}}" color="#5bbad5">
+	{{--
 	<!--
 	<link rel="stylesheet" href="{{asset('frontend/css/plugins.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -54,6 +55,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('revolution/css/navigation.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 	-->
+	--}}
 	@yield('header')
 	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 	<link rel="stylesheet" href="{{asset('frontend/css/custom-style.css')}}">
@@ -96,6 +98,15 @@
 		}(window, document, localStorage);
 	</script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?{{Setting::config('google_analytics')}}"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', '{{Setting::config('google_analytics')}}');
+	</script>
 </head>
 
 <body>

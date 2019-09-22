@@ -166,6 +166,12 @@
                                   </td>
                               </tr>
                               <tr>
+                                  <td>Google Analytics</td>
+                                  <td>
+                                      <input type="text" class="form-control" name="google_analytics" style="height: 100px" value="{{ Setting::config('google_analytics') }}"/>
+                                  </td>
+                              </tr>
+                              <tr>
                                   <td>Logo</td>
                                   <td>
                                       <input type="file" class="form-control" name="logo" />

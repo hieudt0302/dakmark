@@ -1,5 +1,7 @@
 @extends('layouts.master')
-@section('title','Pô Kô Farms')
+@section('title', Setting::config('seo_title')??'')
+@section('meta_description',Setting::config('description')??'')
+@section('meta_keywords', Setting::config('keyword')??'')
 @section('content')
 
 <!-- Slider -->
@@ -94,12 +96,12 @@
 <!-- End Products -->
 
 
-<!-- Subscribe 
+<!-- Subscribe
 @ include('front.home.subscribe')
 -->
 <!-- End Subscribe -->
 
-<!-- Blogs 
+<!-- Blogs
 @ include('front.home.blogs')
 -->
 <!-- End Blogs -->

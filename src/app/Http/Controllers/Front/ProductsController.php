@@ -28,7 +28,7 @@ class ProductsController extends Controller
         $results = Product::where('published',1)->paginate(12);
         return View('front/products/index',compact('results','tags'));
     }
-  
+
     /**
      * Show the form for creating a new resource.
      *
@@ -64,8 +64,8 @@ class ProductsController extends Controller
         $starAvg = $product->comments->avg('rate');
         $product_category = Category::where('slug','products')->firstOrFail();
         $categories = Category::where('parent_id',$product_category->id)->get();
-        $tags = Tag::has('products')->get(); 
-        
+        $tags = Tag::has('products')->get();
+
         $is_sales = false;
         if(!empty($product->special_price_start_date) && !empty($product->special_price_end_date)){
             if($product->special_price_start_date <= date('Y-m-d H:i:s') && $product->special_price_end_date >= date('Y-m-d H:i:s') ){
@@ -126,7 +126,7 @@ class ProductsController extends Controller
                 'newCartItemCount' => Cart::count()
             ]);
         }
-       
+
         $product = Product::find($request->id);
         $cartItem = Cart::add($request->id, $request->name, $request->quantity, $request->price, ['summary'=>$product->translation->summary??'', 'source' =>  $product->GetMediaByOrderAsc()->source??'']);
 
@@ -160,7 +160,7 @@ class ProductsController extends Controller
                 'newWishlistItemCount' => Cart::instance('wishlist')->count()
             ]);
         }
-       
+
         $product = Product::find($request->id);
 
         //Restore from data if exist
@@ -181,22 +181,22 @@ class ProductsController extends Controller
     }
 
     public function search(Request $request){
-        $search_key = $request->input('key'); 
-        
+        $search_key = $request->input('key');
+
 
         $results = ProductTranslation::where("name", "LIKE", "%$search_key%")
-        ->paginate(21);     
+        ->paginate(21);
 
         return view('front/products/index',compact('results','search_key'))
         ->with('i', ($page??1 - 1) * 21);
     }
 
     public function filterByTag($slug)
-    {     
+    {
         // GET PRODUCTS
-        $results = Tag::where('slug', $slug)->first()->products()->paginate(21);  
+        $results = Tag::where('slug', $slug)->first()->products()->paginate(21);
 
         return View('front/products/index', compact('results'))
         ->with('i', ($page??1 - 1) * 21);
-    }         
+    }
 }

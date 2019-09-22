@@ -71,7 +71,11 @@ class MenuController extends Controller
         $menu->is_visible = $request->is_visible??0;
         $menu->is_menu_avaiable = true;
         $menu->parent_id = $request->parent_id > 0?$request->parent_id:null;
-     
+
+        $menu->meta_title = $request->meta_title;
+        $menu->meta_description = $request->meta_description;
+        $menu->meta_keywords = $request->meta_keywords;
+
         if (is_numeric($request->parent) && (int)$request->parent >0 ) {
             $menu->parent_id = $request->parent_id;
         }
@@ -89,7 +93,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-       
+
     }
 
     /**
@@ -104,7 +108,7 @@ class MenuController extends Controller
         $languages = Language::all(); ///TODO: make condition active
         $menus = Category::where('is_menu_avaiable',1)
             ->whereNull('parent_id')
-            ->get();        
+            ->get();
         return View('admin/menu/edit', compact('menu','languages','menus'));
     }
 
@@ -143,7 +147,11 @@ class MenuController extends Controller
         $menu->is_visible = $request->is_visible??0;
         $menu->is_menu_avaiable = true;
         $menu->parent_id = $request->parent_id > 0?$request->parent_id:null;
-     
+
+        $menu->meta_title = $request->meta_title;
+        $menu->meta_description = $request->meta_description;
+        $menu->meta_keywords = $request->meta_keywords;
+
         if (is_numeric($request->parent) && (int)$request->parent >0 ) {
             $menu->parent_id = $request->parent_id;
         }
@@ -200,7 +208,7 @@ class MenuController extends Controller
         ->where('category_id',$id)->withoutGlobalScopes()
         ->first();
 
-      
+
         $name = "";
         $description = "";
 
@@ -231,13 +239,13 @@ class MenuController extends Controller
         {
             return redirect()->route('admin.menu.index')
             ->with('message', 'Bạn không thể xóa menu chứa menu con')
-            ->with('status', 'danger'); 
+            ->with('status', 'danger');
         }
-        
+
         $menu->delete();
         return redirect()->route('admin.menu.index')
         ->with('message', 'Đã xóa menu')
-        ->with('status', 'success'); 
+        ->with('status', 'success');
     }
 
     public function GenerateSlug($name)
@@ -245,7 +253,7 @@ class MenuController extends Controller
         $slug = str_slug($name, "-");
         if(Category::where('slug',$slug)->count() >0 )
         {
-            $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s'); 
+            $slug = $slug . '-' .  date('y') . date('m'). date('d'). date('H'). date('i'). date('s');
         }
 
         return response()->json([

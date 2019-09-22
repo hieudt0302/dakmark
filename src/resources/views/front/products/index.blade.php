@@ -1,5 +1,7 @@
 @extends('layouts.master')
-@section('title','Pô Kô Farms')
+@section('title', $category->meta_title??Setting::config('meta_title'))
+@section('meta_description', $category->meta_description??Setting::config('meta_description'))
+@section('meta_keywords', $category->meta_keywords??Setting::config('meta_keywords'))
 @section('header')
 <!-- Share Nav -->
 @include('layouts.share')
