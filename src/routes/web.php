@@ -317,3 +317,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 Route::get('/sitemap.xml', 'SitemapController@index');
 Route::get('/sitemap.xml/posts', 'SitemapController@posts');
 Route::get('/sitemap.xml/products', 'SitemapController@products');
+
+
+Route::get('/{slug}', 'Front\ManageOneSlugController@routeTraffic');

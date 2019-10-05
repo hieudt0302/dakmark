@@ -78,9 +78,9 @@
                                 <div class="date">
                                     <span>{{$post->author->first_name}} {{$post->author->last_name}} | {{ date('d-m-Y', strtotime($post->created_at)) }}</span>
                                 </div>
-                                <h2><a href="{{url('/')}}/posts/{{$post->slug}}">{{$post->translation->title}}</a></h2>
+                                <h2><a href="{{url('/')}}/{{$post->slug}}?t=tt">{{$post->translation->title}}</a></h2>
                                 <p>{{str_limit($post->translation->excerpt??"", $limit = 150, $end = '...')}} </p>
-                                <a class="readmore2" href="{{url('/')}}/posts/{{$post->slug}}">/ &nbsp; @lang('common.read-more')</a>
+                                <a class="readmore2" href="{{url('/')}}/{{$post->slug}}?t=tt">/ &nbsp; @lang('common.read-more')</a>
                             </div>
                         </div>
                     </div>

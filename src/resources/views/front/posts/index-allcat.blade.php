@@ -57,7 +57,7 @@
                 @foreach($posts as $post)
                 <div class="blog-item">
                     <!-- Post Title -->
-                    <h2 class="blog-item-title font-alt"><a href="{{url('/')}}/posts/{{$post->slug}}">{{$post->translation->title}}</a></h2>
+                    <h2 class="blog-item-title font-alt"><a href="{{url('/')}}/{{$post->slug}}?t=tt">{{$post->translation->title}}</a></h2>
                     <!-- Author, Categories, Comments -->
                     <div class="blog-item-data">
                         <a href="#"><i class="fa fa-clock-o"></i> {{$post->created_at}}</a>
@@ -74,7 +74,7 @@
 
                     <!-- Image -->
                     <div class="blog-media">
-                        <a href="{{url('/')}}/posts/{{$post->slug}}"><img class="lazyload" data-src="{{ asset('images/blog/' . $post->img) }}" alt="{{$post->translation->title}}" /></a>
+                        <a href="{{url('/')}}/{{$post->slug}}?t=tt"><img class="lazyload" data-src="{{ asset('images/blog/' . $post->img) }}" alt="{{$post->translation->title}}" /></a>
                     </div>
 
                     <!-- Text Intro -->
@@ -86,7 +86,7 @@
 
                     <!-- Read More Link -->
                     <div class="blog-item-foot">
-                        <a href="{{url('/')}}/posts/{{$post->slug}}" class="btn btn-mod btn-round  btn-small">Read More <i class="fa fa-angle-right"></i></a>
+                        <a href="{{url('/')}}/{{$post->slug}}?t=tt" class="btn btn-mod btn-round  btn-small">Read More <i class="fa fa-angle-right"></i></a>
                     </div>
 
                 </div>

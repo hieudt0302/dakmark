@@ -99,7 +99,7 @@
           {{-- BEGIN P --}}
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="pro-it">
-              <a href="{{url('/products')}}/{{$product->slug}}">
+              <a href="{{url('/')}}/{{$product->slug}}?t=sp">
                 <img class="lazyload pro-img" data-src="{{asset('/storage')}}/{{$product->GetMediaByOrderAsc()->thumb??'images/no-image.png'}}" alt="No Image">
               </a>
               <div class="pro-infor tuan-fix-test">
