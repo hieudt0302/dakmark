@@ -350,22 +350,22 @@
 	$(document).ready(function() {
 		$('.add-shoopingcart').click(function() {
 			var quantity = $("input[name='quantity']").val();
-			var price = isset($final_price) ? $final_price : 0;
+			var price = {{isset($final_price) ? $final_price : 0}};
 			$.ajax({
 				type: 'POST',
 				url: '{{ url("/add-to-cart") }}',
 				data: {
-					'id': '{{$product->id}}', //just test
-					'name': '{{$product->name}}', //just test
-					// 'price': {
-					// 	{
-					// 		isset($final_price) ? $final_price : 0
-					// 	}
-					// }, //just test
-					'quantity': quantity, //just test
+					'id': '{{$product->id}}',
+					'name': '{{$product->name}}',
+					'price': {
+						{
+							{{isset($final_price) ? $final_price : 0}}
+						}
+					},
+					'quantity': quantity,
 				},
 				success: function(response) {
-					console.log(response['newCartItemCount']); //debug
+					//console.log(response['newCartItemCount']); //debug
 					//$('.cartItemCount').html($('.cartItemCount').html().replace (/\((.*?)\)/g,"(" + response['newCartItemCount'] + ")"));
 					$('.cartItemCount').html('(' + response['newCartItemCount'] + ')'); //+ '{{trans('shoppings.items')}}'
 				},
@@ -384,17 +384,17 @@
 				type: 'POST',
 				url: '{{ url("/add-to-wishlist") }}',
 				data: {
-					'id': '{{$product->id}}', //just test
-					'name': '{{$product->name}}', //just test
-					// 'price': {
-					// 	{
-					// 		$product - > price
-					// 	}
-					// }, //just test
-					'quantity': 1, //just test
+					'id': '{{$product->id}}',
+					'name': '{{$product->name}}',
+					'price': {
+						{
+							$product - > price
+						}
+					},
+					'quantity': 1,
 				},
 				success: function(response) {
-					console.log(response['message']); //debug
+					// console.log(response['message']); //debug
 					if (response['status'] === 'error')
 						window.location.href = "/login";
 
