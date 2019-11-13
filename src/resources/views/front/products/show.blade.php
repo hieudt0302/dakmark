@@ -357,11 +357,7 @@
 				data: {
 					'id': '{{$product->id}}',
 					'name': '{{$product->name}}',
-					'price': {
-						{
-							{{isset($final_price) ? $final_price : 0}}
-						}
-					},
+					'price': price, // '{{$product->price}}',
 					'quantity': quantity,
 				},
 				success: function(response) {
@@ -386,11 +382,7 @@
 				data: {
 					'id': '{{$product->id}}',
 					'name': '{{$product->name}}',
-					'price': {
-						{
-							$product - > price
-						}
-					},
+					'price': price, // '{{$product->price}}',
 					'quantity': 1,
 				},
 				success: function(response) {
